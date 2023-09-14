@@ -1,17 +1,20 @@
 {
   "compilerOptions": {
     /* Language and Environment */
-    "target": "ESNext",
+    "target": "ES6",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
 
     /* Modules */
-    "module": "commonjs",
+    "module": "ES6",
     "rootDirs": ["./src"],
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
 
     /* jsx */
-    "jsx": "preserve",
+    "jsx": "react-jsx",
 
     /* Emit */
     "noEmit": true,
@@ -28,5 +31,7 @@
 
     /* Completeness */
     "skipLibCheck": true
-  }
+  },
+  "include": ["src", "vite-env.d.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
