@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-
     /* Language and Environment */
     "target": "ESNext",
     "allowJs": true,
 
     /* Modules */
     "module": "commonjs",
-    "rootDirs": [
-      "./src",
-    ], 
+    "rootDirs": ["./src"],
     "resolveJsonModule": true,
-		"isolatedModules": true,
-    
+    "isolatedModules": true,
+
     /* jsx */
     "jsx": "preserve",
 
@@ -22,7 +19,7 @@
     "forceConsistentCasingInFileNames": true,
 
     /* Type Checking */
-    "strict": true,  
+    "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
