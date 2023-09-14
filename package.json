@@ -10,7 +10,8 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -35,7 +36,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.0.3",
     "ts-jest": "^29.1.1",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "husky": "^8.0.0"
   },
   "browserslist": {
     "production": [
