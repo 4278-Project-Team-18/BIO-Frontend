@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+
+    /* Language and Environment */
+    "target": "ESNext",
+    "allowJs": true,
+
+    /* Modules */
+    "module": "commonjs",
+    "rootDirs": [
+      "./src",
+    ], 
+    "resolveJsonModule": true,
+		"isolatedModules": true,
+    
+    /* jsx */
+    "jsx": "preserve",
+
+    /* Emit */
+    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    "strict": true,  
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  }
+}
