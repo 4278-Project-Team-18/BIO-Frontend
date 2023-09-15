@@ -14,6 +14,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prettier:format": "prettier --write .",
     "prettier:check": "prettier --check .",
+    "typescript:check": "tsc --esModuleInterop",
     "prepare": "husky install"
   },
   "dependencies": {
