@@ -3,7 +3,7 @@ const AdminClassesTab = () => {
 
   return (
     <div>
-      <h1>Admin Dashboard</h1>
+      <h1>Admin Classes</h1>
     </div>
   );
 };
