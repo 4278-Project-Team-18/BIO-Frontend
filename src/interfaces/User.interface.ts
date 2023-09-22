@@ -120,3 +120,14 @@ export enum Role {
   VOLUNTEER = "volunteer",
   TEACHER = "teacher",
 }
+
+/**
+ * @option {string} PENDING - The pending approval status
+ * @option {string} APPROVED - The approved approval status
+ * @option {string} REJECTED - The rejected approval status
+ */
+export enum ApprovalStatus {
+  PENDING = "pending",
+  APPROVED = "approved",
+  REJECTED = "rejected",
+}
