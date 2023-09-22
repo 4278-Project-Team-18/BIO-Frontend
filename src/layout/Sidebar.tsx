@@ -1,5 +1,5 @@
 import styles from "./Sidebar.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faSchool, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const SideBar = () => {
   const [sideBar, setSideBar] = useState<boolean>(false);
   const [activeRoute, setActiveRoute] = useState<string>("Dashboard");
+  const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
 
   // Titles for the sidebar, conditionally set by the user's role
   const sideBarTitles = ["Dashboard", "Classes", "Volunteers"];
@@ -19,9 +20,24 @@ const SideBar = () => {
     setActiveRoute(route);
   };
 
+  // Not implemented yet
   const handleBackToHome = () => {
     console.log("back to landing page?");
   };
+
+  // Close the side bar if switch to mobile view
+  useEffect(() => {
+    const handleResize = () => {
+      setCurrentWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+
+    if (currentWidth < 800) {
+      setSideBar(false);
+    }
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [window.innerWidth]);
 
   return (
     <div

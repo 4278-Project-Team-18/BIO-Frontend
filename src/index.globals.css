@@ -6,6 +6,7 @@ body {
   background: linear-gradient(0deg, #b5ebf8 0%, #209bb6 100%) !important;
   background-repeat: no-repeat;
   overscroll-behavior: none;
+  min-width: 250px;
 }
 
 button {
