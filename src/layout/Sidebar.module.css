@@ -149,7 +149,7 @@
   }
 
   .sidebar-closed-icon-inactive:hover {
-    background-color: rgba(146, 146, 146, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     cursor: pointer;
 
@@ -308,6 +308,11 @@
     transform: translateX(-8rem);
   }
 
+  .sidebar-closed-route {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+  }
+
   .sidebar-closed-icon:hover {
     cursor: pointer;
   }
@@ -338,7 +343,7 @@
   }
 
   .sidebar-closed-icon-inactive:hover {
-    background-color: rgba(146, 146, 146, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     cursor: pointer;
 
