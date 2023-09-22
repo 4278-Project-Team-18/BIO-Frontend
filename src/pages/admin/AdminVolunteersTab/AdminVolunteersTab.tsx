@@ -3,7 +3,7 @@ const AdminVolunteersTab = () => {
 
   return (
     <div>
-      <h1>AdminVolunteersTab</h1>
+      <h1>Admin Volunteers</h1>
     </div>
   );
 };

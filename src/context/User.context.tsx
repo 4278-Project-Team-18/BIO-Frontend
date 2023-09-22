@@ -32,10 +32,10 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
  * @returns {UserContextType} The user context
  * @example
  * ```tsx
- * const { currentUser, setCurrentUser } = useUserProvider();
+ * const { currentUser, setCurrentUser } = useUserContext();
  * ```
  */
-export const useUserProvider = () => {
+export const useUserContext = () => {
   const context = useContext(UserContext);
 
   if (context === undefined) {
