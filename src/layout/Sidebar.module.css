@@ -91,7 +91,7 @@
 }
 
 .sidebar-open-hidden {
-  transform: translateX(-15rem);
+  transform: translateX(-18rem);
 }
 
 .sidebar-closed {
@@ -115,7 +115,7 @@
 }
 
 .sidebar-closed-hidden {
-  transform: translateX(-6rem);
+  transform: translateX(-8rem);
 }
 
 .sidebar-closed-icon:hover {

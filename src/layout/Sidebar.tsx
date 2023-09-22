@@ -71,7 +71,11 @@ const SideBar = () => {
                     setSideBar(false);
                   }}
                 >
-                  {title}
+                  <FontAwesomeIcon
+                    className={styles["sidebar-icon"]}
+                    icon={sideBarIcons[index]}
+                  />
+                  &nbsp;&nbsp;{title}
                 </div>
               </Link>
             ))}
