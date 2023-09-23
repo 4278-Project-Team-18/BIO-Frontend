@@ -1,13 +1,14 @@
-import { ApprovalStatus, Role } from "../interfaces/user.interface";
+import {
+  type Admin,
+  type Student,
+  type Class,
+  type Teacher,
+  type Volunteer,
+  Role,
+  ApprovalStatus,
+} from "../interfaces/user.interface";
 import { faker } from "@faker-js/faker";
 import mongoose from "mongoose";
-import type {
-  Admin,
-  Student,
-  Class,
-  Teacher,
-  Volunteer,
-} from "../interfaces/user.interface";
 
 export const createTestAdmin = () =>
   ({
@@ -27,6 +28,8 @@ export const createTestStudent = () =>
     firstName: faker.person.firstName(),
     lastInitial: faker.person.lastName().charAt(0),
     readingLevel: faker.number.bigInt({ min: 100, max: 1500 }).toString(),
+    studentLetterLink: randomImageLink(),
+    volunteerResponseLetterLink: randomImageLink(),
   }) as Student;
 
 export const createTestClass = () =>
@@ -69,4 +72,13 @@ export const randomApprovalStatus = () => {
     ApprovalStatus.REJECTED,
   ];
   return approvalStatuses[Math.floor(Math.random() * approvalStatuses.length)];
+};
+
+export const randomImageLink = () => {
+  const random = Math.random();
+  if (random > 0.5) {
+    return faker.internet.url();
+  } else {
+    return undefined;
+  }
 };

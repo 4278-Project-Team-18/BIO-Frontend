@@ -67,7 +67,7 @@ export interface Volunteer extends User {
  */
 export interface Teacher extends User {
   role: Role.TEACHER;
-  classes?: string[];
+  classes?: Class[];
 }
 
 /**
@@ -91,7 +91,7 @@ export interface Class {
   _id?: string;
   name: string;
   teacherId: string;
-  students?: string[];
+  students?: Student[];
   estimatedDelivery?: string;
 }
 
@@ -108,6 +108,8 @@ export interface Student {
   firstName: string;
   lastInitial: string;
   readingLevel?: string;
+  studentLetterLink?: string;
+  volunteerResponseLetterLink?: string;
 }
 
 /**
