@@ -1,5 +1,14 @@
+import { useNavigationContext } from "../../../context/Navigation.context";
+import { AdminTabs } from "../../../interfaces/user.interface";
+import { useEffect } from "react";
+
 const AdminDashboardTab = () => {
-  console.log("AdminDashboardTab");
+  const { setCurrentTab } = useNavigationContext();
+
+  // set the current tab on render
+  useEffect(() => {
+    setCurrentTab(AdminTabs.DASHBOARD);
+  }, []);
 
   return (
     <div>

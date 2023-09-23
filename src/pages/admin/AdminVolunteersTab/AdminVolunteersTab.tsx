@@ -1,5 +1,14 @@
+import { useNavigationContext } from "../../../context/Navigation.context";
+import { AdminTabs } from "../../../interfaces/user.interface";
+import { useEffect } from "react";
+
 const AdminVolunteersTab = () => {
-  console.log("AdminVolunteersTab");
+  const { setCurrentTab } = useNavigationContext();
+
+  // set the current tab on render
+  useEffect(() => {
+    setCurrentTab(AdminTabs.VOLUNTEERS);
+  }, []);
 
   return (
     <div>

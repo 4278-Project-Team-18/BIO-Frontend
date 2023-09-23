@@ -1,9 +1,16 @@
 import ClassStudentList from "../../../components/ClassStudentList/ClassStudentList";
 import { createTestClass, createTestStudent } from "../../../data/testData";
-import type { Class } from "../../../interfaces/user.interface";
+import { AdminTabs, type Class } from "../../../interfaces/user.interface";
+import { useNavigationContext } from "../../../context/Navigation.context";
+import { useEffect } from "react";
 
 const AdminClassesTab = () => {
-  console.log("Admin Dashboard");
+  const { setCurrentTab } = useNavigationContext();
+
+  // set the current tab on render
+  useEffect(() => {
+    setCurrentTab(AdminTabs.CLASSES);
+  }, []);
 
   const classTestData = Array.from({ length: 3 }, () =>
     createTestClass(),

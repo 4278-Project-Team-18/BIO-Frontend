@@ -133,3 +133,19 @@ export enum ApprovalStatus {
   APPROVED = "approved",
   REJECTED = "rejected",
 }
+
+/**
+ * @option {string} DASHBOARD - The dashboard tab
+ * @option {string} CLASSES - The classes tab
+ * @option {string} VOLUNTEERS - The volunteers tab
+ */
+export enum AdminTabs {
+  DASHBOARD = "dashboard",
+  CLASSES = "classes",
+  VOLUNTEERS = "volunteers",
+}
+
+/**
+ * @type TabOptions - Joint type of all tab types
+ */
+export type TabOptions = AdminTabs;

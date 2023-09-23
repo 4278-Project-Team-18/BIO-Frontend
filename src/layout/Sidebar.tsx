@@ -1,12 +1,17 @@
 import styles from "./Sidebar.module.css";
+import { useNavigationContext } from "../context/Navigation.context";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faSchool, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import type { TabOptions } from "../interfaces/user.interface";
 
 const SideBar = () => {
+  const { currentTab, setCurrentTab } = useNavigationContext();
+
+  console.log(currentTab);
+
   const [sideBar, setSideBar] = useState<boolean>(false);
-  const [activeRoute, setActiveRoute] = useState<string>("Dashboard");
   const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
 
   // Titles for the sidebar, conditionally set by the user's role
@@ -16,8 +21,8 @@ const SideBar = () => {
   const sideBarIcons = [faHouse, faSchool, faUsers];
 
   // Sets the active route when a route is clicked
-  const handleRouteChange = (route: string) => {
-    setActiveRoute(route);
+  const handleRouteChange = (route: TabOptions) => {
+    setCurrentTab(route);
   };
 
   // Not implemented yet
@@ -38,6 +43,11 @@ const SideBar = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, [window.innerWidth]);
+
+  useEffect(() => {
+    // Set the current tab to the active route
+    setCurrentTab(currentTab);
+  }, []);
 
   return (
     <div
@@ -77,13 +87,13 @@ const SideBar = () => {
                   className={
                     styles["sidebar-route"] +
                     " " +
-                    (activeRoute === title
+                    (currentTab === title.toLowerCase()
                       ? styles["sidebar-route-active"]
                       : styles["sidebar-route-inactive"])
                   }
                   key={index}
                   onClick={() => {
-                    handleRouteChange(title);
+                    handleRouteChange(title.toLowerCase() as TabOptions);
                     setSideBar(false);
                   }}
                 >
@@ -117,13 +127,13 @@ const SideBar = () => {
             className={styles["sidebar-closed-route"]}
             key={index}
             onClick={() => {
-              handleRouteChange(title);
+              handleRouteChange(title.toLowerCase() as TabOptions);
             }}
           >
             <Link to={"/admin/" + title.toLowerCase()} key={index}>
               <FontAwesomeIcon
                 className={`${styles["sidebar-closed-icon"]} ${
-                  activeRoute === title
+                  currentTab === title.toLowerCase()
                     ? styles["sidebar-closed-icon-active"]
                     : styles["sidebar-closed-icon-inactive"]
                 }`}
