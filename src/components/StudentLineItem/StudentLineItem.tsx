@@ -11,7 +11,6 @@ const StudentLineItem = ({
   index,
   maxIndex,
 }: StudentLineItemProps) => {
-  console.log("StudentLineItem");
   return (
     <div
       className={`${styles["line-item-container"]} ${

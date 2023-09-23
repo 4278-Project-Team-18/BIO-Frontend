@@ -9,8 +9,6 @@ import type { TabOptions } from "../interfaces/user.interface";
 const SideBar = () => {
   const { currentTab, setCurrentTab } = useNavigationContext();
 
-  console.log(currentTab);
-
   const [sideBar, setSideBar] = useState<boolean>(false);
   const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
 
