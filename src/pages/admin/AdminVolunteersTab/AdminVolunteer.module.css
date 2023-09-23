@@ -8,3 +8,8 @@ body {
   overscroll-behavior: none;
   min-width: 250px;
 }
+
+.buttons {
+  text-align: right;
+  padding-left: 10px;
+}

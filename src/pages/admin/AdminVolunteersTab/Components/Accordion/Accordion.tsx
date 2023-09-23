@@ -1,13 +1,15 @@
 import styles from "./Accordion.module.css";
 import AccordionTab from "../AccordionTab/AccordionTab";
-import { useState, type PropsWithChildren } from "react";
+import { useState } from "react";
+import type { ReactNode } from "react";
 
-interface AccordionProps extends PropsWithChildren {
+interface AccordionProps {
   title: string;
-  volunteers: string[];
+  people: string[];
+  children?: ReactNode;
 }
 
-const Accordion = ({ title, volunteers }: AccordionProps) => {
+const Accordion = ({ title, people, children }: AccordionProps) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const [displayCount, setDisplayCount] = useState<number>(5);
 
@@ -16,7 +18,7 @@ const Accordion = ({ title, volunteers }: AccordionProps) => {
     if (showMore) {
       setDisplayCount(5);
     } else {
-      setDisplayCount(volunteers.length);
+      setDisplayCount(people.length);
     }
   };
 
@@ -24,8 +26,10 @@ const Accordion = ({ title, volunteers }: AccordionProps) => {
     <div className={styles["content"]}>
       <div className={styles["title"]}>{title}</div>
       <div className={styles["accordion"]}>
-        {volunteers.slice(0, displayCount).map((volunteer, index) => (
-          <AccordionTab key={index} name={volunteer} />
+        {people.slice(0, displayCount).map((person, index) => (
+          <AccordionTab key={index} name={person}>
+            {children}
+          </AccordionTab>
         ))}
       </div>
       <div className={styles["buttons"]}>

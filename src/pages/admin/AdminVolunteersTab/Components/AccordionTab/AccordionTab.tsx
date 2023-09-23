@@ -1,16 +1,15 @@
 import styles from "./AccordionTab.module.css";
+import type { ReactNode } from "react";
 
 interface AccordionTabProps {
   name: string;
+  children?: ReactNode;
 }
 
-const AccordionTab = ({ name }: AccordionTabProps) => (
+const AccordionTab = ({ name, children }: AccordionTabProps) => (
   <div className={styles["container"]}>
-    <div className={styles["name"]}>{name} </div>
-    <div className={styles["buttons"]}>
-      <button>Approve</button>
-      <button>Reject</button>
-    </div>
+    <div className={styles["name"]}>{name}</div>
+    <div className={styles["children"]}>{children}</div>
   </div>
 );
 
