@@ -1,5 +1,6 @@
-/* eslint-disable react/self-closing-comp */
 import styles from "./StudentLineItem.module.css";
+import LineItemLabel from "../FileUploadedLabel/LineItemLabel";
+import { LineItemLabelVariant } from "../FileUploadedLabel/LineItemLabel.definitions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { faSquare, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
@@ -40,8 +41,16 @@ const StudentLineItem = ({
         >{`${student.firstName} ${student.lastInitial}`}</div>
       </div>
       <div className={styles["line-item-container-right"]}>
+        {student.studentLetterLink && (
+          <LineItemLabel
+            variant={LineItemLabelVariant.SUCCESS}
+            label={" Student Letter"}
+          />
+        )}
         <button className={styles["line-item-upload-button"]}>
-          <div className={styles["line-item-upload-title"]}>Test</div>
+          <div className={styles["line-item-upload-title"]}>
+            {student.studentLetterLink ? "Reupload" : "Upload Letter"}
+          </div>
           <FontAwesomeIcon
             icon={faCloudArrowUp}
             className={styles["line-item-upload-icon"]}
