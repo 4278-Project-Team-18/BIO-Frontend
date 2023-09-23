@@ -1,6 +1,7 @@
 import Accordion from "./Components/Accordion/Accordion";
+import VolunteerApprovalLineItem from "./Components/LineItem/VolunteerApprovalLineItem";
 
-const people = [
+const volunteers = [
   "Volunteer 1",
   "Volunteer 2",
   "Volunteer 3",
@@ -12,20 +13,15 @@ const people = [
   "Volunteer 9",
 ];
 
-const ApproveDeny = () => (
-  <div>
-    <button>Approve</button>
-    <button>Deny</button>
-  </div>
-);
-
 const AdminVolunteersTab = () => {
   console.log("AdminVolunteersTab");
   return (
     <div>
       <h1>Admin Volunteers</h1>
-      <Accordion title="Volunteer Applicants" people={people}>
-        <ApproveDeny />
+      <Accordion title="Volunteer Applicants">
+        {volunteers.map((volunteer, index) => (
+          <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
+        ))}
       </Accordion>
     </div>
   );
