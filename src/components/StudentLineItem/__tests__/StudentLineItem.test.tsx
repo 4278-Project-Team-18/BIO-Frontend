@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 
 describe("StudentLineItem Tests", () => {
   test("StudentLineItem should render correctly", () => {
-    const testStudent = createTestStudent(false);
+    const testStudent = createTestStudent();
 
     const component = render(
       <StudentLineItem student={testStudent} index={0} maxIndex={4} />,
@@ -22,7 +22,7 @@ describe("StudentLineItem Tests", () => {
     ).toBeTruthy();
 
     // Check if the upload button is correct
-    if (testStudent.volunteerResponseLetterLink) {
+    if (!testStudent.volunteerResponseLetterLink) {
       expect(component.getByText("Upload Letter")).toBeTruthy();
     } else {
       expect(component.getByText("Reupload")).toBeTruthy();
@@ -31,7 +31,7 @@ describe("StudentLineItem Tests", () => {
 
   test("StudentLineItem snapshot should render correctly", () => {
     faker.seed(1);
-    const testStudent = createTestStudent(true);
+    const testStudent = createTestStudent();
 
     const component = render(
       <StudentLineItem student={testStudent} index={0} maxIndex={4} />,

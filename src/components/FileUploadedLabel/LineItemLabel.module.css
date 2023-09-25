@@ -24,9 +24,7 @@
 @media (max-width: 599px) {
   .uploaded-container-success {
     padding: 8px;
-    border: 1px solid #2bd447;
     color: #2bd447;
-    background-color: #f8f8f8;
     border-radius: 10px;
     font-size: 14px;
     font-weight: 400;
@@ -34,9 +32,7 @@
   }
   .uploaded-container-error {
     padding: 8px;
-    border: 1px solid #c23124;
     color: #c23124;
-    background-color: #f8f8f8;
     border-radius: 10px;
     font-size: 14px;
     font-weight: 400;

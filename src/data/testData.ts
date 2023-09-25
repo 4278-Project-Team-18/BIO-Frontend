@@ -26,14 +26,14 @@ export const createTestAdmin = () =>
  * @param isTest - optional parameter to determine if the image link should always be generated or not (for snapshots)
  * @returns a student object with random data
  */
-export const createTestStudent = (isTest = false) =>
+export const createTestStudent = () =>
   ({
     _id: faker.string.alphanumeric(26),
     firstName: faker.person.firstName(),
     lastInitial: faker.person.lastName().charAt(0),
     readingLevel: faker.number.bigInt({ min: 100, max: 1500 }).toString(),
-    studentLetterLink: randomImageLink(isTest),
-    volunteerResponseLetterLink: randomImageLink(isTest),
+    studentLetterLink: randomImageLink(),
+    volunteerResponseLetterLink: randomImageLink(),
   }) as Student;
 
 /**
@@ -94,9 +94,8 @@ export const randomApprovalStatus = () => {
   return approvalStatuses[Math.floor(Math.random() * approvalStatuses.length)];
 };
 
-export const randomImageLink = (isTest: boolean) => {
-  const random = Math.random();
-  if (isTest || random > 0.5) {
+export const randomImageLink = () => {
+  if (faker.number.int(1) > 5) {
     return faker.internet.url();
   } else {
     return undefined;
