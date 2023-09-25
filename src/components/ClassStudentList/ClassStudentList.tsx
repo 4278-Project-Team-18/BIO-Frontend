@@ -1,9 +1,19 @@
 import styles from "./ClassStudentList.module.css";
 import StudentLineItem from "../StudentLineItem/StudentLineItem";
+import AddStudent from "../AddStudent/AddStudent";
+import { useState } from "react";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
 
 const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
-  console.log("ClassStudentList");
+  const [isAddingStudent, setIsAddingStudent] = useState(false);
+
+  const handleOpenAddStudentModal = () => {
+    setIsAddingStudent(true);
+  };
+
+  const handleCloseAddStudentModal = () => {
+    setIsAddingStudent(false);
+  };
 
   return (
     <>
@@ -18,6 +28,16 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
           />
         ))}
       </div>
+      {!isAddingStudent ? (
+        <div
+          className={styles["add-student-button"]}
+          onClick={handleOpenAddStudentModal}
+        >
+          <div className={styles["add-student-button-label"]}>Add student</div>
+        </div>
+      ) : (
+        <AddStudent closeModal={handleCloseAddStudentModal} />
+      )}
     </>
   );
 };

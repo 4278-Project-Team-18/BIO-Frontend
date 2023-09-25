@@ -23,7 +23,9 @@ const AdminClassesTab = () => {
   return (
     <div>
       {classTestData.map((classItem, index) => (
-        <ClassStudentList classObject={classItem} key={index} />
+        <>
+          <ClassStudentList classObject={classItem} key={index} />
+        </>
       ))}
     </div>
   );

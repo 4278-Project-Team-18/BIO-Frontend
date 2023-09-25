@@ -9,7 +9,7 @@
   .app-main-content {
     flex-grow: 1;
     padding: 0rem 1rem 1rem 1rem;
-    margin: 2rem;
+    margin: 3rem 3rem 0rem 3rem;
     overflow: auto;
   }
 
@@ -28,7 +28,7 @@
 
   .app-main-content {
     flex-grow: 1;
-    padding: 0rem 1rem 1rem 1rem;
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
     margin: 2rem;
     overflow: auto;
   }
