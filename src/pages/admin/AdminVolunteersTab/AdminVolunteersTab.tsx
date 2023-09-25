@@ -1,5 +1,5 @@
 import { useNavigationContext } from "../../../context/Navigation.context";
-import { AdminTabs } from "../../../interfaces/user.interface";
+import { AdminTabs } from "../../../interfaces/User.interface";
 import { useEffect } from "react";
 
 const AdminVolunteersTab = () => {

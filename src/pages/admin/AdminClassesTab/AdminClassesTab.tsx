@@ -1,6 +1,6 @@
 import ClassStudentList from "../../../components/ClassStudentList/ClassStudentList";
 import { createTestClass, createTestStudent } from "../../../data/testData";
-import { AdminTabs, type Class } from "../../../interfaces/user.interface";
+import { AdminTabs, type Class } from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { useEffect } from "react";
 

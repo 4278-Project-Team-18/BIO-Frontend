@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faSchool, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import type { TabOptions } from "../interfaces/user.interface";
+import type { TabOptions } from "../interfaces/User.interface";
 
 const SideBar = () => {
   const { currentTab, setCurrentTab } = useNavigationContext();
