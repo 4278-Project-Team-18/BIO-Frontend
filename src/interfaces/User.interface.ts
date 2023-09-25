@@ -67,7 +67,7 @@ export interface Volunteer extends User {
  */
 export interface Teacher extends User {
   role: Role.TEACHER;
-  classes?: string[];
+  classes?: Class[];
 }
 
 /**
@@ -91,7 +91,7 @@ export interface Class {
   _id?: string;
   name: string;
   teacherId: string;
-  students?: string[];
+  students?: Student[];
   estimatedDelivery?: string;
 }
 
@@ -108,6 +108,8 @@ export interface Student {
   firstName: string;
   lastInitial: string;
   readingLevel?: string;
+  studentLetterLink?: string;
+  volunteerResponseLetterLink?: string;
 }
 
 /**
@@ -120,3 +122,30 @@ export enum Role {
   VOLUNTEER = "volunteer",
   TEACHER = "teacher",
 }
+
+/**
+ * @option {string} PENDING - The pending approval status
+ * @option {string} APPROVED - The approved approval status
+ * @option {string} REJECTED - The rejected approval status
+ */
+export enum ApprovalStatus {
+  PENDING = "pending",
+  APPROVED = "approved",
+  REJECTED = "rejected",
+}
+
+/**
+ * @option {string} DASHBOARD - The dashboard tab
+ * @option {string} CLASSES - The classes tab
+ * @option {string} VOLUNTEERS - The volunteers tab
+ */
+export enum AdminTabs {
+  DASHBOARD = "dashboard",
+  CLASSES = "classes",
+  VOLUNTEERS = "volunteers",
+}
+
+/**
+ * @type TabOptions - Joint type of all tab types
+ */
+export type TabOptions = AdminTabs;

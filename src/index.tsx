@@ -1,6 +1,7 @@
 import AdminClassesTab from "./pages/admin/AdminClassesTab/AdminClassesTab";
 import App from "./layout/App";
 import { UserProvider } from "./context/User.context";
+import { NavigationProvider } from "./context/Navigation.context";
 import AdminVolunteersTab from "./pages/admin/AdminVolunteersTab/AdminVolunteersTab";
 import AdminDashboardTab from "./pages/admin/AdminDashboardTab/AdminDashboardTab";
 import React from "react";
@@ -48,8 +49,10 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+    <NavigationProvider>
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
+    </NavigationProvider>
   </React.StrictMode>,
 );

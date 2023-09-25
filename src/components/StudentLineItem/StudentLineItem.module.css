@@ -1,0 +1,127 @@
+@media (min-width: 600px) {
+  .line-item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .line-item-container-left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .line-item-name {
+    font-weight: 400;
+    font-size: 16px;
+    color: #565656;
+  }
+
+  .line-item-container-right {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .line-item-upload-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .line-item-upload-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .line-item-upload-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
+  }
+
+  .line-item-checkbox {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-right: 30px;
+  }
+
+  .line-item-checkbox-checked {
+    color: #75d887;
+  }
+
+  .line-item-checkbox-unchecked {
+    color: #646464;
+  }
+}
+
+@media (max-width: 599px) {
+  .line-item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .line-item-container-left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .line-item-name {
+    font-weight: 400;
+    font-size: 14px;
+    color: #565656;
+  }
+
+  .line-item-container-right {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .line-item-upload-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .line-item-upload-title {
+    display: none;
+  }
+
+  .line-item-upload-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
+  }
+
+  .line-item-checkbox {
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 20px;
+  }
+
+  .line-item-checkbox-checked {
+    color: #75d887;
+  }
+
+  .line-item-checkbox-unchecked {
+    color: #646464;
+  }
+}
