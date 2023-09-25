@@ -27,7 +27,7 @@ const LineItemLabel = ({ label, variant }: LineItemLabelProps) => {
             : faCircleXmark
         }
       />
-      {` ${label}`}
+      <span className={styles["uploaded-label"]}>{` ${label}`}</span>
     </div>
   );
 };
