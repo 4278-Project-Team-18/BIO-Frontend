@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useContext, useState } from "react";
 import type { PropsWithChildren } from "react";
-import type { UserWithRole } from "../interfaces/User.interface";
+import type { UserWithRole } from "../interfaces/user.interface";
 
 // User context types
 interface UserContextType {
