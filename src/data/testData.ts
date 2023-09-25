@@ -8,11 +8,10 @@ import {
   ApprovalStatus,
 } from "../interfaces/user.interface";
 import { faker } from "@faker-js/faker";
-import mongoose from "mongoose";
 
 export const createTestAdmin = () =>
   ({
-    _id: new mongoose.Types.ObjectId().toString(),
+    _id: faker.string.alphanumeric(26),
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
@@ -22,26 +21,39 @@ export const createTestAdmin = () =>
     refreshToken: faker.string.uuid(),
   }) as Admin;
 
-export const createTestStudent = () =>
+/**
+ * @function createTestStudent
+ * @param isTest - optional parameter to determine if the image link should always be generated or not (for snapshots)
+ * @returns a student object with random data
+ */
+export const createTestStudent = (isTest = false) =>
   ({
-    _id: new mongoose.Types.ObjectId().toString(),
+    _id: faker.string.alphanumeric(26),
     firstName: faker.person.firstName(),
     lastInitial: faker.person.lastName().charAt(0),
     readingLevel: faker.number.bigInt({ min: 100, max: 1500 }).toString(),
-    studentLetterLink: randomImageLink(),
-    volunteerResponseLetterLink: randomImageLink(),
+    studentLetterLink: randomImageLink(isTest),
+    volunteerResponseLetterLink: randomImageLink(isTest),
   }) as Student;
 
+/**
+ * @function createTestClass
+ * @returns a class object with random data
+ */
 export const createTestClass = () =>
   ({
-    _id: new mongoose.Types.ObjectId().toString(),
+    _id: faker.string.alphanumeric(26),
     name: faker.word.adjective() + " " + faker.word.noun() + " Class",
-    teacherId: new mongoose.Types.ObjectId().toString(),
+    teacherId: faker.string.alphanumeric(26),
   }) as Class;
 
+/**
+ * @function createTestTeacher
+ * @returns a teacher object with random data
+ */
 export const createTestTeacher = () =>
   ({
-    _id: new mongoose.Types.ObjectId().toString(),
+    _id: faker.string.alphanumeric(26),
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
@@ -52,9 +64,13 @@ export const createTestTeacher = () =>
     approvalStatus: randomApprovalStatus(),
   }) as Teacher;
 
+/**
+ * @function createTestVolunteer
+ * @returns a volunteer object with random data
+ */
 export const createTestVolunteer = () =>
   ({
-    _id: new mongoose.Types.ObjectId().toString(),
+    _id: faker.string.alphanumeric(26),
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
@@ -65,6 +81,10 @@ export const createTestVolunteer = () =>
     approvalStatus: randomApprovalStatus(),
   }) as Volunteer;
 
+/**
+ * @function randomApprovalStatus
+ * @returns a random approval status
+ */
 export const randomApprovalStatus = () => {
   const approvalStatuses = [
     ApprovalStatus.APPROVED,
@@ -74,9 +94,9 @@ export const randomApprovalStatus = () => {
   return approvalStatuses[Math.floor(Math.random() * approvalStatuses.length)];
 };
 
-export const randomImageLink = () => {
+export const randomImageLink = (isTest: boolean) => {
   const random = Math.random();
-  if (random > 0.5) {
+  if (isTest || random > 0.5) {
     return faker.internet.url();
   } else {
     return undefined;
