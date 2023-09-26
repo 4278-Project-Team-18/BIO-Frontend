@@ -3,6 +3,7 @@ import { createTestVolunteer } from "../../../data/testData";
 import { AdminTabs } from "../../../interfaces/User.interface";
 import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
 import Accordion from "../../../components/Accordion/Accordion";
+import VolunteerLineItem from "../../../components/VolunteerLineItem/VolunteerLineItem";
 import { useEffect } from "react";
 
 const AdminVolunteersTab = () => {
@@ -13,6 +14,10 @@ const AdminVolunteersTab = () => {
     setCurrentTab(AdminTabs.VOLUNTEERS);
   }, []);
 
+  const volunteerApplicantTestData = Array.from({ length: 12 }, () =>
+    createTestVolunteer(),
+  );
+
   const volunteerTestData = Array.from({ length: 12 }, () =>
     createTestVolunteer(),
   );
@@ -20,6 +25,12 @@ const AdminVolunteersTab = () => {
   return (
     <div>
       <h1>Admin Volunteers</h1>
+      <Accordion title="Volunteers">
+        {volunteerApplicantTestData.map((volunteer, index) => (
+          <VolunteerLineItem key={index} volunteer={volunteer} />
+        ))}
+      </Accordion>
+
       <Accordion title="Volunteer Applicants">
         {volunteerTestData.map((volunteer, index) => (
           <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
