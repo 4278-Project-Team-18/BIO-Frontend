@@ -66,7 +66,7 @@
     width: 24px;
     border-radius: 50%;
     border: 1px solid black;
-    background: conic-gradient(#fff346 0deg 120deg, transparent 120deg 360deg);
+    background: conic-gradient(#fff346 0deg 240deg, transparent 240deg 360deg);
   }
 
   .line-item-matched-submitted-status-icon {
@@ -75,7 +75,7 @@
     width: 24px;
     border-radius: 50%;
     border: 1px solid black;
-    background: conic-gradient(#38f95f 0deg 120deg, transparent 120deg 360deg);
+    background: conic-gradient(#38f95f 0deg 360deg, transparent 360deg 360deg);
   }
 }
 
@@ -147,7 +147,7 @@
     width: 24px;
     border-radius: 50%;
     border: 1px solid black;
-    background: conic-gradient(#fff346 0deg 120deg, transparent 120deg 360deg);
+    background: conic-gradient(#fff346 0deg 240deg, transparent 240deg 360deg);
   }
 
   .line-item-matched-submitted-status-icon {
@@ -156,6 +156,6 @@
     width: 24px;
     border-radius: 50%;
     border: 1px solid black;
-    background: conic-gradient(#38f95f 0deg 120deg, transparent 120deg 360deg);
+    background: conic-gradient(#38f95f 0deg 360deg, transparent 360deg 360deg);
   }
 }
