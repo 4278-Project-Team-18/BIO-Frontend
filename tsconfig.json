@@ -6,7 +6,7 @@
     "allowJs": true,
 
     /* Modules */
-    "module": "ES6",
+    "module": "ESNext",
     "rootDirs": ["./src"],
     "resolveJsonModule": true,
     "isolatedModules": true,

@@ -1,31 +1,38 @@
 import ClassStudentList from "../../../components/ClassStudentList/ClassStudentList";
-import { createTestClass, createTestStudent } from "../../../data/testData";
+
 import { AdminTabs, type Class } from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
+import { useCustomFetch } from "../../../api/request.util";
+import { useClassesContext } from "../../../context/Classes.context";
 import { useEffect } from "react";
 
 const AdminClassesTab = () => {
   const { setCurrentTab } = useNavigationContext();
+  const { currentClasses, setCurrentClasses } = useClassesContext();
+
+  const { data, loading, error } = useCustomFetch<Class[]>(`class/allClasses`);
 
   // set the current tab on render
   useEffect(() => {
     setCurrentTab(AdminTabs.CLASSES);
   }, []);
 
-  const classTestData = Array.from({ length: 3 }, () =>
-    createTestClass(),
-  ) as Class[];
+  useEffect(() => {
+    setCurrentClasses(data || []);
+  }, [data]);
 
-  classTestData.forEach((classItem) => {
-    classItem.students = Array.from({ length: 20 }, () => createTestStudent());
-  });
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Something went wrong...</div>;
+  }
 
   return (
     <div>
-      {classTestData.map((classItem, index) => (
-        <>
-          <ClassStudentList classObject={classItem} key={index} />
-        </>
+      {currentClasses?.map((classItem, index) => (
+        <ClassStudentList classObject={classItem} key={index} />
       ))}
     </div>
   );

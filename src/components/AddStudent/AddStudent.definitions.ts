@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable autofix/no-unused-vars */
 /**
  * @interface NewStudentInput - Interface for a new student input.
@@ -8,6 +9,7 @@
 export interface NewStudentInput {
   firstName: string;
   lastInitial: string;
+  readingLevel: string;
 }
 
 /**
@@ -19,6 +21,7 @@ export interface NewStudentInput {
 export enum NewStudentInputName {
   FIRST_NAME = "firstName",
   LAST_INITIAL = "lastInitial",
+  READING_LEVEL = "readingLevel",
 }
 
 /**

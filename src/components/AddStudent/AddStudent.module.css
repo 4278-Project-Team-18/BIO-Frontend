@@ -1,4 +1,4 @@
-@media (min-width: 800px) {
+@media (min-width: 1000px) {
   .add-student-container {
     width: 100%;
     background-color: white;
@@ -74,7 +74,7 @@
   }
 }
 
-@media (max-width: 799px) {
+@media (max-width: 999px) {
   .add-student-container {
     width: 100%;
     background-color: white;

@@ -1,18 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NewStudentInputName } from "./AddStudent.definitions";
 import styles from "./AddStudent.module.css";
 import { newStudentSchema } from "../../resolvers/student.resolver";
 import FormInput from "../FormInput/FormInput";
+import { RequestMethods, useCustomFetch } from "../../api/request.util";
+import { useClassesContext } from "../../context/Classes.context";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { faPlusCircle, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 import type {
   AddStudentProps,
   NewStudentInput,
 } from "./AddStudent.definitions";
 import type { Resolver } from "react-hook-form";
+import type { Student } from "../../interfaces/User.interface";
 
-const AddStudent = ({ closeModal }: AddStudentProps) => {
+const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
+  // form controller
   const {
     control,
     handleSubmit,
@@ -22,18 +28,47 @@ const AddStudent = ({ closeModal }: AddStudentProps) => {
     defaultValues: {
       [NewStudentInputName.FIRST_NAME]: "",
       [NewStudentInputName.LAST_INITIAL]: "",
+      [NewStudentInputName.READING_LEVEL]: "",
     },
     resolver: yupResolver(newStudentSchema) as Resolver<NewStudentInput>,
     mode: "onSubmit",
   });
 
-  const onSubmitNewStudent = (data: NewStudentInput) => {
-    console.log("data", data);
+  // request to add the student to the class
+  const {
+    data: addStudentResponseData,
+    loading: addStudentLoading,
+    error: addStudentError,
+    makeRequest: addStudent,
+  } = useCustomFetch<Student>(
+    `class/${classId}/addStudent`,
+    RequestMethods.POST,
+  );
+
+  // get the addStudentToClass function from the context
+  const { addStudentToClass } = useClassesContext();
+
+  // send the request to add the student to the class
+  const onSubmitNewStudent = async (inputData: NewStudentInput) => {
+    await addStudent(inputData);
   };
 
-  const handleCloseModal = () => {
-    closeModal();
-  };
+  // add the student to the class if the request was successful
+  useEffect(() => {
+    if (addStudentResponseData) {
+      console.log(addStudentResponseData);
+      addStudentToClass(addStudentResponseData, classId);
+      closeModal();
+    }
+  }, [addStudentResponseData]);
+
+  if (addStudentLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (addStudentError) {
+    return <div>Something went wrong...</div>;
+  }
 
   return (
     <form
@@ -42,7 +77,7 @@ const AddStudent = ({ closeModal }: AddStudentProps) => {
     >
       <button
         className={styles["add-student-cancel-button"]}
-        onClick={handleCloseModal}
+        onClick={closeModal}
         type="button"
       >
         <FontAwesomeIcon
@@ -65,6 +100,14 @@ const AddStudent = ({ closeModal }: AddStudentProps) => {
         control={control}
         placeholder="Last initial"
         error={errors[NewStudentInputName.LAST_INITIAL]?.message}
+      />
+      <FormInput
+        name={NewStudentInputName.READING_LEVEL}
+        type="text"
+        label="Reading Level"
+        control={control}
+        placeholder="Reading Level"
+        error={errors[NewStudentInputName.READING_LEVEL]?.message}
       />
 
       <button className={styles["add-student-submit-button"]}>
