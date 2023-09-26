@@ -28,4 +28,5 @@ export enum NewStudentInputName {
  */
 export interface AddStudentProps {
   closeModal: () => void;
+  classId: string;
 }

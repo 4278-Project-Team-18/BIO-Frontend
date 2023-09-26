@@ -88,7 +88,7 @@ export type UserWithRole = Admin | Volunteer | Teacher;
  * @param {string} estimatedDelivery - The estimated delivery notes of the class's books
  */
 export interface Class {
-  _id?: string;
+  _id: string;
   name: string;
   teacherId: string;
   students?: Student[];

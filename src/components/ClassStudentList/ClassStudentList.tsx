@@ -36,7 +36,10 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
           <div className={styles["add-student-button-label"]}>Add student</div>
         </div>
       ) : (
-        <AddStudent closeModal={handleCloseAddStudentModal} />
+        <AddStudent
+          closeModal={handleCloseAddStudentModal}
+          classId={classObject._id}
+        />
       )}
     </>
   );
