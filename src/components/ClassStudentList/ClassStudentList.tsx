@@ -1,6 +1,7 @@
 import styles from "./ClassStudentList.module.css";
 import StudentLineItem from "../StudentLineItem/StudentLineItem";
 import AddStudent from "../AddStudent/AddStudent";
+import Accordion from "../Accordion/Accordion";
 import { useState } from "react";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
 
@@ -17,25 +18,19 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
 
   return (
     <>
-      <h1>{classObject.name}</h1>
       <div className={styles["class-list-container"]}>
-        {classObject.students?.map((student, index) => (
-          <StudentLineItem
-            key={index}
-            index={index}
-            maxIndex={classObject.students?.length || 1}
-            student={student}
-          />
-        ))}
-      </div>
-      {!isAddingStudent ? (
-        <div
-          className={styles["add-student-button"]}
-          onClick={handleOpenAddStudentModal}
+        <Accordion
+          title={classObject.name}
+          actionButtonText={"Add student"}
+          actionButtonCallback={handleOpenAddStudentModal}
+          hideButtons={isAddingStudent}
         >
-          <div className={styles["add-student-button-label"]}>Add student</div>
-        </div>
-      ) : (
+          {classObject.students?.map((student, index) => (
+            <StudentLineItem key={index} student={student} />
+          ))}
+        </Accordion>
+      </div>
+      {isAddingStudent && (
         <AddStudent
           closeModal={handleCloseAddStudentModal}
           classId={classObject._id}

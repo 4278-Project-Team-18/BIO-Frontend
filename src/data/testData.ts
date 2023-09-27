@@ -95,7 +95,12 @@ export const randomApprovalStatus = () => {
 };
 
 export const randomImageLink = () => {
-  if (faker.number.int(1) > 5) {
+  if (
+    faker.number.int({
+      min: 0,
+      max: 9,
+    }) > 5
+  ) {
     return faker.internet.url();
   } else {
     return undefined;

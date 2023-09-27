@@ -7,9 +7,7 @@ describe("StudentLineItem Tests", () => {
   test("StudentLineItem should render correctly", () => {
     const testStudent = createTestStudent();
 
-    const component = render(
-      <StudentLineItem student={testStudent} index={0} maxIndex={4} />,
-    );
+    const component = render(<StudentLineItem student={testStudent} />);
 
     // Check if the component is rendered
     expect(component).toBeTruthy();
@@ -22,7 +20,10 @@ describe("StudentLineItem Tests", () => {
     ).toBeTruthy();
 
     // Check if the upload button is correct
-    if (!testStudent.volunteerResponseLetterLink) {
+    if (
+      !testStudent.volunteerResponseLetterLink ||
+      testStudent.volunteerResponseLetterLink === ""
+    ) {
       expect(component.getByText("Upload Letter")).toBeTruthy();
     } else {
       expect(component.getByText("Reupload")).toBeTruthy();
@@ -33,9 +34,7 @@ describe("StudentLineItem Tests", () => {
     faker.seed(1);
     const testStudent = createTestStudent();
 
-    const component = render(
-      <StudentLineItem student={testStudent} index={0} maxIndex={4} />,
-    );
+    const component = render(<StudentLineItem student={testStudent} />);
 
     expect(component).toMatchSnapshot();
   });

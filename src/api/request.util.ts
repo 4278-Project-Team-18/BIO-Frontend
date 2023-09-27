@@ -44,7 +44,6 @@ export const useCustomFetch = <T>(
   const makeRequest = async (body?: any) => {
     try {
       setLoading(true);
-
       const url = `${process.env.VITE_SERVER_URL}${path}`;
 
       const res = await fetch(url, {

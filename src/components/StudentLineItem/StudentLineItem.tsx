@@ -6,20 +6,8 @@ import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { faSquare, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import type { StudentLineItemProps } from "./StudentLineItem.definitions";
 
-const StudentLineItem = ({
-  student,
-  index,
-  maxIndex,
-}: StudentLineItemProps) => (
-  <div
-    className={`${styles["line-item-container"]} ${
-      index === 0
-        ? styles["line-item-container-first"]
-        : index === maxIndex - 1
-        ? styles["line-item-container-last"]
-        : ""
-    }`}
-  >
+const StudentLineItem = ({ student }: StudentLineItemProps) => (
+  <div className={styles["line-item-container"]}>
     <div className={styles["line-item-container-left"]}>
       <div className={styles["line-item-checkbox"]}>
         {student.studentLetterLink ? (
