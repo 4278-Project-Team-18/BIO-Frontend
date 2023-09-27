@@ -14,10 +14,17 @@
     padding: 5px;
   }
 
+  .line-item-name-icon {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-right: 30px;
+  }
+
   .line-item-name {
     font-weight: 400;
     font-size: 16px;
     color: #565656;
+    justify-content: left;
   }
 
   .line-item-container-right {
@@ -27,14 +34,25 @@
     padding: 5px;
   }
 
-  .line-item-upload-button {
+  .line-item-approve-button {
     display: flex;
     justify-content: left;
     align-items: center;
     padding-top: 2px;
+    margin-left: 12px;
+    background: #bdffc8;
   }
 
-  .line-item-upload-title {
+  .line-item-deny-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-left: 12px;
+    background-color: #ffb4b4;
+  }
+
+  .line-item-button-title {
     font-weight: 300;
     font-size: 14px;
     color: #434343;
@@ -42,25 +60,11 @@
     font-weight: 300;
   }
 
-  .line-item-upload-icon {
+  .line-item-button-icon {
     font-size: 16px;
     padding-left: 10px;
     padding-bottom: 2px;
     color: #434343;
-  }
-
-  .line-item-checkbox {
-    font-size: 24px;
-    padding-left: 10px;
-    padding-right: 30px;
-  }
-
-  .line-item-checkbox-checked {
-    color: #75d887;
-  }
-
-  .line-item-checkbox-unchecked {
-    color: #646464;
   }
 }
 
@@ -80,10 +84,17 @@
     padding: 5px;
   }
 
+  .line-item-name-icon {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-right: 30px;
+  }
+
   .line-item-name {
     font-weight: 400;
     font-size: 14px;
     color: #565656;
+    justify-content: left;
   }
 
   .line-item-container-right {
@@ -93,35 +104,36 @@
     padding: 5px;
   }
 
-  .line-item-upload-button {
+  .line-item-approve-button {
     display: flex;
     justify-content: left;
     align-items: center;
     padding-top: 2px;
+    margin-left: 12px;
+    background: #bdffc8;
   }
 
-  .line-item-upload-title {
-    display: none;
+  .line-item-deny-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-left: 12px;
+    background-color: #ffb4b4;
   }
 
-  .line-item-upload-icon {
+  .line-item-button-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .line-item-button-icon {
     font-size: 16px;
     padding-left: 10px;
     padding-bottom: 2px;
     color: #434343;
-  }
-
-  .line-item-checkbox {
-    font-size: 18px;
-    padding-left: 10px;
-    padding-right: 20px;
-  }
-
-  .line-item-checkbox-checked {
-    color: #75d887;
-  }
-
-  .line-item-checkbox-unchecked {
-    color: #646464;
   }
 }

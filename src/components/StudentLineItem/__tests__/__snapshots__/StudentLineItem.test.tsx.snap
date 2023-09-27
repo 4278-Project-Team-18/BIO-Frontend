@@ -6,7 +6,7 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
   "baseElement": <body>
     <div>
       <div
-        class="line-item-container line-item-container-first"
+        class="line-item-container"
       >
         <div
           class="line-item-container-left"
@@ -69,7 +69,7 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
   </body>,
   "container": <div>
     <div
-      class="line-item-container line-item-container-first"
+      class="line-item-container"
     >
       <div
         class="line-item-container-left"

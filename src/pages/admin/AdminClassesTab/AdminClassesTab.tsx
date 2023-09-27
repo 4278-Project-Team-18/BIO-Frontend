@@ -1,7 +1,8 @@
-import ClassStudentList from "../../../components/ClassStudentList/ClassStudentList";
 import { createTestClass, createTestStudent } from "../../../data/testData";
 import { AdminTabs, type Class } from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
+import Accordion from "../../../components/Accordion/Accordion";
+import StudentLineItem from "../../../components/StudentLineItem/StudentLineItem";
 import { useEffect } from "react";
 
 const AdminClassesTab = () => {
@@ -17,13 +18,17 @@ const AdminClassesTab = () => {
   ) as Class[];
 
   classTestData.forEach((classItem) => {
-    classItem.students = Array.from({ length: 20 }, () => createTestStudent());
+    classItem.students = Array.from({ length: 10 }, () => createTestStudent());
   });
 
   return (
     <div>
       {classTestData.map((classItem, index) => (
-        <ClassStudentList classObject={classItem} key={index} />
+        <Accordion key={index} title={classItem.name}>
+          {classItem.students?.map((student, index) => (
+            <StudentLineItem key={index} student={student} />
+          ))}
+        </Accordion>
       ))}
     </div>
   );
