@@ -1,4 +1,4 @@
-import type { Volunteer } from "../../interfaces/User.interface";
+import type { Volunteer } from "../../interfaces/Users.interface";
 
 export interface VolunteerApprovalLineItemProps {
   volunteer: Volunteer;

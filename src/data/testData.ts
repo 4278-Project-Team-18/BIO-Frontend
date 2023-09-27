@@ -6,7 +6,7 @@ import {
   type Volunteer,
   Role,
   ApprovalStatus,
-} from "../interfaces/User.interface";
+} from "../interfaces/Users.interface";
 import { faker } from "@faker-js/faker";
 
 export const createTestAdmin = () =>

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useContext, useState } from "react";
 import type { PropsWithChildren } from "react";
-import type { TabOptions } from "../interfaces/User.interface";
+import type { TabOptions } from "../interfaces/Users.interface";
 
 // User context types
 interface NavigationContextType {

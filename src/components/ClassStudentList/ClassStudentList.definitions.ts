@@ -1,4 +1,4 @@
-import type { Class } from "../../interfaces/User.interface";
+import type { Class } from "../../interfaces/Users.interface";
 
 export interface ClassStudentListProps {
   classObject: Class;
