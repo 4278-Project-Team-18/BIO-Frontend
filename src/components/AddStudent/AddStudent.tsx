@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NewStudentInputName } from "./AddStudent.definitions";
 import styles from "./AddStudent.module.css";
 import { newStudentSchema } from "../../resolvers/student.resolver";

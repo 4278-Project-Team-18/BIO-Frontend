@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable autofix/no-unused-vars */
 /**
  * @interface NewStudentInput - Interface for a new student input.
