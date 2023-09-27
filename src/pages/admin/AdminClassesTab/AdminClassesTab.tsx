@@ -1,5 +1,5 @@
 import { createTestClass, createTestStudent } from "../../../data/testData";
-import { AdminTabs, type Class } from "../../../interfaces/Users.interface";
+import { AdminTabs, type Class } from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import Accordion from "../../../components/Accordion/Accordion";
 import StudentLineItem from "../../../components/StudentLineItem/StudentLineItem";

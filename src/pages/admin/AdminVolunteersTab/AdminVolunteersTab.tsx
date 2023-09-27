@@ -1,6 +1,6 @@
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { createTestVolunteer } from "../../../data/testData";
-import { AdminTabs } from "../../../interfaces/Users.interface";
+import { AdminTabs } from "../../../interfaces/User.interface";
 import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
 import Accordion from "../../../components/Accordion/Accordion";
 import { useEffect } from "react";
