@@ -9,12 +9,10 @@ const VolunteerApprovalLineItem = ({
 }: VolunteerApprovalLineItemProps) => (
   <div className={styles["line-item-container"]}>
     <div className={styles["line-item-container-left"]}>
-      <div className={styles["line-item-name-icon"]}>
-        <FontAwesomeIcon
-          icon={faClock}
-          className={styles["line-item-name-icon"]}
-        />
-      </div>
+      <FontAwesomeIcon
+        icon={faClock}
+        className={styles["line-item-name-icon"]}
+      />
       <div className={styles["line-item-name"]}>
         {`${volunteer.firstName} ${volunteer.lastName}`}
       </div>
