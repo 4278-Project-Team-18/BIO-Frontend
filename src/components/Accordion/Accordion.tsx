@@ -2,7 +2,8 @@ import styles from "./Accordion.module.css";
 import TitleLineItem from "../TitleLineItem/TitleLineItem";
 import LineItemDivider from "../LineItemDivider/LineItemDivider";
 import ActionLineItem from "../ActionLineItem/ActionLineItem";
-import { useEffect, useState } from "react";
+import NoDataLineItem from "../NoDataLineItem/NoDataLineItem";
+import { Fragment, useEffect, useState } from "react";
 import type { AccordionProps } from "./Accordion.definitions";
 
 /**
@@ -20,6 +21,7 @@ const Accordion = ({
   actionButtonText,
   actionButtonCallback,
   hideActionButton = true,
+  noDataTitle = "No data",
 }: AccordionProps) => {
   // show more button is visible if there are more than 5 children
   const [showMoreButtonVisible, setShowMoreButtonVisible] = useState<boolean>();
@@ -45,14 +47,18 @@ const Accordion = ({
     <div className={styles["content"]}>
       <div className={styles["accordion"]}>
         {title && <TitleLineItem title={title} />}
-        {children
-          ?.slice(0, accordionOpen ? children.length : 5)
-          .map((child, index) => (
-            <div key={index}>
-              {child}
-              <LineItemDivider />
-            </div>
-          ))}
+        {!children || children?.length == 0 ? (
+          <NoDataLineItem title={noDataTitle} />
+        ) : (
+          children
+            ?.slice(0, accordionOpen ? children.length : 5)
+            .map((child, index) => (
+              <Fragment key={index}>
+                {child}
+                <LineItemDivider />
+              </Fragment>
+            ))
+        )}
         <ActionLineItem
           actionButtonTitle={actionButtonText}
           actionButtonOnClick={actionButtonCallback}

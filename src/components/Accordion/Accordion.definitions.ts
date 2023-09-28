@@ -6,4 +6,5 @@ export interface AccordionProps {
   actionButtonText?: string;
   actionButtonCallback?: () => void;
   children?: ReactNode[];
+  noDataTitle?: string;
 }
