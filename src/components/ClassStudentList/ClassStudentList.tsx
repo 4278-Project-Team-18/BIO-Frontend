@@ -24,6 +24,7 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
           actionButtonText={"Add student"}
           actionButtonCallback={handleOpenAddStudentModal}
           hideActionButton={isAddingStudent}
+          noDataTitle="No students in this class!"
         >
           {classObject.students?.map((student) => (
             <StudentLineItem key={student._id} student={student} />
