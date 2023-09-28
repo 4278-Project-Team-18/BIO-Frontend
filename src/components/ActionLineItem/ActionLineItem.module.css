@@ -1,0 +1,49 @@
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 0px 20px 10px 20px;
+}
+
+.action-button {
+  text-decoration: underline;
+  color: #4e4e4e;
+  padding-top: 10px;
+  width: fit-content;
+  font-size: 16px;
+  text-align: right;
+}
+
+.action-button:hover {
+  cursor: pointer;
+}
+
+.action-button-label {
+  width: fit-content;
+}
+
+.show-button {
+  text-decoration: underline;
+  color: #4e4e4e;
+  padding-top: 10px;
+  font-size: 16px;
+  width: fit-content;
+  text-align: right;
+}
+
+.show-button:hover {
+  cursor: pointer;
+}
+
+.show-button-label {
+  width: fit-content;
+}

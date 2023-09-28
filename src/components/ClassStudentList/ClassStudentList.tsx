@@ -23,10 +23,10 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
           title={classObject.name}
           actionButtonText={"Add student"}
           actionButtonCallback={handleOpenAddStudentModal}
-          hideButtons={isAddingStudent}
+          hideActionButton={isAddingStudent}
         >
-          {classObject.students?.map((student, index) => (
-            <StudentLineItem key={index} student={student} />
+          {classObject.students?.map((student) => (
+            <StudentLineItem key={student._id} student={student} />
           ))}
         </Accordion>
       </div>

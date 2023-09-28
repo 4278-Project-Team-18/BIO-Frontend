@@ -1,65 +1,67 @@
 import styles from "./Accordion.module.css";
+import TitleLineItem from "../TitleLineItem/TitleLineItem";
+import LineItemDivider from "../LineItemDivider/LineItemDivider";
+import ActionLineItem from "../ActionLineItem/ActionLineItem";
 import { useEffect, useState } from "react";
 import type { AccordionProps } from "./Accordion.definitions";
 
+/**
+ * Accordion component
+ *
+ * @param {string} title - the title of the accordion
+ * @param {React.ReactNode} children - the optional children of the accordion
+ * @param {string} actionButtonText - the optional text of the action button
+ * @param {() => void} actionButtonCallback - the optional callback of the action button
+ * @param {boolean} hideActionButton - whether or not to hide the action button (default: true)
+ */
 const Accordion = ({
   title,
   children,
-  hideButtons,
   actionButtonText,
   actionButtonCallback,
+  hideActionButton = true,
 }: AccordionProps) => {
-  const [showMore, setShowMore] = useState<boolean>(false);
-  const [displayCount, setDisplayCount] = useState<number>(5);
+  // show more button is visible if there are more than 5 children
+  const [showMoreButtonVisible, setShowMoreButtonVisible] = useState<boolean>();
 
-  const handleShowMore = () => {
-    setShowMore(!showMore);
-    if (showMore) {
-      setDisplayCount(5);
-    } else {
-      setDisplayCount(children?.length || 5);
-    }
+  // accordion is open if the show more button has been clicked
+  const [accordionOpen, setAccordionOpen] = useState<boolean>(false);
+
+  // toggle the accordion open or closed
+  const handleShowMoreOrLess = () => {
+    setAccordionOpen(!accordionOpen);
   };
 
-  // update the display count when the children change
+  // update the show more button visibility when the children change
   useEffect(() => {
-    if (children && showMore) {
-      setDisplayCount(children?.length || 5);
+    if (children && children?.length > 5) {
+      setShowMoreButtonVisible(true);
+    } else {
+      setShowMoreButtonVisible(false);
     }
-  }, [children]);
+  }, [children, accordionOpen]);
 
   return (
     <div className={styles["content"]}>
-      <div className={styles["title"]}>{title}</div>
       <div className={styles["accordion"]}>
-        {children?.slice(0, displayCount)}
+        {title && <TitleLineItem title={title} />}
+        {children
+          ?.slice(0, accordionOpen ? children.length : 5)
+          .map((child, index) => (
+            <div key={index}>
+              {child}
+              <LineItemDivider />
+            </div>
+          ))}
+        <ActionLineItem
+          actionButtonTitle={actionButtonText}
+          actionButtonOnClick={actionButtonCallback}
+          showMoreButtonOnClick={handleShowMoreOrLess}
+          hideActionButton={hideActionButton}
+          hideShowMoreButton={!showMoreButtonVisible}
+          isAccordionExpanded={accordionOpen}
+        />
       </div>
-      {!hideButtons && (
-        <div className={styles["buttons-container"]}>
-          <div className={styles["buttons"]}>
-            {actionButtonText && actionButtonCallback && (
-              <button
-                className={styles["add-student-button"]}
-                onClick={actionButtonCallback}
-              >
-                <div className={styles["add-student-button-label"]}>
-                  {actionButtonText}
-                </div>
-              </button>
-            )}
-            {children && children?.length > 5 && (
-              <button
-                className={styles["show-button"]}
-                onClick={handleShowMore}
-              >
-                <div className={styles["show-button-label"]}>
-                  {showMore ? "Show Less" : "Show More"}
-                </div>
-              </button>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

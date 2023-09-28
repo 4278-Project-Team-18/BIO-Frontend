@@ -31,8 +31,8 @@ const AdminClassesTab = () => {
 
   return (
     <div>
-      {currentClasses?.map((classItem, index) => (
-        <ClassStudentList classObject={classItem} key={index} />
+      {currentClasses?.map((classItem) => (
+        <ClassStudentList classObject={classItem} key={classItem._id} />
       ))}
     </div>
   );

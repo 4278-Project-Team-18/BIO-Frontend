@@ -12,13 +12,213 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           class="content"
         >
           <div
-            class="title"
-          >
-            female flume Class
-          </div>
-          <div
             class="accordion"
           >
+            <div
+              class="title-line-item"
+            >
+              <div
+                class="title-line-item-title"
+              >
+                female flume Class
+              </div>
+            </div>
+            <div>
+              <div
+                class="line-item-container"
+              >
+                <div
+                  class="line-item-container-left"
+                >
+                  <div
+                    class="line-item-checkbox"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-square line-item-checkbox-unchecked"
+                      data-icon="square"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="line-item-name"
+                  >
+                    Guy K
+                  </div>
+                </div>
+                <div
+                  class="line-item-container-right"
+                >
+                  <button
+                    class="line-item-upload-button"
+                  >
+                    <div
+                      class="line-item-upload-title"
+                    >
+                      Upload Letter
+                    </div>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
+                      data-icon="cloud-arrow-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="line-item-divider"
+              />
+            </div>
+            <div>
+              <div
+                class="line-item-container"
+              >
+                <div
+                  class="line-item-container-left"
+                >
+                  <div
+                    class="line-item-checkbox"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-square-check line-item-checkbox-checked"
+                      data-icon="square-check"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="line-item-name"
+                  >
+                    Jacynthe S
+                  </div>
+                </div>
+                <div
+                  class="line-item-container-right"
+                >
+                  <div
+                    class="uploaded-container-success"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-circle-check "
+                      data-icon="circle-check"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <span
+                      class="uploaded-label"
+                    >
+                        Student Letter
+                    </span>
+                  </div>
+                  <button
+                    class="line-item-upload-button"
+                  >
+                    <div
+                      class="line-item-upload-title"
+                    >
+                      Reupload
+                    </div>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
+                      data-icon="cloud-arrow-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="line-item-divider"
+              />
+            </div>
+            <div
+              class="buttons-container"
+            >
+              <div
+                class="buttons"
+              >
+                <button
+                  class="action-button"
+                >
+                  <div
+                    class="action-button-label"
+                  >
+                    Add student
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="class-list-container"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="accordion"
+        >
+          <div
+            class="title-line-item"
+          >
+            <div
+              class="title-line-item-title"
+            >
+              female flume Class
+            </div>
+          </div>
+          <div>
             <div
               class="line-item-container"
             >
@@ -79,6 +279,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
+            <div
+              class="line-item-divider"
+            />
+          </div>
+          <div>
             <div
               class="line-item-container"
             >
@@ -163,6 +368,9 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
+            <div
+              class="line-item-divider"
+            />
           </div>
           <div
             class="buttons-container"
@@ -171,195 +379,15 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               class="buttons"
             >
               <button
-                class="add-student-button"
+                class="action-button"
               >
                 <div
-                  class="add-student-button-label"
+                  class="action-button-label"
                 >
                   Add student
                 </div>
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="class-list-container"
-    >
-      <div
-        class="content"
-      >
-        <div
-          class="title"
-        >
-          female flume Class
-        </div>
-        <div
-          class="accordion"
-        >
-          <div
-            class="line-item-container"
-          >
-            <div
-              class="line-item-container-left"
-            >
-              <div
-                class="line-item-checkbox"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-square line-item-checkbox-unchecked"
-                  data-icon="square"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <div
-                class="line-item-name"
-              >
-                Guy K
-              </div>
-            </div>
-            <div
-              class="line-item-container-right"
-            >
-              <button
-                class="line-item-upload-button"
-              >
-                <div
-                  class="line-item-upload-title"
-                >
-                  Upload Letter
-                </div>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
-                  data-icon="cloud-arrow-up"
-                  data-prefix="fas"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 640 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div
-            class="line-item-container"
-          >
-            <div
-              class="line-item-container-left"
-            >
-              <div
-                class="line-item-checkbox"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-square-check line-item-checkbox-checked"
-                  data-icon="square-check"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <div
-                class="line-item-name"
-              >
-                Jacynthe S
-              </div>
-            </div>
-            <div
-              class="line-item-container-right"
-            >
-              <div
-                class="uploaded-container-success"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-circle-check "
-                  data-icon="circle-check"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  class="uploaded-label"
-                >
-                    Student Letter
-                </span>
-              </div>
-              <button
-                class="line-item-upload-button"
-              >
-                <div
-                  class="line-item-upload-title"
-                >
-                  Reupload
-                </div>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
-                  data-icon="cloud-arrow-up"
-                  data-prefix="fas"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 640 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          class="buttons-container"
-        >
-          <div
-            class="buttons"
-          >
-            <button
-              class="add-student-button"
-            >
-              <div
-                class="add-student-button-label"
-              >
-                Add student
-              </div>
-            </button>
           </div>
         </div>
       </div>
@@ -431,13 +459,441 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           class="content"
         >
           <div
-            class="title"
-          >
-            female flume Class
-          </div>
-          <div
             class="accordion"
           >
+            <div
+              class="title-line-item"
+            >
+              <div
+                class="title-line-item-title"
+              >
+                female flume Class
+              </div>
+            </div>
+            <div>
+              <div
+                class="line-item-container"
+              >
+                <div
+                  class="line-item-container-left"
+                >
+                  <div
+                    class="line-item-checkbox"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-square line-item-checkbox-unchecked"
+                      data-icon="square"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="line-item-name"
+                  >
+                    Guy K
+                  </div>
+                </div>
+                <div
+                  class="line-item-container-right"
+                >
+                  <button
+                    class="line-item-upload-button"
+                  >
+                    <div
+                      class="line-item-upload-title"
+                    >
+                      Upload Letter
+                    </div>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
+                      data-icon="cloud-arrow-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="line-item-divider"
+              />
+            </div>
+            <div>
+              <div
+                class="line-item-container"
+              >
+                <div
+                  class="line-item-container-left"
+                >
+                  <div
+                    class="line-item-checkbox"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-square-check line-item-checkbox-checked"
+                      data-icon="square-check"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="line-item-name"
+                  >
+                    Jacynthe S
+                  </div>
+                </div>
+                <div
+                  class="line-item-container-right"
+                >
+                  <div
+                    class="uploaded-container-success"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-circle-check "
+                      data-icon="circle-check"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <span
+                      class="uploaded-label"
+                    >
+                        Student Letter
+                    </span>
+                  </div>
+                  <button
+                    class="line-item-upload-button"
+                  >
+                    <div
+                      class="line-item-upload-title"
+                    >
+                      Reupload
+                    </div>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
+                      data-icon="cloud-arrow-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="line-item-divider"
+              />
+            </div>
+            <div>
+              <div
+                class="line-item-container"
+              >
+                <div
+                  class="line-item-container-left"
+                >
+                  <div
+                    class="line-item-checkbox"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-square line-item-checkbox-unchecked"
+                      data-icon="square"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="line-item-name"
+                  >
+                    Bailey C
+                  </div>
+                </div>
+                <div
+                  class="line-item-container-right"
+                >
+                  <button
+                    class="line-item-upload-button"
+                  >
+                    <div
+                      class="line-item-upload-title"
+                    >
+                      Upload Letter
+                    </div>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
+                      data-icon="cloud-arrow-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="line-item-divider"
+              />
+            </div>
+            <div>
+              <div
+                class="line-item-container"
+              >
+                <div
+                  class="line-item-container-left"
+                >
+                  <div
+                    class="line-item-checkbox"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-square-check line-item-checkbox-checked"
+                      data-icon="square-check"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="line-item-name"
+                  >
+                    Karli S
+                  </div>
+                </div>
+                <div
+                  class="line-item-container-right"
+                >
+                  <div
+                    class="uploaded-container-success"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-circle-check "
+                      data-icon="circle-check"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <span
+                      class="uploaded-label"
+                    >
+                        Student Letter
+                    </span>
+                  </div>
+                  <button
+                    class="line-item-upload-button"
+                  >
+                    <div
+                      class="line-item-upload-title"
+                    >
+                      Reupload
+                    </div>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
+                      data-icon="cloud-arrow-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="line-item-divider"
+              />
+            </div>
+            <div>
+              <div
+                class="line-item-container"
+              >
+                <div
+                  class="line-item-container-left"
+                >
+                  <div
+                    class="line-item-checkbox"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-square line-item-checkbox-unchecked"
+                      data-icon="square"
+                      data-prefix="far"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class="line-item-name"
+                  >
+                    Harry B
+                  </div>
+                </div>
+                <div
+                  class="line-item-container-right"
+                >
+                  <button
+                    class="line-item-upload-button"
+                  >
+                    <div
+                      class="line-item-upload-title"
+                    >
+                      Upload Letter
+                    </div>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
+                      data-icon="cloud-arrow-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="line-item-divider"
+              />
+            </div>
+            <div
+              class="buttons-container"
+            >
+              <div
+                class="buttons"
+              >
+                <button
+                  class="action-button"
+                >
+                  <div
+                    class="action-button-label"
+                  >
+                    Add student
+                  </div>
+                </button>
+                <button
+                  class="show-button"
+                >
+                  <div
+                    class="show-button-label"
+                  >
+                    Show More +
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="class-list-container"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="accordion"
+        >
+          <div
+            class="title-line-item"
+          >
+            <div
+              class="title-line-item-title"
+            >
+              female flume Class
+            </div>
+          </div>
+          <div>
             <div
               class="line-item-container"
             >
@@ -498,6 +954,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
+            <div
+              class="line-item-divider"
+            />
+          </div>
+          <div>
             <div
               class="line-item-container"
             >
@@ -583,6 +1044,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </div>
             </div>
             <div
+              class="line-item-divider"
+            />
+          </div>
+          <div>
+            <div
               class="line-item-container"
             >
               <div
@@ -642,6 +1108,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
+            <div
+              class="line-item-divider"
+            />
+          </div>
+          <div>
             <div
               class="line-item-container"
             >
@@ -727,6 +1198,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </div>
             </div>
             <div
+              class="line-item-divider"
+            />
+          </div>
+          <div>
+            <div
               class="line-item-container"
             >
               <div
@@ -786,6 +1262,9 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
+            <div
+              class="line-item-divider"
+            />
           </div>
           <div
             class="buttons-container"
@@ -794,10 +1273,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               class="buttons"
             >
               <button
-                class="add-student-button"
+                class="action-button"
               >
                 <div
-                  class="add-student-button-label"
+                  class="action-button-label"
                 >
                   Add student
                 </div>
@@ -808,403 +1287,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 <div
                   class="show-button-label"
                 >
-                  Show More
+                  Show More +
                 </div>
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="class-list-container"
-    >
-      <div
-        class="content"
-      >
-        <div
-          class="title"
-        >
-          female flume Class
-        </div>
-        <div
-          class="accordion"
-        >
-          <div
-            class="line-item-container"
-          >
-            <div
-              class="line-item-container-left"
-            >
-              <div
-                class="line-item-checkbox"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-square line-item-checkbox-unchecked"
-                  data-icon="square"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <div
-                class="line-item-name"
-              >
-                Guy K
-              </div>
-            </div>
-            <div
-              class="line-item-container-right"
-            >
-              <button
-                class="line-item-upload-button"
-              >
-                <div
-                  class="line-item-upload-title"
-                >
-                  Upload Letter
-                </div>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
-                  data-icon="cloud-arrow-up"
-                  data-prefix="fas"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 640 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div
-            class="line-item-container"
-          >
-            <div
-              class="line-item-container-left"
-            >
-              <div
-                class="line-item-checkbox"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-square-check line-item-checkbox-checked"
-                  data-icon="square-check"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <div
-                class="line-item-name"
-              >
-                Jacynthe S
-              </div>
-            </div>
-            <div
-              class="line-item-container-right"
-            >
-              <div
-                class="uploaded-container-success"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-circle-check "
-                  data-icon="circle-check"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  class="uploaded-label"
-                >
-                    Student Letter
-                </span>
-              </div>
-              <button
-                class="line-item-upload-button"
-              >
-                <div
-                  class="line-item-upload-title"
-                >
-                  Reupload
-                </div>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
-                  data-icon="cloud-arrow-up"
-                  data-prefix="fas"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 640 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div
-            class="line-item-container"
-          >
-            <div
-              class="line-item-container-left"
-            >
-              <div
-                class="line-item-checkbox"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-square line-item-checkbox-unchecked"
-                  data-icon="square"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <div
-                class="line-item-name"
-              >
-                Bailey C
-              </div>
-            </div>
-            <div
-              class="line-item-container-right"
-            >
-              <button
-                class="line-item-upload-button"
-              >
-                <div
-                  class="line-item-upload-title"
-                >
-                  Upload Letter
-                </div>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
-                  data-icon="cloud-arrow-up"
-                  data-prefix="fas"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 640 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div
-            class="line-item-container"
-          >
-            <div
-              class="line-item-container-left"
-            >
-              <div
-                class="line-item-checkbox"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-square-check line-item-checkbox-checked"
-                  data-icon="square-check"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <div
-                class="line-item-name"
-              >
-                Karli S
-              </div>
-            </div>
-            <div
-              class="line-item-container-right"
-            >
-              <div
-                class="uploaded-container-success"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-circle-check "
-                  data-icon="circle-check"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span
-                  class="uploaded-label"
-                >
-                    Student Letter
-                </span>
-              </div>
-              <button
-                class="line-item-upload-button"
-              >
-                <div
-                  class="line-item-upload-title"
-                >
-                  Reupload
-                </div>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
-                  data-icon="cloud-arrow-up"
-                  data-prefix="fas"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 640 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div
-            class="line-item-container"
-          >
-            <div
-              class="line-item-container-left"
-            >
-              <div
-                class="line-item-checkbox"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-square line-item-checkbox-unchecked"
-                  data-icon="square"
-                  data-prefix="far"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <div
-                class="line-item-name"
-              >
-                Harry B
-              </div>
-            </div>
-            <div
-              class="line-item-container-right"
-            >
-              <button
-                class="line-item-upload-button"
-              >
-                <div
-                  class="line-item-upload-title"
-                >
-                  Upload Letter
-                </div>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-cloud-arrow-up line-item-upload-icon"
-                  data-icon="cloud-arrow-up"
-                  data-prefix="fas"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 640 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          class="buttons-container"
-        >
-          <div
-            class="buttons"
-          >
-            <button
-              class="add-student-button"
-            >
-              <div
-                class="add-student-button-label"
-              >
-                Add student
-              </div>
-            </button>
-            <button
-              class="show-button"
-            >
-              <div
-                class="show-button-label"
-              >
-                Show More
-              </div>
-            </button>
           </div>
         </div>
       </div>
