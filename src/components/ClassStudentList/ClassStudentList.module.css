@@ -1,0 +1,13 @@
+@media (min-width: 600px) {
+  .class-list-container {
+    border-radius: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 599px) {
+  .class-list-container {
+    border-radius: 40px;
+    width: 100%;
+  }
+}

@@ -20,11 +20,12 @@ describe("StudentLineItem Tests", () => {
     ).toBeTruthy();
 
     // Check if the upload button is correct
-    if (!testStudent.volunteerResponseLetterLink) {
-      expect(component.getByText("Upload Letter")).toBeTruthy();
-    } else {
-      expect(component.getByText("Reupload")).toBeTruthy();
-    }
+
+    expect(
+      component.getByText(
+        !testStudent.studentLetterLink ? "Upload Letter" : "Reupload",
+      ),
+    ).toBeTruthy();
   });
 
   test("StudentLineItem snapshot should render correctly", () => {
