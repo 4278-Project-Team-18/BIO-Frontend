@@ -4,14 +4,16 @@ import type { VolunteerLineItemProps } from "./VolunteerLineItem.definitions";
 const VolunteerLineItem = ({ volunteer }: VolunteerLineItemProps) => (
   <div className={styles["line-item-container"]}>
     <div className={styles["line-item-container-left"]}>
-      {volunteer.matchedStudents ? (
-        <div className={styles["line-item-matched-status-icon"]} />
-      ) : (
-        <div className={styles["line-item-unmatched-status-icon"]} />
-      )}
-    </div>
-    <div className={styles["line-item-name"]}>
-      {`${volunteer.firstName} ${volunteer.lastName}`}
+      <div className={styles["line-item-name-icon"]}>
+        {volunteer.matchedStudents ? (
+          <div className={styles["line-item-matched-status-icon"]} />
+        ) : (
+          <div className={styles["line-item-unmatched-status-icon"]} />
+        )}
+      </div>
+      <div className={styles["line-item-name"]}>
+        {`${volunteer.firstName} ${volunteer.lastName}`}
+      </div>
     </div>
     <div className={styles["line-item-container-right"]}>
       {volunteer.matchedStudents ? (
