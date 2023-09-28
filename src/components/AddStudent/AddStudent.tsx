@@ -78,6 +78,7 @@ const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
         className={styles["add-student-cancel-button"]}
         onClick={closeModal}
         type="button"
+        aria-label="close-button"
       >
         <FontAwesomeIcon
           icon={faCircleXmark}
@@ -109,7 +110,7 @@ const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
         error={errors[NewStudentInputName.READING_LEVEL]?.message}
       />
 
-      <button className={styles["add-student-submit-button"]}>
+      <button className={styles["add-student-submit-button"]} type="submit">
         <div className={styles["add-student-submit-button-title"]}>
           {"Add Student"}
         </div>
