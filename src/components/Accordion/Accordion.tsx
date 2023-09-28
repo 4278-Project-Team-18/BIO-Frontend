@@ -1,5 +1,5 @@
 import styles from "./Accordion.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { AccordionProps } from "./Accordion.definitions";
 
 const Accordion = ({
@@ -21,6 +21,13 @@ const Accordion = ({
     }
   };
 
+  // update the display count when the children change
+  useEffect(() => {
+    if (children) {
+      setDisplayCount(children?.length || 5);
+    }
+  }, [children]);
+
   return (
     <div className={styles["content"]}>
       <div className={styles["title"]}>{title}</div>
@@ -40,12 +47,16 @@ const Accordion = ({
                 </div>
               </button>
             )}
-
-            <button className={styles["show-button"]} onClick={handleShowMore}>
-              <div className={styles["show-button-label"]}>
-                {showMore ? "Show Less" : "Show More"}
-              </div>
-            </button>
+            {children && children?.length > 5 && (
+              <button
+                className={styles["show-button"]}
+                onClick={handleShowMore}
+              >
+                <div className={styles["show-button-label"]}>
+                  {showMore ? "Show Less" : "Show More"}
+                </div>
+              </button>
+            )}
           </div>
         </div>
       )}
