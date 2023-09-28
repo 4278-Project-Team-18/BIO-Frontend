@@ -55,7 +55,6 @@ const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
   // add the student to the class if the request was successful
   useEffect(() => {
     if (addStudentResponseData) {
-      console.log(addStudentResponseData);
       addStudentToClass(addStudentResponseData, classId);
       closeModal();
     }

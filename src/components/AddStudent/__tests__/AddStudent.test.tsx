@@ -1,6 +1,6 @@
 import AddStudent from "../AddStudent";
 import { act } from "react-dom/test-utils";
-import { fireEvent, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 const mockProps = {
   closeModal: jest.fn(),
@@ -15,7 +15,7 @@ describe("AddStudent Tests", () => {
     expect(component.getByText("Add Student")).toBeTruthy();
 
     act(() => {
-      fireEvent.click(component.getByLabelText("close-button"));
+      component.getByLabelText("close-button").click();
     });
     expect(mockProps.closeModal).toHaveBeenCalled();
 
