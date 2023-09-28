@@ -1,7 +1,7 @@
 import { createTestClass, createTestStudent } from "../../../data/testData";
 import ClassStudentList from "../ClassStudentList";
 import { faker } from "@faker-js/faker";
-import { render } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
 
 describe("ClassStudentList Tests", () => {
   test("ClassStudentList should render correctly for list less than 5", () => {
@@ -107,7 +107,9 @@ describe("ClassStudentList Tests", () => {
     expect(component.getByText("Add student")).toBeTruthy();
 
     // Click the show more button
-    component.getByText("Show More").click();
+    act(() => {
+      component.getByText("Show More").click();
+    });
 
     // Check if the next student (6) are rendered
     expect(
