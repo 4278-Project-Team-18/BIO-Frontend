@@ -1,6 +1,6 @@
-import { faker } from "@faker-js/faker";
 import { createTestClass, createTestStudent } from "../../../data/testData";
 import ClassStudentList from "../ClassStudentList";
+import { faker } from "@faker-js/faker";
 import { render } from "@testing-library/react";
 
 describe("ClassStudentList Tests", () => {
