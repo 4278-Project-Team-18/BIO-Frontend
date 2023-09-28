@@ -27,4 +27,26 @@ describe("LineItemLabel Tests", () => {
     expect(errorComponent).toBeTruthy();
     expect(errorComponent.getByText("Error Label")).toBeTruthy();
   });
+
+  test("LineItemLabel snapshot should render correctly", () => {
+    faker.seed(2);
+
+    // render sucess variant
+    const successComponent = render(
+      <LineItemLabel
+        label={"Success Label"}
+        variant={LineItemLabelVariant.SUCCESS}
+      />,
+    );
+    expect(successComponent).toMatchSnapshot();
+
+    // render error variant
+    const errorComponent = render(
+      <LineItemLabel
+        label={"Error Label"}
+        variant={LineItemLabelVariant.ERROR}
+      />,
+    );
+    expect(errorComponent).toMatchSnapshot();
+  });
 });

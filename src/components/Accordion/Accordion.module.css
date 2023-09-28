@@ -1,6 +1,6 @@
 .content {
   display: flex;
-  width: 95%;
+  width: 100%;
   flex-direction: column;
 }
 
@@ -18,6 +18,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: white;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
 }
 
@@ -34,11 +35,50 @@
   padding-left: 10px;
 }
 
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .buttons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
+  flex-direction: row;
+  width: 300px;
   padding-right: 10px;
   padding-left: 10px;
+}
+
+.add-student-button {
+  text-decoration: underline;
+  color: #323232;
+  padding-top: 10px;
+  width: fit-content;
+  text-align: right;
+}
+
+.add-student-button:hover {
+  cursor: pointer;
+}
+
+.add-student-button-label {
+  width: fit-content;
+}
+
+.show-button {
+  text-decoration: underline;
+  color: #323232;
+  padding-top: 10px;
+  width: fit-content;
+  text-align: right;
+}
+
+.show-button:hover {
+  cursor: pointer;
+}
+
+.show-button-label {
+  width: fit-content;
 }
