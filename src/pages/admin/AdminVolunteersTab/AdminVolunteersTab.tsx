@@ -25,6 +25,13 @@ const AdminVolunteersTab = () => {
     setCurrentVolunteers(data || []);
   }, [data]);
 
+  const handleStatusChange = (updatedVolunteer: Volunteer) => {
+    const updatedVolunteers = currentVolunteers?.map((volunteer) =>
+      volunteer._id === updatedVolunteer._id ? updatedVolunteer : volunteer,
+    );
+    setCurrentVolunteers(updatedVolunteers || []);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -51,7 +58,11 @@ const AdminVolunteersTab = () => {
 
       <Accordion title="Volunteer Applicants">
         {applicants?.map((volunteer, index) => (
-          <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
+          <VolunteerApprovalLineItem
+            key={index}
+            volunteer={volunteer}
+            onStatusChange={handleStatusChange}
+          />
         ))}
       </Accordion>
     </div>
