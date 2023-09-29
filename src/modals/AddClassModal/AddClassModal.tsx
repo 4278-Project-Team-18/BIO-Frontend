@@ -108,7 +108,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
             error={errors[NewClassInputName.TEACHER_ID]?.message}
             options={formOptions}
             defaultValue={formOptions[0].value}
-            setValue={setValue as (_: string, __: string) => void}
+            setValue={setValue}
           />
 
           <div className={styles["add-class-submit-container"]}>

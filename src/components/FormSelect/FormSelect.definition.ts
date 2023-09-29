@@ -10,7 +10,8 @@ export interface FormSelectProps {
   error?: string;
   optText?: string;
   defaultValue?: string;
-  setValue?: (_: string, __: string) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setValue?: any;
 }
 
 export interface FormSelectOption {

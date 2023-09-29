@@ -3,6 +3,18 @@ import { Controller } from "react-hook-form";
 import { useEffect } from "react";
 import type { FormSelectProps } from "./FormSelect.definition";
 
+/**
+ * A select input for use in forms.
+ *
+ * @param name the name of the input
+ * @param control the form controller
+ * @param label the label of the input
+ * @param error the error message of the input
+ * @param optText the optional text to display after the label
+ * @param options the options to display in the select input
+ * @param defaultValue the default value of the select input
+ * @param setValue the setValue function from react-hook-form
+ */
 const FormSelect = ({
   name,
   control,
