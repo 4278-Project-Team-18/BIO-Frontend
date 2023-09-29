@@ -13,6 +13,7 @@ const FormSelect = ({
   defaultValue,
   setValue,
 }: FormSelectProps) => {
+  // set the default value of the select input on first render
   useEffect(() => {
     if (defaultValue && setValue) {
       setValue(name, defaultValue);
