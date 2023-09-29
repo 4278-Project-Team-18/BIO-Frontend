@@ -11,7 +11,11 @@ const AdminClassesTab = () => {
   const { setCurrentTab } = useNavigationContext();
   const { currentClasses, setCurrentClasses } = useClassesContext();
 
-  const { data, loading, error } = useCustomFetch<Class[]>(`class/allClasses`);
+  const {
+    data: classData,
+    loading: classLoading,
+    error: classError,
+  } = useCustomFetch<Class[]>(`class/allClasses`);
 
   const [classModalOpen, setClassModalOpen] = useState<boolean>(true);
 
@@ -29,14 +33,14 @@ const AdminClassesTab = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentClasses(data || []);
-  }, [data]);
+    setCurrentClasses(classData || []);
+  }, [classData]);
 
-  if (loading) {
+  if (classLoading) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
+  if (classError) {
     return <div>Something went wrong...</div>;
   }
 
