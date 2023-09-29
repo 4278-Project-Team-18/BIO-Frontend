@@ -4,13 +4,24 @@ import { AdminTabs, type Class } from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { useCustomFetch } from "../../../api/request.util";
 import { useClassesContext } from "../../../context/Classes.context";
-import { useEffect } from "react";
+import AddClassModal from "../../../modals/AddClassModal/AddClassModal";
+import { useEffect, useState } from "react";
 
 const AdminClassesTab = () => {
   const { setCurrentTab } = useNavigationContext();
   const { currentClasses, setCurrentClasses } = useClassesContext();
 
   const { data, loading, error } = useCustomFetch<Class[]>(`class/allClasses`);
+
+  const [classModalOpen, setClassModalOpen] = useState<boolean>(true);
+
+  const handleCloseModal = () => {
+    setClassModalOpen(false);
+  };
+
+  // const handleOpenModal = () => {
+  //   setClassModalOpen(true);
+  // };
 
   // set the current tab on render
   useEffect(() => {
@@ -31,9 +42,14 @@ const AdminClassesTab = () => {
 
   return (
     <div>
-      <div className={style["admin-classes-title"]}>{`All Classes (${
-        currentClasses?.length || 0
-      })`}</div>
+      <div>
+        <div className={style["admin-classes-title"]}>{`All Classes (${
+          currentClasses?.length || 0
+        })`}</div>
+        <div>
+          {classModalOpen && <AddClassModal closeModal={handleCloseModal} />}
+        </div>
+      </div>
       {currentClasses?.map((classItem) => (
         <ClassStudentList classObject={classItem} key={classItem._id} />
       ))}

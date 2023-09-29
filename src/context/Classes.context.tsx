@@ -24,6 +24,7 @@ const ClassesContext = createContext<ClassesContextType>({
 export const ClassesProvider = ({ children }: PropsWithChildren) => {
   const [currentClasses, setCurrentClasses] = useState<Class[]>([] as Class[]);
 
+  // function to add a student to a class
   const addStudentToClass = (student: Student, classId: string) => {
     const newClasses = currentClasses?.map((classItem: Class) => {
       if (classItem._id === classId) {
@@ -35,10 +36,10 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
         return classItem;
       }
     });
-
     setCurrentClasses(newClasses);
   };
 
+  // function to remove a student from a class
   const removeStudentFromClass = (studentId: string, classId: string) => {
     const newClasses = currentClasses?.map((classItem: Class) => {
       if (classItem._id === classId) {
@@ -52,7 +53,6 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
         return classItem;
       }
     });
-
     setCurrentClasses(newClasses);
   };
 

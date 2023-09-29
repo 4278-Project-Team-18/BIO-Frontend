@@ -1,0 +1,45 @@
+.add-class-backdrop {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-class-container {
+  background-color: #fefefe;
+  margin: 20% auto;
+  padding: 20px;
+  width: fit-content;
+  min-width: 40%;
+  border-radius: 20px;
+}
+
+.add-class-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  margin-left: 3px;
+  color: #414141;
+}
+
+.add-class-top-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.add-class-cancel-button {
+  font-size: 20px;
+  padding-left: 8px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  color: #787878;
+}
