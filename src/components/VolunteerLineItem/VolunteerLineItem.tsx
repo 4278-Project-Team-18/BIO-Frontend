@@ -5,10 +5,10 @@ const VolunteerLineItem = ({ volunteer }: VolunteerLineItemProps) => (
   <div className={styles["line-item-container"]}>
     <div className={styles["line-item-container-left"]}>
       <div className={styles["line-item-name-icon"]}>
-        {volunteer.matchedStudents ? (
-          <div className={styles["line-item-matched-status-icon"]} />
-        ) : (
+        {!volunteer.matchedStudents?.length ? (
           <div className={styles["line-item-unmatched-status-icon"]} />
+        ) : (
+          <div className={styles["line-item-matched-status-icon"]} />
         )}
       </div>
       <div className={styles["line-item-name"]}>
@@ -16,13 +16,13 @@ const VolunteerLineItem = ({ volunteer }: VolunteerLineItemProps) => (
       </div>
     </div>
     <div className={styles["line-item-container-right"]}>
-      {volunteer.matchedStudents ? (
+      {!volunteer.matchedStudents?.length ? (
         <button className={styles["line-item-match-button"]}>
-          <div className={styles["line-item-button-title"]}>Unmatch</div>
+          <div className={styles["line-item-button-title"]}>Match</div>
         </button>
       ) : (
         <button className={styles["line-item-match-button"]}>
-          <div className={styles["line-item-button-title"]}>Match</div>
+          <div className={styles["line-item-button-title"]}>Matched</div>
         </button>
       )}
     </div>
