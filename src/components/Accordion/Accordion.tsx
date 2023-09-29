@@ -23,7 +23,7 @@ const Accordion = ({
 
   // update the display count when the children change
   useEffect(() => {
-    if (children) {
+    if (children && showMore) {
       setDisplayCount(children?.length || 5);
     }
   }, [children]);
