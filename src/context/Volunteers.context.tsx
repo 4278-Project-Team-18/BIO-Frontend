@@ -47,7 +47,7 @@ export const useVolunteersContext = () => {
 
   if (context === undefined) {
     throw new Error(
-      "useVolunteerssProvider must be used within a VolunteersProvider",
+      "useVolunteersProvider must be used within a VolunteersProvider",
     );
   }
 
