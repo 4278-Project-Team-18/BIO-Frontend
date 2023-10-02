@@ -75,7 +75,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   if (teacherLoading) {
     return (
       <div className={styles["add-class-backdrop"]}>
-        <div>Loading...</div>;
+        <div>Loading...</div>
       </div>
     );
   }
