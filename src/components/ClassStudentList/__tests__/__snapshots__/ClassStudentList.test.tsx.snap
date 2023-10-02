@@ -12,15 +12,24 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           class="content"
         >
           <div
+            class="title-line-item-table-title"
+          >
+            <div
+              class="title-line-item-title-table-title"
+            >
+              female flume Class
+            </div>
+          </div>
+          <div
             class="accordion"
           >
             <div
-              class="title-line-item"
+              class="title-line-item-table-header"
             >
               <div
-                class="title-line-item-title"
+                class="title-line-item-title-table-header"
               >
-                female flume Class
+                Students
               </div>
             </div>
             <div
@@ -203,15 +212,24 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
         class="content"
       >
         <div
+          class="title-line-item-table-title"
+        >
+          <div
+            class="title-line-item-title-table-title"
+          >
+            female flume Class
+          </div>
+        </div>
+        <div
           class="accordion"
         >
           <div
-            class="title-line-item"
+            class="title-line-item-table-header"
           >
             <div
-              class="title-line-item-title"
+              class="title-line-item-title-table-header"
             >
-              female flume Class
+              Students
             </div>
           </div>
           <div
@@ -451,15 +469,24 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           class="content"
         >
           <div
+            class="title-line-item-table-title"
+          >
+            <div
+              class="title-line-item-title-table-title"
+            >
+              female flume Class
+            </div>
+          </div>
+          <div
             class="accordion"
           >
             <div
-              class="title-line-item"
+              class="title-line-item-table-header"
             >
               <div
-                class="title-line-item-title"
+                class="title-line-item-title-table-header"
               >
-                female flume Class
+                Students
               </div>
             </div>
             <div
@@ -864,15 +891,24 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
         class="content"
       >
         <div
+          class="title-line-item-table-title"
+        >
+          <div
+            class="title-line-item-title-table-title"
+          >
+            female flume Class
+          </div>
+        </div>
+        <div
           class="accordion"
         >
           <div
-            class="title-line-item"
+            class="title-line-item-table-header"
           >
             <div
-              class="title-line-item-title"
+              class="title-line-item-title-table-header"
             >
-              female flume Class
+              Students
             </div>
           </div>
           <div
