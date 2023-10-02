@@ -11,11 +11,11 @@ export interface AddClassModalProps {
  * @param {string} teacherId - id of the teacher
  */
 export interface NewClassInput {
-  className: string;
+  name: string;
   teacherId: string;
 }
 
 export enum NewClassInputName {
-  CLASS_NAME = "className",
+  CLASS_NAME = "name",
   TEACHER_ID = "teacherId",
 }

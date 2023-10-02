@@ -3,14 +3,15 @@ import styles from "./AddClassModal.module.css";
 import FormInput from "../../components/FormInput/FormInput";
 import { newClassSchema } from "../../resolvers/class.resolver";
 import FormSelect from "../../components/FormSelect/FormSelect";
-import { useCustomFetch } from "../../api/request.util";
+import { RequestMethods, useCustomFetch } from "../../api/request.util";
+import { useClassesContext } from "../../context/Classes.context";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import type { FormSelectOption } from "../../components/FormSelect/FormSelect.definition";
-import type { Teacher } from "../../interfaces/User.interface";
+import type { Class, Teacher } from "../../interfaces/User.interface";
 import type {
   AddClassModalProps,
   NewClassInput,
@@ -24,6 +25,15 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
     loading: teacherLoading,
     error: teacherError,
   } = useCustomFetch<Teacher[]>(`teacher/allTeachers`);
+
+  const {
+    data: classData,
+    // loading: classLoading,
+    // error: classError,
+    makeRequest: makeClassRequest,
+  } = useCustomFetch<Class>(`class`, RequestMethods.POST);
+
+  const { addClass } = useClassesContext();
 
   // form controller
   const {
@@ -43,7 +53,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
 
   // send the request to add the class
   const onSubmitNewClass = async (inputData: NewClassInput) => {
-    console.log(inputData);
+    await makeClassRequest(inputData);
   };
 
   // set the default value of the teacher select to the first teacher
@@ -53,14 +63,29 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
     }
   }, [teacherData]);
 
+  useEffect(() => {
+    if (classData) {
+      addClass(classData);
+      closeModal();
+    }
+  }, [classData]);
+
   // if the request is loading, show a loading message
   if (teacherLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles["add-class-backdrop"]}>
+        <div>Loading...</div>;
+      </div>
+    );
   }
 
   // if the request failed, show an error message
-  if (teacherError || !teacherData || teacherData.length === 0) {
-    return <div>Something went wrong...</div>;
+  if (teacherError || !teacherData) {
+    return (
+      <div className={styles["add-class-backdrop"]}>
+        <div>Something went wrong...</div>
+      </div>
+    );
   }
 
   // map the teacher data to the form options

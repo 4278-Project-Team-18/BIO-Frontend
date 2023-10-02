@@ -1,6 +1,43 @@
+.admin-classes-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .admin-classes-title {
   font-size: 2.3rem;
   font-weight: 700;
   color: white;
-  padding-bottom: 10px;
+  padding: 10px;
+}
+
+.add-class-button {
+  color: #ffffff;
+  padding: 10px;
+  width: fit-content;
+  font-size: 16px;
+  text-align: right;
+  background-color: #5ad06d;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: fit-content;
+}
+
+.add-class-button:hover {
+  cursor: pointer;
+}
+
+.add-class-button-label {
+  width: fit-content;
+}
+
+.add-class-submit-button-icon {
+  font-size: 16px;
+  padding-left: 8px;
+  padding-bottom: 2px;
+  color: #ffffff;
 }
