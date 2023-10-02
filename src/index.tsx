@@ -5,6 +5,7 @@ import { NavigationProvider } from "./context/Navigation.context";
 import AdminVolunteersTab from "./pages/admin/AdminVolunteersTab/AdminVolunteersTab";
 import AdminDashboardTab from "./pages/admin/AdminDashboardTab/AdminDashboardTab";
 import { ClassesProvider } from "./context/Classes.context";
+import { VolunteersProvider } from "./context/Volunteers.context";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/volunteers",
-        element: <AdminVolunteersTab />,
+        element: (
+          <VolunteersProvider>
+            <AdminVolunteersTab />
+          </VolunteersProvider>
+        ),
       },
     ],
   },
