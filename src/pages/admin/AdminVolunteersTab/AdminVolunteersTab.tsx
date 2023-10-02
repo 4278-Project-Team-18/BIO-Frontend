@@ -1,5 +1,5 @@
 import { useNavigationContext } from "../../../context/Navigation.context";
-import { AdminTabs } from "../../../interfaces/User.interface";
+import { AdminTabs, ApprovalStatus } from "../../../interfaces/User.interface";
 import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
 import Accordion from "../../../components/Accordion/Accordion";
 import VolunteerLineItem from "../../../components/VolunteerLineItem/VolunteerLineItem";
@@ -25,13 +25,6 @@ const AdminVolunteersTab = () => {
     setCurrentVolunteers(data || []);
   }, [data]);
 
-  const handleStatusChange = (updatedVolunteer: Volunteer) => {
-    const updatedVolunteers = currentVolunteers?.map((volunteer) =>
-      volunteer._id === updatedVolunteer._id ? updatedVolunteer : volunteer,
-    );
-    setCurrentVolunteers(updatedVolunteers || []);
-  };
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -41,10 +34,11 @@ const AdminVolunteersTab = () => {
   }
 
   const volunteers = currentVolunteers?.filter(
-    (volunteer) => volunteer.approvalStatus === "approved",
+    (volunteer) => volunteer.approvalStatus === ApprovalStatus.APPROVED,
   );
+
   const applicants = currentVolunteers?.filter(
-    (volunteer) => volunteer.approvalStatus === "pending",
+    (volunteer) => volunteer.approvalStatus === ApprovalStatus.PENDING,
   );
 
   return (
@@ -58,11 +52,7 @@ const AdminVolunteersTab = () => {
 
       <Accordion title="Volunteer Applicants">
         {applicants?.map((volunteer, index) => (
-          <VolunteerApprovalLineItem
-            key={index}
-            volunteer={volunteer}
-            onStatusChange={handleStatusChange}
-          />
+          <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
         ))}
       </Accordion>
     </div>

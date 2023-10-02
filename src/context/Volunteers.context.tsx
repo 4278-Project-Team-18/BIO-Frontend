@@ -8,12 +8,14 @@ import type { Volunteer } from "../interfaces/User.interface";
 interface VolunteersContextType {
   currentVolunteers: Volunteer[] | null;
   setCurrentVolunteers: (classes: Volunteer[]) => void;
+  updateVolunteerStatus: (volunteer: Volunteer) => void;
 }
 
 // Create the context for the user
 const VolunteersContext = createContext<VolunteersContextType>({
   currentVolunteers: null,
   setCurrentVolunteers: (_: Volunteer[]) => {},
+  updateVolunteerStatus: (_: Volunteer) => {},
 });
 
 // Create the wrapper for the user context
@@ -22,9 +24,19 @@ export const VolunteersProvider = ({ children }: PropsWithChildren) => {
     [] as Volunteer[],
   );
 
+  const updateVolunteerStatus = (volunteer: Volunteer) => {
+    setCurrentVolunteers((prevVolunteers) => {
+      const updatedVolunteers = prevVolunteers.map((prevVolunteer) =>
+        prevVolunteer._id === volunteer._id ? volunteer : prevVolunteer,
+      );
+      return updatedVolunteers;
+    });
+  };
+
   const value = {
     currentVolunteers,
     setCurrentVolunteers,
+    updateVolunteerStatus,
   };
 
   return (
@@ -47,7 +59,7 @@ export const useVolunteersContext = () => {
 
   if (context === undefined) {
     throw new Error(
-      "useVolunteerssProvider must be used within a VolunteersProvider",
+      "useVolunteersProvider must be used within a VolunteersProvider",
     );
   }
 
