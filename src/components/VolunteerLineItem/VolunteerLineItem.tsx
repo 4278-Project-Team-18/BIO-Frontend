@@ -16,15 +16,11 @@ const VolunteerLineItem = ({ volunteer }: VolunteerLineItemProps) => (
       </div>
     </div>
     <div className={styles["line-item-container-right"]}>
-      {!volunteer.matchedStudents?.length ? (
-        <button className={styles["line-item-match-button"]}>
-          <div className={styles["line-item-button-title"]}>Match</div>
-        </button>
-      ) : (
-        <button className={styles["line-item-match-button"]}>
-          <div className={styles["line-item-button-title"]}>Matched</div>
-        </button>
-      )}
+      <button className={styles["line-item-match-button"]}>
+        <div className={styles["line-item-button-title"]}>
+          {volunteer.matchedStudents?.length ? "Unmatch" : "Match"}
+        </div>
+      </button>
     </div>
   </div>
 );

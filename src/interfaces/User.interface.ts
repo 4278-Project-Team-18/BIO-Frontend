@@ -52,7 +52,7 @@ export interface Admin extends User {
 export interface Volunteer extends User {
   role: Role.VOLUNTEER;
   matchedStudents?: string[];
-  approvalStatus?: string;
+  approvalStatus: string;
 }
 
 /**
