@@ -73,6 +73,11 @@
     padding-bottom: 2px;
     color: #787878;
   }
+
+  .add-student-loading-button-container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 }
 
 @media (max-width: 999px) {
@@ -145,5 +150,14 @@
     padding-left: 8px;
     padding-right: 10px;
     color: #787878;
+  }
+
+  .add-student-loading-button-container {
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
   }
 }

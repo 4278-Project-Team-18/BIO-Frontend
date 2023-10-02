@@ -5,6 +5,7 @@ import { newClassSchema } from "../../resolvers/class.resolver";
 import FormSelect from "../../components/FormSelect/FormSelect";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useClassesContext } from "../../context/Classes.context";
+import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +29,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
 
   const {
     data: classData,
-    // loading: classLoading,
+    loading: classLoading,
     // error: classError,
     makeRequest: makeClassRequest,
   } = useCustomFetch<Class>(`class`, RequestMethods.POST);
@@ -138,18 +139,13 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
 
           <div className={styles["add-class-submit-container"]}>
             <div className={styles["add-class-submit-inner-container"]}>
-              <button
-                className={styles["add-class-submit-button"]}
+              <LoadingButton
+                text="Add Class"
                 type="submit"
-              >
-                <div className={styles["add-class-submit-button-title"]}>
-                  {"Add Class"}
-                </div>
-                <FontAwesomeIcon
-                  icon={faPlusCircle}
-                  className={styles["add-class-submit-button-icon"]}
-                />
-              </button>
+                icon={faPlusCircle}
+                isLoading={classLoading}
+                isLoadingText="Adding Class..."
+              />
             </div>
           </div>
         </div>
