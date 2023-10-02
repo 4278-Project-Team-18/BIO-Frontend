@@ -1,4 +1,4 @@
-.title-line-item {
+.title-line-item-table-header {
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -7,10 +7,25 @@
   padding-left: 20px;
 }
 
-.title-line-item-title {
-  font-weight: 700;
-  font-size: 24px;
-  color: #474747;
+.title-line-item-title-table-header {
+  font-weight: 300;
+  font-size: 18px;
+  color: #818181;
   padding: 10px 10px 0px 10px;
-  text-decoration: underline;
+}
+
+.title-line-item-table-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.title-line-item-title-table-title {
+  font-weight: 800;
+  font-size: 26px;
+  color: #2c2c2c;
+  padding: 10px 10px 0px 0px;
 }

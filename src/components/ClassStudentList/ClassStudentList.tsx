@@ -21,6 +21,7 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
       <div className={styles["class-list-container"]}>
         <Accordion
           title={classObject.name}
+          headerText="Students"
           actionButtonText={"Add student"}
           actionButtonCallback={handleOpenAddStudentModal}
           hideActionButton={isAddingStudent}

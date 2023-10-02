@@ -1,9 +1,15 @@
 import styles from "./TitleLineItem.module.css";
-import type { TitleLineItemProps } from "./TitleLineItem.definitions";
+import {
+  TitleLineItemVariant,
+  type TitleLineItemProps,
+} from "./TitleLineItem.definitions";
 
-const TitleLineItem = ({ title }: TitleLineItemProps) => (
-  <div className={styles["title-line-item"]}>
-    <div className={styles["title-line-item-title"]}>{title}</div>
+const TitleLineItem = ({
+  title,
+  variant = TitleLineItemVariant.TABLE_HEADER,
+}: TitleLineItemProps) => (
+  <div className={styles[`title-line-item-${variant}`]}>
+    <div className={styles[`title-line-item-title-${variant}`]}>{title}</div>
   </div>
 );
 

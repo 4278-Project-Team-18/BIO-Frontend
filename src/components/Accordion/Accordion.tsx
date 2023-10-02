@@ -3,6 +3,7 @@ import TitleLineItem from "../TitleLineItem/TitleLineItem";
 import LineItemDivider from "../LineItemDivider/LineItemDivider";
 import ActionLineItem from "../ActionLineItem/ActionLineItem";
 import NoDataLineItem from "../NoDataLineItem/NoDataLineItem";
+import { TitleLineItemVariant } from "../TitleLineItem/TitleLineItem.definitions";
 import { Fragment, useEffect, useState } from "react";
 import type { AccordionProps } from "./Accordion.definitions";
 
@@ -17,6 +18,7 @@ import type { AccordionProps } from "./Accordion.definitions";
  */
 const Accordion = ({
   title,
+  headerText,
   children,
   actionButtonText,
   actionButtonCallback,
@@ -45,8 +47,19 @@ const Accordion = ({
 
   return (
     <div className={styles["content"]}>
+      {title && (
+        <TitleLineItem
+          title={title}
+          variant={TitleLineItemVariant.TABLE_TITLE}
+        />
+      )}
       <div className={styles["accordion"]}>
-        {title && <TitleLineItem title={title} />}
+        {headerText && (
+          <TitleLineItem
+            title={headerText}
+            variant={TitleLineItemVariant.TABLE_HEADER}
+          />
+        )}
         {!children || children?.length == 0 ? (
           <NoDataLineItem title={noDataTitle} />
         ) : (
