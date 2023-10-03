@@ -5,6 +5,8 @@ import Accordion from "../../../components/Accordion/Accordion";
 import VolunteerLineItem from "../../../components/VolunteerLineItem/VolunteerLineItem";
 import { useCustomFetch } from "../../../api/request.util";
 import { useVolunteersContext } from "../../../context/Volunteers.context";
+import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
+import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import { useEffect } from "react";
 import type { Volunteer } from "../../../interfaces/User.interface";
 
@@ -12,7 +14,7 @@ const AdminVolunteersTab = () => {
   const { setCurrentTab } = useNavigationContext();
   const { currentVolunteers, setCurrentVolunteers } = useVolunteersContext();
 
-  const { data, loading, error } = useCustomFetch<Volunteer[]>(
+  const { data, loading, error, makeRequest } = useCustomFetch<Volunteer[]>(
     `volunteer/allVolunteers`,
   );
 
@@ -26,11 +28,16 @@ const AdminVolunteersTab = () => {
   }, [data]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <FullPageLoadingIndicator />;
   }
 
   if (error) {
-    return <div>Something went wrong...</div>;
+    return (
+      <FullPageErrorDisplay
+        errorText="Uh oh! Something went wrong."
+        refetch={makeRequest}
+      />
+    );
   }
 
   const volunteers = currentVolunteers?.filter(

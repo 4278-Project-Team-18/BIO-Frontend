@@ -5,6 +5,8 @@ import { useNavigationContext } from "../../../context/Navigation.context";
 import { useCustomFetch } from "../../../api/request.util";
 import { useClassesContext } from "../../../context/Classes.context";
 import AddClassModal from "../../../modals/AddClassModal/AddClassModal";
+import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
+import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import { useEffect, useState } from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +19,7 @@ const AdminClassesTab = () => {
     data: classData,
     loading: classLoading,
     error: classError,
+    makeRequest: makeClassRequest,
   } = useCustomFetch<Class[]>(`class/allClasses`);
 
   const [classModalOpen, setClassModalOpen] = useState<boolean>(false);
@@ -39,11 +42,16 @@ const AdminClassesTab = () => {
   }, [classData]);
 
   if (classLoading) {
-    return <div>Loading...</div>;
+    return <FullPageLoadingIndicator />;
   }
 
   if (classError) {
-    return <div>Something went wrong...</div>;
+    return (
+      <FullPageErrorDisplay
+        errorText="Uh oh! Something went wrong."
+        refetch={makeClassRequest}
+      />
+    );
   }
 
   return (
