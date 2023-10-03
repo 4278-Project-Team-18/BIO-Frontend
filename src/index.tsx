@@ -26,7 +26,11 @@ const router = createBrowserRouter([
       {
         // redirect (will be conditional based on user context)
         path: "/",
-        element: <Navigate to="/admin/classes" />,
+        element: <Navigate to="/admin/dashboard" />,
+      },
+      {
+        path: "/*",
+        element: <Navigate to="/admin/dashboard" />,
       },
       {
         path: "/admin/*",
