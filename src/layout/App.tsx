@@ -8,7 +8,9 @@ const App = () => (
       <SideBar />
     </div>
     <div className={styles["app-main-content"]}>
-      <Outlet />
+      <div className={styles["app-main-content-inner-container"]}>
+        <Outlet />
+      </div>
     </div>
   </div>
 );

@@ -4,6 +4,7 @@ import { newStudentSchema } from "../../resolvers/student.resolver";
 import FormInput from "../FormInput/FormInput";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useClassesContext } from "../../context/Classes.context";
+import LoadingButton from "../LoadingButton/LoadingButton";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { faPlusCircle, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
@@ -108,16 +109,15 @@ const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
         placeholder="Reading Level"
         error={errors[NewStudentInputName.READING_LEVEL]?.message}
       />
-
-      <button className={styles["add-student-submit-button"]} type="submit">
-        <div className={styles["add-student-submit-button-title"]}>
-          {"Add Student"}
-        </div>
-        <FontAwesomeIcon
+      <div className={styles["add-student-loading-button-container"]}>
+        <LoadingButton
+          text="Add Student"
+          type="submit"
           icon={faPlusCircle}
-          className={styles["add-student-submit-button-icon"]}
+          isLoading={addStudentLoading}
+          isLoadingText="Adding Student..."
         />
-      </button>
+      </div>
     </form>
   );
 };

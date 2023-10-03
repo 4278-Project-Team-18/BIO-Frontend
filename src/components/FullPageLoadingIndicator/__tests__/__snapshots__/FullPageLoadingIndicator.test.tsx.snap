@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FullPageLoadingIndicator should render FullPageLoadingIndicator snapshot correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="full-page-loading"
+      >
+        <div
+          class="full-page-loading-spinner"
+          style="height: 200px; width: 200px;"
+        >
+          <span
+            style="display: inherit; position: relative; width: 77.14285714285714px; height: 77.14285714285714px; animation: react-spinners-MoonLoader-moon 0.6s 0s infinite linear; animation-fill-mode: forwards;"
+          >
+            <span
+              style="width: 8.571428571428571px; height: 8.571428571428571px; border-radius: 100%; background-color: rgb(32, 155, 182); opacity: 0.8; position: absolute; top: 25.714285714285715px; animation: react-spinners-MoonLoader-moon 0.6s 0s infinite linear; animation-fill-mode: forwards;"
+            />
+            <span
+              style="width: 60px; height: 60px; border-radius: 100%; border: 8.571428571428571px solid #209bb6; opacity: 0.1; box-sizing: content-box; position: absolute;"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="full-page-loading"
+    >
+      <div
+        class="full-page-loading-spinner"
+        style="height: 200px; width: 200px;"
+      >
+        <span
+          style="display: inherit; position: relative; width: 77.14285714285714px; height: 77.14285714285714px; animation: react-spinners-MoonLoader-moon 0.6s 0s infinite linear; animation-fill-mode: forwards;"
+        >
+          <span
+            style="width: 8.571428571428571px; height: 8.571428571428571px; border-radius: 100%; background-color: rgb(32, 155, 182); opacity: 0.8; position: absolute; top: 25.714285714285715px; animation: react-spinners-MoonLoader-moon 0.6s 0s infinite linear; animation-fill-mode: forwards;"
+          />
+          <span
+            style="width: 60px; height: 60px; border-radius: 100%; border: 8.571428571428571px solid #209bb6; opacity: 0.1; box-sizing: content-box; position: absolute;"
+          />
+        </span>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

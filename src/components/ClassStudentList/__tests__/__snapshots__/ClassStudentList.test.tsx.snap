@@ -12,13 +12,26 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           class="content"
         >
           <div
-            class="title"
+            class="title-line-item-table-title"
           >
-            female flume Class
+            <div
+              class="title-line-item-title-table-title"
+            >
+              female flume Class
+            </div>
           </div>
           <div
             class="accordion"
           >
+            <div
+              class="title-line-item-table-header"
+            >
+              <div
+                class="title-line-item-title-table-header"
+              >
+                Students
+              </div>
+            </div>
             <div
               class="line-item-container"
             >
@@ -79,6 +92,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
+            <div
+              class="line-item-divider"
+              data-testid="line-item-divider"
+            />
             <div
               class="line-item-container"
             >
@@ -163,22 +180,26 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
-          </div>
-          <div
-            class="buttons-container"
-          >
             <div
-              class="buttons"
+              class="line-item-divider"
+              data-testid="line-item-divider"
+            />
+            <div
+              class="buttons-container"
             >
-              <button
-                class="add-student-button"
+              <div
+                class="buttons"
               >
-                <div
-                  class="add-student-button-label"
+                <button
+                  class="action-button"
                 >
-                  Add student
-                </div>
-              </button>
+                  <div
+                    class="action-button-label"
+                  >
+                    Add student
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -193,13 +214,26 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
         class="content"
       >
         <div
-          class="title"
+          class="title-line-item-table-title"
         >
-          female flume Class
+          <div
+            class="title-line-item-title-table-title"
+          >
+            female flume Class
+          </div>
         </div>
         <div
           class="accordion"
         >
+          <div
+            class="title-line-item-table-header"
+          >
+            <div
+              class="title-line-item-title-table-header"
+            >
+              Students
+            </div>
+          </div>
           <div
             class="line-item-container"
           >
@@ -260,6 +294,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </button>
             </div>
           </div>
+          <div
+            class="line-item-divider"
+            data-testid="line-item-divider"
+          />
           <div
             class="line-item-container"
           >
@@ -344,22 +382,26 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </button>
             </div>
           </div>
-        </div>
-        <div
-          class="buttons-container"
-        >
           <div
-            class="buttons"
+            class="line-item-divider"
+            data-testid="line-item-divider"
+          />
+          <div
+            class="buttons-container"
           >
-            <button
-              class="add-student-button"
+            <div
+              class="buttons"
             >
-              <div
-                class="add-student-button-label"
+              <button
+                class="action-button"
               >
-                Add student
-              </div>
-            </button>
+                <div
+                  class="action-button-label"
+                >
+                  Add student
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -431,13 +473,26 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           class="content"
         >
           <div
-            class="title"
+            class="title-line-item-table-title"
           >
-            female flume Class
+            <div
+              class="title-line-item-title-table-title"
+            >
+              female flume Class
+            </div>
           </div>
           <div
             class="accordion"
           >
+            <div
+              class="title-line-item-table-header"
+            >
+              <div
+                class="title-line-item-title-table-header"
+              >
+                Students
+              </div>
+            </div>
             <div
               class="line-item-container"
             >
@@ -498,6 +553,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
+            <div
+              class="line-item-divider"
+              data-testid="line-item-divider"
+            />
             <div
               class="line-item-container"
             >
@@ -583,6 +642,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </div>
             </div>
             <div
+              class="line-item-divider"
+              data-testid="line-item-divider"
+            />
+            <div
               class="line-item-container"
             >
               <div
@@ -642,6 +705,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
+            <div
+              class="line-item-divider"
+              data-testid="line-item-divider"
+            />
             <div
               class="line-item-container"
             >
@@ -727,6 +794,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </div>
             </div>
             <div
+              class="line-item-divider"
+              data-testid="line-item-divider"
+            />
+            <div
               class="line-item-container"
             >
               <div
@@ -786,31 +857,35 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </button>
               </div>
             </div>
-          </div>
-          <div
-            class="buttons-container"
-          >
             <div
-              class="buttons"
+              class="line-item-divider"
+              data-testid="line-item-divider"
+            />
+            <div
+              class="buttons-container"
             >
-              <button
-                class="add-student-button"
+              <div
+                class="buttons"
               >
-                <div
-                  class="add-student-button-label"
+                <button
+                  class="action-button"
                 >
-                  Add student
-                </div>
-              </button>
-              <button
-                class="show-button"
-              >
-                <div
-                  class="show-button-label"
+                  <div
+                    class="action-button-label"
+                  >
+                    Add student
+                  </div>
+                </button>
+                <button
+                  class="show-button"
                 >
-                  Show More
-                </div>
-              </button>
+                  <div
+                    class="show-button-label"
+                  >
+                    Show More +
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -825,13 +900,26 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
         class="content"
       >
         <div
-          class="title"
+          class="title-line-item-table-title"
         >
-          female flume Class
+          <div
+            class="title-line-item-title-table-title"
+          >
+            female flume Class
+          </div>
         </div>
         <div
           class="accordion"
         >
+          <div
+            class="title-line-item-table-header"
+          >
+            <div
+              class="title-line-item-title-table-header"
+            >
+              Students
+            </div>
+          </div>
           <div
             class="line-item-container"
           >
@@ -892,6 +980,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </button>
             </div>
           </div>
+          <div
+            class="line-item-divider"
+            data-testid="line-item-divider"
+          />
           <div
             class="line-item-container"
           >
@@ -977,6 +1069,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
           </div>
           <div
+            class="line-item-divider"
+            data-testid="line-item-divider"
+          />
+          <div
             class="line-item-container"
           >
             <div
@@ -1036,6 +1132,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </button>
             </div>
           </div>
+          <div
+            class="line-item-divider"
+            data-testid="line-item-divider"
+          />
           <div
             class="line-item-container"
           >
@@ -1121,6 +1221,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
           </div>
           <div
+            class="line-item-divider"
+            data-testid="line-item-divider"
+          />
+          <div
             class="line-item-container"
           >
             <div
@@ -1180,31 +1284,35 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </button>
             </div>
           </div>
-        </div>
-        <div
-          class="buttons-container"
-        >
           <div
-            class="buttons"
+            class="line-item-divider"
+            data-testid="line-item-divider"
+          />
+          <div
+            class="buttons-container"
           >
-            <button
-              class="add-student-button"
+            <div
+              class="buttons"
             >
-              <div
-                class="add-student-button-label"
+              <button
+                class="action-button"
               >
-                Add student
-              </div>
-            </button>
-            <button
-              class="show-button"
-            >
-              <div
-                class="show-button-label"
+                <div
+                  class="action-button-label"
+                >
+                  Add student
+                </div>
+              </button>
+              <button
+                class="show-button"
               >
-                Show More
-              </div>
-            </button>
+                <div
+                  class="show-button-label"
+                >
+                  Show More +
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import type { Class, Student } from "../interfaces/User.interface";
 interface ClassesContextType {
   currentClasses: Class[] | null;
   setCurrentClasses: (classes: Class[]) => void;
+  addClass: (classItem: Class) => void;
   addStudentToClass: (student: Student, classId: string) => void;
   removeStudentFromClass: (studentId: string, classId: string) => void;
 }
@@ -16,6 +17,7 @@ interface ClassesContextType {
 const ClassesContext = createContext<ClassesContextType>({
   currentClasses: null,
   setCurrentClasses: (_: Class[]) => {},
+  addClass: (_: Class) => {},
   addStudentToClass: (_: Student, __: string) => {},
   removeStudentFromClass: (_: string, __: string) => {},
 });
@@ -24,6 +26,11 @@ const ClassesContext = createContext<ClassesContextType>({
 export const ClassesProvider = ({ children }: PropsWithChildren) => {
   const [currentClasses, setCurrentClasses] = useState<Class[]>([] as Class[]);
 
+  const addClass = (classItem: Class) => {
+    setCurrentClasses([...currentClasses, classItem]);
+  };
+
+  // function to add a student to a class
   const addStudentToClass = (student: Student, classId: string) => {
     const newClasses = currentClasses?.map((classItem: Class) => {
       if (classItem._id === classId) {
@@ -35,10 +42,10 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
         return classItem;
       }
     });
-
     setCurrentClasses(newClasses);
   };
 
+  // function to remove a student from a class
   const removeStudentFromClass = (studentId: string, classId: string) => {
     const newClasses = currentClasses?.map((classItem: Class) => {
       if (classItem._id === classId) {
@@ -52,13 +59,13 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
         return classItem;
       }
     });
-
     setCurrentClasses(newClasses);
   };
 
   const value = {
     currentClasses,
     setCurrentClasses,
+    addClass,
     addStudentToClass,
     removeStudentFromClass,
   };
