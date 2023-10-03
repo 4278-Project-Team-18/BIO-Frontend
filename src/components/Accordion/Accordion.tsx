@@ -61,14 +61,19 @@ const Accordion = ({
           />
         )}
         {!children || children?.length == 0 ? (
-          <NoDataLineItem title={noDataTitle} />
+          <NoDataLineItem
+            title={noDataTitle}
+            hideBottomLine={hideActionButton && !showMoreButtonVisible}
+          />
         ) : (
           children
             ?.slice(0, accordionOpen ? children.length : 5)
             .map((child, index) => (
               <Fragment key={index}>
                 {child}
-                <LineItemDivider />
+                {!hideActionButton && index < children.length - 1 && (
+                  <LineItemDivider />
+                )}
               </Fragment>
             ))
         )}

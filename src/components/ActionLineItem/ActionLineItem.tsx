@@ -8,23 +8,29 @@ const ActionLineItem = ({
   isAccordionExpanded: isExpanded,
   hideShowMoreButton = false,
   hideActionButton = false,
-}: ActionLineItemProps) => (
-  <div className={styles["buttons-container"]}>
-    <div className={styles["buttons"]}>
-      {!hideActionButton && (
-        <button className={styles["action-button"]} onClick={actionOnClick}>
-          <div className={styles["action-button-label"]}>{actionTitle}</div>
-        </button>
-      )}
-      {!hideShowMoreButton && (
-        <button className={styles["show-button"]} onClick={showMoreOnClick}>
-          <div className={styles["show-button-label"]}>
-            {isExpanded ? "Show Less -" : "Show More +"}
-          </div>
-        </button>
-      )}
+}: ActionLineItemProps) => {
+  if (hideShowMoreButton && hideActionButton) {
+    return null;
+  }
+
+  return (
+    <div className={styles["buttons-container"]}>
+      <div className={styles["buttons"]}>
+        {!hideActionButton && (
+          <button className={styles["action-button"]} onClick={actionOnClick}>
+            <div className={styles["action-button-label"]}>{actionTitle}</div>
+          </button>
+        )}
+        {!hideShowMoreButton && (
+          <button className={styles["show-button"]} onClick={showMoreOnClick}>
+            <div className={styles["show-button-label"]}>
+              {isExpanded ? "Show Less -" : "Show More +"}
+            </div>
+          </button>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ActionLineItem;
