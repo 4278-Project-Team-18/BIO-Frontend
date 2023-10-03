@@ -181,6 +181,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </div>
             </div>
             <div
+              class="line-item-divider"
+              data-testid="line-item-divider"
+            />
+            <div
               class="buttons-container"
             >
               <div
@@ -378,6 +382,10 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               </button>
             </div>
           </div>
+          <div
+            class="line-item-divider"
+            data-testid="line-item-divider"
+          />
           <div
             class="buttons-container"
           >
