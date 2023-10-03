@@ -71,9 +71,11 @@ const Accordion = ({
             .map((child, index) => (
               <Fragment key={index}>
                 {child}
-                {!hideActionButton && index < children.length - 1 && (
+                {!hideActionButton ? (
                   <LineItemDivider />
-                )}
+                ) : index < children.length - 1 ? (
+                  <LineItemDivider />
+                ) : null}
               </Fragment>
             ))
         )}
