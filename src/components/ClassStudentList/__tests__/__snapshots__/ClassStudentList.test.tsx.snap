@@ -94,6 +94,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
             <div
               class="line-item-divider"
+              data-testid="line-item-divider"
             />
             <div
               class="line-item-container"
@@ -181,6 +182,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
             <div
               class="line-item-divider"
+              data-testid="line-item-divider"
             />
             <div
               class="buttons-container"
@@ -294,6 +296,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           </div>
           <div
             class="line-item-divider"
+            data-testid="line-item-divider"
           />
           <div
             class="line-item-container"
@@ -381,6 +384,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           </div>
           <div
             class="line-item-divider"
+            data-testid="line-item-divider"
           />
           <div
             class="buttons-container"
@@ -551,6 +555,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
             <div
               class="line-item-divider"
+              data-testid="line-item-divider"
             />
             <div
               class="line-item-container"
@@ -638,6 +643,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
             <div
               class="line-item-divider"
+              data-testid="line-item-divider"
             />
             <div
               class="line-item-container"
@@ -701,6 +707,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
             <div
               class="line-item-divider"
+              data-testid="line-item-divider"
             />
             <div
               class="line-item-container"
@@ -788,6 +795,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
             <div
               class="line-item-divider"
+              data-testid="line-item-divider"
             />
             <div
               class="line-item-container"
@@ -851,6 +859,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             </div>
             <div
               class="line-item-divider"
+              data-testid="line-item-divider"
             />
             <div
               class="buttons-container"
@@ -973,6 +982,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           </div>
           <div
             class="line-item-divider"
+            data-testid="line-item-divider"
           />
           <div
             class="line-item-container"
@@ -1060,6 +1070,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           </div>
           <div
             class="line-item-divider"
+            data-testid="line-item-divider"
           />
           <div
             class="line-item-container"
@@ -1123,6 +1134,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           </div>
           <div
             class="line-item-divider"
+            data-testid="line-item-divider"
           />
           <div
             class="line-item-container"
@@ -1210,6 +1222,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           </div>
           <div
             class="line-item-divider"
+            data-testid="line-item-divider"
           />
           <div
             class="line-item-container"
@@ -1273,6 +1286,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           </div>
           <div
             class="line-item-divider"
+            data-testid="line-item-divider"
           />
           <div
             class="buttons-container"

@@ -1,7 +1,13 @@
 // Jest configuration file
 export default {
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ["src/**/*.{ts,tsx}"],
+  // just the components folder
+  collectCoverageFrom: [
+    "src/components/**/*.{js,jsx,ts,tsx}",
+    "src/pages/**/*.{js,jsx,ts,tsx}",
+    "src/utils/**/*.{js,jsx,ts,tsx}",
+    "src/modals/**/*.{js,jsx,ts,tsx}",
+  ],
 
   // Automatically clear mock calls and instances between every test
   clearMocks: true,

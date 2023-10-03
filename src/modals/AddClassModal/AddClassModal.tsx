@@ -80,6 +80,8 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
     );
   }
 
+  console.log(teacherError, teacherData);
+
   // if the request failed, show an error message
   if (teacherError || !teacherData) {
     return (

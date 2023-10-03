@@ -1,21 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LineItemDivider Tests LineItemDivider snapshot should render correctly 1`] = `
+exports[`TitleLineItem Tests TitleLineItem snapshot should render correctly 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        class="line-item-divider"
-        data-testid="line-item-divider"
-      />
+        class="title-line-item-table-header"
+      >
+        <div
+          class="title-line-item-title-table-header"
+        >
+          Test Title
+        </div>
+      </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="line-item-divider"
-      data-testid="line-item-divider"
-    />
+      class="title-line-item-table-header"
+    >
+      <div
+        class="title-line-item-title-table-header"
+      >
+        Test Title
+      </div>
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
