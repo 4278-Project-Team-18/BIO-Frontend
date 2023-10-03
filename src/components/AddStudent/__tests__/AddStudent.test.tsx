@@ -18,10 +18,6 @@ describe("AddStudent Tests", () => {
       component.getByLabelText("close-button").click();
     });
     expect(mockProps.closeModal).toHaveBeenCalled();
-
-    //   fireEvent.click(component.getByText("Add Student"));
-
-    // expect(mockProps.closeModal).toHaveBeenCalled();
   });
 
   test("AddStudent snapshot should render correctly", () => {

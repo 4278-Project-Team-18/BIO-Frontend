@@ -101,14 +101,14 @@ describe("ClassStudentList Tests", () => {
     ).toBeTruthy();
 
     // Show more button should be rendered
-    expect(component.getByText("Show More")).toBeTruthy();
+    expect(component.getByText("Show More +")).toBeTruthy();
 
     // Check if the add button is rendered
     expect(component.getByText("Add student")).toBeTruthy();
 
     // Click the show more button
     act(() => {
-      component.getByText("Show More").click();
+      component.getByText("Show More +").click();
     });
 
     // Check if the next student (6) are rendered

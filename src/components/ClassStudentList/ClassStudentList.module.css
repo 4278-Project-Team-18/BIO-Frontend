@@ -7,7 +7,7 @@
 
 @media (max-width: 599px) {
   .class-list-container {
-    border-radius: 40px;
+    border-radius: 20px;
     width: 100%;
   }
 }
