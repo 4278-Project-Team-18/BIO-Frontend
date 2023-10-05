@@ -35,54 +35,62 @@ exports[`VolunteerApprovalLineItem Tests VolunteerApprovalLineItem snapshot shou
         <div
           class="line-item-container-right"
         >
-          <button
-            class="line-item-approve-button"
+          <div
+            class="buttons-container"
           >
-            <div
-              class="line-item-button-title"
+            <button
+              class="loading-button"
+              style="margin-left: 1rem; background-color: rgb(90, 208, 109);"
+              type="button"
             >
-              Approve
-            </div>
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-check line-item-button-icon"
-              data-icon="check"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+              <span
+                class="loading-button-label"
+              >
+                Approve
+              </span>
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-check loading-button-spinner"
+                data-icon="check"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <button
+              class="loading-button"
+              style="margin-left: 1rem; background-color: rgb(239, 68, 68);"
+              type="button"
             >
-              <path
-                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
-          <button
-            class="line-item-deny-button"
-          >
-            <div
-              class="line-item-button-title"
-            >
-              Deny
-            </div>
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-xmark line-item-button-icon"
-              data-icon="xmark"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 384 512"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+              <span
+                class="loading-button-label"
+              >
+                Deny
+              </span>
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-xmark loading-button-spinner"
+                data-icon="xmark"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -118,54 +126,62 @@ exports[`VolunteerApprovalLineItem Tests VolunteerApprovalLineItem snapshot shou
       <div
         class="line-item-container-right"
       >
-        <button
-          class="line-item-approve-button"
+        <div
+          class="buttons-container"
         >
-          <div
-            class="line-item-button-title"
+          <button
+            class="loading-button"
+            style="margin-left: 1rem; background-color: rgb(90, 208, 109);"
+            type="button"
           >
-            Approve
-          </div>
-          <svg
-            aria-hidden="true"
-            class="svg-inline--fa fa-check line-item-button-icon"
-            data-icon="check"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
+            <span
+              class="loading-button-label"
+            >
+              Approve
+            </span>
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-check loading-button-spinner"
+              data-icon="check"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <button
+            class="loading-button"
+            style="margin-left: 1rem; background-color: rgb(239, 68, 68);"
+            type="button"
           >
-            <path
-              d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-        <button
-          class="line-item-deny-button"
-        >
-          <div
-            class="line-item-button-title"
-          >
-            Deny
-          </div>
-          <svg
-            aria-hidden="true"
-            class="svg-inline--fa fa-xmark line-item-button-icon"
-            data-icon="xmark"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            viewBox="0 0 384 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
+            <span
+              class="loading-button-label"
+            >
+              Deny
+            </span>
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-xmark loading-button-spinner"
+              data-icon="xmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>,
