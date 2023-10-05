@@ -8,14 +8,14 @@ import type { Volunteer } from "../interfaces/User.interface";
 interface VolunteersContextType {
   currentVolunteers: Volunteer[] | null;
   setCurrentVolunteers: (classes: Volunteer[]) => void;
-  updateVolunteerStatus: (volunteer: Volunteer) => void;
+  updateVolunteerApprovalStatus: (volunteer: Volunteer) => void;
 }
 
 // Create the context for the user
 const VolunteersContext = createContext<VolunteersContextType>({
   currentVolunteers: null,
   setCurrentVolunteers: (_: Volunteer[]) => {},
-  updateVolunteerStatus: (_: Volunteer) => {},
+  updateVolunteerApprovalStatus: (_: Volunteer) => {},
 });
 
 // Create the wrapper for the user context
@@ -24,7 +24,7 @@ export const VolunteersProvider = ({ children }: PropsWithChildren) => {
     [] as Volunteer[],
   );
 
-  const updateVolunteerStatus = (volunteer: Volunteer) => {
+  const updateVolunteerApprovalStatus = (volunteer: Volunteer) => {
     setCurrentVolunteers((prevVolunteers) => {
       const updatedVolunteers = prevVolunteers.map((prevVolunteer) =>
         prevVolunteer._id === volunteer._id ? volunteer : prevVolunteer,
@@ -36,7 +36,7 @@ export const VolunteersProvider = ({ children }: PropsWithChildren) => {
   const value = {
     currentVolunteers,
     setCurrentVolunteers,
-    updateVolunteerStatus,
+    updateVolunteerApprovalStatus,
   };
 
   return (

@@ -5,7 +5,8 @@ import {
   ApprovalStatus,
   type Volunteer,
 } from "../../interfaces/User.interface";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LoadingButton from "../LoadingButton/LoadingButton";
+import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
 import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import type { VolunteerUpdateApprovalStatusProps } from "./VolunteerUpdateApprovalStatus.definitions";
@@ -13,83 +14,66 @@ import type { VolunteerUpdateApprovalStatusProps } from "./VolunteerUpdateApprov
 const VolunteerUpdateApprovalStatus = ({
   volunteer,
 }: VolunteerUpdateApprovalStatusProps) => {
-  // request to update the volunteer status
+  // request to update the volunteer's approval status
   const {
-    data: approveVolunteerResponseData,
-    loading: approveVolunteerLoading,
-    error: approveVolunteerError,
-    makeRequest: approveVolunteer,
+    data: updateApprovalStatusResponseData,
+    loading: updateApprovalStatusLoading,
+    error: updateApprovalStatusError,
+    makeRequest: onUpdateVolunteerApprovalStatus,
   } = useCustomFetch<Volunteer>(
-    `volunteer/${volunteer._id}/approve`,
-    RequestMethods.PATCH,
-  );
-
-  // request to update the volunteer status
-  const {
-    data: denyVolunteerResponseData,
-    loading: denyVolunteerLoading,
-    error: denyVolunteerError,
-    makeRequest: denyVolunteer,
-  } = useCustomFetch<Volunteer>(
-    `volunteer/${volunteer._id}/deny`,
+    `volunteer/${volunteer._id}/changeVolunteerApprovalStatus`,
     RequestMethods.PATCH,
   );
 
   // get the updateVolunteerStatus function from the context
-  const { updateVolunteerStatus } = useVolunteersContext();
+  const { updateVolunteerApprovalStatus } = useVolunteersContext();
 
-  // send the request to approve the volunteer status
-  const handleApproveVolunteer = async (volunteer: Volunteer) => {
-    volunteer.approvalStatus = ApprovalStatus.APPROVED;
-    await approveVolunteer(volunteer);
+  // send the request to update the volunteer's approval status
+  const handleUpdateApprovalStatus = async (approvalStatus: ApprovalStatus) => {
+    await onUpdateVolunteerApprovalStatus({
+      newApprovalStatus: approvalStatus,
+    });
   };
 
-  // send the request to deny the volunteer status
-  const handleDenyVolunteer = async (volunteer: Volunteer) => {
-    volunteer.approvalStatus = ApprovalStatus.REJECTED;
-    await denyVolunteer(volunteer);
-  };
-
-  // update the volunteer status if the request was successful
+  // update the volunteer's approval status if the request was successful
   useEffect(() => {
-    if (approveVolunteerResponseData || denyVolunteerResponseData) {
-      const volunteerResponseData = approveVolunteerResponseData
-        ? approveVolunteerResponseData
-        : denyVolunteerResponseData;
-      if (volunteerResponseData) {
-        updateVolunteerStatus(volunteerResponseData as Volunteer);
-      }
+    if (updateApprovalStatusResponseData) {
+      updateVolunteerApprovalStatus(updateApprovalStatusResponseData);
     }
-  }, [
-    approveVolunteerResponseData,
-    denyVolunteerResponseData,
-    updateVolunteerStatus,
-  ]);
+  }, [updateApprovalStatusResponseData]);
 
-  if (approveVolunteerLoading || denyVolunteerLoading) {
+  if (updateApprovalStatusLoading) {
     return <div>Loading...</div>;
   }
 
-  if (approveVolunteerError || denyVolunteerError) {
+  if (updateApprovalStatusError) {
     return <div>Something went wrong...</div>;
   }
 
   return (
     <div className={styles["buttons-container"]}>
-      <button
-        className={styles["approve-button"]}
-        onClick={() => handleApproveVolunteer(volunteer)}
-      >
-        <div className={styles["button-title"]}>Approve</div>
-        <FontAwesomeIcon icon={faCheck} className={styles["button-icon"]} />
-      </button>
-      <button
-        className={styles["deny-button"]}
-        onClick={() => handleDenyVolunteer(volunteer)}
-      >
-        <div className={styles["button-title"]}>Reject</div>
-        <FontAwesomeIcon icon={faClose} className={styles["button-icon"]} />
-      </button>
+      <LoadingButton
+        onClick={() => {
+          handleUpdateApprovalStatus(ApprovalStatus.APPROVED);
+        }}
+        text="Approve"
+        isLoading={updateApprovalStatusLoading}
+        icon={faCheck}
+        isLoadingText="Approving..."
+        styles={{ marginLeft: "1rem" }}
+        variant={LoadingButtonVariant.GREEN}
+      />
+      <LoadingButton
+        onClick={() => {
+          handleUpdateApprovalStatus(ApprovalStatus.REJECTED);
+        }}
+        text="Deny"
+        isLoading={updateApprovalStatusLoading}
+        icon={faClose}
+        isLoadingText="Denying..."
+        styles={{ marginLeft: "1rem" }}
+        variant={LoadingButtonVariant.RED}
+      />
     </div>
   );
 };

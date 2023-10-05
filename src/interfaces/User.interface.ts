@@ -47,12 +47,12 @@ export interface Admin extends User {
  * @param {string} authToken - The user's auth token
  * @param {string} refreshToken - The user's refresh token
  * @param {string[]} matchedStudents - The mongo id's of the students matched to the volunteer
- * @param {string} approvalStatus - The volunteer's approval status
+ * @param {ApprovalStatus} approvalStatus - The volunteer's approval status
  */
 export interface Volunteer extends User {
   role: Role.VOLUNTEER;
   matchedStudents?: string[];
-  approvalStatus: string;
+  approvalStatus: ApprovalStatus;
 }
 
 /**
