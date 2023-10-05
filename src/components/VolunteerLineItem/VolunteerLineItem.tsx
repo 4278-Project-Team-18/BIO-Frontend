@@ -1,4 +1,7 @@
 import styles from "./VolunteerLineItem.module.css";
+import LoadingButton from "../LoadingButton/LoadingButton";
+import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
+import { faHandshake } from "@fortawesome/free-regular-svg-icons";
 import type { VolunteerLineItemProps } from "./VolunteerLineItem.definitions";
 
 const VolunteerLineItem = ({ volunteer }: VolunteerLineItemProps) => (
@@ -16,11 +19,13 @@ const VolunteerLineItem = ({ volunteer }: VolunteerLineItemProps) => (
       </div>
     </div>
     <div className={styles["line-item-container-right"]}>
-      <button className={styles["line-item-match-button"]}>
-        <div className={styles["line-item-button-title"]}>
-          {volunteer.matchedStudents?.length ? "Unmatch" : "Match"}
-        </div>
-      </button>
+      <LoadingButton
+        onClick={() => {}}
+        isLoading={false}
+        text="Match"
+        icon={faHandshake}
+        variant={LoadingButtonVariant.BLUE}
+      />
     </div>
   </div>
 );
