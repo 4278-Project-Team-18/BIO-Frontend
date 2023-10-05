@@ -38,7 +38,10 @@ const VolunteerUpdateApprovalStatus = ({
   // update the volunteer's approval status if the request was successful
   useEffect(() => {
     if (updateApprovalStatusResponseData) {
-      updateVolunteerApprovalStatus(updateApprovalStatusResponseData);
+      updateVolunteerApprovalStatus(
+        updateApprovalStatusResponseData._id,
+        updateApprovalStatusResponseData.approvalStatus,
+      );
     }
   }, [updateApprovalStatusResponseData]);
 
