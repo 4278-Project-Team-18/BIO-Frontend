@@ -1,5 +1,5 @@
-import { NewStudentInputName } from "./AddStudent.definitions";
-import styles from "./AddStudent.module.css";
+import { NewEditStudentInputName } from "./AddEditStudent.definitions";
+import styles from "./AddEditStudent.module.css";
 import { newStudentSchema } from "../../resolvers/student.resolver";
 import FormInput from "../FormInput/FormInput";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
@@ -10,27 +10,32 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { faPlusCircle, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
+import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import type {
-  AddStudentProps,
-  NewStudentInput,
-} from "./AddStudent.definitions";
+  AddEditStudentProps,
+  NewEditStudentInput,
+} from "./AddEditStudent.definitions";
 import type { Resolver } from "react-hook-form";
 import type { Student } from "../../interfaces/User.interface";
 
-const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
+const AddEditStudent = ({
+  closeModal,
+  classId,
+  student,
+}: AddEditStudentProps) => {
   // form controller
   const {
     control,
     handleSubmit,
     formState: { errors },
     // setError,
-  } = useForm<NewStudentInput>({
+  } = useForm<NewEditStudentInput>({
     defaultValues: {
-      [NewStudentInputName.FIRST_NAME]: "",
-      [NewStudentInputName.LAST_INITIAL]: "",
-      [NewStudentInputName.READING_LEVEL]: "",
+      [NewEditStudentInputName.FIRST_NAME]: student?.firstName || "",
+      [NewEditStudentInputName.LAST_INITIAL]: student?.lastInitial || "",
+      [NewEditStudentInputName.READING_LEVEL]: student?.readingLevel || "",
     },
-    resolver: yupResolver(newStudentSchema) as Resolver<NewStudentInput>,
+    resolver: yupResolver(newStudentSchema) as Resolver<NewEditStudentInput>,
     mode: "onSubmit",
   });
 
@@ -45,12 +50,23 @@ const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
     RequestMethods.POST,
   );
 
+  const {
+    data: editStudentResponseData,
+    loading: editStudentLoading,
+    error: editStudentError,
+    makeRequest: editStudent,
+  } = useCustomFetch<Student>(`student/${student?._id}`, RequestMethods.PATCH);
+
   // get the addStudentToClass function from the context
-  const { addStudentToClass } = useClassesContext();
+  const { addStudentToClass, editStudentInClass } = useClassesContext();
 
   // send the request to add the student to the class
-  const onSubmitNewStudent = async (inputData: NewStudentInput) => {
+  const onSubmitNewStudent = async (inputData: NewEditStudentInput) => {
     await addStudent(inputData);
+  };
+
+  const onSubmitEditStudent = async (inputData: NewEditStudentInput) => {
+    await editStudent(inputData);
   };
 
   // add the student to the class if the request was successful
@@ -61,18 +77,26 @@ const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
     }
   }, [addStudentResponseData]);
 
-  if (addStudentLoading) {
-    return <div>Loading...</div>;
-  }
+  // edit the student in the class if the request was successful
+  useEffect(() => {
+    if (editStudentResponseData) {
+      editStudentInClass(editStudentResponseData, classId);
+      closeModal();
+    }
+  }, [editStudentResponseData]);
 
-  if (addStudentError) {
+  if (addStudentError || editStudentError) {
     return <div>Something went wrong...</div>;
   }
 
   return (
     <form
       className={styles["add-student-container"]}
-      onSubmit={handleSubmit(onSubmitNewStudent)}
+      onSubmit={
+        student
+          ? handleSubmit(onSubmitEditStudent)
+          : handleSubmit(onSubmitNewStudent)
+      }
     >
       <button
         className={styles["add-student-cancel-button"]}
@@ -86,40 +110,43 @@ const AddStudent = ({ closeModal, classId }: AddStudentProps) => {
         />
       </button>
       <FormInput
-        name={NewStudentInputName.FIRST_NAME}
+        name={NewEditStudentInputName.FIRST_NAME}
         type="text"
         label="First name"
         control={control}
         placeholder="First name"
-        error={errors[NewStudentInputName.FIRST_NAME]?.message}
+        error={errors[NewEditStudentInputName.FIRST_NAME]?.message}
+        defaultValue={student?.firstName}
       />
       <FormInput
-        name={NewStudentInputName.LAST_INITIAL}
+        name={NewEditStudentInputName.LAST_INITIAL}
         type="text"
         label="Last initial"
         control={control}
         placeholder="Last initial"
-        error={errors[NewStudentInputName.LAST_INITIAL]?.message}
+        error={errors[NewEditStudentInputName.LAST_INITIAL]?.message}
+        defaultValue={student?.lastInitial}
       />
       <FormInput
-        name={NewStudentInputName.READING_LEVEL}
+        name={NewEditStudentInputName.READING_LEVEL}
         type="text"
         label="Reading Level"
         control={control}
         placeholder="Reading Level"
-        error={errors[NewStudentInputName.READING_LEVEL]?.message}
+        error={errors[NewEditStudentInputName.READING_LEVEL]?.message}
+        defaultValue={student?.readingLevel}
       />
       <div className={styles["add-student-loading-button-container"]}>
         <LoadingButton
-          text="Add Student"
+          text={student ? "Edit Student" : "Add Student"}
           type="submit"
-          icon={faPlusCircle}
-          isLoading={addStudentLoading}
-          isLoadingText="Adding Student..."
+          icon={student ? faCheckCircle : faPlusCircle}
+          isLoading={addStudentLoading || editStudentLoading}
+          isLoadingText={student ? "Editing student..." : "Adding student..."}
         />
       </div>
     </form>
   );
 };
 
-export default AddStudent;
+export default AddEditStudent;

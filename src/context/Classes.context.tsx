@@ -10,6 +10,7 @@ interface ClassesContextType {
   setCurrentClasses: (classes: Class[]) => void;
   addClass: (classItem: Class) => void;
   addStudentToClass: (student: Student, classId: string) => void;
+  editStudentInClass: (student: Student, classId: string) => void;
   removeStudentFromClass: (studentId: string, classId: string) => void;
 }
 
@@ -19,6 +20,7 @@ const ClassesContext = createContext<ClassesContextType>({
   setCurrentClasses: (_: Class[]) => {},
   addClass: (_: Class) => {},
   addStudentToClass: (_: Student, __: string) => {},
+  editStudentInClass: (_: Student, __: string) => {},
   removeStudentFromClass: (_: string, __: string) => {},
 });
 
@@ -62,11 +64,32 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     setCurrentClasses(newClasses);
   };
 
+  const editStudentInClass = (student: Student, classId: string) => {
+    const newClasses = currentClasses?.map((classItem: Class) => {
+      if (classItem._id === classId) {
+        return {
+          ...classItem,
+          students: classItem.students?.map((studentItem: Student) => {
+            if (studentItem._id === student._id) {
+              return student;
+            } else {
+              return studentItem;
+            }
+          }),
+        };
+      } else {
+        return classItem;
+      }
+    });
+    setCurrentClasses(newClasses);
+  };
+
   const value = {
     currentClasses,
     setCurrentClasses,
     addClass,
     addStudentToClass,
+    editStudentInClass,
     removeStudentFromClass,
   };
 
