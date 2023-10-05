@@ -21,7 +21,7 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
 
   const {
     data: deleteStudentFromClassData,
-    error: deleteStudentFromClassError,
+    // error: deleteStudentFromClassError,
     loading: deleteStudentFromClassLoading,
     makeRequest: deleteStudentFromClass,
   } = useCustomFetch<RemoveStudentResponse>(
