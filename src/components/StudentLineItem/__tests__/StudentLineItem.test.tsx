@@ -7,7 +7,13 @@ describe("StudentLineItem Tests", () => {
   test("StudentLineItem should render correctly", () => {
     const testStudent = createTestStudent();
 
-    const component = render(<StudentLineItem student={testStudent} />);
+    const mockProps = {
+      student: testStudent,
+      openEditModal: jest.fn(),
+      removeStudentFromClass: jest.fn(),
+    };
+
+    const component = render(<StudentLineItem {...mockProps} />);
 
     // Check if the component is rendered
     expect(component).toBeTruthy();
@@ -32,7 +38,13 @@ describe("StudentLineItem Tests", () => {
     faker.seed(1);
     const testStudent = createTestStudent();
 
-    const component = render(<StudentLineItem student={testStudent} />);
+    const mockProps = {
+      student: testStudent,
+      openEditModal: jest.fn(),
+      removeStudentFromClass: jest.fn(),
+    };
+
+    const component = render(<StudentLineItem {...mockProps} />);
 
     expect(component).toMatchSnapshot();
   });
