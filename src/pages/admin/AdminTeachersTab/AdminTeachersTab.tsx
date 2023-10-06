@@ -4,6 +4,9 @@ import { useCustomFetch } from "../../../api/request.util";
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import { useTeachersContext } from "../../../context/Teachers.context";
+import TeacherApprovalLineItem from "../../../components/TeacherApprovalLineItem/TeacherApprovalLineItem";
+import Accordion from "../../../components/Accordion/Accordion";
+import TeacherLineItem from "../../../components/TeacherLineItem/TeacherLineItem";
 import { useEffect } from "react";
 import type { Teacher } from "../../../interfaces/User.interface";
 
@@ -36,6 +39,10 @@ const AdminTeachersTab = () => {
     );
   }
 
+  const teachers = currentTeachers?.filter(
+    (teacher) => teacher.approvalStatus === ApprovalStatus.APPROVED,
+  );
+
   const applicants = currentTeachers?.filter(
     (teacher) => teacher.approvalStatus === ApprovalStatus.PENDING,
   );
@@ -44,6 +51,16 @@ const AdminTeachersTab = () => {
   return (
     <div>
       <h1>Admin Teachers</h1>
+      <Accordion title="Teachers">
+        {teachers?.map((teacher, index) => (
+          <TeacherLineItem key={index} teacher={teacher} />
+        ))}
+      </Accordion>
+      <Accordion title="Teacher Applicants">
+        {applicants?.map((teacher, index) => (
+          <TeacherApprovalLineItem key={index} teacher={teacher} />
+        ))}
+      </Accordion>
     </div>
   );
 };
