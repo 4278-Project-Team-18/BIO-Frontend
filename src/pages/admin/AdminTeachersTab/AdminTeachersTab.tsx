@@ -1,3 +1,4 @@
+import styles from "./AdminTeachersTab.module.css";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { AdminTabs, ApprovalStatus } from "../../../interfaces/User.interface";
 import { useCustomFetch } from "../../../api/request.util";
@@ -50,13 +51,18 @@ const AdminTeachersTab = () => {
   console.log(applicants);
   return (
     <div>
-      <h1>Admin Teachers</h1>
-      <Accordion title="Teachers">
+      <div className={styles["admin-teachers-header"]}>
+        <div className={styles["admin-teachers-title"]}>{"All Teachers"}</div>
+      </div>
+      <Accordion title="Teachers" noDataTitle="No current teachers!">
         {teachers?.map((teacher, index) => (
           <TeacherLineItem key={index} teacher={teacher} />
         ))}
       </Accordion>
-      <Accordion title="Teacher Applicants">
+      <Accordion
+        title="Teacher Applicants"
+        noDataTitle="No teacher applicants!"
+      >
         {applicants?.map((teacher, index) => (
           <TeacherApprovalLineItem key={index} teacher={teacher} />
         ))}
