@@ -8,6 +8,8 @@ import { ClassesProvider } from "./context/Classes.context";
 import { VolunteersProvider } from "./context/Volunteers.context";
 import AdminInvitesTab from "./pages/admin/AdminInvitesTab/AdminInvitesTab";
 import { InvitesProvider } from "./context/Invites.context";
+import AdminTeachersTab from "./pages/admin/AdminTeachersTab/AdminTeachersTab";
+import { TeachersProvider } from "./context/Teachers.context";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -65,6 +67,14 @@ const router = createBrowserRouter([
           <InvitesProvider>
             <AdminInvitesTab />
           </InvitesProvider>
+        ),
+      },
+      {
+        path: "/admin/teachers",
+        element: (
+          <TeachersProvider>
+            <AdminTeachersTab />
+          </TeachersProvider>
         ),
       },
     ],

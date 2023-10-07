@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
   faSchool,
-  faUserPlus,
   faUsers,
+  faUserPlus,
+  faChalkboardTeacher,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import type { TabOptions } from "../interfaces/User.interface";
@@ -18,10 +19,22 @@ const SideBar = () => {
   const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
 
   // Titles for the sidebar, conditionally set by the user's role
-  const sideBarTitles = ["Dashboard", "Classes", "Volunteers", "Invites"];
+  const sideBarTitles = [
+    "Dashboard",
+    "Classes",
+    "Volunteers",
+    "Teachers",
+    "Invites",
+  ];
 
   // Icon components for the sidebar
-  const sideBarIcons = [faHouse, faSchool, faUsers, faUserPlus];
+  const sideBarIcons = [
+    faHouse,
+    faSchool,
+    faUsers,
+    faChalkboardTeacher,
+    faUserPlus,
+  ];
 
   // Sets the active route when a route is clicked
   const handleRouteChange = (route: TabOptions) => {
