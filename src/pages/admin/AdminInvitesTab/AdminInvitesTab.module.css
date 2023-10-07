@@ -1,0 +1,14 @@
+.admin-invites-title {
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #2c2c2c;
+  padding: 10px;
+  letter-spacing: -1px;
+}
+
+.admin-invites-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}

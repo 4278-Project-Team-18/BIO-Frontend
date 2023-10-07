@@ -1,5 +1,6 @@
 /* eslint-disable autofix/no-unused-vars */
 export interface Invite {
+  _id: string;
   email: string;
   senderId: string;
   role: Role;
