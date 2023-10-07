@@ -2,18 +2,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useContext, useState } from "react";
 import type { PropsWithChildren } from "react";
-import type { Volunteer } from "../interfaces/User.interface";
+import type { ApprovalStatus, Volunteer } from "../interfaces/User.interface";
 
 // User context types
 interface VolunteersContextType {
   currentVolunteers: Volunteer[] | null;
   setCurrentVolunteers: (classes: Volunteer[]) => void;
+  updateVolunteerApprovalStatus: (
+    volunteerId: string,
+    approvalStatus: ApprovalStatus,
+  ) => void;
 }
 
 // Create the context for the user
 const VolunteersContext = createContext<VolunteersContextType>({
   currentVolunteers: null,
   setCurrentVolunteers: (_: Volunteer[]) => {},
+  updateVolunteerApprovalStatus: (_: string, __: ApprovalStatus) => {},
 });
 
 // Create the wrapper for the user context
@@ -22,9 +27,27 @@ export const VolunteersProvider = ({ children }: PropsWithChildren) => {
     [] as Volunteer[],
   );
 
+  const updateVolunteerApprovalStatus = (
+    volunteerId: string,
+    approvalStatus: ApprovalStatus,
+  ) => {
+    setCurrentVolunteers((prevVolunteers) => {
+      const updatedVolunteers = prevVolunteers.map((prevVolunteer) =>
+        prevVolunteer._id === volunteerId
+          ? {
+              ...prevVolunteer,
+              approvalStatus,
+            }
+          : prevVolunteer,
+      );
+      return updatedVolunteers;
+    });
+  };
+
   const value = {
     currentVolunteers,
     setCurrentVolunteers,
+    updateVolunteerApprovalStatus,
   };
 
   return (

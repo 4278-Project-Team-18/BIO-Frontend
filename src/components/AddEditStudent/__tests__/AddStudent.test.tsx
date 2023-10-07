@@ -1,4 +1,4 @@
-import AddStudent from "../AddStudent";
+import AddEditStudent from "../AddEditStudent";
 import { act } from "react-dom/test-utils";
 import { render } from "@testing-library/react";
 
@@ -9,7 +9,7 @@ const mockProps = {
 
 describe("AddStudent Tests", () => {
   test("AddStudent should render correctly", () => {
-    const component = render(<AddStudent {...mockProps} />);
+    const component = render(<AddEditStudent {...mockProps} />);
 
     expect(component).toBeTruthy();
     expect(component.getByText("Add Student")).toBeTruthy();
@@ -21,7 +21,7 @@ describe("AddStudent Tests", () => {
   });
 
   test("AddStudent snapshot should render correctly", () => {
-    const component = render(<AddStudent {...mockProps} />);
+    const component = render(<AddEditStudent {...mockProps} />);
     expect(component).toMatchSnapshot();
   });
 });

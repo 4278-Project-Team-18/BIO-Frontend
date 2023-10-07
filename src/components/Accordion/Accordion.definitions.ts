@@ -8,4 +8,6 @@ export interface AccordionProps {
   actionButtonCallback?: () => void;
   children?: ReactNode[];
   noDataTitle?: string;
+  actionLineItem?: ReactNode;
+  showActionLineItem?: boolean;
 }
