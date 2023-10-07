@@ -66,10 +66,12 @@ export interface Volunteer extends User {
  * @param {string} authToken - The user's auth token
  * @param {string} refreshToken - The user's refresh token
  * @param {string[]} classes - The mongo id's of the classes owned by the teacher
+ * @param {ApprovalStatus} approvalStatus - The teacher's approval status
  */
 export interface Teacher extends User {
   role: Role.TEACHER;
   classes?: Class[];
+  approvalStatus: ApprovalStatus;
 }
 
 /**
@@ -140,11 +142,13 @@ export enum ApprovalStatus {
  * @option {string} DASHBOARD - The dashboard tab
  * @option {string} CLASSES - The classes tab
  * @option {string} VOLUNTEERS - The volunteers tab
+ * @option {string} TEACHERS - The teachers tab
  */
 export enum AdminTabs {
   DASHBOARD = "dashboard",
   CLASSES = "classes",
   VOLUNTEERS = "volunteers",
+  TEACHERS = "teachers",
 }
 
 /**
