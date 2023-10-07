@@ -9,6 +9,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
   .label-red {
     padding: 8px;
@@ -20,6 +21,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
 
   .label-yellow {
@@ -32,6 +34,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
 
   .label-blue {
@@ -44,6 +47,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
 
   .label-purple {
@@ -56,6 +60,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
 }
 
@@ -68,6 +73,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
   .label-red {
     padding: 8px;
@@ -77,6 +83,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
 
   .label-yellow {
@@ -86,6 +93,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
 
   .label-blue {
@@ -95,6 +103,7 @@
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
+    white-space: nowrap;
   }
 
   .label-purple {
@@ -104,6 +113,7 @@
     font-weight: 400;
     width: fit-content;
     margin-right: 10px;
+    white-space: nowrap;
   }
 
   .label {
