@@ -1,5 +1,5 @@
 @media (min-width: 600px) {
-  .uploaded-container-success {
+  .label-green {
     padding: 8px;
     border: 1px solid #2bd447;
     color: #2bd447;
@@ -8,8 +8,9 @@
     font-size: 14px;
     font-weight: 400;
     margin-right: 10px;
+    width: fit-content;
   }
-  .uploaded-container-error {
+  .label-red {
     padding: 8px;
     border: 1px solid #c23124;
     color: #c23124;
@@ -18,27 +19,94 @@
     font-size: 14px;
     font-weight: 400;
     margin-right: 10px;
+    width: fit-content;
+  }
+
+  .label-yellow {
+    padding: 8px;
+    border: 1px solid #d4cb2b;
+    color: #d4cb2b;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+  }
+
+  .label-blue {
+    padding: 8px;
+    border: 1px solid #1b7ed4;
+    color: #1b7ed4;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+  }
+
+  .label-purple {
+    padding: 8px;
+    border: 1px solid #7a1bd4;
+    color: #7a1bd4;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
   }
 }
 
 @media (max-width: 599px) {
-  .uploaded-container-success {
+  .label-green {
     padding: 8px;
     color: #2bd447;
     border-radius: 10px;
     font-size: 14px;
     font-weight: 400;
     margin-right: 10px;
+    width: fit-content;
   }
-  .uploaded-container-error {
+  .label-red {
     padding: 8px;
     color: #c23124;
     border-radius: 10px;
     font-size: 14px;
     font-weight: 400;
     margin-right: 10px;
+    width: fit-content;
   }
-  .uploaded-label {
+
+  .label-yellow {
+    padding: 8px;
+    color: #d4cb2b;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+  }
+
+  .label-blue {
+    padding: 8px;
+    color: #1b7ed4;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+  }
+
+  .label-purple {
+    padding: 8px;
+    color: #7a1bd4;
+    font-size: 14px;
+    font-weight: 400;
+    width: fit-content;
+    margin-right: 10px;
+  }
+
+  .label {
     display: none !important;
   }
 }

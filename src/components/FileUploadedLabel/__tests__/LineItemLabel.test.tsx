@@ -1,5 +1,9 @@
 import LineItemLabel from "../LineItemLabel";
 import { LineItemLabelVariant } from "../LineItemLabel.definitions";
+import {
+  faCheckCircle,
+  faXmarkCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { faker } from "@faker-js/faker";
 import { render } from "@testing-library/react";
 
@@ -11,7 +15,8 @@ describe("LineItemLabel Tests", () => {
     const successComponent = render(
       <LineItemLabel
         label={"Success Label"}
-        variant={LineItemLabelVariant.SUCCESS}
+        variant={LineItemLabelVariant.GREEN}
+        icon={faCheckCircle}
       />,
     );
     expect(successComponent).toBeTruthy();
@@ -21,7 +26,8 @@ describe("LineItemLabel Tests", () => {
     const errorComponent = render(
       <LineItemLabel
         label={"Error Label"}
-        variant={LineItemLabelVariant.ERROR}
+        variant={LineItemLabelVariant.RED}
+        icon={faXmarkCircle}
       />,
     );
     expect(errorComponent).toBeTruthy();
@@ -35,7 +41,8 @@ describe("LineItemLabel Tests", () => {
     const successComponent = render(
       <LineItemLabel
         label={"Success Label"}
-        variant={LineItemLabelVariant.SUCCESS}
+        variant={LineItemLabelVariant.GREEN}
+        icon={faCheckCircle}
       />,
     );
     expect(successComponent).toMatchSnapshot();
@@ -44,7 +51,8 @@ describe("LineItemLabel Tests", () => {
     const errorComponent = render(
       <LineItemLabel
         label={"Error Label"}
-        variant={LineItemLabelVariant.ERROR}
+        variant={LineItemLabelVariant.RED}
+        icon={faXmarkCircle}
       />,
     );
     expect(errorComponent).toMatchSnapshot();

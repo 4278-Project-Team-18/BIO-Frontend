@@ -4,6 +4,7 @@ import Accordion from "../../../components/Accordion/Accordion";
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import InviteLineItem from "../../../components/InviteLineItem/InviteLineItem";
+import SendInviteForm from "../../../components/SendInviteForm/SendInviteForm";
 import type { Invite } from "../../../interfaces/Invites.interface";
 
 const AdminInvitesTab = () => {
@@ -26,7 +27,8 @@ const AdminInvitesTab = () => {
         <div className={styles["admin-invites-title"]}>{`Invites`}</div>
       </div>
       <div>
-        <Accordion title={"Invites"} noDataTitle="No invites send!">
+        <SendInviteForm />
+        <Accordion title={"All Invites"} noDataTitle="No invites send!">
           {invitesData.map((invite) => (
             <InviteLineItem key={invite._id} invite={invite} />
           ))}
