@@ -173,7 +173,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 class="line-item-container-right"
               >
                 <div
-                  class="uploaded-container-success"
+                  class="label-green"
                 >
                   <svg
                     aria-hidden="true"
@@ -191,7 +191,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                     />
                   </svg>
                   <span
-                    class="uploaded-label"
+                    class="label"
                   >
                       Student Letter
                   </span>
@@ -459,7 +459,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               class="line-item-container-right"
             >
               <div
-                class="uploaded-container-success"
+                class="label-green"
               >
                 <svg
                   aria-hidden="true"
@@ -477,7 +477,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   />
                 </svg>
                 <span
-                  class="uploaded-label"
+                  class="label"
                 >
                     Student Letter
                 </span>
@@ -802,7 +802,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 class="line-item-container-right"
               >
                 <div
-                  class="uploaded-container-success"
+                  class="label-green"
                 >
                   <svg
                     aria-hidden="true"
@@ -820,7 +820,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                     />
                   </svg>
                   <span
-                    class="uploaded-label"
+                    class="label"
                   >
                       Student Letter
                   </span>
@@ -1038,7 +1038,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 class="line-item-container-right"
               >
                 <div
-                  class="uploaded-container-success"
+                  class="label-green"
                 >
                   <svg
                     aria-hidden="true"
@@ -1056,7 +1056,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                     />
                   </svg>
                   <span
-                    class="uploaded-label"
+                    class="label"
                   >
                       Student Letter
                   </span>
@@ -1439,7 +1439,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               class="line-item-container-right"
             >
               <div
-                class="uploaded-container-success"
+                class="label-green"
               >
                 <svg
                   aria-hidden="true"
@@ -1457,7 +1457,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   />
                 </svg>
                 <span
-                  class="uploaded-label"
+                  class="label"
                 >
                     Student Letter
                 </span>
@@ -1675,7 +1675,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               class="line-item-container-right"
             >
               <div
-                class="uploaded-container-success"
+                class="label-green"
               >
                 <svg
                   aria-hidden="true"
@@ -1693,7 +1693,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   />
                 </svg>
                 <span
-                  class="uploaded-label"
+                  class="label"
                 >
                     Student Letter
                 </span>
