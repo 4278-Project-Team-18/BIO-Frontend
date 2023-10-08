@@ -23,7 +23,7 @@ const VolunteerLineItem = ({
     </div>
     <div className={styles["line-item-container-right"]}>
       <LoadingButton
-        onClick={openModal}
+        onClick={() => openModal(volunteer)}
         isLoading={false}
         text="Match"
         icon={faHandshake}

@@ -20,13 +20,15 @@ const AdminVolunteersTab = () => {
   );
 
   const [matchModalOpen, setMatchModalOpen] = useState<boolean>(false);
-  const [currentMatchingId] = useState<string>("");
+  const [currentMatchingVolunteer, setCurrentMatchingVolunteer] =
+    useState<Volunteer | null>(null);
 
   const handleCloseModal = () => {
     setMatchModalOpen(false);
   };
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (volunteer: Volunteer) => {
+    setCurrentMatchingVolunteer(volunteer);
     setMatchModalOpen(true);
   };
 
@@ -81,10 +83,10 @@ const AdminVolunteersTab = () => {
         </Accordion>
       </div>
       <div>
-        {matchModalOpen && (
+        {matchModalOpen && currentMatchingVolunteer && (
           <MatchVolunteerModal
             closeModal={handleCloseModal}
-            volunteerId={currentMatchingId}
+            volunteer={currentMatchingVolunteer}
           />
         )}
       </div>

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 export interface AccordionProps {
-  title: string;
+  title?: string;
   headerText?: string;
   hideActionButton?: boolean;
   actionButtonText?: string;
@@ -10,4 +10,5 @@ export interface AccordionProps {
   noDataTitle?: string;
   actionLineItem?: ReactNode;
   showActionLineItem?: boolean;
+  showAll?: boolean;
 }

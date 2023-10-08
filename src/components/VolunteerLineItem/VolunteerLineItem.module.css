@@ -87,6 +87,10 @@
     padding: 5px;
   }
 
+  .line-item-container:hover {
+    background-color: #f2f2f2;
+  }
+
   .line-item-container-left {
     display: flex;
     justify-content: left;
