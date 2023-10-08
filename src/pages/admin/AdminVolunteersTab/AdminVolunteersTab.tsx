@@ -7,7 +7,8 @@ import { useCustomFetch } from "../../../api/request.util";
 import { useVolunteersContext } from "../../../context/Volunteers.context";
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
-import { useEffect } from "react";
+import MatchVolunteerModal from "../../../modals/MatchVolunteerModal/MatchVolunteerModal";
+import { useEffect, useState } from "react";
 import type { Volunteer } from "../../../interfaces/User.interface";
 
 const AdminVolunteersTab = () => {
@@ -17,6 +18,17 @@ const AdminVolunteersTab = () => {
   const { data, loading, error, makeRequest } = useCustomFetch<Volunteer[]>(
     `volunteer/allVolunteers`,
   );
+
+  const [matchModalOpen, setMatchModalOpen] = useState<boolean>(false);
+  const [currentMatchingId] = useState<string>("");
+
+  const handleCloseModal = () => {
+    setMatchModalOpen(false);
+  };
+
+  const handleOpenModal = () => {
+    setMatchModalOpen(true);
+  };
 
   // set the current tab on render
   useEffect(() => {
@@ -50,18 +62,32 @@ const AdminVolunteersTab = () => {
 
   return (
     <div>
-      <h1>Admin Volunteers</h1>
-      <Accordion title="Volunteers">
-        {volunteers?.map((volunteer, index) => (
-          <VolunteerLineItem key={index} volunteer={volunteer} />
-        ))}
-      </Accordion>
-
-      <Accordion title="Volunteer Applicants">
-        {applicants?.map((volunteer, index) => (
-          <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
-        ))}
-      </Accordion>
+      <div>
+        <h1>Admin Volunteers</h1>
+        <Accordion title="Volunteers">
+          {volunteers?.map((volunteer, index) => (
+            <VolunteerLineItem
+              key={index}
+              volunteer={volunteer}
+              openModal={handleOpenModal}
+              closeModal={handleCloseModal}
+            />
+          ))}
+        </Accordion>
+        <Accordion title="Volunteer Applicants">
+          {applicants?.map((volunteer, index) => (
+            <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
+          ))}
+        </Accordion>
+      </div>
+      <div>
+        {matchModalOpen && (
+          <MatchVolunteerModal
+            closeModal={handleCloseModal}
+            volunteerId={currentMatchingId}
+          />
+        )}
+      </div>
     </div>
   );
 };

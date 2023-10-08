@@ -12,6 +12,7 @@ interface VolunteersContextType {
     volunteerId: string,
     approvalStatus: ApprovalStatus,
   ) => void;
+  matchVolunteer: (volunteerId: string, studentIds: string[]) => void;
 }
 
 // Create the context for the user
@@ -19,6 +20,7 @@ const VolunteersContext = createContext<VolunteersContextType>({
   currentVolunteers: null,
   setCurrentVolunteers: (_: Volunteer[]) => {},
   updateVolunteerApprovalStatus: (_: string, __: ApprovalStatus) => {},
+  matchVolunteer: (_: string, __: string[]) => {},
 });
 
 // Create the wrapper for the user context
@@ -44,10 +46,25 @@ export const VolunteersProvider = ({ children }: PropsWithChildren) => {
     });
   };
 
+  const matchVolunteer = (volunteerId: string, studentIds: string[]) => {
+    setCurrentVolunteers((prevVolunteers) => {
+      const updatedVolunteers = prevVolunteers.map((prevVolunteer) =>
+        prevVolunteer._id === volunteerId
+          ? {
+              ...prevVolunteer,
+              studentIds,
+            }
+          : prevVolunteer,
+      );
+      return updatedVolunteers;
+    });
+  };
+
   const value = {
     currentVolunteers,
     setCurrentVolunteers,
     updateVolunteerApprovalStatus,
+    matchVolunteer,
   };
 
   return (

@@ -70,7 +70,7 @@ export interface Volunteer extends User {
  */
 export interface Teacher extends User {
   role: Role.TEACHER;
-  classes?: Class[];
+  classes?: Class[] | string[];
   approvalStatus: ApprovalStatus;
 }
 
@@ -106,6 +106,9 @@ export interface Class {
  * @param {string} firstName - The student's first name
  * @param {string} lastInitial - The student's last initial
  * @param {string} readingLevel - The student's reading level
+ * @param {string} studentLetterLink - The link to the student's letter
+ * @param {string} volunteerResponseLetterLink - The link to the volunteer's response letter
+ * @param {string} matchedVolunteer - The mongo id of the volunteer matched to the student
  */
 export interface Student {
   _id: string;
@@ -114,6 +117,7 @@ export interface Student {
   readingLevel?: string;
   studentLetterLink?: string;
   volunteerResponseLetterLink?: string;
+  matchedVolunteer?: string;
 }
 
 /**

@@ -4,7 +4,10 @@ import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions
 import { faHandshake } from "@fortawesome/free-regular-svg-icons";
 import type { VolunteerLineItemProps } from "./VolunteerLineItem.definitions";
 
-const VolunteerLineItem = ({ volunteer }: VolunteerLineItemProps) => (
+const VolunteerLineItem = ({
+  volunteer,
+  openModal,
+}: VolunteerLineItemProps) => (
   <div className={styles["line-item-container"]}>
     <div className={styles["line-item-container-left"]}>
       <div className={styles["line-item-name-icon"]}>
@@ -20,7 +23,7 @@ const VolunteerLineItem = ({ volunteer }: VolunteerLineItemProps) => (
     </div>
     <div className={styles["line-item-container-right"]}>
       <LoadingButton
-        onClick={() => {}}
+        onClick={openModal}
         isLoading={false}
         text="Match"
         icon={faHandshake}
