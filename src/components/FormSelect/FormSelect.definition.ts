@@ -1,8 +1,9 @@
+import type { SendInviteInputName } from "../SendInviteForm/SendInviteForm.definitions";
 import type { Control } from "react-hook-form";
 import type { NewClassInputName } from "../../modals/AddClassModal/AddClassModal.definitions";
 
 export interface FormSelectProps {
-  name: NewClassInputName;
+  name: NewClassInputName | SendInviteInputName;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any, any>;
   label: string;

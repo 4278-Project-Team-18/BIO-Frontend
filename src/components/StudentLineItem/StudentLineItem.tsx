@@ -7,7 +7,11 @@ import {
   faPencil,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import { faSquare, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
+import {
+  faSquare,
+  faSquareCheck,
+  faCircleCheck,
+} from "@fortawesome/free-regular-svg-icons";
 import { MoonLoader } from "react-spinners";
 import type { StudentLineItemProps } from "./StudentLineItem.definitions";
 
@@ -39,8 +43,9 @@ const StudentLineItem = ({
     <div className={styles["line-item-container-right"]}>
       {student.studentLetterLink && (
         <LineItemLabel
-          variant={LineItemLabelVariant.SUCCESS}
+          variant={LineItemLabelVariant.GREEN}
           label={" Student Letter"}
+          icon={faCircleCheck}
         />
       )}
       <button className={styles["line-item-upload-button"]}>

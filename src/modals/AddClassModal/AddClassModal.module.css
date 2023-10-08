@@ -19,6 +19,20 @@
   border-radius: 20px;
 }
 
+.add-class-loading-container {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  width: fit-content;
+  min-width: 40%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 253px;
+}
+
 .add-class-title {
   font-size: 20px;
   font-weight: 600;
