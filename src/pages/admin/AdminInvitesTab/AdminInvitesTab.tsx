@@ -5,9 +5,13 @@ import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullP
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import InviteLineItem from "../../../components/InviteLineItem/InviteLineItem";
 import SendInviteForm from "../../../components/SendInviteForm/SendInviteForm";
+import { useInvitesContext } from "../../../context/Invites.context";
+import { useEffect } from "react";
 import type { Invite } from "../../../interfaces/Invites.interface";
 
 const AdminInvitesTab = () => {
+  const { currentInvites, setCurrentInvites } = useInvitesContext();
+
   const {
     data: invitesData,
     loading: invitesLoading,
@@ -15,9 +19,15 @@ const AdminInvitesTab = () => {
     makeRequest: makeInvitesRequest,
   } = useCustomFetch<Invite[]>(`invite/`);
 
+  useEffect(() => {
+    if (invitesData) {
+      setCurrentInvites(invitesData);
+    }
+  }, [invitesData]);
+
   if (invitesLoading) return <FullPageLoadingIndicator />;
 
-  if (invitesError || !invitesData) {
+  if (invitesError || !invitesData || !currentInvites) {
     return <FullPageErrorDisplay refetch={makeInvitesRequest} />;
   }
 
@@ -29,7 +39,7 @@ const AdminInvitesTab = () => {
       <div>
         <SendInviteForm />
         <Accordion title={"All Invites"} noDataTitle="No invites send!">
-          {invitesData.map((invite) => (
+          {currentInvites.map((invite) => (
             <InviteLineItem key={invite._id} invite={invite} />
           ))}
         </Accordion>

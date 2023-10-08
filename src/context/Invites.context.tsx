@@ -7,21 +7,43 @@ import type { PropsWithChildren } from "react";
 interface InviteContextType {
   currentInvites: Invite[] | null;
   setCurrentInvites: (_: Invite[] | null) => void;
+  addInvite: (_: Invite) => void;
+  removeInvite: (_: Invite) => void;
 }
 
 // Create the context for the invites
 const InviteContext = createContext<InviteContextType>({
   currentInvites: null,
   setCurrentInvites: (_: Invite[] | null) => {},
+  addInvite: (_: Invite) => {},
+  removeInvite: (_: Invite) => {},
 });
 
 // Create the wrapper for the invites context
 export const InvitesProvider = ({ children }: PropsWithChildren) => {
   const [currentInvites, setCurrentInvites] = useState<Invite[] | null>(null);
 
+  const addInvite = (invite: Invite) => {
+    if (currentInvites) {
+      setCurrentInvites([...currentInvites, invite]);
+    } else {
+      setCurrentInvites([invite]);
+    }
+  };
+
+  const removeInvite = (invite: Invite) => {
+    if (currentInvites) {
+      setCurrentInvites(
+        currentInvites.filter((currentInvite) => currentInvite !== invite),
+      );
+    }
+  };
+
   const value = {
     currentInvites: currentInvites,
     setCurrentInvites: setCurrentInvites,
+    addInvite: addInvite,
+    removeInvite: removeInvite,
   };
 
   return (
