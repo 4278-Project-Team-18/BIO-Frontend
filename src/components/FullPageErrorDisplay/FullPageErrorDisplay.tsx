@@ -5,7 +5,7 @@ import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import type { FullPageErrorDisplayProps } from "./FullPageErrorDisplay.definitions";
 
 const FullPageErrorDisplay = ({
-  errorText,
+  errorText = "Uh oh! Something went wrong.",
   refetch,
   refetchText = "Try again",
 }: FullPageErrorDisplayProps) => (

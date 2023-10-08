@@ -6,6 +6,10 @@ import AdminVolunteersTab from "./pages/admin/AdminVolunteersTab/AdminVolunteers
 import AdminDashboardTab from "./pages/admin/AdminDashboardTab/AdminDashboardTab";
 import { ClassesProvider } from "./context/Classes.context";
 import { VolunteersProvider } from "./context/Volunteers.context";
+import AdminInvitesTab from "./pages/admin/AdminInvitesTab/AdminInvitesTab";
+import { InvitesProvider } from "./context/Invites.context";
+import AdminTeachersTab from "./pages/admin/AdminTeachersTab/AdminTeachersTab";
+import { TeachersProvider } from "./context/Teachers.context";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -55,6 +59,22 @@ const router = createBrowserRouter([
           <VolunteersProvider>
             <AdminVolunteersTab />
           </VolunteersProvider>
+        ),
+      },
+      {
+        path: "/admin/invites",
+        element: (
+          <InvitesProvider>
+            <AdminInvitesTab />
+          </InvitesProvider>
+        ),
+      },
+      {
+        path: "/admin/teachers",
+        element: (
+          <TeachersProvider>
+            <AdminTeachersTab />
+          </TeachersProvider>
         ),
       },
     ],

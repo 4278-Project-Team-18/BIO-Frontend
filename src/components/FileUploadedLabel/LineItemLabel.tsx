@@ -4,25 +4,25 @@ import {
   type LineItemLabelProps,
 } from "./LineItemLabel.definitions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleCheck,
-  faCircleXmark,
-} from "@fortawesome/free-regular-svg-icons";
 
-const LineItemLabel = ({ label, variant }: LineItemLabelProps) => (
+const LineItemLabel = ({ label, variant, icon }: LineItemLabelProps) => (
   <div
     className={
-      variant === LineItemLabelVariant.SUCCESS
-        ? styles["uploaded-container-success"]
-        : styles["uploaded-container-error"]
+      variant === LineItemLabelVariant.GREEN
+        ? styles["label-green"]
+        : variant === LineItemLabelVariant.RED
+        ? styles["label-red"]
+        : variant === LineItemLabelVariant.YELLOW
+        ? styles["label-yellow"]
+        : variant === LineItemLabelVariant.BLUE
+        ? styles["label-blue"]
+        : variant === LineItemLabelVariant.PURPLE
+        ? styles["label-purple"]
+        : styles["label-blue"]
     }
   >
-    <FontAwesomeIcon
-      icon={
-        variant === LineItemLabelVariant.SUCCESS ? faCircleCheck : faCircleXmark
-      }
-    />
-    <span className={styles["uploaded-label"]}>{` ${label}`}</span>
+    {icon && <FontAwesomeIcon icon={icon} />}
+    <span className={styles["label"]}>{` ${label}`}</span>
   </div>
 );
 

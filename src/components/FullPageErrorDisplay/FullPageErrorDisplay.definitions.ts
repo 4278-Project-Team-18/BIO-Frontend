@@ -1,5 +1,5 @@
 export interface FullPageErrorDisplayProps {
-  errorText: string;
+  errorText?: string;
   refetchText?: string;
   refetch?: () => void;
 }

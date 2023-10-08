@@ -15,7 +15,8 @@
     "prettier:format": "prettier --write .",
     "prettier:check": "prettier --check .",
     "typescript:check": "tsc --esModuleInterop",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "backend": "cd ../BIO-backend && npm start"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

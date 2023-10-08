@@ -1,0 +1,40 @@
+@media (min-width: 1500px) {
+  .send-invite-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 60%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1499px) {
+  .send-invite-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 80%;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1199px) {
+  .send-invite-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+@media (max-width: 699px) {
+  .send-invite-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+}

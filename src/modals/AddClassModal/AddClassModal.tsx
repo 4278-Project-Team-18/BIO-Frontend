@@ -6,11 +6,14 @@ import FormSelect from "../../components/FormSelect/FormSelect";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useClassesContext } from "../../context/Classes.context";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
+
+import FullPageErrorDisplay from "../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
+import { MoonLoader } from "react-spinners";
 import type { FormSelectOption } from "../../components/FormSelect/FormSelect.definition";
 import type { Class, Teacher } from "../../interfaces/User.interface";
 import type {
@@ -25,6 +28,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
     data: teacherData,
     loading: teacherLoading,
     error: teacherError,
+    makeRequest: makeTeacherRequest,
   } = useCustomFetch<Teacher[]>(`teacher/allTeachers`);
 
   const {
@@ -75,18 +79,20 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   if (teacherLoading) {
     return (
       <div className={styles["add-class-backdrop"]}>
-        <div>Loading...</div>
+        <div className={styles["add-class-loading-container"]}>
+          <MoonLoader color="#209bb6" />
+        </div>
       </div>
     );
   }
-
-  console.log(teacherError, teacherData);
 
   // if the request failed, show an error message
   if (teacherError || !teacherData) {
     return (
       <div className={styles["add-class-backdrop"]}>
-        <div>Something went wrong...</div>
+        <div className={styles["add-class-loading-container"]}>
+          <FullPageErrorDisplay refetch={makeTeacherRequest} />
+        </div>
       </div>
     );
   }

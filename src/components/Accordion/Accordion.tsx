@@ -24,6 +24,8 @@ const Accordion = ({
   actionButtonCallback,
   hideActionButton = true,
   noDataTitle = "No data",
+  actionLineItem,
+  showActionLineItem,
 }: AccordionProps) => {
   // show more button is visible if there are more than 5 children
   const [showMoreButtonVisible, setShowMoreButtonVisible] = useState<boolean>();
@@ -61,23 +63,35 @@ const Accordion = ({
           />
         )}
         {!children || children?.length == 0 ? (
-          <NoDataLineItem
-            title={noDataTitle}
-            hideBottomLine={hideActionButton && !showMoreButtonVisible}
-          />
+          showActionLineItem ? (
+            <>{actionLineItem}</>
+          ) : (
+            <NoDataLineItem
+              title={noDataTitle}
+              hideBottomLine={hideActionButton && !showMoreButtonVisible}
+            />
+          )
         ) : (
-          children
-            ?.slice(0, accordionOpen ? children.length : 5)
-            .map((child, index) => (
-              <Fragment key={index}>
-                {child}
-                {!hideActionButton ? (
-                  <LineItemDivider />
-                ) : index < children.length - 1 ? (
-                  <LineItemDivider />
-                ) : null}
-              </Fragment>
-            ))
+          <>
+            {children
+              ?.slice(0, accordionOpen ? children.length : 5)
+              .map((child, index) => (
+                <Fragment key={index}>
+                  {child}
+                  {!hideActionButton ? (
+                    <LineItemDivider />
+                  ) : index < children.length ? (
+                    <LineItemDivider />
+                  ) : null}
+                </Fragment>
+              ))}
+            {showActionLineItem && actionLineItem !== undefined && (
+              <>
+                {actionLineItem}
+                <LineItemDivider />
+              </>
+            )}
+          </>
         )}
         <ActionLineItem
           actionButtonTitle={actionButtonText}

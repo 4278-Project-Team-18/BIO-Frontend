@@ -1,5 +1,5 @@
 import { useNavigationContext } from "../../../context/Navigation.context";
-import { AdminTabs } from "../../../interfaces/User.interface";
+import { AdminTabs, ApprovalStatus } from "../../../interfaces/User.interface";
 import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
 import Accordion from "../../../components/Accordion/Accordion";
 import VolunteerLineItem from "../../../components/VolunteerLineItem/VolunteerLineItem";
@@ -41,10 +41,11 @@ const AdminVolunteersTab = () => {
   }
 
   const volunteers = currentVolunteers?.filter(
-    (volunteer) => volunteer.approvalStatus === "approved",
+    (volunteer) => volunteer.approvalStatus === ApprovalStatus.APPROVED,
   );
+
   const applicants = currentVolunteers?.filter(
-    (volunteer) => volunteer.approvalStatus === "pending",
+    (volunteer) => volunteer.approvalStatus === ApprovalStatus.PENDING,
   );
 
   return (

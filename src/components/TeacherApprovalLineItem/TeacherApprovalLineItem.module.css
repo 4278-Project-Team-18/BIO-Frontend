@@ -1,0 +1,139 @@
+@media (min-width: 600px) {
+  .line-item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .line-item-container-left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .line-item-name-icon {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-right: 30px;
+  }
+
+  .line-item-name {
+    font-weight: 400;
+    font-size: 16px;
+    color: #565656;
+    justify-content: left;
+  }
+
+  .line-item-container-right {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .line-item-approve-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-left: 12px;
+    background: #81ee93;
+  }
+
+  .line-item-deny-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-left: 12px;
+    background-color: #fa8d8d;
+  }
+
+  .line-item-button-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .line-item-button-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
+  }
+}
+
+@media (max-width: 599px) {
+  .line-item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .line-item-container-left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .line-item-name-icon {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-right: 30px;
+  }
+
+  .line-item-name {
+    font-weight: 400;
+    font-size: 14px;
+    color: #565656;
+    justify-content: left;
+  }
+
+  .line-item-container-right {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .line-item-approve-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-left: 12px;
+    background: #bdffc8;
+  }
+
+  .line-item-deny-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-left: 12px;
+    background-color: #ffb4b4;
+  }
+
+  .line-item-button-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .line-item-button-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
+  }
+}
