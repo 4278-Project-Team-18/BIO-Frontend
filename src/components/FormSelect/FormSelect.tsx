@@ -14,7 +14,6 @@ import type { FormSelectProps } from "./FormSelect.definition";
  * @param options the options to display in the select input
  * @param defaultValue the default value of the select input
  * @param setValue the setValue function from react-hook-form
- *
  */
 const FormSelect = ({
   name,
@@ -23,7 +22,6 @@ const FormSelect = ({
   error,
   optText,
   options,
-  placeholder,
   defaultValue,
   setValue,
 }: FormSelectProps) => {
@@ -62,39 +60,24 @@ const FormSelect = ({
                 )}
               </div>
             )}
-            {
-              <select
-                className={styles["form-select"]}
-                onBlur={field.onBlur}
-                name={field.name}
-                ref={field.ref}
-                defaultValue={defaultValue}
-              >
-                {!field.value && (
-                  <option value="" className={styles["form-select-option"]}>
-                    {placeholder}
-                  </option>
-                )}
-                {field.value && (
-                  <option
-                    value=""
-                    className={styles["form-select-option"]}
-                    disabled
-                  >
-                    {placeholder}
-                  </option>
-                )}
-                {options.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                    className={styles["form-select-option"]}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            }
+            <select
+              className={styles["form-select"]}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              ref={field.ref}
+              defaultValue={defaultValue}
+            >
+              {options.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                  className={styles["form-select-option"]}
+                >
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       )}
