@@ -46,16 +46,16 @@ const sendInviteForm = () => {
     if (inviteData && !inviteError) {
       // add the invite to the context
       addInvite(inviteData);
-
-      // reset the form values in the form controller
-      reset(
-        {
-          [SendInviteInputName.EMAIL]: "",
-          [SendInviteInputName.ROLE]: Role.ADMIN,
-        },
-        { keepErrors: true },
-      );
     }
+
+    // reset the form values in the form controller for success or error
+    reset(
+      {
+        [SendInviteInputName.EMAIL]: "",
+        [SendInviteInputName.ROLE]: Role.ADMIN,
+      },
+      { keepErrors: true },
+    );
   }, [inviteData]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
