@@ -14,8 +14,6 @@ export interface FormSelectProps {
   defaultValue?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue?: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, autofix/no-unused-vars
-  onChange?: (selectedValue: any) => void;
 }
 
 export interface FormSelectOption {

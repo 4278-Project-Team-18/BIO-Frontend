@@ -14,7 +14,6 @@ import type { FormSelectProps } from "./FormSelect.definition";
  * @param options the options to display in the select input
  * @param defaultValue the default value of the select input
  * @param setValue the setValue function from react-hook-form
- * @param isMulti whether or not the select input is a multi-select
  *
  */
 const FormSelect = ({
@@ -27,7 +26,6 @@ const FormSelect = ({
   placeholder,
   defaultValue,
   setValue,
-  onChange,
 }: FormSelectProps) => {
   // set the default value of the select input on first render
   useEffect(() => {
@@ -67,10 +65,6 @@ const FormSelect = ({
             {
               <select
                 className={styles["form-select"]}
-                onChange={(e) => {
-                  field.onChange(e);
-                  onChange && onChange(e);
-                }}
                 onBlur={field.onBlur}
                 name={field.name}
                 ref={field.ref}
