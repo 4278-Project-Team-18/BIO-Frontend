@@ -79,6 +79,11 @@ exports[`AddClassModal Tests AddClassModal snapshot should render correctly 1`] 
                 >
                   <option
                     class="form-select-option"
+                    disabled=""
+                    value=""
+                  />
+                  <option
+                    class="form-select-option"
                     selected=""
                     value="12345"
                   >
@@ -199,6 +204,11 @@ exports[`AddClassModal Tests AddClassModal snapshot should render correctly 1`] 
                 class="form-select"
                 name="teacherId"
               >
+                <option
+                  class="form-select-option"
+                  disabled=""
+                  value=""
+                />
                 <option
                   class="form-select-option"
                   selected=""

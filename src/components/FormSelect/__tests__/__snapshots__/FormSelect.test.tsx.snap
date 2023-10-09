@@ -28,6 +28,10 @@ exports[`FormSelect Tests FormSelect snapshot should render correctly 1`] = `
           >
             <option
               class="form-select-option"
+              value=""
+            />
+            <option
+              class="form-select-option"
               value="test1"
             >
               test1
@@ -64,6 +68,10 @@ exports[`FormSelect Tests FormSelect snapshot should render correctly 1`] = `
           class="form-select"
           name="name"
         >
+          <option
+            class="form-select-option"
+            value=""
+          />
           <option
             class="form-select-option"
             value="test1"
