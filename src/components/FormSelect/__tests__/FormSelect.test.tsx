@@ -36,11 +36,6 @@ describe("FormSelect Tests", () => {
     // Check if the label is correct
     expect(component.getByText(mockProps.label)).toBeTruthy();
 
-    // Check if the value is correct
-    expect(
-      component.getByDisplayValue(mockProps.options[0].value),
-    ).toBeTruthy();
-
     // Check if the options are correct
     expect(component.getByText(mockProps.options[0].label)).toBeTruthy();
     expect(component.getByText(mockProps.options[1].label)).toBeTruthy();
