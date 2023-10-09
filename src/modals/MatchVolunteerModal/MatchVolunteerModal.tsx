@@ -4,10 +4,11 @@ import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import Accordion from "../../components/Accordion/Accordion";
 import StudentMatchLineItem from "../../components/StudentMatchLineItem/StudentMatchLineItem";
 import FullPageErrorDisplay from "../../components/FullPageErrorDisplay/FullPageErrorDisplay";
+import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleXmark, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import type { Student, Volunteer } from "../../interfaces/User.interface";
 
 const MatchVolunteerModal = ({
@@ -27,20 +28,23 @@ const MatchVolunteerModal = ({
   const {
     data: matchData,
     error: matchError,
-    // makeRequest: makeMatchRequest,
+    loading: matchLoading,
+    makeRequest: makeMatchRequest,
   } = useCustomFetch<Volunteer>(
-    `/matchVolunteerToStudent`,
+    `volunteer/matchVolunteerToStudent`,
     RequestMethods.PATCH,
   );
 
   // send the request to match the volunteer
-  // const onSubmitMatchVolunteer = async () => {
-  //   const matchVolunteerRequestData = {
-  //     volunteerId: volunteer._id,
-  //     studentIds: [selectedStudent?._id],
-  //   };
-  //   await makeMatchRequest(matchVolunteerRequestData);
-  // };
+  const onSubmitMatchVolunteer = async () => {
+    console.log("selected student", selectedStudent);
+    console.log("volunteer", volunteer);
+    await makeMatchRequest({
+      volunteerId: volunteer._id,
+      studentIdArray: [selectedStudent?._id],
+    });
+    console.log(matchData);
+  };
 
   const handleSetSelectedStudent = (student: Student) => {
     setSelectedStudent(student);
@@ -114,6 +118,19 @@ const MatchVolunteerModal = ({
                 <div>Cannot preview document</div>
               </div>
             )}
+          </div>
+        </div>
+        <div className={styles["match-volunteer-submit-container"]}>
+          <div className={styles["match-volunteer-submit-inner-container"]}>
+            <LoadingButton
+              text="Match Volunteer"
+              icon={faPlusCircle}
+              isLoading={matchLoading}
+              isLoadingText="Matching Volunteer..."
+              onClick={() => {
+                onSubmitMatchVolunteer();
+              }}
+            />
           </div>
         </div>
       </div>
