@@ -6,6 +6,8 @@ import StudentMatchLineItem from "../../components/StudentMatchLineItem/StudentM
 import FullPageErrorDisplay from "../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import type { Student, Volunteer } from "../../interfaces/User.interface";
 
 const MatchVolunteerModal = ({
@@ -77,9 +79,20 @@ const MatchVolunteerModal = ({
   return (
     <div className={styles["match-volunteer-backdrop"]}>
       <div className={styles["match-volunteer-container"]}>
-        <div
-          className={styles["match-volunteer-header"]}
-        >{`Match ${volunteer.firstName} with a student`}</div>
+        <div className={styles["match-volunteer-header"]}>
+          {`Match ${volunteer.firstName} with a student`}
+          <button
+            className={styles["match-volunteer-cancel-button"]}
+            onClick={closeModal}
+            type="button"
+            aria-label="close-button"
+          >
+            <FontAwesomeIcon
+              icon={faCircleXmark}
+              className={styles["match-volunteer-cancel-button-icon"]}
+            />
+          </button>
+        </div>
         <div className={styles["match-volunteer-content"]}>
           <div className={styles["match-volunteer-left"]}>
             <Accordion headerText="Students" showAll>
@@ -95,7 +108,7 @@ const MatchVolunteerModal = ({
           </div>
           <div className={styles["match-volunteer-right"]}>
             {selectedStudent && (
-              <div>
+              <div className={styles["match-volunteer-student-info"]}>
                 <div>{`${selectedStudent.firstName} ${selectedStudent.lastInitial}`}</div>
                 <div>{`Reading Level: ${selectedStudent.readingLevel}`}</div>
                 <div>Cannot preview document</div>
