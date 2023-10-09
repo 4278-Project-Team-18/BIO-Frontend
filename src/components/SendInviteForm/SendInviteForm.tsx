@@ -11,7 +11,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
-import { faker } from "@faker-js/faker";
 import type { Invite } from "../../interfaces/Invites.interface";
 import type { Resolver } from "react-hook-form";
 import type { SendInviteInput } from "./SendInviteForm.definitions";
@@ -25,6 +24,7 @@ const sendInviteForm = () => {
     handleSubmit,
     formState: { errors },
     setValue,
+    reset,
   } = useForm<SendInviteInput>({
     defaultValues: {
       [SendInviteInputName.EMAIL]: "",
@@ -38,21 +38,33 @@ const sendInviteForm = () => {
   const {
     data: inviteData,
     loading: inviteLoading,
-    // error: inviteError,
+    error: inviteError,
     makeRequest: makeInviteRequest,
   } = useCustomFetch<Invite>(`invite`, RequestMethods.POST);
 
   useEffect(() => {
-    if (inviteData) {
+    if (inviteData && !inviteError) {
+      // add the invite to the context
       addInvite(inviteData);
+
+      // reset the form values in the form controller
+      reset(
+        {
+          [SendInviteInputName.EMAIL]: "",
+          [SendInviteInputName.ROLE]: Role.ADMIN,
+        },
+        { keepErrors: true },
+      );
     }
   }, [inviteData]);
 
-  const onSubmitSendInvite = async (inputData: SendInviteInput) => {
-    // add a fake sender id
-    inputData.senderId = faker.string.uuid();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSubmitSendInvite = async (inputData: SendInviteInput, e: any) => {
+    await makeInviteRequest(inputData);
 
-    makeInviteRequest(inputData);
+    // reset the form inputs
+    e.target[0].value = "";
+    e.target[1].value = Role.ADMIN;
   };
 
   const formOptions = [

@@ -20,14 +20,14 @@ const AdminInvitesTab = () => {
   } = useCustomFetch<Invite[]>(`invite/`);
 
   useEffect(() => {
-    if (invitesData) {
+    if (invitesData && !invitesError) {
       setCurrentInvites(invitesData);
     }
   }, [invitesData]);
 
-  if (invitesLoading) return <FullPageLoadingIndicator />;
+  if (invitesLoading || !currentInvites) return <FullPageLoadingIndicator />;
 
-  if (invitesError || !invitesData || !currentInvites) {
+  if (invitesError || !invitesData) {
     return <FullPageErrorDisplay refetch={makeInvitesRequest} />;
   }
 
@@ -39,7 +39,7 @@ const AdminInvitesTab = () => {
       <div>
         <SendInviteForm />
         <Accordion title={"All Invites"} noDataTitle="No invites send!">
-          {currentInvites.map((invite) => (
+          {currentInvites?.map((invite) => (
             <InviteLineItem key={invite._id} invite={invite} />
           ))}
         </Accordion>

@@ -21,7 +21,7 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
 
   const {
     data: deleteStudentFromClassData,
-    // error: deleteStudentFromClassError,
+    error: deleteStudentFromClassError,
     loading: deleteStudentFromClassLoading,
     makeRequest: deleteStudentFromClass,
   } = useCustomFetch<RemoveStudentResponse>(
@@ -30,7 +30,7 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
   );
 
   useEffect(() => {
-    if (deleteStudentFromClassData) {
+    if (deleteStudentFromClassData && !deleteStudentFromClassError) {
       removeStudentFromClass(
         deleteStudentFromClassData.studentId,
         classObject._id,

@@ -34,7 +34,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   const {
     data: classData,
     loading: classLoading,
-    // error: classError,
+    error: classError,
     makeRequest: makeClassRequest,
   } = useCustomFetch<Class>(`class`, RequestMethods.POST);
 
@@ -69,7 +69,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   }, [teacherData]);
 
   useEffect(() => {
-    if (classData) {
+    if (classData && !classError) {
       addClass(classData);
       closeModal();
     }

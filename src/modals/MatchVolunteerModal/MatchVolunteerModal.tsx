@@ -51,7 +51,7 @@ const MatchVolunteerModal = ({
   };
 
   useEffect(() => {
-    if (matchData) {
+    if (matchData && !matchError) {
       //matchVolunteer();
       setSelectedStudent(null);
       closeModal();

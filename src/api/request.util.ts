@@ -44,6 +44,7 @@ export const useCustomFetch = <T>(
   const makeRequest = async (body?: any) => {
     try {
       setLoading(true);
+      setError(null);
       const url = `${process.env.VITE_SERVER_URL}${path}`;
 
       const res = await fetch(url, {
@@ -57,6 +58,13 @@ export const useCustomFetch = <T>(
 
       const json = await res.json();
       setData(json);
+
+      // if the status is not 200, throw an error
+      if (res.status !== 200 && res.status !== 201 && res.status !== 204) {
+        throw new Error(json.message);
+      } else {
+        setError(null);
+      }
     } catch (error) {
       setError(error);
       console.error(error);
