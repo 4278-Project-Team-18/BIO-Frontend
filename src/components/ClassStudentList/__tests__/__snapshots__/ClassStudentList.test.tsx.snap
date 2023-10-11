@@ -72,7 +72,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   <div
                     class="line-item-upload-title"
                   >
-                    Upload Letter
+                    Upload
                   </div>
                   <svg
                     aria-hidden="true"
@@ -358,7 +358,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 <div
                   class="line-item-upload-title"
                 >
-                  Upload Letter
+                  Upload
                 </div>
                 <svg
                   aria-hidden="true"
@@ -701,7 +701,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   <div
                     class="line-item-upload-title"
                   >
-                    Upload Letter
+                    Upload
                   </div>
                   <svg
                     aria-hidden="true"
@@ -937,7 +937,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   <div
                     class="line-item-upload-title"
                   >
-                    Upload Letter
+                    Upload
                   </div>
                   <svg
                     aria-hidden="true"
@@ -1173,7 +1173,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   <div
                     class="line-item-upload-title"
                   >
-                    Upload Letter
+                    Upload
                   </div>
                   <svg
                     aria-hidden="true"
@@ -1338,7 +1338,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 <div
                   class="line-item-upload-title"
                 >
-                  Upload Letter
+                  Upload
                 </div>
                 <svg
                   aria-hidden="true"
@@ -1574,7 +1574,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 <div
                   class="line-item-upload-title"
                 >
-                  Upload Letter
+                  Upload
                 </div>
                 <svg
                   aria-hidden="true"
@@ -1810,7 +1810,7 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 <div
                   class="line-item-upload-title"
                 >
-                  Upload Letter
+                  Upload
                 </div>
                 <svg
                   aria-hidden="true"

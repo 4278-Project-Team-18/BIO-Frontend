@@ -1,7 +1,6 @@
 /* eslint-disable autofix/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
-
 /**
  * @interface RequestOptions - The options to pass to the fetch request
  *
@@ -70,6 +69,7 @@ export const useCustomFetch = <T>(
 
       // set the data if the request was successful
       setData(json);
+      setError(null);
     } catch (error) {
       // set the error if the request failed
       setError(error);

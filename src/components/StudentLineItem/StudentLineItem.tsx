@@ -50,7 +50,7 @@ const StudentLineItem = ({
       )}
       <button className={styles["line-item-upload-button"]}>
         <div className={styles["line-item-upload-title"]}>
-          {student.studentLetterLink ? "Reupload" : "Upload Letter"}
+          {student.studentLetterLink ? "Reupload" : "Upload"}
         </div>
         <FontAwesomeIcon
           icon={faCloudArrowUp}

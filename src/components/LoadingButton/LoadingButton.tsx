@@ -28,9 +28,11 @@ const LoadingButton = ({
   icon,
   variant = LoadingButtonVariant.GREEN,
   type = "button",
+  disabled = false,
+  isResponsive = true,
 }: LoadingButtonProps) => (
   <button
-    onClick={onClick}
+    onClick={disabled ? undefined : onClick}
     className={styles["loading-button"]}
     style={{
       ...style,
@@ -38,7 +40,13 @@ const LoadingButton = ({
     }}
     type={type}
   >
-    <span className={styles["loading-button-label"]}>
+    <span
+      className={
+        isResponsive
+          ? styles["loading-button-label-responsive"]
+          : styles["loading-button-label"]
+      }
+    >
       {isLoading ? isLoadingText : text}
     </span>
     {icon && !isLoading ? (

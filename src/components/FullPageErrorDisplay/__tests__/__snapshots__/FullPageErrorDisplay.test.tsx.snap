@@ -19,7 +19,7 @@ exports[`FullPageErrorDisplay should render FullPageErrorDisplay snapshot correc
           type="button"
         >
           <span
-            class="loading-button-label"
+            class="loading-button-label-responsive"
           >
             Try again
           </span>
@@ -57,7 +57,7 @@ exports[`FullPageErrorDisplay should render FullPageErrorDisplay snapshot correc
         type="button"
       >
         <span
-          class="loading-button-label"
+          class="loading-button-label-responsive"
         >
           Try again
         </span>

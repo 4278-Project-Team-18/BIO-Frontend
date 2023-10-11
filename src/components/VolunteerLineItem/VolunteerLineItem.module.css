@@ -39,7 +39,6 @@
     align-items: center;
     padding-top: 2px;
     margin-left: 12px;
-    background-color: #b4e6ff;
   }
 
   .line-item-button-title {
@@ -75,6 +74,35 @@
     border-radius: 50%;
     border: 1px solid black;
     background: conic-gradient(#38f95f 0deg 360deg, transparent 360deg 360deg);
+  }
+
+  .volunteer-matched-student-list {
+    color: #999999;
+    font-size: 12px;
+    padding-left: 20px;
+  }
+
+  .line-item-match-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-right: 10px;
+  }
+
+  .line-item-match-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .line-item-match-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
   }
 }
 
@@ -117,15 +145,6 @@
     padding: 5px;
   }
 
-  .line-item-match-button {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-top: 2px;
-    margin-left: 12px;
-    background-color: #b4e6ff;
-  }
-
   .line-item-button-title {
     font-weight: 300;
     font-size: 14px;
@@ -159,5 +178,28 @@
     border-radius: 50%;
     border: 1px solid black;
     background: conic-gradient(#38f95f 0deg 360deg, transparent 360deg 360deg);
+  }
+
+  .volunteer-matched-student-list {
+    display: none;
+  }
+
+  .line-item-match-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-right: 10px;
+  }
+
+  .line-item-match-title {
+    display: none;
+  }
+
+  .line-item-match-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
   }
 }

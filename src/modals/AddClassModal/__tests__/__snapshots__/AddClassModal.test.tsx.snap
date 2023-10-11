@@ -99,7 +99,7 @@ exports[`AddClassModal Tests AddClassModal snapshot should render correctly 1`] 
                   type="submit"
                 >
                   <span
-                    class="loading-button-label"
+                    class="loading-button-label-responsive"
                   >
                     Add Class
                   </span>
@@ -221,7 +221,7 @@ exports[`AddClassModal Tests AddClassModal snapshot should render correctly 1`] 
                 type="submit"
               >
                 <span
-                  class="loading-button-label"
+                  class="loading-button-label-responsive"
                 >
                   Add Class
                 </span>

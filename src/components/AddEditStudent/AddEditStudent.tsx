@@ -143,6 +143,7 @@ const AddEditStudent = ({
           icon={student ? faCheckCircle : faPlusCircle}
           isLoading={addStudentLoading || editStudentLoading}
           isLoadingText={student ? "Editing student..." : "Adding student..."}
+          isResponsive={false}
         />
       </div>
     </form>

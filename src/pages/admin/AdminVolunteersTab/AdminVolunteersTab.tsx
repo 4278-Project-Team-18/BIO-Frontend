@@ -1,3 +1,4 @@
+import styles from "./AdminVolunteersTab.module.css";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { AdminTabs, ApprovalStatus } from "../../../interfaces/User.interface";
 import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
@@ -65,8 +66,10 @@ const AdminVolunteersTab = () => {
   return (
     <div>
       <div>
-        <h1>Admin Volunteers</h1>
-        <Accordion title="Volunteers">
+        <div className={styles["admin-volunteers-header"]}>
+          <div className={styles["admin-volunteers-title"]}>{`Volunteers`}</div>
+        </div>
+        <Accordion title="Status">
           {volunteers?.map((volunteer, index) => (
             <VolunteerLineItem
               key={index}
@@ -76,7 +79,7 @@ const AdminVolunteersTab = () => {
             />
           ))}
         </Accordion>
-        <Accordion title="Volunteer Applicants">
+        <Accordion title="Applicants">
           {applicants?.map((volunteer, index) => (
             <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
           ))}

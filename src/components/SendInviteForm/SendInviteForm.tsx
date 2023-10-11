@@ -40,7 +40,7 @@ const sendInviteForm = () => {
     loading: inviteLoading,
     error: inviteError,
     makeRequest: makeInviteRequest,
-  } = useCustomFetch<Invite>(`invite`, RequestMethods.POST);
+  } = useCustomFetch<Invite>(`invite/sendInvite`, RequestMethods.POST);
 
   useEffect(() => {
     if (inviteData && !inviteError) {

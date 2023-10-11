@@ -4,4 +4,5 @@ export interface StudentMatchLineItemProps {
   student: Student;
   selectStudent: (_: Student) => void;
   isSelected: boolean;
+  alreadyMatched?: boolean;
 }

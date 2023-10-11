@@ -51,7 +51,7 @@ export interface Admin extends User {
  */
 export interface Volunteer extends User {
   role: Role.VOLUNTEER;
-  matchedStudents?: string[];
+  matchedStudents?: string[] | Student[];
   approvalStatus: ApprovalStatus;
 }
 

@@ -76,7 +76,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   }, [classData]);
 
   // if the request is loading, show a loading message
-  if (teacherLoading) {
+  if (teacherLoading || !teacherData) {
     return (
       <div className={styles["add-class-backdrop"]}>
         <div className={styles["add-class-loading-container"]}>
@@ -87,7 +87,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   }
 
   // if the request failed, show an error message
-  if (teacherError || !teacherData) {
+  if (teacherError) {
     return (
       <div className={styles["add-class-backdrop"]}>
         <div className={styles["add-class-loading-container"]}>
