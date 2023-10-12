@@ -5,4 +5,5 @@ export interface StudentMatchLineItemProps {
   selectStudent: (_: Student) => void;
   isSelected: boolean;
   alreadyMatched?: boolean;
+  otherVolunteerMatchesLabel?: string;
 }

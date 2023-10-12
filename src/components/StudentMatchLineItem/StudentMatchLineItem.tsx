@@ -8,6 +8,7 @@ const StudentMatchLineItem = ({
   selectStudent,
   isSelected,
   alreadyMatched = false,
+  otherVolunteerMatchesLabel,
 }: StudentMatchLineItemProps) => (
   <div
     className={
@@ -39,6 +40,9 @@ const StudentMatchLineItem = ({
           />
         )}
       </div>
+      <span className={styles["other-volunteer-label"]}>
+        {otherVolunteerMatchesLabel}
+      </span>
     </div>
     <div className={styles["match-line-item-container-right"]}>
       <span className={styles["match-line-item-reading-label"]}>

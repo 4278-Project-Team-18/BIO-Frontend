@@ -100,6 +100,7 @@ const sendInviteForm = () => {
         text="Send Invite"
         isLoading={inviteLoading}
         icon={faPaperPlane}
+        isResponsive={false}
       />
     </form>
   );

@@ -19,7 +19,7 @@ const MatchVolunteerModal = ({
 }: MatchVolunteerModalProps) => {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
-  const { matchVolunteer } = useVolunteersContext();
+  const { matchVolunteer, currentVolunteers } = useVolunteersContext();
 
   const {
     data: studentData,
@@ -55,6 +55,38 @@ const MatchVolunteerModal = ({
       closeModal();
     }
   }, [matchData]);
+
+  const isAlreadyMatchedToThisVolunteer = (student: Student) =>
+    currentVolunteers?.some(
+      (currentVolunteer) =>
+        (currentVolunteer.matchedStudents as Student[])?.some(
+          (matchedStudent) =>
+            matchedStudent._id === student._id &&
+            currentVolunteer._id === volunteer._id,
+        ),
+    );
+
+  const isAlreadyMatchedToAnotherVolunteer = (student: Student) =>
+    currentVolunteers?.some(
+      (currentVolunteer) =>
+        (currentVolunteer.matchedStudents as Student[])?.some(
+          (matchedStudent) =>
+            matchedStudent._id === student._id &&
+            currentVolunteer._id !== volunteer._id,
+        ),
+    );
+
+  const getNamesOfOtherMatchedVolunteers = (student: Student) => {
+    const otherMatchedVolunteers = currentVolunteers?.filter(
+      (currentVolunteer) =>
+        (currentVolunteer.matchedStudents as Student[])?.some(
+          (matchedStudent) =>
+            matchedStudent._id === student._id &&
+            currentVolunteer._id !== volunteer._id,
+        ),
+    );
+    return otherMatchedVolunteers?.map((volunteer) => volunteer.firstName);
+  };
 
   // if the requet is loading, show a message
   if (studentLoading) {
@@ -104,11 +136,17 @@ const MatchVolunteerModal = ({
                   student={student}
                   selectStudent={handleSetSelectedStudent}
                   isSelected={selectedStudent?._id === student._id}
-                  alreadyMatched={(
-                    volunteer.matchedStudents as Student[]
-                  )?.some(
-                    (matchedStudent) => matchedStudent._id === student._id,
-                  )}
+                  alreadyMatched={
+                    isAlreadyMatchedToThisVolunteer(student) ||
+                    isAlreadyMatchedToAnotherVolunteer(student)
+                  }
+                  otherVolunteerMatchesLabel={
+                    isAlreadyMatchedToAnotherVolunteer(student)
+                      ? `(${getNamesOfOtherMatchedVolunteers(student)?.join(
+                          ", ",
+                        )})`
+                      : ""
+                  }
                 />
               ))}
             </Accordion>
