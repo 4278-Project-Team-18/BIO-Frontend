@@ -11,6 +11,8 @@ export interface LoadingButtonProps {
   icon?: IconDefinition;
   variant?: LoadingButtonVariant;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  isResponsive?: boolean;
 }
 
 export enum LoadingButtonVariant {
@@ -19,6 +21,8 @@ export enum LoadingButtonVariant {
   BLUE = "blue",
   YELLOW = "yellow",
   GREY = "grey",
+  PURPLE = "purple",
+  DARKGREY = "darkgrey",
 }
 
 export const LoadingButtonVariantColorMap = {
@@ -26,5 +30,7 @@ export const LoadingButtonVariantColorMap = {
   [LoadingButtonVariant.RED]: "#EF4444",
   [LoadingButtonVariant.BLUE]: "#3B82F6",
   [LoadingButtonVariant.YELLOW]: "#F59E0B",
-  [LoadingButtonVariant.GREY]: "#6B7280",
+  [LoadingButtonVariant.GREY]: "#CCCCCC",
+  [LoadingButtonVariant.PURPLE]: "#8B5CF6",
+  [LoadingButtonVariant.DARKGREY]: "#AAAAAA",
 };

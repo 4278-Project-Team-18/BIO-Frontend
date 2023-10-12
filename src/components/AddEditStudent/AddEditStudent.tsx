@@ -71,7 +71,7 @@ const AddEditStudent = ({
 
   // add the student to the class if the request was successful
   useEffect(() => {
-    if (addStudentResponseData) {
+    if (addStudentResponseData && !addStudentError) {
       addStudentToClass(addStudentResponseData, classId);
       closeModal();
     }
@@ -79,7 +79,7 @@ const AddEditStudent = ({
 
   // edit the student in the class if the request was successful
   useEffect(() => {
-    if (editStudentResponseData) {
+    if (editStudentResponseData && !editStudentError) {
       editStudentInClass(editStudentResponseData, classId);
       closeModal();
     }
@@ -143,6 +143,7 @@ const AddEditStudent = ({
           icon={student ? faCheckCircle : faPlusCircle}
           isLoading={addStudentLoading || editStudentLoading}
           isLoadingText={student ? "Editing student..." : "Adding student..."}
+          isResponsive={false}
         />
       </div>
     </form>

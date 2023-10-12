@@ -45,7 +45,7 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
             <div
               class="line-item-upload-title"
             >
-              Upload Letter
+              Upload
             </div>
             <svg
               aria-hidden="true"
@@ -150,7 +150,7 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
           <div
             class="line-item-upload-title"
           >
-            Upload Letter
+            Upload
           </div>
           <svg
             aria-hidden="true"

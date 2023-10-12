@@ -44,7 +44,7 @@ exports[`VolunteerApprovalLineItem Tests VolunteerApprovalLineItem snapshot shou
               type="button"
             >
               <span
-                class="loading-button-label"
+                class="loading-button-label-responsive"
               >
                 Approve
               </span>
@@ -70,7 +70,7 @@ exports[`VolunteerApprovalLineItem Tests VolunteerApprovalLineItem snapshot shou
               type="button"
             >
               <span
-                class="loading-button-label"
+                class="loading-button-label-responsive"
               >
                 Deny
               </span>
@@ -135,7 +135,7 @@ exports[`VolunteerApprovalLineItem Tests VolunteerApprovalLineItem snapshot shou
             type="button"
           >
             <span
-              class="loading-button-label"
+              class="loading-button-label-responsive"
             >
               Approve
             </span>
@@ -161,7 +161,7 @@ exports[`VolunteerApprovalLineItem Tests VolunteerApprovalLineItem snapshot shou
             type="button"
           >
             <span
-              class="loading-button-label"
+              class="loading-button-label-responsive"
             >
               Deny
             </span>

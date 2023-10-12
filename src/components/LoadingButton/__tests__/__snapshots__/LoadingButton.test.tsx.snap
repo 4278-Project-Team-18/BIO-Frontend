@@ -11,7 +11,7 @@ exports[`LoadingButton Tests LoadingButton snapshot should render correctly 1`] 
         type="button"
       >
         <span
-          class="loading-button-label"
+          class="loading-button-label-responsive"
         >
           Loading Test
         </span>
@@ -36,7 +36,7 @@ exports[`LoadingButton Tests LoadingButton snapshot should render correctly 1`] 
       type="button"
     >
       <span
-        class="loading-button-label"
+        class="loading-button-label-responsive"
       >
         Loading Test
       </span>

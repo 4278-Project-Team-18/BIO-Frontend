@@ -1,0 +1,313 @@
+@media (min-width: 801px) {
+  .match-volunteer-backdrop {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .match-volunteer-container {
+    background-color: #fefefe;
+    margin: 5% auto;
+    width: fit-content;
+    min-width: 70%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: fit-content;
+    padding: 20px 20px 30px 20px;
+  }
+
+  .match-volunteer-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #efefef;
+    border-radius: 20px;
+  }
+
+  .match-volunteer-left {
+    width: 50%;
+    height: 90%;
+    padding: 0px 20px;
+    border-right: 1px solid #a2a2a2;
+    overflow: auto;
+    height: 420px;
+  }
+
+  .match-volunteer-right {
+    width: 50%;
+    padding: 10px;
+    height: 420px;
+  }
+
+  .match-volunteer-header {
+    font-size: 28px;
+    font-weight: 600;
+    color: #434343;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .match-volunteer-cancel-button {
+    font-size: 20px;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    color: #787878;
+  }
+
+  .match-volunteer-loading-container {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    width: fit-content;
+    min-width: 40%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 420px;
+  }
+
+  .match-volunteer-student-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    height: 90%;
+    width: 90%;
+    background-color: #efefef;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+
+  .match-volunteer-submit-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .match-volunteer-submit-inner-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .match-volunteer-submit-button {
+    width: fit-content;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #54d469;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .match-volunteer-submit-button-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    width: 80px;
+  }
+
+  .match-volunteer-submit-button-icon {
+    font-size: 16px;
+    padding-right: 6px;
+    padding-bottom: 2px;
+    color: #ffffff;
+  }
+
+  .match-volunteer-student-no-selection {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #7d7d7d;
+  }
+}
+
+@media (max-width: 800px) {
+  .match-volunteer-backdrop {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .match-volunteer-container {
+    background-color: #fefefe;
+    margin: 10% auto;
+    width: fit-content;
+    min-width: 70%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: fit-content;
+    padding: 20px 20px 30px 20px;
+  }
+
+  .match-volunteer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 90%;
+    background-color: #efefef;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+
+  .match-volunteer-left {
+    width: 100%;
+    height: 300px;
+    padding: 10px 20px;
+    border-right: 1px solid #a2a2a2;
+    overflow: auto;
+  }
+
+  .match-volunteer-right {
+    width: 100%;
+    padding: 0px 0px 10px 0px;
+    height: 300px;
+  }
+
+  .match-volunteer-header {
+    font-size: 22px;
+    font-weight: 600;
+    color: #434343;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .match-volunteer-cancel-button {
+    font-size: 20px;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    color: #787878;
+  }
+
+  .match-volunteer-loading-container {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    width: fit-content;
+    min-width: 40%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 420px;
+  }
+
+  .match-volunteer-student-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    height: 90%;
+    width: 90%;
+    background-color: #efefef;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+
+  .match-volunteer-submit-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  .match-volunteer-submit-inner-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .match-volunteer-submit-button {
+    width: fit-content;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #54d469;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .match-volunteer-submit-button-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    width: 80px;
+  }
+
+  .match-volunteer-submit-button-icon {
+    font-size: 16px;
+    padding-right: 6px;
+    padding-bottom: 2px;
+    color: #ffffff;
+  }
+
+  .match-volunteer-student-no-selection {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #7d7d7d;
+  }
+}

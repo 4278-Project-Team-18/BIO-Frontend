@@ -26,6 +26,7 @@ const Accordion = ({
   noDataTitle = "No data",
   actionLineItem,
   showActionLineItem,
+  showAll = false,
 }: AccordionProps) => {
   // show more button is visible if there are more than 5 children
   const [showMoreButtonVisible, setShowMoreButtonVisible] = useState<boolean>();
@@ -74,7 +75,7 @@ const Accordion = ({
         ) : (
           <>
             {children
-              ?.slice(0, accordionOpen ? children.length : 5)
+              ?.slice(0, accordionOpen || showAll ? children.length : 5)
               .map((child, index) => (
                 <Fragment key={index}>
                   {child}
@@ -98,7 +99,7 @@ const Accordion = ({
           actionButtonOnClick={actionButtonCallback}
           showMoreButtonOnClick={handleShowMoreOrLess}
           hideActionButton={hideActionButton}
-          hideShowMoreButton={!showMoreButtonVisible}
+          hideShowMoreButton={!showMoreButtonVisible || showAll}
           isAccordionExpanded={accordionOpen}
         />
       </div>

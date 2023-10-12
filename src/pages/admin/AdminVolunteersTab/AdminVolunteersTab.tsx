@@ -1,3 +1,4 @@
+import styles from "./AdminVolunteersTab.module.css";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { AdminTabs, ApprovalStatus } from "../../../interfaces/User.interface";
 import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
@@ -7,7 +8,8 @@ import { useCustomFetch } from "../../../api/request.util";
 import { useVolunteersContext } from "../../../context/Volunteers.context";
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
-import { useEffect } from "react";
+import MatchVolunteerModal from "../../../modals/MatchVolunteerModal/MatchVolunteerModal";
+import { useEffect, useState } from "react";
 import type { Volunteer } from "../../../interfaces/User.interface";
 
 const AdminVolunteersTab = () => {
@@ -17,6 +19,19 @@ const AdminVolunteersTab = () => {
   const { data, loading, error, makeRequest } = useCustomFetch<Volunteer[]>(
     `volunteer/allVolunteers`,
   );
+
+  const [matchModalOpen, setMatchModalOpen] = useState<boolean>(false);
+  const [currentMatchingVolunteer, setCurrentMatchingVolunteer] =
+    useState<Volunteer | null>(null);
+
+  const handleCloseModal = () => {
+    setMatchModalOpen(false);
+  };
+
+  const handleOpenModal = (volunteer: Volunteer) => {
+    setCurrentMatchingVolunteer(volunteer);
+    setMatchModalOpen(true);
+  };
 
   // set the current tab on render
   useEffect(() => {
@@ -50,18 +65,34 @@ const AdminVolunteersTab = () => {
 
   return (
     <div>
-      <h1>Admin Volunteers</h1>
-      <Accordion title="Volunteers">
-        {volunteers?.map((volunteer, index) => (
-          <VolunteerLineItem key={index} volunteer={volunteer} />
-        ))}
-      </Accordion>
-
-      <Accordion title="Volunteer Applicants">
-        {applicants?.map((volunteer, index) => (
-          <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
-        ))}
-      </Accordion>
+      <div>
+        <div className={styles["admin-volunteers-header"]}>
+          <div className={styles["admin-volunteers-title"]}>{`Volunteers`}</div>
+        </div>
+        <Accordion title="Status">
+          {volunteers?.map((volunteer, index) => (
+            <VolunteerLineItem
+              key={index}
+              volunteer={volunteer}
+              openModal={handleOpenModal}
+              closeModal={handleCloseModal}
+            />
+          ))}
+        </Accordion>
+        <Accordion title="Applicants">
+          {applicants?.map((volunteer, index) => (
+            <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
+          ))}
+        </Accordion>
+      </div>
+      <div>
+        {matchModalOpen && currentMatchingVolunteer && (
+          <MatchVolunteerModal
+            closeModal={handleCloseModal}
+            volunteer={currentMatchingVolunteer}
+          />
+        )}
+      </div>
     </div>
   );
 };

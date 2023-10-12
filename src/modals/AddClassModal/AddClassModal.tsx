@@ -34,7 +34,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   const {
     data: classData,
     loading: classLoading,
-    // error: classError,
+    error: classError,
     makeRequest: makeClassRequest,
   } = useCustomFetch<Class>(`class`, RequestMethods.POST);
 
@@ -69,14 +69,14 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   }, [teacherData]);
 
   useEffect(() => {
-    if (classData) {
+    if (classData && !classError) {
       addClass(classData);
       closeModal();
     }
   }, [classData]);
 
   // if the request is loading, show a loading message
-  if (teacherLoading) {
+  if (teacherLoading || !teacherData) {
     return (
       <div className={styles["add-class-backdrop"]}>
         <div className={styles["add-class-loading-container"]}>
@@ -87,7 +87,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   }
 
   // if the request failed, show an error message
-  if (teacherError || !teacherData) {
+  if (teacherError) {
     return (
       <div className={styles["add-class-backdrop"]}>
         <div className={styles["add-class-loading-container"]}>

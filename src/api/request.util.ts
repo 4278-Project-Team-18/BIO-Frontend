@@ -1,7 +1,6 @@
 /* eslint-disable autofix/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
-
 /**
  * @interface RequestOptions - The options to pass to the fetch request
  *
@@ -43,9 +42,14 @@ export const useCustomFetch = <T>(
 
   const makeRequest = async (body?: any) => {
     try {
+      // Reset the data and error
       setLoading(true);
+      setError(null);
+
+      // create the url
       const url = `${process.env.VITE_SERVER_URL}${path}`;
 
+      // make the request
       const res = await fetch(url, {
         method,
         headers: {
@@ -55,17 +59,30 @@ export const useCustomFetch = <T>(
         body: method !== RequestMethods.GET ? JSON.stringify(body) : undefined,
       });
 
+      // parse the response
       const json = await res.json();
+
+      // if the status is not 200 or 201 throw an error
+      if (res.status !== 200 && res.status !== 201) {
+        throw new Error(json.message);
+      }
+
+      // set the data if the request was successful
       setData(json);
+      setError(null);
     } catch (error) {
+      // set the error if the request failed
       setError(error);
+
+      // log the error
       console.error(error);
     } finally {
+      // set loading to false
       setLoading(false);
     }
   };
 
-  // Only run the effect for GET requests
+  // Only immediately make the request if the method is GET
   useEffect(() => {
     if (method === RequestMethods.GET) {
       makeRequest();

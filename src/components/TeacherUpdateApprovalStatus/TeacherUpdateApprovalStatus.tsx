@@ -34,7 +34,7 @@ const TeacherUpdateApprovalStatus = ({
 
   // update the teacher's approval status if the request was successful
   useEffect(() => {
-    if (updateApprovalStatusResponseData) {
+    if (updateApprovalStatusResponseData && !updateApprovalStatusError) {
       updateTeacherApprovalStatus(
         updateApprovalStatusResponseData._id,
         updateApprovalStatusResponseData.approvalStatus,
