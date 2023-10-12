@@ -29,7 +29,7 @@ describe("StudentLineItem Tests", () => {
 
     expect(
       component.getByText(
-        !testStudent.studentLetterLink ? "Upload Letter" : "Reupload",
+        !testStudent.studentLetterLink ? "Upload" : "Reupload",
       ),
     ).toBeTruthy();
   });
