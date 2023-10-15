@@ -127,7 +127,11 @@ const SideBar = () => {
                 {user?.primaryEmailAddress?.emailAddress}
               </div>
             </div>
-            <UserButton showName={false} afterSignOutUrl="/sign-in/" />
+            <UserButton
+              showName={false}
+              afterSignOutUrl="/sign-in/"
+              signInUrl="/sign-in/"
+            />
           </div>
         </div>
       </div>
@@ -159,7 +163,7 @@ const SideBar = () => {
           </div>
         ))}
         <div className={styles["user-button-container"]}>
-          <UserButton afterSignOutUrl="/sign-in/" />
+          <UserButton afterSignOutUrl="/sign-in/" signInUrl="/sign-in/" />
         </div>
       </div>
     </div>

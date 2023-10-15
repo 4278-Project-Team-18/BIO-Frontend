@@ -11,8 +11,6 @@ describe("VolunteerApprovalLineItem Tests", () => {
       lastName: "Test",
       email: "testemail@gmail.com",
       role: Role.VOLUNTEER,
-      authToken: "12345",
-      refreshToken: "12345",
     } as Volunteer;
 
     const component = render(
@@ -35,8 +33,6 @@ describe("VolunteerApprovalLineItem Tests", () => {
       lastName: "Test",
       email: "testemail@gmail.com",
       role: Role.VOLUNTEER,
-      authToken: "12345",
-      refreshToken: "12345",
     } as Volunteer;
 
     const component = render(
