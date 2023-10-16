@@ -24,7 +24,7 @@ const SideBar = () => {
     "Classes",
     "Volunteers",
     "Teachers",
-    "Invites",
+    "Applicants",
   ];
 
   // Icon components for the sidebar

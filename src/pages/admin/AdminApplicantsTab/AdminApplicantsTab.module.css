@@ -1,4 +1,4 @@
-.admin-invites-title {
+.admin-applicants-title {
   font-size: 2.7rem;
   font-weight: 800;
   color: #2c2c2c;
@@ -6,7 +6,7 @@
   letter-spacing: -1px;
 }
 
-.admin-invites-header {
+.admin-applicants-header {
   display: flex;
   flex-direction: row;
   justify-content: left;
