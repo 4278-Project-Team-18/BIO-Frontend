@@ -6,12 +6,12 @@ import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicat
 import InviteLineItem from "../../../components/InviteLineItem/InviteLineItem";
 import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
 import SendInviteForm from "../../../components/SendInviteForm/SendInviteForm";
-import { useInvitesContext } from "../../../context/Invites.context";
 import TeacherApprovalLineItem from "../../../components/TeacherApprovalLineItem/TeacherApprovalLineItem";
 import { AdminTabs, ApprovalStatus } from "../../../interfaces/User.interface";
+import { useNavigationContext } from "../../../context/Navigation.context";
+import { useInvitesContext } from "../../../context/Invites.context";
 import { useTeachersContext } from "../../../context/Teachers.context";
 import { useVolunteersContext } from "../../../context/Volunteers.context";
-import { useNavigationContext } from "../../../context/Navigation.context";
 import { useEffect } from "react";
 import type { Volunteer, Teacher } from "../../../interfaces/User.interface";
 import type { Invite } from "../../../interfaces/Invites.interface";
@@ -22,6 +22,11 @@ const AdminApplicantsTab = () => {
   const { currentTeachers, setCurrentTeachers } = useTeachersContext();
   const { currentVolunteers, setCurrentVolunteers } = useVolunteersContext();
 
+  // set the current tab on render
+  useEffect(() => {
+    setCurrentTab(AdminTabs.APPLICANTS);
+  }, []);
+
   // Teacher Data
   const {
     data: teacherData,
@@ -30,26 +35,9 @@ const AdminApplicantsTab = () => {
     makeRequest: makeTeacherRequest,
   } = useCustomFetch<Teacher[]>(`teacher/allTeachers`);
 
-  // set the current tab on render
-  useEffect(() => {
-    setCurrentTab(AdminTabs.APPLICANTS);
-  }, []);
-
   useEffect(() => {
     setCurrentTeachers(teacherData || []);
   }, [teacherData]);
-  if (teacherLoading) {
-    return <FullPageLoadingIndicator />;
-  }
-
-  if (teacherError) {
-    return (
-      <FullPageErrorDisplay
-        errorText="Uh oh! Something went wrong."
-        refetch={makeTeacherRequest}
-      />
-    );
-  }
 
   // Volunteer Data
   const {
@@ -63,19 +51,6 @@ const AdminApplicantsTab = () => {
     setCurrentVolunteers(volunteerData || []);
   }, [volunteerData]);
 
-  if (volunteerLoading) {
-    return <FullPageLoadingIndicator />;
-  }
-
-  if (volunteerError) {
-    return (
-      <FullPageErrorDisplay
-        errorText="Uh oh! Something went wrong."
-        refetch={makeVolunteerRequest}
-      />
-    );
-  }
-
   // Invites Data
   const {
     data: invitesData,
@@ -88,8 +63,26 @@ const AdminApplicantsTab = () => {
     setCurrentInvites(invitesData);
   }, [invitesData]);
 
-  if (invitesLoading) {
+  if (teacherLoading || volunteerLoading || invitesLoading) {
     return <FullPageLoadingIndicator />;
+  }
+
+  if (teacherError) {
+    return (
+      <FullPageErrorDisplay
+        errorText="Uh oh! Something went wrong."
+        refetch={makeTeacherRequest}
+      />
+    );
+  }
+
+  if (volunteerError) {
+    return (
+      <FullPageErrorDisplay
+        errorText="Uh oh! Something went wrong."
+        refetch={makeVolunteerRequest}
+      />
+    );
   }
 
   if (invitesError) {
