@@ -1,7 +1,11 @@
 import VolunteerApprovalLineItem from "../VolunteerApprovalLineItem";
-import { Role } from "../../../interfaces/User.interface";
 import { render } from "@testing-library/react";
 import type { Volunteer } from "../../../interfaces/User.interface";
+
+// mock clerk use auth and getToken to return null
+jest.mock("@clerk/clerk-react", () => ({
+  useAuth: () => ({ getToken: () => "" }),
+}));
 
 describe("VolunteerApprovalLineItem Tests", () => {
   test("VolunteerApprovalLineItem should render correctly", () => {
@@ -10,7 +14,6 @@ describe("VolunteerApprovalLineItem Tests", () => {
       firstName: "Test",
       lastName: "Test",
       email: "testemail@gmail.com",
-      role: Role.VOLUNTEER,
     } as Volunteer;
 
     const component = render(
@@ -32,7 +35,6 @@ describe("VolunteerApprovalLineItem Tests", () => {
       firstName: "Test",
       lastName: "Test",
       email: "testemail@gmail.com",
-      role: Role.VOLUNTEER,
     } as Volunteer;
 
     const component = render(

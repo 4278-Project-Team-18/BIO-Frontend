@@ -12,11 +12,12 @@
  * @param {string} refreshToken - The user's refresh token
  */
 export interface User {
-  firstName: string;
   _id: string;
+  firstName: string;
   lastName: string;
   email: string;
-  role: Role;
+  approvalStatus: ApprovalStatus;
+  role?: Role;
 }
 
 /**
@@ -26,13 +27,9 @@ export interface User {
  * @param {string} _id - The user's unique id
  * @param {string} lastName - The user's last name
  * @param {string} email - The user's email
- * @param {Role} role - The user's role (`Role.ADMIN`)
- * @param {string} authToken - The user's auth token
- * @param {string} refreshToken - The user's refresh token
+ * @param {ApprovalStatus} approvalStatus - The admin's approval status
  */
-export interface Admin extends User {
-  role: Role.ADMIN;
-}
+export interface Admin extends User {}
 
 /**
  * @interface Volunteer - Extends User
@@ -41,16 +38,11 @@ export interface Admin extends User {
  * @param {string} _id - The user's unique id
  * @param {string} lastName - The user's last name
  * @param {string} email - The user's email
- * @param {Role} role - The user's role (`Role.VOLUNTEER`)
- * @param {string} authToken - The user's auth token
- * @param {string} refreshToken - The user's refresh token
  * @param {string[]} matchedStudents - The mongo id's of the students matched to the volunteer
  * @param {ApprovalStatus} approvalStatus - The volunteer's approval status
  */
 export interface Volunteer extends User {
-  role: Role.VOLUNTEER;
   matchedStudents?: string[] | Student[];
-  approvalStatus: ApprovalStatus;
 }
 
 /**
@@ -60,25 +52,20 @@ export interface Volunteer extends User {
  * @param {string} _id - The user's unique id
  * @param {string} lastName - The user's last name
  * @param {string} email - The user's email
- * @param {Role} role - The user's role (`Role.TEACHER`)
- * @param {string} authToken - The user's auth token
- * @param {string} refreshToken - The user's refresh token
  * @param {string[]} classes - The mongo id's of the classes owned by the teacher
  * @param {ApprovalStatus} approvalStatus - The teacher's approval status
  */
 export interface Teacher extends User {
-  role: Role.TEACHER;
   classes?: Class[] | string[];
-  approvalStatus: ApprovalStatus;
 }
 
 /**
- * UserWithRole - Joint type of all user types
+ * UserTypes - Joint type of all user types
  * @type Admin - An admin user
  * @type Volunteer - A volunteer user
  * @type Teacher - A teacher user
  */
-export type UserWithRole = Admin | Volunteer | Teacher;
+export type UserType = Admin | Volunteer | Teacher;
 
 /**
  * @interface Class
@@ -119,17 +106,6 @@ export interface Student {
 }
 
 /**
- * @option {string} ADMIN - The admin role
- * @option {string} VOLUNTEER - The volunteer role
- * @option {string} TEACHER - The teacher roles
- */
-export enum Role {
-  ADMIN = "admin",
-  VOLUNTEER = "volunteer",
-  TEACHER = "teacher",
-}
-
-/**
  * @option {string} PENDING - The pending approval status
  * @option {string} APPROVED - The approved approval status
  * @option {string} REJECTED - The rejected approval status
@@ -152,6 +128,12 @@ export enum AdminTabs {
   VOLUNTEERS = "volunteers",
   TEACHERS = "teachers",
   APPLICANTS = "applicants",
+}
+
+export enum Role {
+  ADMIN = "admin",
+  TEACHER = "teacher",
+  VOLUNTEER = "volunteer",
 }
 
 /**

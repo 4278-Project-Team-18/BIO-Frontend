@@ -12,7 +12,7 @@ export interface Invite {
 export enum Role {
   ADMIN = "admin",
   TEACHER = "teacher",
-  STUDENT = "student",
+  VOLUNTEER = "volunteer",
 }
 
 export enum Status {

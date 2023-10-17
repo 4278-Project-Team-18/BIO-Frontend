@@ -3,6 +3,11 @@ import ClassStudentList from "../ClassStudentList";
 import { faker } from "@faker-js/faker";
 import { act, render } from "@testing-library/react";
 
+// mock clerk use auth and getToken to return null
+jest.mock("@clerk/clerk-react", () => ({
+  useAuth: () => ({ getToken: () => "" }),
+}));
+
 describe("ClassStudentList Tests", () => {
   test("ClassStudentList should render correctly for list less than 5", () => {
     // Create a mock class

@@ -4,7 +4,6 @@ import {
   type Class,
   type Teacher,
   type Volunteer,
-  Role,
   ApprovalStatus,
 } from "../interfaces/User.interface";
 import { faker } from "@faker-js/faker";
@@ -15,10 +14,6 @@ export const createTestAdmin = () =>
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(),
-    role: Role.ADMIN,
-    authToken: faker.string.uuid(),
-    refreshToken: faker.string.uuid(),
   }) as Admin;
 
 /**
@@ -57,10 +52,6 @@ export const createTestTeacher = () =>
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(),
-    role: Role.TEACHER,
-    authToken: faker.string.uuid(),
-    refreshToken: faker.string.uuid(),
     approvalStatus: randomApprovalStatus(),
   }) as Teacher;
 
@@ -74,10 +65,6 @@ export const createTestVolunteer = () =>
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(),
-    role: Role.VOLUNTEER,
-    authToken: faker.string.uuid(),
-    refreshToken: faker.string.uuid(),
     approvalStatus: randomApprovalStatus(),
   }) as Volunteer;
 

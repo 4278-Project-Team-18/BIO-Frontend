@@ -1,5 +1,6 @@
 /* eslint-disable autofix/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useAuth } from "@clerk/clerk-react";
 import { useState, useEffect } from "react";
 /**
  * @interface RequestOptions - The options to pass to the fetch request
@@ -39,6 +40,7 @@ export const useCustomFetch = <T>(
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const { getToken } = useAuth();
 
   const makeRequest = async (body?: any) => {
     try {
@@ -49,12 +51,15 @@ export const useCustomFetch = <T>(
       // create the url
       const url = `${process.env.VITE_SERVER_URL}${path}`;
 
+      const token = await getToken();
+
       // make the request
       const res = await fetch(url, {
         method,
         headers: {
           ...requestOptions?.headers,
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: method !== RequestMethods.GET ? JSON.stringify(body) : undefined,
       });
@@ -64,7 +69,7 @@ export const useCustomFetch = <T>(
 
       // if the status is not 200 or 201 throw an error
       if (res.status !== 200 && res.status !== 201) {
-        throw new Error(json.message);
+        throw new Error("[API] Error! " + res.status + ": " + json.message);
       }
 
       // set the data if the request was successful

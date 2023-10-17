@@ -12,7 +12,6 @@ jest.mock("../../../api/request.util", () => ({
         firstName: "John",
         lastName: "Doe",
         email: "testemail@test.com",
-        role: "teacher",
       } as Teacher,
     ] as Teacher[],
     loading: false,

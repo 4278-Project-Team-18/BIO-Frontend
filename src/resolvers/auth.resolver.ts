@@ -7,7 +7,7 @@ export const signUpSchema = yup.object().shape({
   password: yup
     .string()
     .required("Required")
-    .length(8, "Must be 8 characters."),
+    .min(8, "Password must be at least 8 characters long"),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref("password")], "Passwords must match")

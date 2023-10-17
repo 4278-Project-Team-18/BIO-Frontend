@@ -7,6 +7,11 @@ const mockProps = {
   classId: "12345",
 };
 
+// mock clerk use auth and getToken to return null
+jest.mock("@clerk/clerk-react", () => ({
+  useAuth: () => ({ getToken: () => "" }),
+}));
+
 describe("AddStudent Tests", () => {
   test("AddStudent should render correctly", () => {
     const component = render(<AddEditStudent {...mockProps} />);

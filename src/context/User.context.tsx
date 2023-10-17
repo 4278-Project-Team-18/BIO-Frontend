@@ -1,23 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useContext, useState } from "react";
 import type { PropsWithChildren } from "react";
-import type { UserWithRole } from "../interfaces/User.interface";
+import type { UserType } from "../interfaces/User.interface";
 
 // User context types
 interface UserContextType {
-  currentUser: UserWithRole | null;
-  setCurrentUser: (_: UserWithRole | null) => void;
+  currentUser: UserType | null;
+  setCurrentUser: (_: UserType | null) => void;
 }
 
 // Create the context for the user
 const UserContext = createContext<UserContextType>({
   currentUser: null,
-  setCurrentUser: (_: UserWithRole | null) => {},
+  setCurrentUser: (_: UserType | null) => {},
 });
 
 // Create the wrapper for the user context
 export const UserProvider = ({ children }: PropsWithChildren) => {
-  const [currentUser, setCurrentUser] = useState<UserWithRole | null>(null);
+  const [currentUser, setCurrentUser] = useState<UserType | null>(null);
 
   const value = {
     currentUser,
