@@ -1,7 +1,6 @@
 import styles from "./AdminVolunteersTab.module.css";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { AdminTabs, ApprovalStatus } from "../../../interfaces/User.interface";
-import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
 import Accordion from "../../../components/Accordion/Accordion";
 import VolunteerLineItem from "../../../components/VolunteerLineItem/VolunteerLineItem";
 import { useCustomFetch } from "../../../api/request.util";
@@ -59,10 +58,6 @@ const AdminVolunteersTab = () => {
     (volunteer) => volunteer.approvalStatus === ApprovalStatus.APPROVED,
   );
 
-  const applicants = currentVolunteers?.filter(
-    (volunteer) => volunteer.approvalStatus === ApprovalStatus.PENDING,
-  );
-
   return (
     <div>
       <div>
@@ -77,11 +72,6 @@ const AdminVolunteersTab = () => {
               openModal={handleOpenModal}
               closeModal={handleCloseModal}
             />
-          ))}
-        </Accordion>
-        <Accordion title="Applicants">
-          {applicants?.map((volunteer, index) => (
-            <VolunteerApprovalLineItem key={index} volunteer={volunteer} />
           ))}
         </Accordion>
       </div>

@@ -6,10 +6,9 @@ import AdminVolunteersTab from "./pages/admin/AdminVolunteersTab/AdminVolunteers
 import AdminDashboardTab from "./pages/admin/AdminDashboardTab/AdminDashboardTab";
 import { ClassesProvider } from "./context/Classes.context";
 import { VolunteersProvider } from "./context/Volunteers.context";
-import AdminInvitesTab from "./pages/admin/AdminInvitesTab/AdminInvitesTab";
 import { InvitesProvider } from "./context/Invites.context";
-import AdminTeachersTab from "./pages/admin/AdminTeachersTab/AdminTeachersTab";
 import { TeachersProvider } from "./context/Teachers.context";
+import AdminApplicantsTab from "./pages/admin/AdminApplicantsTab/AdminApplicantsTab";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -49,7 +48,9 @@ const router = createBrowserRouter([
         path: "/admin/classes",
         element: (
           <ClassesProvider>
-            <AdminClassesTab />
+            <TeachersProvider>
+              <AdminClassesTab />
+            </TeachersProvider>
           </ClassesProvider>
         ),
       },
@@ -62,19 +63,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/admin/invites",
+        path: "/admin/applicants",
         element: (
           <InvitesProvider>
-            <AdminInvitesTab />
+            <TeachersProvider>
+              <VolunteersProvider>
+                <AdminApplicantsTab />
+              </VolunteersProvider>
+            </TeachersProvider>
           </InvitesProvider>
-        ),
-      },
-      {
-        path: "/admin/teachers",
-        element: (
-          <TeachersProvider>
-            <AdminTeachersTab />
-          </TeachersProvider>
         ),
       },
     ],
