@@ -1,14 +1,17 @@
 import * as yup from "yup";
 
 export const signUpSchema = yup.object().shape({
-  firstName: yup.string().required("First name is required."),
-  lastName: yup.string().required("Last name is required."),
-  email: yup.string().email().required("Email is required."),
-  password: yup.string().required("Password is required."),
+  firstName: yup.string().required("Required"),
+  lastName: yup.string().required("Required"),
+  email: yup.string().email().required("Required"),
+  password: yup
+    .string()
+    .required("Required")
+    .length(8, "Must be 8 characters."),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref("password")], "Passwords must match.")
-    .required("Confirm password is required."),
+    .oneOf([yup.ref("password")], "Passwords must match")
+    .required("Confirm password is required"),
 });
 
 export const signUpCodeSchema = yup.object().shape({

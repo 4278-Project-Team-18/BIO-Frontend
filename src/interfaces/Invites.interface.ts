@@ -1,8 +1,10 @@
+import type { Admin } from "./User.interface";
+
 /* eslint-disable autofix/no-unused-vars */
 export interface Invite {
   _id: string;
   email: string;
-  senderId: string;
+  sender: string | Admin;
   role: Role;
   status: Status;
 }

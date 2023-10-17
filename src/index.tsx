@@ -30,8 +30,6 @@ if (!process.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY) {
 
 const clerkPubKey = process.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY;
 
-console.log("clerkPubKey", clerkPubKey);
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -141,11 +139,11 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/sign-in/*",
+    path: "/sign-in/",
     element: <AuthPage variant={AuthPageVariant.SIGN_IN} />,
   },
   {
-    path: "/sign-up/*",
+    path: "/sign-up/:inviteId?",
     element: <AuthPage variant={AuthPageVariant.SIGN_UP} />,
   },
 ]);

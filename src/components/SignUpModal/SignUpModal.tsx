@@ -3,26 +3,29 @@ import styles from "./SignUpModal.module.css";
 import { signUpCodeSchema, signUpSchema } from "../../resolvers/auth.resolver";
 import FormInput from "../FormInput/FormInput";
 import LoadingButton from "../LoadingButton/LoadingButton";
+import { useCustomFetch } from "../../api/request.util";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSignUp } from "@clerk/clerk-react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { MoonLoader } from "react-spinners";
+import type { Invite } from "../../interfaces/Invites.interface";
 import type { SignUpCodeInput, SignUpInput } from "./SignUpModal.definitions";
 import type { Resolver } from "react-hook-form";
+import type { Admin } from "../../interfaces/User.interface";
 
 const SignUpModal = () => {
   const { isLoaded, signUp, setActive } = useSignUp();
+  const { inviteId } = useParams();
   const navigate = useNavigate();
-  const [pendingVerification, setPendingVerification] =
-    useState<boolean>(false);
+  const [pendingVerification, setPendingVerification] = useState(false);
 
   // form controller
   const {
     control: signUpControl,
     handleSubmit: handleSignUpSubmit,
     formState: { errors: signUpErrors },
-    // setError,
   } = useForm<SignUpInput>({
     defaultValues: {
       [SignUpInputName.FIRST_NAME]: "",
@@ -40,7 +43,6 @@ const SignUpModal = () => {
     formState: { errors: signUpCodeErrors },
     handleSubmit: handleCodeSubmit,
     control: signUpCodeControl,
-    // setError,
   } = useForm<SignUpCodeInput>({
     defaultValues: {
       [SignUpCodeName.CODE]: "",
@@ -49,9 +51,13 @@ const SignUpModal = () => {
     mode: "onSubmit",
   });
 
-  const onSubmitNewClass = async (inputData: SignUpInput) => {
-    console.log(inputData);
+  const {
+    data: inviteData,
+    loading: isLoadingInvite,
+    error: errorInvite,
+  } = useCustomFetch<Invite>(`invite/${inviteId}`);
 
+  const onSubmitNewClass = async (inputData: SignUpInput) => {
     if (!isLoaded) {
       return;
     }
@@ -84,9 +90,7 @@ const SignUpModal = () => {
         code: inputData.code,
       });
       if (completeSignUp.status !== "complete") {
-        /*  investigate the response, to see if there was an error
-         or if the user needs to complete more steps.*/
-        console.log(JSON.stringify(completeSignUp, null, 2));
+        throw new Error("Unable to verify email address.");
       }
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
@@ -97,6 +101,22 @@ const SignUpModal = () => {
     }
   };
 
+  if (isLoadingInvite) {
+    return (
+      <div className={styles["sign-up-container"]}>
+        <MoonLoader color="#209bb6" />
+      </div>
+    );
+  }
+
+  if (errorInvite || !inviteData) {
+    return (
+      <div className={styles["sign-up-container"]}>
+        <p>You have not been invited!</p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles["sign-up-container"]}>
       {!pendingVerification ? (
@@ -105,7 +125,12 @@ const SignUpModal = () => {
           className={styles["sign-up-inner-container"]}
         >
           <p className={styles["sign-up-header-text"]}>
-            Sign up for{" "}
+            {inviteData?.sender
+              ? (inviteData?.sender as Admin).firstName +
+                " " +
+                (inviteData?.sender as Admin).lastName +
+                " has invited you to join "
+              : "You have been invited to "}
             <span className={styles["sign-up-header-bold"]}>Book I Own</span>
           </p>
           <div className={styles["name-container"]}>
@@ -116,6 +141,7 @@ const SignUpModal = () => {
               label="First name"
               error={signUpErrors[SignUpInputName.FIRST_NAME]?.message}
               placeholder="First name"
+              autocomplete="given-name"
             />
             <FormInput
               control={signUpControl}
@@ -124,6 +150,7 @@ const SignUpModal = () => {
               label="Last name"
               error={signUpErrors[SignUpInputName.LAST_NAME]?.message}
               placeholder="Last name"
+              autocomplete="family-name"
             />
           </div>
           <FormInput
@@ -133,6 +160,7 @@ const SignUpModal = () => {
             label="Email"
             error={signUpErrors[SignUpInputName.EMAIL]?.message}
             placeholder="Email"
+            autocomplete="email"
           />
           <FormInput
             control={signUpControl}
@@ -141,6 +169,7 @@ const SignUpModal = () => {
             label="Password"
             error={signUpErrors[SignUpInputName.PASSWORD]?.message}
             placeholder="Password"
+            autocomplete="new-password"
           />
           <FormInput
             control={signUpControl}
@@ -149,6 +178,7 @@ const SignUpModal = () => {
             label="Confirm Password"
             error={signUpErrors[SignUpInputName.CONFIRM_PASSWORD]?.message}
             placeholder="Confirm Password"
+            autocomplete="new-password"
           />
           <div className={styles["sign-up-button-container"]}>
             <div className={styles["sign-up-link-container"]}>

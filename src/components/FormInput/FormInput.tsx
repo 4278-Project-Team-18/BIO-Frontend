@@ -23,6 +23,7 @@ const FormInput = ({
   optText,
   control,
   error,
+  autocomplete,
 }: FormInputProps) => (
   <Controller
     name={name}
@@ -60,6 +61,7 @@ const FormInput = ({
             placeholder={placeholder}
             type={type}
             defaultValue={defaultValue}
+            autoComplete={autocomplete}
           />
         </div>
       </div>

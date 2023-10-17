@@ -88,8 +88,6 @@ const AdminClassesTab = () => {
     (teacher) => teacher.approvalStatus === ApprovalStatus.APPROVED,
   );
 
-  console.log(classData);
-
   return (
     <div>
       <div>
