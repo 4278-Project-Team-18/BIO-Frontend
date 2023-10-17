@@ -54,8 +54,6 @@ const AdminClassesTab = () => {
     );
   }
 
-  console.log(classData);
-
   return (
     <div>
       <div>

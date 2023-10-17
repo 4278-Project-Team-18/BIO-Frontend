@@ -8,7 +8,6 @@ import { ClassesProvider } from "./context/Classes.context";
 import { VolunteersProvider } from "./context/Volunteers.context";
 import AdminInvitesTab from "./pages/admin/AdminInvitesTab/AdminInvitesTab";
 import AuthPage from "./pages/auth/AuthPage";
-import SetupRedirect from "./pages/setup/SetupRedirect";
 import { AuthPageVariant } from "./pages/auth/AuthPage.definitions";
 import { InvitesProvider } from "./context/Invites.context";
 import AdminTeachersTab from "./pages/admin/AdminTeachersTab/AdminTeachersTab";
@@ -41,7 +40,6 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        // redirect (will be conditional based on user context)
         path: "/",
         element: (
           <>
@@ -162,19 +160,6 @@ const router = createBrowserRouter([
   {
     path: "/sign-up/*",
     element: <AuthPage variant={AuthPageVariant.SIGN_UP} />,
-  },
-  {
-    path: "/setup",
-    element: (
-      <>
-        <SignedIn>
-          <SetupRedirect />
-        </SignedIn>
-        <SignedOut>
-          <Navigate to="/sign-in/" />
-        </SignedOut>
-      </>
-    ),
   },
 ]);
 

@@ -1,6 +1,7 @@
 import { AuthPageVariant } from "./AuthPage.definitions";
 import styles from "./AuthPage.module.css";
-import { SignIn, SignUp, useSignUp } from "@clerk/clerk-react";
+import SignUpModal from "../../components/SignUpModal/SignUpModal";
+import { SignIn, useSignUp } from "@clerk/clerk-react";
 import { useEffect } from "react";
 import type { AuthPageProps } from "./AuthPage.definitions";
 
@@ -19,14 +20,10 @@ const AuthPage = ({ variant }: AuthPageProps) => {
           <SignIn
             signUpUrl="/sign-up/"
             afterSignInUrl="/"
-            afterSignUpUrl="/setup"
+            afterSignUpUrl="/dashboard"
           />
         ) : (
-          <SignUp
-            signInUrl="/sign-in/"
-            afterSignUpUrl="/setup"
-            afterSignInUrl="/"
-          />
+          <SignUpModal />
         )}
       </div>
     </div>

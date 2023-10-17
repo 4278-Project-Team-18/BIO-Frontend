@@ -1,0 +1,137 @@
+@media (min-width: 501px) {
+  .sign-up-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: fit-content;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding-bottom: 15px;
+  }
+
+  .name-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sign-up-button-container {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-between;
+  }
+
+  .sign-up-header-text {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .sign-up-header-bold {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+
+  .sign-up-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .link-to-sign-in {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 24px;
+    color: #0f9fca;
+    text-decoration: underline;
+  }
+
+  .sign-up-link-container {
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .sign-up-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: fit-content;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding-bottom: 15px;
+  }
+
+  .name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sign-up-button-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sign-up-header-text {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .sign-up-header-bold {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+
+  .sign-up-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .link-to-sign-in {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 24px;
+    color: #0f9fca;
+    text-decoration: underline;
+  }
+  .sign-up-link-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 13px;
+  }
+  .sign-up-link-text {
+    display: none;
+  }
+}
