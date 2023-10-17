@@ -7,7 +7,6 @@ import {
   faSchool,
   faUsers,
   faUserPlus,
-  faChalkboardTeacher,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { UserButton, useUser } from "@clerk/clerk-react";
@@ -22,22 +21,10 @@ const SideBar = () => {
   const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
 
   // Titles for the sidebar, conditionally set by the user's role
-  const sideBarTitles = [
-    "Dashboard",
-    "Classes",
-    "Volunteers",
-    "Teachers",
-    "Invites",
-  ];
+  const sideBarTitles = ["Dashboard", "Classes", "Volunteers", "Applicants"];
 
   // Icon components for the sidebar
-  const sideBarIcons = [
-    faHouse,
-    faSchool,
-    faUsers,
-    faChalkboardTeacher,
-    faUserPlus,
-  ];
+  const sideBarIcons = [faHouse, faSchool, faUsers, faUserPlus];
 
   // Sets the active route when a route is clicked
   const handleRouteChange = (route: TabOptions) => {

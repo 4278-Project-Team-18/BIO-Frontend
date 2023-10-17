@@ -1,17 +1,15 @@
-import AdminClassesTab from "./pages/admin/AdminClassesTab/AdminClassesTab";
 import App from "./layout/App";
 import { UserProvider } from "./context/User.context";
 import { NavigationProvider } from "./context/Navigation.context";
 import AdminVolunteersTab from "./pages/admin/AdminVolunteersTab/AdminVolunteersTab";
 import AdminDashboardTab from "./pages/admin/AdminDashboardTab/AdminDashboardTab";
-import { ClassesProvider } from "./context/Classes.context";
 import { VolunteersProvider } from "./context/Volunteers.context";
-import AdminInvitesTab from "./pages/admin/AdminInvitesTab/AdminInvitesTab";
 import AuthPage from "./pages/auth/AuthPage";
 import { AuthPageVariant } from "./pages/auth/AuthPage.definitions";
 import { InvitesProvider } from "./context/Invites.context";
-import AdminTeachersTab from "./pages/admin/AdminTeachersTab/AdminTeachersTab";
 import { TeachersProvider } from "./context/Teachers.context";
+import AdminApplicantsTab from "./pages/admin/AdminApplicantsTab/AdminApplicantsTab";
+import AdminClassesTab from "./pages/admin/AdminClassesTab/AdminClassesTab";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -96,9 +94,9 @@ const router = createBrowserRouter([
         element: (
           <>
             <SignedIn>
-              <ClassesProvider>
+              <TeachersProvider>
                 <AdminClassesTab />
-              </ClassesProvider>
+              </TeachersProvider>
             </SignedIn>
             <SignedOut>
               <Navigate to="/sign-in/" />
@@ -122,28 +120,17 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/admin/invites",
+        path: "/admin/applicants",
         element: (
           <>
             <SignedIn>
               <InvitesProvider>
-                <AdminInvitesTab />
+                <TeachersProvider>
+                  <VolunteersProvider>
+                    <AdminApplicantsTab />
+                  </VolunteersProvider>
+                </TeachersProvider>
               </InvitesProvider>
-            </SignedIn>
-            <SignedOut>
-              <Navigate to="/sign-in/" />
-            </SignedOut>
-          </>
-        ),
-      },
-      {
-        path: "/admin/teachers",
-        element: (
-          <>
-            <SignedIn>
-              <TeachersProvider>
-                <AdminTeachersTab />
-              </TeachersProvider>
             </SignedIn>
             <SignedOut>
               <Navigate to="/sign-in/" />

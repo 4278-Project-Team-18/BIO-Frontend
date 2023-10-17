@@ -30,7 +30,6 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 5px;
   }
 
   .line-item-match-button {
@@ -123,7 +122,6 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 5px;
   }
 
   .line-item-name-icon {

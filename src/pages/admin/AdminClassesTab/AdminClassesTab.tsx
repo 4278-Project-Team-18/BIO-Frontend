@@ -1,12 +1,20 @@
 import styles from "./AdminClassesTab.module.css";
 import ClassStudentList from "../../../components/ClassStudentList/ClassStudentList";
-import { AdminTabs, type Class } from "../../../interfaces/User.interface";
+import {
+  AdminTabs,
+  type Class,
+  ApprovalStatus,
+  type Teacher,
+} from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { useCustomFetch } from "../../../api/request.util";
 import { useClassesContext } from "../../../context/Classes.context";
 import AddClassModal from "../../../modals/AddClassModal/AddClassModal";
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
+import Accordion from "../../../components/Accordion/Accordion";
+import TeacherLineItem from "../../../components/TeacherLineItem/TeacherLineItem";
+import { useTeachersContext } from "../../../context/Teachers.context";
 import { useEffect, useState } from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,7 +49,20 @@ const AdminClassesTab = () => {
     setCurrentClasses(classData || []);
   }, [classData]);
 
-  if (classLoading) {
+  const { currentTeachers, setCurrentTeachers } = useTeachersContext();
+
+  const {
+    data: teacherData,
+    loading: teacherLoading,
+    error: teacherError,
+    makeRequest: makeTeacherRequest,
+  } = useCustomFetch<Teacher[]>(`teacher/allTeachers`);
+
+  useEffect(() => {
+    setCurrentTeachers(teacherData || []);
+  }, [teacherData]);
+
+  if (classLoading || teacherLoading) {
     return <FullPageLoadingIndicator />;
   }
 
@@ -53,6 +74,21 @@ const AdminClassesTab = () => {
       />
     );
   }
+
+  if (teacherError) {
+    return (
+      <FullPageErrorDisplay
+        errorText="Uh oh! Something went wrong."
+        refetch={makeTeacherRequest}
+      />
+    );
+  }
+
+  const teachers = currentTeachers?.filter(
+    (teacher) => teacher.approvalStatus === ApprovalStatus.APPROVED,
+  );
+
+  console.log(classData);
 
   return (
     <div>
@@ -81,6 +117,11 @@ const AdminClassesTab = () => {
       {currentClasses?.map((classItem) => (
         <ClassStudentList classObject={classItem} key={classItem._id} />
       ))}
+      <Accordion title="Teachers" noDataTitle="No current teachers!">
+        {teachers?.map((teacher, index) => (
+          <TeacherLineItem key={index} teacher={teacher} />
+        ))}
+      </Accordion>
     </div>
   );
 };

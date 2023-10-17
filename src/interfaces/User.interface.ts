@@ -151,6 +151,7 @@ export enum AdminTabs {
   CLASSES = "classes",
   VOLUNTEERS = "volunteers",
   TEACHERS = "teachers",
+  APPLICANTS = "applicants",
 }
 
 /**
