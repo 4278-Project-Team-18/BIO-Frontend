@@ -29,14 +29,14 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
     loading: teacherLoading,
     error: teacherError,
     makeRequest: makeTeacherRequest,
-  } = useCustomFetch<Teacher[]>(`teacher/allTeachers`);
+  } = useCustomFetch<Teacher[]>(`/teacher/allTeachers`);
 
   const {
     data: classData,
     loading: classLoading,
     error: classError,
     makeRequest: makeClassRequest,
-  } = useCustomFetch<Class>(`class`, RequestMethods.POST);
+  } = useCustomFetch<Class>(`/class`, RequestMethods.POST);
 
   const { addClass } = useClassesContext();
 

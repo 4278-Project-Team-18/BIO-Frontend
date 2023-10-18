@@ -42,20 +42,24 @@ export const useCustomFetch = <T>(
   const [loading, setLoading] = useState<boolean>(false);
   const { getToken } = useAuth();
 
-  const makeRequest = async (body?: any) => {
+  const makeRequest = async (body?: any, extraParams?: string) => {
     try {
       // Reset the data and error
       setLoading(true);
       setError(null);
 
       // create the url
-      const url = `${process.env.VITE_SERVER_URL}${path}`;
+      const url = `${process.env.VITE_SERVER_URL}${path}${extraParams || ""}`;
 
       const token = await getToken();
 
+      const requestMethod =
+        method === RequestMethods.GET_WAIT ? RequestMethods.GET : method;
+
       // make the request
       const res = await fetch(url, {
-        method,
+        ...requestOptions,
+        method: requestMethod,
         headers: {
           ...requestOptions?.headers,
           "Content-Type": "application/json",
@@ -110,4 +114,5 @@ export enum RequestMethods {
   PUT = "PUT",
   PATCH = "PATCH",
   DELETE = "DELETE",
+  GET_WAIT = "GET_WAIT",
 }

@@ -55,7 +55,7 @@ const AddEditStudent = ({
     loading: editStudentLoading,
     error: editStudentError,
     makeRequest: editStudent,
-  } = useCustomFetch<Student>(`student/${student?._id}`, RequestMethods.PATCH);
+  } = useCustomFetch<Student>(`/student/${student?._id}`, RequestMethods.PATCH);
 
   // get the addStudentToClass function from the context
   const { addStudentToClass, editStudentInClass } = useClassesContext();

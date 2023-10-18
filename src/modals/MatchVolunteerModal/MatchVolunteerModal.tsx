@@ -26,7 +26,7 @@ const MatchVolunteerModal = ({
     loading: studentLoading,
     error: studentError,
     makeRequest: makeStudentRequest,
-  } = useCustomFetch<Student[]>(`student/allStudents`);
+  } = useCustomFetch<Student[]>(`/student/allStudents`);
 
   // request to patch student to volunteer
   const {
@@ -34,7 +34,7 @@ const MatchVolunteerModal = ({
     error: matchError,
     loading: matchLoading,
     makeRequest: makeMatchRequest,
-  } = useCustomFetch<Volunteer>(`volunteer/match`, RequestMethods.PATCH);
+  } = useCustomFetch<Volunteer>(`/volunteer/match`, RequestMethods.PATCH);
 
   // send the request to match the volunteer
   const onSubmitMatchVolunteer = async () => {

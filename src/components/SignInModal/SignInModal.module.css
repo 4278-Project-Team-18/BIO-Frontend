@@ -1,0 +1,78 @@
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: fit-content;
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+
+.sign-in-fixed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 459px;
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sign-in-button-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-in-header-text {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sign-in-header-bold {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 20px;
+}
+
+.sign-in-inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.link-to-sign-in {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+  color: #0f9fca;
+  text-decoration: underline;
+}
+.sign-in-link-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  font-size: 13px;
+}
+.sign-in-link-text {
+  display: none;
+}

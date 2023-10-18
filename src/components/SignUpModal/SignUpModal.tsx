@@ -63,14 +63,14 @@ const SignUpModal = () => {
     data: inviteData,
     loading: isLoadingInvite,
     error: errorInvite,
-  } = useCustomFetch<Invite>(`invite/${inviteId}`);
+  } = useCustomFetch<Invite>(`/invite/${inviteId}`);
 
   // request to create the user
   const {
     data: userData,
     error: errorUser,
     makeRequest: makeUserRequest,
-  } = useCustomFetch<UserType>(`accounts`, RequestMethods.POST);
+  } = useCustomFetch<UserType>(`/accounts`, RequestMethods.POST);
 
   // When the user data is loaded, set the current user and navigate to the dashboard
   useEffect(() => {
@@ -85,7 +85,6 @@ const SignUpModal = () => {
         approvalStatus: userData.approvalStatus,
         role: inviteData?.role as Role,
       });
-      console.log("HERE IS THE USER DATA: ", userData);
 
       // navigate to the dashboard
       // TODO: Change this to reflect the user's role
@@ -101,7 +100,7 @@ const SignUpModal = () => {
    *
    * @param {SignUpInput} inputData - the input data from the form
    */
-  const onSubmitNewClass = async (inputData: SignUpInput) => {
+  const onSubmitSignUp = async (inputData: SignUpInput) => {
     if (!isLoaded) {
       return;
     }
@@ -182,7 +181,7 @@ const SignUpModal = () => {
     <div className={styles["sign-up-container"]}>
       {!pendingVerification ? (
         <form
-          onSubmit={handleSignUpSubmit(onSubmitNewClass)}
+          onSubmit={handleSignUpSubmit(onSubmitSignUp)}
           className={styles["sign-up-inner-container"]}
         >
           <p className={styles["sign-up-header-text"]}>

@@ -17,3 +17,8 @@ export const signUpSchema = yup.object().shape({
 export const signUpCodeSchema = yup.object().shape({
   code: yup.string().required("Code is required."),
 });
+
+export const signInSchema = yup.object().shape({
+  email: yup.string().email().required("Required"),
+  password: yup.string().required("Required"),
+});

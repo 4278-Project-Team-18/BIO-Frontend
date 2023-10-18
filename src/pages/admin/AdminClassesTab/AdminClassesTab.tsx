@@ -22,15 +22,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const AdminClassesTab = () => {
   const { setCurrentTab } = useNavigationContext();
   const { currentClasses, setCurrentClasses } = useClassesContext();
+  const { currentTeachers, setCurrentTeachers } = useTeachersContext();
+  const [classModalOpen, setClassModalOpen] = useState<boolean>(false);
 
   const {
     data: classData,
     loading: classLoading,
     error: classError,
     makeRequest: makeClassRequest,
-  } = useCustomFetch<Class[]>(`class/allClasses`);
+  } = useCustomFetch<Class[]>(`/class/`);
 
-  const [classModalOpen, setClassModalOpen] = useState<boolean>(false);
+  const {
+    data: teacherData,
+    loading: teacherLoading,
+    error: teacherError,
+    makeRequest: makeTeacherRequest,
+  } = useCustomFetch<Teacher[]>(`/teacher/`);
 
   const handleCloseModal = () => {
     setClassModalOpen(false);
@@ -46,21 +53,12 @@ const AdminClassesTab = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentClasses(classData || []);
-  }, [classData]);
-
-  const { currentTeachers, setCurrentTeachers } = useTeachersContext();
-
-  const {
-    data: teacherData,
-    loading: teacherLoading,
-    error: teacherError,
-    makeRequest: makeTeacherRequest,
-  } = useCustomFetch<Teacher[]>(`teacher/allTeachers`);
-
-  useEffect(() => {
     setCurrentTeachers(teacherData || []);
   }, [teacherData]);
+
+  useEffect(() => {
+    setCurrentClasses(classData || []);
+  }, [classData]);
 
   if (classLoading || teacherLoading) {
     return <FullPageLoadingIndicator />;
@@ -87,6 +85,8 @@ const AdminClassesTab = () => {
   const teachers = currentTeachers?.filter(
     (teacher) => teacher.approvalStatus === ApprovalStatus.APPROVED,
   );
+
+  console.log(classData);
 
   return (
     <div>
@@ -115,7 +115,7 @@ const AdminClassesTab = () => {
       {currentClasses?.map((classItem) => (
         <ClassStudentList classObject={classItem} key={classItem._id} />
       ))}
-      <Accordion title="Teachers" noDataTitle="No current teachers!">
+      <Accordion title="All Teachers" noDataTitle="No current teachers!">
         {teachers?.map((teacher, index) => (
           <TeacherLineItem key={index} teacher={teacher} />
         ))}

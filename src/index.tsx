@@ -1,12 +1,13 @@
 import App from "./layout/App";
 import { UserProvider } from "./context/User.context";
-import { NavigationProvider } from "./context/Navigation.context";
 import AdminVolunteersTab from "./pages/admin/AdminVolunteersTab/AdminVolunteersTab";
 import AdminDashboardTab from "./pages/admin/AdminDashboardTab/AdminDashboardTab";
-import { VolunteersProvider } from "./context/Volunteers.context";
 import AuthPage from "./pages/auth/AuthPage";
 import { AuthPageVariant } from "./pages/auth/AuthPage.definitions";
 import { InvitesProvider } from "./context/Invites.context";
+import { ClassesProvider } from "./context/Classes.context";
+import { VolunteersProvider } from "./context/Volunteers.context";
+import { NavigationProvider } from "./context/Navigation.context";
 import { TeachersProvider } from "./context/Teachers.context";
 import AdminApplicantsTab from "./pages/admin/AdminApplicantsTab/AdminApplicantsTab";
 import AdminClassesTab from "./pages/admin/AdminClassesTab/AdminClassesTab";
@@ -93,7 +94,9 @@ const router = createBrowserRouter([
           <>
             <SignedIn>
               <TeachersProvider>
-                <AdminClassesTab />
+                <ClassesProvider>
+                  <AdminClassesTab />
+                </ClassesProvider>
               </TeachersProvider>
             </SignedIn>
             <SignedOut>
