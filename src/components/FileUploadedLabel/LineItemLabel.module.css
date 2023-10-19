@@ -62,6 +62,19 @@
     width: fit-content;
     white-space: nowrap;
   }
+
+  .label-orange {
+    padding: 8px;
+    border: 1px solid #ef881a;
+    color: #ef881a;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 599px) {

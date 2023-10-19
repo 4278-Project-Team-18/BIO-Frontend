@@ -6,6 +6,7 @@ import { capitalize } from "../../util/string.util";
 import {
   faBookOpen,
   faCircleCheck,
+  faClock,
   faPaperPlane,
   faXmarkCircle,
 } from "@fortawesome/free-solid-svg-icons";
@@ -26,7 +27,7 @@ const InviteLineItem = ({ invite }: InviteLineItemProps) => {
       return (
         <LineItemLabel
           label={"Opened"}
-          variant={LineItemLabelVariant.YELLOW}
+          variant={LineItemLabelVariant.ORANGE}
           icon={faBookOpen}
         />
       );
@@ -34,24 +35,24 @@ const InviteLineItem = ({ invite }: InviteLineItemProps) => {
       return (
         <LineItemLabel
           label={"Completed"}
-          variant={LineItemLabelVariant.GREEN}
-          icon={faCircleCheck}
-        />
-      );
-    } else if (invite.status === Status.ACCEPTED) {
-      return (
-        <LineItemLabel
-          label={"Declined"}
-          variant={LineItemLabelVariant.RED}
-          icon={faXmarkCircle}
+          variant={LineItemLabelVariant.YELLOW}
+          icon={faClock}
         />
       );
     } else if (invite.status === Status.REJECTED) {
       return (
         <LineItemLabel
-          label={"Expired"}
+          label={"Rejected"}
           variant={LineItemLabelVariant.RED}
           icon={faXmarkCircle}
+        />
+      );
+    } else if (invite.status === Status.APPROVED) {
+      return (
+        <LineItemLabel
+          label={"Approved"}
+          variant={LineItemLabelVariant.GREEN}
+          icon={faCircleCheck}
         />
       );
     } else {

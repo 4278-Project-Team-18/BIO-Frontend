@@ -18,6 +18,8 @@ const LineItemLabel = ({ label, variant, icon }: LineItemLabelProps) => (
         ? styles["label-blue"]
         : variant === LineItemLabelVariant.PURPLE
         ? styles["label-purple"]
+        : variant === LineItemLabelVariant.ORANGE
+        ? styles["label-orange"]
         : styles["label-blue"]
     }
   >

@@ -6,6 +6,7 @@ import LoadingButton from "../LoadingButton/LoadingButton";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { type Invite } from "../../interfaces/Invites.interface";
 import { useUserContext } from "../../context/User.context";
+import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSignUp } from "@clerk/clerk-react";
@@ -63,7 +64,13 @@ const SignUpModal = () => {
     data: inviteData,
     loading: isLoadingInvite,
     error: errorInvite,
-  } = useCustomFetch<Invite>(`/invite/${inviteId}`);
+  } = useCustomFetch<Invite>(`/unp-invite/${inviteId}`);
+
+  // request to open the invite
+  const { makeRequest: makeInviteOpenedRequest } = useCustomFetch<Invite>(
+    `/unp-invite/opened/`,
+    RequestMethods.PATCH,
+  );
 
   // request to create the user
   const {
@@ -94,6 +101,19 @@ const SignUpModal = () => {
       console.error(JSON.stringify(errorUser, null, 2));
     }
   }, [userData]);
+
+  // when the invite data is load, send a patch to set it to opened
+  useEffect(() => {
+    if (inviteData) {
+      // send the request to set the invite to opened
+      const setInviteOpened = async () => {
+        await makeInviteOpenedRequest(undefined, inviteData._id || "");
+      };
+
+      // set the invite to opened
+      setInviteOpened();
+    }
+  }, [inviteData]);
 
   /**
    * Handle the submission of the new user data and send the email code.
@@ -184,15 +204,24 @@ const SignUpModal = () => {
           onSubmit={handleSignUpSubmit(onSubmitSignUp)}
           className={styles["sign-up-inner-container"]}
         >
-          <p className={styles["sign-up-header-text"]}>
+          <div className={styles["sign-up-header-title"]}>
+            Create your account.
+          </div>
+          <div className={styles["sign-up-header-text"]}>
             {inviteData?.sender
               ? (inviteData?.sender as Admin).firstName +
                 " " +
                 (inviteData?.sender as Admin).lastName +
                 " has invited you to join "
               : "You have been invited to "}
-            <span className={styles["sign-up-header-bold"]}>Book I Own</span>
-          </p>
+          </div>
+          <div className={styles["sign-up-header-second-line"]}>
+            {"Book I Own as a"}
+            <span className={styles["sign-up-header-bold"]}>
+              {` ${inviteData?.role}`}
+            </span>
+            {"."}
+          </div>
           <div className={styles["name-container"]}>
             <FormInput
               control={signUpControl}
@@ -241,21 +270,23 @@ const SignUpModal = () => {
             autocomplete="new-password"
           />
           <div className={styles["sign-up-button-container"]}>
-            <div className={styles["sign-up-link-container"]}>
-              <p className={styles["sign-up-link-text"]}>
-                Have an account?&nbsp;&nbsp;
-              </p>
-              <Link to={"/sign-in"} className={styles["link-to-sign-in"]}>
-                Sign In
-              </Link>
-            </div>
             <LoadingButton
               text="Continue"
               type="submit"
               isLoading={false}
               isLoadingText="Loading..."
               isResponsive={false}
+              variant={LoadingButtonVariant.BLACK}
+              styles={{ width: "100%" }}
             />
+          </div>
+          <div className={styles["sign-up-link-container"]}>
+            <p className={styles["sign-up-link-text"]}>
+              Have an account?&nbsp;&nbsp;
+            </p>
+            <Link to={"/sign-in"} className={styles["link-to-sign-in"]}>
+              Sign In
+            </Link>
           </div>
         </form>
       ) : (
@@ -263,12 +294,15 @@ const SignUpModal = () => {
           onSubmit={handleCodeSubmit(onSubmitCode)}
           className={styles["sign-up-inner-container"]}
         >
-          <p className={styles["sign-up-header-text"]}>
+          <div className={styles["sign-up-header-title"]}>
+            {"Let's make sure it's you."}
+          </div>
+          <div className={styles["sign-up-header-confirm-text"]}>
             Enter the code sent to&nbsp;
             <span className={styles["sign-up-header-bold"]}>
               {signUp?.emailAddress}
             </span>
-          </p>
+          </div>
           <FormInput
             control={signUpCodeControl}
             type="password"
@@ -284,6 +318,8 @@ const SignUpModal = () => {
               isLoading={false}
               isLoadingText="Signing Up..."
               isResponsive={false}
+              variant={LoadingButtonVariant.BLACK}
+              styles={{ width: "100%" }}
             />
           </div>
         </form>

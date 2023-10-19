@@ -21,7 +21,7 @@ const VolunteerUpdateApprovalStatus = ({
     error: updateApprovalStatusError,
     makeRequest: onUpdateVolunteerApprovalStatus,
   } = useCustomFetch<Volunteer>(
-    `volunteer/${volunteer._id}/changeVolunteerApprovalStatus`,
+    `/volunteer/${volunteer._id}/changeVolunteerApprovalStatus`,
     RequestMethods.PATCH,
   );
 

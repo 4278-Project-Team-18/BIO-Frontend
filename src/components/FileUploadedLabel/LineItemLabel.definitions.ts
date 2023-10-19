@@ -13,4 +13,5 @@ export enum LineItemLabelVariant {
   YELLOW = "yellow",
   BLUE = "blue",
   PURPLE = "purple",
+  ORANGE = "orange",
 }

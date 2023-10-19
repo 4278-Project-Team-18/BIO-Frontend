@@ -19,6 +19,6 @@ export enum Status {
   SENT = "sent",
   OPENED = "opened",
   COMPLETED = "completed",
-  ACCEPTED = "accepted",
+  APPROVED = "approved",
   REJECTED = "rejected",
 }

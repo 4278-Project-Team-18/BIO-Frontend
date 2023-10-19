@@ -23,6 +23,7 @@ export enum LoadingButtonVariant {
   GREY = "grey",
   PURPLE = "purple",
   DARKGREY = "darkgrey",
+  BLACK = "black",
 }
 
 export const LoadingButtonVariantColorMap = {
@@ -33,4 +34,5 @@ export const LoadingButtonVariantColorMap = {
   [LoadingButtonVariant.GREY]: "#CCCCCC",
   [LoadingButtonVariant.PURPLE]: "#8B5CF6",
   [LoadingButtonVariant.DARKGREY]: "#AAAAAA",
+  [LoadingButtonVariant.BLACK]: "#222222",
 };
