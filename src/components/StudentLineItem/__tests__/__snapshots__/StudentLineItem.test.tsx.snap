@@ -36,12 +36,12 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
             <div
               class="line-item-name"
             >
-              Shad B
+              Hayley R
             </div>
             <div
               class="line-item-reading-level"
             >
-              Reading level: 190
+              Reading level: 239
             </div>
           </div>
         </div>
@@ -150,12 +150,12 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
           <div
             class="line-item-name"
           >
-            Shad B
+            Hayley R
           </div>
           <div
             class="line-item-reading-level"
           >
-            Reading level: 190
+            Reading level: 239
           </div>
         </div>
       </div>
