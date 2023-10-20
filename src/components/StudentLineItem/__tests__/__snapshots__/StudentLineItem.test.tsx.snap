@@ -31,9 +31,18 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
             </svg>
           </div>
           <div
-            class="line-item-name"
+            class="line-item-student-info"
           >
-            Shad B
+            <div
+              class="line-item-name"
+            >
+              Shad B
+            </div>
+            <div
+              class="line-item-reading-level"
+            >
+              Reading level: 190
+            </div>
           </div>
         </div>
         <div
@@ -136,9 +145,18 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
           </svg>
         </div>
         <div
-          class="line-item-name"
+          class="line-item-student-info"
         >
-          Shad B
+          <div
+            class="line-item-name"
+          >
+            Shad B
+          </div>
+          <div
+            class="line-item-reading-level"
+          >
+            Reading level: 190
+          </div>
         </div>
       </div>
       <div

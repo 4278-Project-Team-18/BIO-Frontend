@@ -58,9 +58,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   </svg>
                 </div>
                 <div
-                  class="line-item-name"
+                  class="line-item-student-info"
                 >
-                  Guy K
+                  <div
+                    class="line-item-name"
+                  >
+                    Guy K
+                  </div>
+                  <div
+                    class="line-item-reading-level"
+                  >
+                    Reading level: 357
+                  </div>
                 </div>
               </div>
               <div
@@ -164,9 +173,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   </svg>
                 </div>
                 <div
-                  class="line-item-name"
+                  class="line-item-student-info"
                 >
-                  Jacynthe S
+                  <div
+                    class="line-item-name"
+                  >
+                    Jacynthe S
+                  </div>
+                  <div
+                    class="line-item-reading-level"
+                  >
+                    Reading level: 834
+                  </div>
                 </div>
               </div>
               <div
@@ -344,9 +362,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </svg>
               </div>
               <div
-                class="line-item-name"
+                class="line-item-student-info"
               >
-                Guy K
+                <div
+                  class="line-item-name"
+                >
+                  Guy K
+                </div>
+                <div
+                  class="line-item-reading-level"
+                >
+                  Reading level: 357
+                </div>
               </div>
             </div>
             <div
@@ -450,9 +477,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </svg>
               </div>
               <div
-                class="line-item-name"
+                class="line-item-student-info"
               >
-                Jacynthe S
+                <div
+                  class="line-item-name"
+                >
+                  Jacynthe S
+                </div>
+                <div
+                  class="line-item-reading-level"
+                >
+                  Reading level: 834
+                </div>
               </div>
             </div>
             <div
@@ -687,9 +723,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   </svg>
                 </div>
                 <div
-                  class="line-item-name"
+                  class="line-item-student-info"
                 >
-                  Guy K
+                  <div
+                    class="line-item-name"
+                  >
+                    Guy K
+                  </div>
+                  <div
+                    class="line-item-reading-level"
+                  >
+                    Reading level: 357
+                  </div>
                 </div>
               </div>
               <div
@@ -793,9 +838,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   </svg>
                 </div>
                 <div
-                  class="line-item-name"
+                  class="line-item-student-info"
                 >
-                  Jacynthe S
+                  <div
+                    class="line-item-name"
+                  >
+                    Jacynthe S
+                  </div>
+                  <div
+                    class="line-item-reading-level"
+                  >
+                    Reading level: 834
+                  </div>
                 </div>
               </div>
               <div
@@ -923,9 +977,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   </svg>
                 </div>
                 <div
-                  class="line-item-name"
+                  class="line-item-student-info"
                 >
-                  Bailey C
+                  <div
+                    class="line-item-name"
+                  >
+                    Bailey C
+                  </div>
+                  <div
+                    class="line-item-reading-level"
+                  >
+                    Reading level: 606
+                  </div>
                 </div>
               </div>
               <div
@@ -1029,9 +1092,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   </svg>
                 </div>
                 <div
-                  class="line-item-name"
+                  class="line-item-student-info"
                 >
-                  Karli S
+                  <div
+                    class="line-item-name"
+                  >
+                    Karli S
+                  </div>
+                  <div
+                    class="line-item-reading-level"
+                  >
+                    Reading level: 1372
+                  </div>
                 </div>
               </div>
               <div
@@ -1159,9 +1231,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                   </svg>
                 </div>
                 <div
-                  class="line-item-name"
+                  class="line-item-student-info"
                 >
-                  Harry B
+                  <div
+                    class="line-item-name"
+                  >
+                    Harry B
+                  </div>
+                  <div
+                    class="line-item-reading-level"
+                  >
+                    Reading level: 926
+                  </div>
                 </div>
               </div>
               <div
@@ -1324,9 +1405,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </svg>
               </div>
               <div
-                class="line-item-name"
+                class="line-item-student-info"
               >
-                Guy K
+                <div
+                  class="line-item-name"
+                >
+                  Guy K
+                </div>
+                <div
+                  class="line-item-reading-level"
+                >
+                  Reading level: 357
+                </div>
               </div>
             </div>
             <div
@@ -1430,9 +1520,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </svg>
               </div>
               <div
-                class="line-item-name"
+                class="line-item-student-info"
               >
-                Jacynthe S
+                <div
+                  class="line-item-name"
+                >
+                  Jacynthe S
+                </div>
+                <div
+                  class="line-item-reading-level"
+                >
+                  Reading level: 834
+                </div>
               </div>
             </div>
             <div
@@ -1560,9 +1659,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </svg>
               </div>
               <div
-                class="line-item-name"
+                class="line-item-student-info"
               >
-                Bailey C
+                <div
+                  class="line-item-name"
+                >
+                  Bailey C
+                </div>
+                <div
+                  class="line-item-reading-level"
+                >
+                  Reading level: 606
+                </div>
               </div>
             </div>
             <div
@@ -1666,9 +1774,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </svg>
               </div>
               <div
-                class="line-item-name"
+                class="line-item-student-info"
               >
-                Karli S
+                <div
+                  class="line-item-name"
+                >
+                  Karli S
+                </div>
+                <div
+                  class="line-item-reading-level"
+                >
+                  Reading level: 1372
+                </div>
               </div>
             </div>
             <div
@@ -1796,9 +1913,18 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
                 </svg>
               </div>
               <div
-                class="line-item-name"
+                class="line-item-student-info"
               >
-                Harry B
+                <div
+                  class="line-item-name"
+                >
+                  Harry B
+                </div>
+                <div
+                  class="line-item-reading-level"
+                >
+                  Reading level: 926
+                </div>
               </div>
             </div>
             <div

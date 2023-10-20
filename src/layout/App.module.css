@@ -15,7 +15,7 @@
     flex-grow: 1;
     margin: 0rem 2rem 0rem 2rem;
     overflow: auto;
-    background-color: #f0f1f7;
+    background-color: #f4f5f9;
     border-radius: 15px;
     overflow-x: hidden;
     width: 100%;
@@ -48,7 +48,7 @@
     padding: 0rem 0.5rem 0.5rem 0.5rem;
     margin: 2rem 1rem 0rem 1rem;
     overflow: auto;
-    background-color: #f0f1f7;
+    background-color: #f4f5f9;
     border-radius: 15px;
     overflow-x: hidden;
   }
