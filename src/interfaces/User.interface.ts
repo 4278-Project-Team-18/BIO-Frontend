@@ -12,7 +12,7 @@
  * @param {string} refreshToken - The user's refresh token
  */
 export interface User {
-  _id?: string;
+  _id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -77,7 +77,7 @@ export type UserType = Admin | Volunteer | Teacher;
  * @param {string} estimatedDelivery - The estimated delivery notes of the class's books
  */
 export interface Class {
-  _id?: string;
+  _id: string;
   name: string;
   teacherId: string;
   students?: Student[];
@@ -96,7 +96,7 @@ export interface Class {
  * @param {string[]} matchedVolunteer - The mongo id of the volunteer matched to the student
  */
 export interface Student {
-  _id?: string;
+  _id: string;
   firstName: string;
   lastInitial: string;
   readingLevel?: string;
