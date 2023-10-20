@@ -9,7 +9,7 @@ import { useUserContext } from "../../context/User.context";
 import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useSignUp } from "@clerk/clerk-react";
+import { useAuth, useSignUp } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
@@ -21,6 +21,7 @@ const SignUpModal = () => {
   // hooks from context, clerk, and react-router-dom
   const { setCurrentUser } = useUserContext();
   const { isLoaded, signUp, setActive } = useSignUp();
+  const { signOut } = useAuth();
   const navigate = useNavigate();
 
   // get the invite id from the url
@@ -34,6 +35,7 @@ const SignUpModal = () => {
     control: signUpControl,
     handleSubmit: handleSignUpSubmit,
     formState: { errors: signUpErrors },
+    setError: setSignUpError,
   } = useForm<SignUpInput>({
     defaultValues: {
       [SignUpInputName.FIRST_NAME]: "",
@@ -138,8 +140,30 @@ const SignUpModal = () => {
 
       // change the UI to our pending section.
       setPendingVerification(true);
-    } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
       console.error(JSON.stringify(err, null, 2));
+
+      // if the error is that the email is already in use, show the error
+      if (
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        err.errors.some((error: any) => error.code === "form_identifier_exists")
+      ) {
+        setSignUpError(SignUpInputName.EMAIL, {
+          type: "manual",
+          message: "That email address is taken. Please try another.",
+        });
+      }
+
+      // if the error is that there is already a session, stop the session and retry
+      if (
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        err.errors.some((error: any) => error.code === "session_exists")
+      ) {
+        console.log("session already exists");
+        await signOut();
+        await onSubmitSignUp(inputData);
+      }
     }
   };
 
@@ -305,7 +329,7 @@ const SignUpModal = () => {
           </div>
           <FormInput
             control={signUpCodeControl}
-            type="password"
+            type="text"
             name={SignUpCodeName.CODE}
             label="Email code"
             error={signUpCodeErrors[SignUpCodeName.CODE]?.message}
