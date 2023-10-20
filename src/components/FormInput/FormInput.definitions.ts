@@ -1,3 +1,4 @@
+/* eslint-disable autofix/no-unused-vars */
 import type { Control } from "react-hook-form";
 
 /**
@@ -23,4 +24,12 @@ export interface FormInputProps {
   control: Control<any, any>;
   error?: string;
   autocomplete?: string;
+  sizeVariant?: FormInputSizeVariant;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  extraStyles?: Record<string, any>;
+}
+
+export enum FormInputSizeVariant {
+  compact = "compact",
+  standard = "standard",
 }

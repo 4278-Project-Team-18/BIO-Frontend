@@ -5,6 +5,7 @@ import FormInput from "../FormInput/FormInput";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useClassesContext } from "../../context/Classes.context";
 import LoadingButton from "../LoadingButton/LoadingButton";
+import { FormInputSizeVariant } from "../FormInput/FormInput.definitions";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { faPlusCircle, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
@@ -112,29 +113,32 @@ const AddEditStudent = ({
       <FormInput
         name={NewEditStudentInputName.FIRST_NAME}
         type="text"
-        label="First name"
         control={control}
         placeholder="First name"
         error={errors[NewEditStudentInputName.FIRST_NAME]?.message}
         defaultValue={student?.firstName}
+        sizeVariant={FormInputSizeVariant.compact}
+        extraStyles={{ marginTop: "10px" }}
       />
       <FormInput
         name={NewEditStudentInputName.LAST_INITIAL}
         type="text"
-        label="Last initial"
         control={control}
         placeholder="Last initial"
         error={errors[NewEditStudentInputName.LAST_INITIAL]?.message}
         defaultValue={student?.lastInitial}
+        sizeVariant={FormInputSizeVariant.compact}
+        extraStyles={{ marginTop: "10px" }}
       />
       <FormInput
         name={NewEditStudentInputName.READING_LEVEL}
         type="text"
-        label="Reading Level"
         control={control}
         placeholder="Reading Level"
         error={errors[NewEditStudentInputName.READING_LEVEL]?.message}
         defaultValue={student?.readingLevel}
+        sizeVariant={FormInputSizeVariant.compact}
+        extraStyles={{ marginTop: "10px" }}
       />
       <div className={styles["add-student-loading-button-container"]}>
         <LoadingButton
@@ -144,6 +148,9 @@ const AddEditStudent = ({
           isLoading={addStudentLoading || editStudentLoading}
           isLoadingText={student ? "Editing student..." : "Adding student..."}
           isResponsive={false}
+          styles={{
+            marginBottom: "5px",
+          }}
         />
       </div>
     </form>

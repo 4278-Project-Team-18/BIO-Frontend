@@ -49,12 +49,12 @@ exports[`AddClassModal Tests AddClassModal snapshot should render correctly 1`] 
                 class="form-input-inner-container"
               >
                 <div
-                  class="form-input-label-opt"
+                  class="form-input-label-opt-standard"
                 >
                   Class Name
                 </div>
                 <input
-                  class="form-input"
+                  class="form-input-standard"
                   name="name"
                   placeholder="Class Name"
                   type="text"
@@ -171,12 +171,12 @@ exports[`AddClassModal Tests AddClassModal snapshot should render correctly 1`] 
               class="form-input-inner-container"
             >
               <div
-                class="form-input-label-opt"
+                class="form-input-label-opt-standard"
               >
                 Class Name
               </div>
               <input
-                class="form-input"
+                class="form-input-standard"
                 name="name"
                 placeholder="Class Name"
                 type="text"

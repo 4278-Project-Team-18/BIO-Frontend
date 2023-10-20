@@ -29,7 +29,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
     loading: teacherLoading,
     error: teacherError,
     makeRequest: makeTeacherRequest,
-  } = useCustomFetch<Teacher[]>(`/teacher/allTeachers`);
+  } = useCustomFetch<Teacher[]>(`/teacher/`);
 
   const {
     data: classData,

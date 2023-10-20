@@ -13,7 +13,7 @@ exports[`FormInput Tests FormInput snapshot should render correctly 1`] = `
           class="form-input-inner-container"
         >
           <div
-            class="form-input-label-no-opt"
+            class="form-input-label-no-opt-standard"
           >
             Test Label
             <span
@@ -23,7 +23,7 @@ exports[`FormInput Tests FormInput snapshot should render correctly 1`] = `
             </span>
           </div>
           <input
-            class="form-input"
+            class="form-input-standard"
             name="test"
             placeholder="Test Placeholder"
             type="text"
@@ -41,7 +41,7 @@ exports[`FormInput Tests FormInput snapshot should render correctly 1`] = `
         class="form-input-inner-container"
       >
         <div
-          class="form-input-label-no-opt"
+          class="form-input-label-no-opt-standard"
         >
           Test Label
           <span
@@ -51,7 +51,7 @@ exports[`FormInput Tests FormInput snapshot should render correctly 1`] = `
           </span>
         </div>
         <input
-          class="form-input"
+          class="form-input-standard"
           name="test"
           placeholder="Test Placeholder"
           type="text"
