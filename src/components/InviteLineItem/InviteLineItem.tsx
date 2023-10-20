@@ -1,5 +1,5 @@
 import styles from "./InviteLineItem.module.css";
-import { Status } from "../../interfaces/Invites.interface";
+import { InviteStatus } from "../../interfaces/Invites.interface";
 import LineItemLabel from "../FileUploadedLabel/LineItemLabel";
 import { LineItemLabelVariant } from "../FileUploadedLabel/LineItemLabel.definitions";
 import { capitalize } from "../../util/string.util";
@@ -15,7 +15,7 @@ import type { InviteLineItemProps } from "./InviteLineItem.definitions";
 const InviteLineItem = ({ invite }: InviteLineItemProps) => {
   // Render the label for the invite status
   const renderLineItemLabel: () => JSX.Element | null = () => {
-    if (invite.status === Status.SENT) {
+    if (invite.status === InviteStatus.SENT) {
       return (
         <LineItemLabel
           label={"Sent"}
@@ -23,7 +23,7 @@ const InviteLineItem = ({ invite }: InviteLineItemProps) => {
           icon={faPaperPlane}
         />
       );
-    } else if (invite.status === Status.OPENED) {
+    } else if (invite.status === InviteStatus.OPENED) {
       return (
         <LineItemLabel
           label={"Opened"}
@@ -31,7 +31,7 @@ const InviteLineItem = ({ invite }: InviteLineItemProps) => {
           icon={faBookOpen}
         />
       );
-    } else if (invite.status === Status.COMPLETED) {
+    } else if (invite.status === InviteStatus.COMPLETED) {
       return (
         <LineItemLabel
           label={"Completed"}
@@ -39,7 +39,7 @@ const InviteLineItem = ({ invite }: InviteLineItemProps) => {
           icon={faClock}
         />
       );
-    } else if (invite.status === Status.REJECTED) {
+    } else if (invite.status === InviteStatus.REJECTED) {
       return (
         <LineItemLabel
           label={"Rejected"}
@@ -47,7 +47,7 @@ const InviteLineItem = ({ invite }: InviteLineItemProps) => {
           icon={faXmarkCircle}
         />
       );
-    } else if (invite.status === Status.APPROVED) {
+    } else if (invite.status === InviteStatus.APPROVED) {
       return (
         <LineItemLabel
           label={"Approved"}
