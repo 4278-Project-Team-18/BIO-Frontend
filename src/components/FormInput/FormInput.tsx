@@ -1,6 +1,9 @@
 import styles from "./FormInput.module.css";
+import {
+  FormInputSizeVariant,
+  type FormInputProps,
+} from "./FormInput.definitions";
 import { Controller } from "react-hook-form";
-import type { FormInputProps } from "./FormInput.definitions";
 
 /**
  * FormInput component
@@ -23,19 +26,22 @@ const FormInput = ({
   optText,
   control,
   error,
+  autocomplete,
+  sizeVariant = FormInputSizeVariant.standard,
+  extraStyles = {},
 }: FormInputProps) => (
   <Controller
     name={name}
     control={control}
     render={({ field }) => (
-      <div className={styles["form-input-container"]}>
+      <div className={styles[`form-input-container`]}>
         <div className={styles["form-input-inner-container"]}>
           {label && (
             <div
               className={
                 error
-                  ? styles["form-input-label-no-opt"]
-                  : styles["form-input-label-opt"]
+                  ? styles[`form-input-label-no-opt-${sizeVariant}`]
+                  : styles[`form-input-label-opt-${sizeVariant}`]
               }
             >
               {label}
@@ -56,10 +62,12 @@ const FormInput = ({
             onBlur={field.onBlur}
             name={field.name}
             ref={field.ref}
-            className={styles["form-input"]}
+            className={styles[`form-input-${sizeVariant}`]}
             placeholder={placeholder}
             type={type}
             defaultValue={defaultValue}
+            autoComplete={autocomplete}
+            style={{ ...extraStyles }}
           />
         </div>
       </div>

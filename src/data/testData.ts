@@ -1,90 +1,80 @@
-import {
-  type Admin,
-  type Student,
-  type Class,
-  type Teacher,
-  type Volunteer,
-  Role,
-  ApprovalStatus,
-} from "../interfaces/User.interface";
+import { ApprovalStatus } from "../interfaces/User.interface";
 import { faker } from "@faker-js/faker";
+import type { Invite, Role } from "../interfaces/Invites.interface";
+import type {
+  Admin,
+  Student,
+  Class,
+  Teacher,
+  Volunteer,
+} from "../interfaces/User.interface";
 
-export const createTestAdmin = () =>
-  ({
-    _id: faker.string.alphanumeric(26),
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-    role: Role.ADMIN,
-    authToken: faker.string.uuid(),
-    refreshToken: faker.string.uuid(),
-  }) as Admin;
+export const createTestAdmin = () => {
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+  const email = faker.internet.email({
+    firstName: firstName,
+    lastName: lastName,
+  });
 
-/**
- * @function createTestStudent
- * @param isTest - optional parameter to determine if the image link should always be generated or not (for snapshots)
- * @returns a student object with random data
- */
+  return {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    approvalStatus: randomApprovalStatus(),
+  } as Admin;
+};
+
 export const createTestStudent = () =>
   ({
-    _id: faker.string.alphanumeric(26),
     firstName: faker.person.firstName(),
     lastInitial: faker.person.lastName().charAt(0),
     readingLevel: faker.number.bigInt({ min: 100, max: 1500 }).toString(),
-    studentLetterLink: randomImageLink(),
-    volunteerResponseLetterLink: randomImageLink(),
   }) as Student;
 
-/**
- * @function createTestClass
- * @returns a class object with random data
- */
 export const createTestClass = () =>
   ({
-    _id: faker.string.alphanumeric(26),
     name: faker.word.adjective() + " " + faker.word.noun() + " Class",
-    teacherId: faker.string.alphanumeric(26),
   }) as Class;
 
-/**
- * @function createTestTeacher
- * @returns a teacher object with random data
- */
-export const createTestTeacher = () =>
-  ({
-    _id: faker.string.alphanumeric(26),
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-    role: Role.TEACHER,
-    authToken: faker.string.uuid(),
-    refreshToken: faker.string.uuid(),
-    approvalStatus: randomApprovalStatus(),
-  }) as Teacher;
+export const createTestTeacher = () => {
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+  const email = faker.internet.email({
+    firstName: firstName,
+    lastName: lastName,
+  });
 
-/**
- * @function createTestVolunteer
- * @returns a volunteer object with random data
- */
-export const createTestVolunteer = () =>
-  ({
-    _id: faker.string.alphanumeric(26),
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-    role: Role.VOLUNTEER,
-    authToken: faker.string.uuid(),
-    refreshToken: faker.string.uuid(),
+  return {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
     approvalStatus: randomApprovalStatus(),
-  }) as Volunteer;
+  } as Teacher;
+};
 
-/**
- * @function randomApprovalStatus
- * @returns a random approval status
- */
+export const createTestVolunteer = () => {
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+  const email = faker.internet.email({
+    firstName: firstName,
+    lastName: lastName,
+  });
+
+  return {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    approvalStatus: randomApprovalStatus(),
+  } as Volunteer;
+};
+
+export const createTestInvite = (role?: Role) =>
+  ({
+    email: faker.internet.email(),
+    role: role || randomRole(),
+  }) as Invite;
+
 export const randomApprovalStatus = () => {
   const approvalStatuses = [
     ApprovalStatus.APPROVED,
@@ -94,15 +84,7 @@ export const randomApprovalStatus = () => {
   return approvalStatuses[Math.floor(Math.random() * approvalStatuses.length)];
 };
 
-export const randomImageLink = () => {
-  if (
-    faker.number.int({
-      min: 0,
-      max: 9,
-    }) > 5
-  ) {
-    return faker.internet.url();
-  } else {
-    return undefined;
-  }
+export const randomRole = () => {
+  const roles = ["teacher", "volunteer", "admin"];
+  return roles[Math.floor(Math.random() * roles.length)];
 };

@@ -35,15 +35,11 @@ exports[`AddStudent Tests AddStudent snapshot should render correctly 1`] = `
           <div
             class="form-input-inner-container"
           >
-            <div
-              class="form-input-label-opt"
-            >
-              First name
-            </div>
             <input
-              class="form-input"
+              class="form-input-compact"
               name="firstName"
               placeholder="First name"
+              style="margin-top: 10px;"
               type="text"
               value=""
             />
@@ -55,15 +51,11 @@ exports[`AddStudent Tests AddStudent snapshot should render correctly 1`] = `
           <div
             class="form-input-inner-container"
           >
-            <div
-              class="form-input-label-opt"
-            >
-              Last initial
-            </div>
             <input
-              class="form-input"
+              class="form-input-compact"
               name="lastInitial"
               placeholder="Last initial"
+              style="margin-top: 10px;"
               type="text"
               value=""
             />
@@ -75,15 +67,11 @@ exports[`AddStudent Tests AddStudent snapshot should render correctly 1`] = `
           <div
             class="form-input-inner-container"
           >
-            <div
-              class="form-input-label-opt"
-            >
-              Reading Level
-            </div>
             <input
-              class="form-input"
+              class="form-input-compact"
               name="readingLevel"
               placeholder="Reading Level"
+              style="margin-top: 10px;"
               type="text"
               value=""
             />
@@ -94,7 +82,7 @@ exports[`AddStudent Tests AddStudent snapshot should render correctly 1`] = `
         >
           <button
             class="loading-button"
-            style="background-color: rgb(90, 208, 109);"
+            style="margin-bottom: 5px; background-color: rgb(90, 208, 109);"
             type="submit"
           >
             <span
@@ -153,15 +141,11 @@ exports[`AddStudent Tests AddStudent snapshot should render correctly 1`] = `
         <div
           class="form-input-inner-container"
         >
-          <div
-            class="form-input-label-opt"
-          >
-            First name
-          </div>
           <input
-            class="form-input"
+            class="form-input-compact"
             name="firstName"
             placeholder="First name"
+            style="margin-top: 10px;"
             type="text"
             value=""
           />
@@ -173,15 +157,11 @@ exports[`AddStudent Tests AddStudent snapshot should render correctly 1`] = `
         <div
           class="form-input-inner-container"
         >
-          <div
-            class="form-input-label-opt"
-          >
-            Last initial
-          </div>
           <input
-            class="form-input"
+            class="form-input-compact"
             name="lastInitial"
             placeholder="Last initial"
+            style="margin-top: 10px;"
             type="text"
             value=""
           />
@@ -193,15 +173,11 @@ exports[`AddStudent Tests AddStudent snapshot should render correctly 1`] = `
         <div
           class="form-input-inner-container"
         >
-          <div
-            class="form-input-label-opt"
-          >
-            Reading Level
-          </div>
           <input
-            class="form-input"
+            class="form-input-compact"
             name="readingLevel"
             placeholder="Reading Level"
+            style="margin-top: 10px;"
             type="text"
             value=""
           />
@@ -212,7 +188,7 @@ exports[`AddStudent Tests AddStudent snapshot should render correctly 1`] = `
       >
         <button
           class="loading-button"
-          style="background-color: rgb(90, 208, 109);"
+          style="margin-bottom: 5px; background-color: rgb(90, 208, 109);"
           type="submit"
         >
           <span

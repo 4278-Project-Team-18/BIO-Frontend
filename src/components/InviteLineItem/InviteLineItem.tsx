@@ -1,11 +1,12 @@
 import styles from "./InviteLineItem.module.css";
-import { Status } from "../../interfaces/Invites.interface";
+import { InviteStatus } from "../../interfaces/Invites.interface";
 import LineItemLabel from "../FileUploadedLabel/LineItemLabel";
 import { LineItemLabelVariant } from "../FileUploadedLabel/LineItemLabel.definitions";
 import { capitalize } from "../../util/string.util";
 import {
   faBookOpen,
   faCircleCheck,
+  faClock,
   faPaperPlane,
   faXmarkCircle,
 } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +15,7 @@ import type { InviteLineItemProps } from "./InviteLineItem.definitions";
 const InviteLineItem = ({ invite }: InviteLineItemProps) => {
   // Render the label for the invite status
   const renderLineItemLabel: () => JSX.Element | null = () => {
-    if (invite.status === Status.SENT) {
+    if (invite.status === InviteStatus.SENT) {
       return (
         <LineItemLabel
           label={"Sent"}
@@ -22,36 +23,36 @@ const InviteLineItem = ({ invite }: InviteLineItemProps) => {
           icon={faPaperPlane}
         />
       );
-    } else if (invite.status === Status.OPENED) {
+    } else if (invite.status === InviteStatus.OPENED) {
       return (
         <LineItemLabel
           label={"Opened"}
-          variant={LineItemLabelVariant.YELLOW}
+          variant={LineItemLabelVariant.ORANGE}
           icon={faBookOpen}
         />
       );
-    } else if (invite.status === Status.COMPLETED) {
+    } else if (invite.status === InviteStatus.COMPLETED) {
       return (
         <LineItemLabel
           label={"Completed"}
+          variant={LineItemLabelVariant.YELLOW}
+          icon={faClock}
+        />
+      );
+    } else if (invite.status === InviteStatus.REJECTED) {
+      return (
+        <LineItemLabel
+          label={"Rejected"}
+          variant={LineItemLabelVariant.RED}
+          icon={faXmarkCircle}
+        />
+      );
+    } else if (invite.status === InviteStatus.APPROVED) {
+      return (
+        <LineItemLabel
+          label={"Approved"}
           variant={LineItemLabelVariant.GREEN}
           icon={faCircleCheck}
-        />
-      );
-    } else if (invite.status === Status.ACCEPTED) {
-      return (
-        <LineItemLabel
-          label={"Declined"}
-          variant={LineItemLabelVariant.RED}
-          icon={faXmarkCircle}
-        />
-      );
-    } else if (invite.status === Status.REJECTED) {
-      return (
-        <LineItemLabel
-          label={"Expired"}
-          variant={LineItemLabelVariant.RED}
-          icon={faXmarkCircle}
         />
       );
     } else {

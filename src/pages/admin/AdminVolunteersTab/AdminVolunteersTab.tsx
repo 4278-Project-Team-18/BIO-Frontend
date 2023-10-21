@@ -15,9 +15,8 @@ const AdminVolunteersTab = () => {
   const { setCurrentTab } = useNavigationContext();
   const { currentVolunteers, setCurrentVolunteers } = useVolunteersContext();
 
-  const { data, loading, error, makeRequest } = useCustomFetch<Volunteer[]>(
-    `volunteer/allVolunteers`,
-  );
+  const { data, loading, error, makeRequest } =
+    useCustomFetch<Volunteer[]>(`/volunteer`);
 
   const [matchModalOpen, setMatchModalOpen] = useState<boolean>(false);
   const [currentMatchingVolunteer, setCurrentMatchingVolunteer] =

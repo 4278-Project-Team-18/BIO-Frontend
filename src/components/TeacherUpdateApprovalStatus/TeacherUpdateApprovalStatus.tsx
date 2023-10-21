@@ -18,7 +18,7 @@ const TeacherUpdateApprovalStatus = ({
     error: updateApprovalStatusError,
     makeRequest: onUpdateTeacherApprovalStatus,
   } = useCustomFetch<Teacher>(
-    `teacher/${teacher._id}/changeTeacherApprovalStatus`,
+    `/teacher/${teacher._id}/changeTeacherApprovalStatus`,
     RequestMethods.PATCH,
   );
 

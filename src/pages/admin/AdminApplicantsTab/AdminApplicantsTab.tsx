@@ -5,13 +5,13 @@ import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullP
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import InviteLineItem from "../../../components/InviteLineItem/InviteLineItem";
 import VolunteerApprovalLineItem from "../../../components/VolunteerApprovalLineItem/VolunteerApprovalLineItem";
-import SendInviteForm from "../../../components/SendInviteForm/SendInviteForm";
 import TeacherApprovalLineItem from "../../../components/TeacherApprovalLineItem/TeacherApprovalLineItem";
 import { AdminTabs, ApprovalStatus } from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { useInvitesContext } from "../../../context/Invites.context";
 import { useTeachersContext } from "../../../context/Teachers.context";
 import { useVolunteersContext } from "../../../context/Volunteers.context";
+import SendInviteForm from "../../../components/SendInviteForm/SendInviteForm";
 import { useEffect } from "react";
 import type { Volunteer, Teacher } from "../../../interfaces/User.interface";
 import type { Invite } from "../../../interfaces/Invites.interface";
@@ -33,7 +33,7 @@ const AdminApplicantsTab = () => {
     loading: teacherLoading,
     error: teacherError,
     makeRequest: makeTeacherRequest,
-  } = useCustomFetch<Teacher[]>(`teacher/allTeachers`);
+  } = useCustomFetch<Teacher[]>(`/teacher/`);
 
   useEffect(() => {
     setCurrentTeachers(teacherData || []);
@@ -45,7 +45,7 @@ const AdminApplicantsTab = () => {
     loading: volunteerLoading,
     error: volunteerError,
     makeRequest: makeVolunteerRequest,
-  } = useCustomFetch<Volunteer[]>(`volunteer/allVolunteers`);
+  } = useCustomFetch<Volunteer[]>(`/volunteer/`);
 
   useEffect(() => {
     setCurrentVolunteers(volunteerData || []);
@@ -57,7 +57,7 @@ const AdminApplicantsTab = () => {
     loading: invitesLoading,
     error: invitesError,
     makeRequest: makeInvitesRequest,
-  } = useCustomFetch<Invite[]>(`invite/`);
+  } = useCustomFetch<Invite[]>(`/invite/`);
 
   useEffect(() => {
     setCurrentInvites(invitesData);
@@ -114,7 +114,7 @@ const AdminApplicantsTab = () => {
         ))}
       </Accordion>
       <Accordion
-        title="Volunteer Applicants"
+        title="Volunteer Applications"
         noDataTitle="No Volunteer Applicants!"
       >
         {volunteerApplicants?.map((volunteer, index) => (
@@ -122,7 +122,7 @@ const AdminApplicantsTab = () => {
         ))}
       </Accordion>
       <Accordion
-        title="Teacher Applicants"
+        title="Teacher Applications"
         noDataTitle="No Teacher Applicants!"
       >
         {teacherApplicants?.map((teacher, index) => (

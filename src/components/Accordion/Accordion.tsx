@@ -81,7 +81,7 @@ const Accordion = ({
                   {child}
                   {!hideActionButton ? (
                     <LineItemDivider />
-                  ) : index < children.length ? (
+                  ) : index < children.length - 1 ? (
                     <LineItemDivider />
                   ) : null}
                 </Fragment>

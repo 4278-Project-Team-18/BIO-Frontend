@@ -36,9 +36,14 @@ const StudentLineItem = ({
           />
         )}
       </div>
-      <div
-        className={styles["line-item-name"]}
-      >{`${student.firstName} ${student.lastInitial}`}</div>
+      <div className={styles["line-item-student-info"]}>
+        <div
+          className={styles["line-item-name"]}
+        >{`${student.firstName} ${student.lastInitial}`}</div>
+        <div
+          className={styles["line-item-reading-level"]}
+        >{`Reading level: ${student.readingLevel}`}</div>
+      </div>
     </div>
     <div className={styles["line-item-container-right"]}>
       {student.studentLetterLink && (

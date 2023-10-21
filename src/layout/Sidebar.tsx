@@ -9,10 +9,13 @@ import {
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { UserButton, useUser } from "@clerk/clerk-react";
 import type { TabOptions } from "../interfaces/User.interface";
 
 const SideBar = () => {
   const { currentTab, setCurrentTab } = useNavigationContext();
+
+  const { user } = useUser();
 
   const [sideBar, setSideBar] = useState<boolean>(false);
   const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
@@ -26,11 +29,6 @@ const SideBar = () => {
   // Sets the active route when a route is clicked
   const handleRouteChange = (route: TabOptions) => {
     setCurrentTab(route);
-  };
-
-  // Not implemented yet
-  const handleBackToHome = () => {
-    console.log("back to landing page?");
   };
 
   // Close the side bar if switch to mobile view
@@ -109,12 +107,18 @@ const SideBar = () => {
               </Link>
             ))}
           </div>
-          <div
-            className={styles["sidebar-back-to-home"]}
-            onClick={handleBackToHome}
-          >
-            <i className={styles["arrow"] + " " + styles["left"]} />
-            Back to home
+          <div className={styles["profile-container"]}>
+            <div className={styles["user-info-container"]}>
+              <div className={styles["full-name"]}> {user?.fullName}</div>
+              <div className={styles["email"]}>
+                {user?.primaryEmailAddress?.emailAddress}
+              </div>
+            </div>
+            <UserButton
+              showName={false}
+              afterSignOutUrl="/sign-in/"
+              signInUrl="/sign-in/"
+            />
           </div>
         </div>
       </div>
@@ -145,6 +149,9 @@ const SideBar = () => {
             </Link>
           </div>
         ))}
+        <div className={styles["user-button-container"]}>
+          <UserButton afterSignOutUrl="/sign-in/" signInUrl="/sign-in/" />
+        </div>
       </div>
     </div>
   );
