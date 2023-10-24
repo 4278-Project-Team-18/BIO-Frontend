@@ -80,7 +80,7 @@ const SideBar = () => {
           <div>
             {sideBarTitles.map((title, index) => (
               <Link
-                to={"/admin/" + title.toLowerCase()}
+                to={"/" + title.toLowerCase()}
                 className={styles["sidebar-route-link"]}
                 key={index}
               >
@@ -137,7 +137,7 @@ const SideBar = () => {
               handleRouteChange(title.toLowerCase() as TabOptions);
             }}
           >
-            <Link to={"/admin/" + title.toLowerCase()} key={index}>
+            <Link to={"/" + title.toLowerCase()} key={index}>
               <FontAwesomeIcon
                 className={`${styles["sidebar-closed-icon"]} ${
                   currentTab === title.toLowerCase()
