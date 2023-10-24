@@ -38,7 +38,7 @@ const AppRouter = () => {
     RequestMethods.GET_WAIT,
   );
 
-  // get the user on page render
+  // get the user from the database on page render and when clerk is loaded
   useEffect(() => {
     if (isSignedIn && isLoaded) {
       makeUserRequest();
@@ -51,18 +51,15 @@ const AppRouter = () => {
       setCurrentUser(userData);
     }
 
-    // if there is an error, sign out
+    // if there is an error, sign out (might want to change this later)
     if (userError) {
       signOut();
     }
   }, [userData]);
 
-  // if the user has not been fetched, show the loading indicator
+  // if the user has not been fetched or clerk is still loading, show the loading indicator
   if (!isLoaded || userLoading || !userData)
     return <FullPageLoadingIndicator />;
-
-  // if the user signed in but we failed to fetch the user, sign out
-  if (isLoaded && !userLoading && !userData) signOut();
 
   const router = createBrowserRouter([
     {
