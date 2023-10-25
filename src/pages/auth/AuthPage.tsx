@@ -1,7 +1,7 @@
 import { AuthPageVariant } from "./AuthPage.definitions";
 import styles from "./AuthPage.module.css";
-import SignUpModal from "../../components/SignUpModal/SignUpModal";
-import SignInModal from "../../components/SignInModal/SignInModal";
+import SignUpModal from "../../modals/SignUpModal/SignUpModal";
+import SignInModal from "../../modals/SignInModal/SignInModal";
 import Logo from "../../assets/BIOLogo.png";
 import type { AuthPageProps } from "./AuthPage.definitions";
 

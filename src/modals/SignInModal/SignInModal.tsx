@@ -1,9 +1,9 @@
 import { SignInInputName } from "./SignInModal.definitions";
 import styles from "./SignInModal.module.css";
 import { signInSchema } from "../../resolvers/auth.resolver";
-import FormInput from "../FormInput/FormInput";
-import LoadingButton from "../LoadingButton/LoadingButton";
-import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
+import FormInput from "../../components/FormInput/FormInput";
+import LoadingButton from "../../components/LoadingButton/LoadingButton";
+import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSignIn } from "@clerk/clerk-react";

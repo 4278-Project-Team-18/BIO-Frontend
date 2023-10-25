@@ -136,7 +136,7 @@ export enum AdminTabs {
  */
 export enum VolunteerTabs {
   DASHBOARD = "dashboard",
-  STUDENTS = "students",
+  MATCHES = "matches",
 }
 
 /**

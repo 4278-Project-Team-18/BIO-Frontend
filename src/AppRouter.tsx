@@ -17,6 +17,7 @@ import VolunteerDashboardTab from "./pages/volunteer/VolunteerDashboardTab/Volun
 import FullPageErrorDisplay from "./components/FullPageErrorDisplay/FullPageErrorDisplay";
 import TeacherClassesTab from "./pages/teacher/TeacherClassesTab/TeacherClassesTab";
 import FullPageLoadingIndicator from "./components/FullPageLoadingIndicator/FullPageLoadingIndicator";
+import VolunteerMatchesTab from "./pages/volunteer/VolunteerMatchesTab/VolunteerMatchesTab";
 import { createBrowserRouter } from "react-router-dom";
 import { Navigate, RouterProvider } from "react-router";
 import { SignedIn, SignedOut, useAuth, useUser } from "@clerk/clerk-react";
@@ -47,6 +48,7 @@ const AppRouter = () => {
 
   // once the user is fetched, set the current user
   useEffect(() => {
+    console.log(userError);
     if (userData && !userError) {
       setCurrentUser(userData);
     }
@@ -54,12 +56,12 @@ const AppRouter = () => {
     // if there is an error, sign out (might want to change this later)
     if (userError) {
       signOut();
+      setCurrentUser(null);
     }
   }, [userData]);
 
   // if the user has not been fetched or clerk is still loading, show the loading indicator
-  if (!isLoaded || userLoading || !userData)
-    return <FullPageLoadingIndicator />;
+  if (!isLoaded || userLoading) return <FullPageLoadingIndicator />;
 
   const router = createBrowserRouter([
     {
@@ -132,14 +134,8 @@ const AppRouter = () => {
                   <ClassesProvider>
                     <TeacherClassesTab />
                   </ClassesProvider>
-                ) : userData?.role === Role.VOLUNTEER ? (
-                  <Navigate to="/dashboard" />
                 ) : (
-                  <FullPageErrorDisplay
-                    refetch={makeUserRequest}
-                    refetchText="Try again"
-                    errorText="Uh oh! You can't access this page"
-                  />
+                  <Navigate to="/dashboard" />
                 )}
               </SignedIn>
               <SignedOut>
@@ -153,9 +149,13 @@ const AppRouter = () => {
           element: (
             <>
               <SignedIn>
-                <VolunteersProvider>
-                  <AdminVolunteersTab />
-                </VolunteersProvider>
+                {userData?.role === Role.ADMIN ? (
+                  <VolunteersProvider>
+                    <AdminVolunteersTab />
+                  </VolunteersProvider>
+                ) : (
+                  <Navigate to="/dashboard" />
+                )}
               </SignedIn>
               <SignedOut>
                 <Navigate to="/sign-in/" />
@@ -168,13 +168,34 @@ const AppRouter = () => {
           element: (
             <>
               <SignedIn>
-                <InvitesProvider>
-                  <TeachersProvider>
-                    <VolunteersProvider>
-                      <AdminApplicantsTab />
-                    </VolunteersProvider>
-                  </TeachersProvider>
-                </InvitesProvider>
+                {userData?.role === Role.ADMIN ? (
+                  <InvitesProvider>
+                    <TeachersProvider>
+                      <VolunteersProvider>
+                        <AdminApplicantsTab />
+                      </VolunteersProvider>
+                    </TeachersProvider>
+                  </InvitesProvider>
+                ) : (
+                  <Navigate to="/dashboard" />
+                )}
+              </SignedIn>
+              <SignedOut>
+                <Navigate to="/sign-in/" />
+              </SignedOut>
+            </>
+          ),
+        },
+        {
+          path: "/matches/",
+          element: (
+            <>
+              <SignedIn>
+                {userData?.role === Role.VOLUNTEER ? (
+                  <VolunteerMatchesTab />
+                ) : (
+                  <Navigate to="/dashboard" />
+                )}
               </SignedIn>
               <SignedOut>
                 <Navigate to="/sign-in/" />
