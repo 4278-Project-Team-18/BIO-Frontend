@@ -1,7 +1,7 @@
 import styles from "./Sidebar.module.css";
-import { useNavigationContext } from "../context/Navigation.context";
-import { Role, type TabOptions } from "../interfaces/User.interface";
-import { useUserContext } from "../context/User.context";
+import { useNavigationContext } from "../../context/Navigation.context";
+import { Role, type TabOptions } from "../../interfaces/User.interface";
+import { useUserContext } from "../../context/User.context";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

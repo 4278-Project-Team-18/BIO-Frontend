@@ -2,7 +2,7 @@ import { ClassesProvider } from "./context/Classes.context";
 import { InvitesProvider } from "./context/Invites.context";
 import { TeachersProvider } from "./context/Teachers.context";
 import { VolunteersProvider } from "./context/Volunteers.context";
-import App from "./layout/App";
+import App from "./layout/App/App";
 import AdminApplicantsTab from "./pages/admin/AdminApplicantsTab/AdminApplicantsTab";
 import AdminClassesTab from "./pages/admin/AdminClassesTab/AdminClassesTab";
 import AdminDashboardTab from "./pages/admin/AdminDashboardTab/AdminDashboardTab";
@@ -61,7 +61,8 @@ const AppRouter = () => {
   }, [userData]);
 
   // if the user has not been fetched or clerk is still loading, show the loading indicator
-  if (!isLoaded || userLoading) return <FullPageLoadingIndicator />;
+  if (!isLoaded || userLoading || !userData)
+    return <FullPageLoadingIndicator />;
 
   const router = createBrowserRouter([
     {

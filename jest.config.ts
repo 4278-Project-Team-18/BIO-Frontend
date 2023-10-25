@@ -7,6 +7,7 @@ export default {
     "src/pages/**/*.{js,jsx,ts,tsx}",
     "src/utils/**/*.{js,jsx,ts,tsx}",
     "src/modals/**/*.{js,jsx,ts,tsx}",
+    "src/layout/Sidebar/**/*.{js,jsx,ts,tsx}",
   ],
 
   // Automatically clear mock calls and instances between every test
