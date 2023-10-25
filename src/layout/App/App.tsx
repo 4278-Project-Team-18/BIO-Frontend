@@ -1,5 +1,5 @@
-import SideBar from "../Sidebar/Sidebar";
 import styles from "./App.module.css";
+import SideBar from "../Sidebar/Sidebar";
 import { Outlet } from "react-router";
 
 const App = () => (
