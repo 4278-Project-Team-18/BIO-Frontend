@@ -26,7 +26,7 @@ import { useEffect } from "react";
 const AppRouter = () => {
   const { isSignedIn, user, isLoaded } = useUser();
   const { signOut } = useAuth();
-  const { setCurrentUser } = useUserContext();
+  const { currentUser, setCurrentUser } = useUserContext();
 
   // request to get the user
   const {
@@ -48,7 +48,6 @@ const AppRouter = () => {
 
   // once the user is fetched, set the current user
   useEffect(() => {
-    console.log(userError);
     if (userData && !userError) {
       setCurrentUser(userData);
     }
@@ -61,7 +60,7 @@ const AppRouter = () => {
   }, [userData]);
 
   // if the user has not been fetched or clerk is still loading, show the loading indicator
-  if (!isLoaded || userLoading || !userData)
+  if (!isLoaded || userLoading || (!userData && isSignedIn && currentUser))
     return <FullPageLoadingIndicator />;
 
   const router = createBrowserRouter([

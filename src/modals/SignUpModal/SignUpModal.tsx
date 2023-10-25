@@ -81,6 +81,10 @@ const SignUpModal = () => {
     makeRequest: makeUserRequest,
   } = useCustomFetch<UserType>(`/accounts`, RequestMethods.POST);
 
+  useEffect(() => {
+    signOut();
+  }, []);
+
   // When the user data is loaded, set the current user and navigate to the dashboard
   useEffect(() => {
     // check if the user in the backend was created successfully
