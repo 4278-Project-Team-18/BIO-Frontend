@@ -1,5 +1,7 @@
 import styles from "./Sidebar.module.css";
-import { useNavigationContext } from "../context/Navigation.context";
+import { useNavigationContext } from "../../context/Navigation.context";
+import { Role, type TabOptions } from "../../interfaces/User.interface";
+import { useUserContext } from "../../context/User.context";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,24 +9,35 @@ import {
   faSchool,
   faUsers,
   faUserPlus,
+  faHandshake,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { UserButton, useUser } from "@clerk/clerk-react";
-import type { TabOptions } from "../interfaces/User.interface";
 
 const SideBar = () => {
   const { currentTab, setCurrentTab } = useNavigationContext();
 
   const { user } = useUser();
+  const { currentUser } = useUserContext();
 
   const [sideBar, setSideBar] = useState<boolean>(false);
   const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
 
   // Titles for the sidebar, conditionally set by the user's role
-  const sideBarTitles = ["Dashboard", "Classes", "Volunteers", "Applicants"];
+  const sideBarTitles =
+    currentUser?.role === Role.ADMIN
+      ? ["Dashboard", "Classes", "Volunteers", "Applicants"]
+      : currentUser?.role === Role.TEACHER
+      ? ["Dashboard", "Classes"]
+      : ["Dashboard", "Matches"];
 
   // Icon components for the sidebar
-  const sideBarIcons = [faHouse, faSchool, faUsers, faUserPlus];
+  const sideBarIcons =
+    currentUser?.role === Role.ADMIN
+      ? [faHouse, faSchool, faUsers, faUserPlus]
+      : currentUser?.role === Role.TEACHER
+      ? [faHouse, faSchool]
+      : [faHouse, faHandshake];
 
   // Sets the active route when a route is clicked
   const handleRouteChange = (route: TabOptions) => {
@@ -80,7 +93,7 @@ const SideBar = () => {
           <div>
             {sideBarTitles.map((title, index) => (
               <Link
-                to={"/admin/" + title.toLowerCase()}
+                to={"/" + title.toLowerCase()}
                 className={styles["sidebar-route-link"]}
                 key={index}
               >
@@ -137,7 +150,7 @@ const SideBar = () => {
               handleRouteChange(title.toLowerCase() as TabOptions);
             }}
           >
-            <Link to={"/admin/" + title.toLowerCase()} key={index}>
+            <Link to={"/" + title.toLowerCase()} key={index}>
               <FontAwesomeIcon
                 className={`${styles["sidebar-closed-icon"]} ${
                   currentTab === title.toLowerCase()

@@ -1,12 +1,12 @@
 import { SignUpCodeName, SignUpInputName } from "./SignUpModal.definitions";
 import styles from "./SignUpModal.module.css";
 import { signUpCodeSchema, signUpSchema } from "../../resolvers/auth.resolver";
-import FormInput from "../FormInput/FormInput";
-import LoadingButton from "../LoadingButton/LoadingButton";
+import FormInput from "../../components/FormInput/FormInput";
+import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { type Invite } from "../../interfaces/Invites.interface";
 import { useUserContext } from "../../context/User.context";
-import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
+import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth, useSignUp } from "@clerk/clerk-react";
@@ -80,6 +80,10 @@ const SignUpModal = () => {
     error: errorUser,
     makeRequest: makeUserRequest,
   } = useCustomFetch<UserType>(`/accounts`, RequestMethods.POST);
+
+  useEffect(() => {
+    signOut();
+  }, []);
 
   // When the user data is loaded, set the current user and navigate to the dashboard
   useEffect(() => {

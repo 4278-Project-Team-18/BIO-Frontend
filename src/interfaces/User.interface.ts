@@ -17,7 +17,7 @@ export interface User {
   lastName: string;
   email: string;
   approvalStatus: ApprovalStatus;
-  role?: Role;
+  role: Role;
 }
 
 /**
@@ -130,6 +130,24 @@ export enum AdminTabs {
   APPLICANTS = "applicants",
 }
 
+/**
+ * @option {string} DASHBOARD - The dashboard tab
+ * @option {string} STUDENTS - The students tab
+ */
+export enum VolunteerTabs {
+  DASHBOARD = "dashboard",
+  MATCHES = "matches",
+}
+
+/**
+ * @option {string} DASHBOARD - The dashboard tab
+ * @option {string} CLASSES - The classes tab
+ */
+export enum TeacherTabs {
+  DASHBOARD = "dashboard",
+  CLASSES = "classes",
+}
+
 export enum Role {
   ADMIN = "admin",
   TEACHER = "teacher",
@@ -139,4 +157,4 @@ export enum Role {
 /**
  * @type TabOptions - Joint type of all tab types
  */
-export type TabOptions = AdminTabs;
+export type TabOptions = AdminTabs | VolunteerTabs | TeacherTabs;

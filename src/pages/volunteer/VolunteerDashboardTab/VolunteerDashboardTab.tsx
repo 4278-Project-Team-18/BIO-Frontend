@@ -1,21 +1,17 @@
 import { useNavigationContext } from "../../../context/Navigation.context";
-import { AdminTabs } from "../../../interfaces/User.interface";
+import { VolunteerTabs } from "../../../interfaces/User.interface";
 import { useEffect } from "react";
 
-const AdminDashboardTab = () => {
+const VolunteerDashboardTab = () => {
   const { setCurrentTab } = useNavigationContext();
 
   // on page render
   useEffect(() => {
     // set the current tab on render
-    setCurrentTab(AdminTabs.DASHBOARD);
+    setCurrentTab(VolunteerTabs.DASHBOARD);
   }, []);
 
-  return (
-    <div>
-      <h1>Admin Dashboard</h1>
-    </div>
-  );
+  return <div>VolunteerDashboardTab</div>;
 };
 
-export default AdminDashboardTab;
+export default VolunteerDashboardTab;

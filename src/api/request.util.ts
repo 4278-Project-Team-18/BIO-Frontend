@@ -65,7 +65,10 @@ export const useCustomFetch = <T>(
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: method !== RequestMethods.GET ? JSON.stringify(body) : undefined,
+        body:
+          method !== RequestMethods.GET || RequestMethods.GET_WAIT
+            ? JSON.stringify(body)
+            : undefined,
       });
 
       // parse the response
