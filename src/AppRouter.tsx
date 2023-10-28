@@ -100,7 +100,15 @@ const AppRouter = () => {
             <>
               <SignedIn>
                 {userData?.role === Role.ADMIN ? (
-                  <AdminDashboardTab />
+                  <InvitesProvider>
+                    <TeachersProvider>
+                      <ClassesProvider>
+                        <VolunteersProvider>
+                          <AdminDashboardTab />
+                        </VolunteersProvider>
+                      </ClassesProvider>
+                    </TeachersProvider>
+                  </InvitesProvider>
                 ) : userData?.role === Role.TEACHER ? (
                   <TeacherDashboardTab />
                 ) : userData?.role === Role.VOLUNTEER ? (
