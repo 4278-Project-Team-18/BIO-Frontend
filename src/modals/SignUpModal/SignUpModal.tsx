@@ -101,7 +101,7 @@ const SignUpModal = () => {
 
       // navigate to the dashboard
       // TODO: Change this to reflect the user's role
-      navigate("/admin/dashboard");
+      navigate("/dashboard");
     } else if (errorUser) {
       // TODO: Handle the error
       console.error(JSON.stringify(errorUser, null, 2));
