@@ -50,7 +50,7 @@ const SignInModal = () => {
       // If the sign in was successful, set the active session and make the user request
       if (completeSignIn.status === "complete") {
         await setActive({ session: completeSignIn.createdSessionId });
-        navigate("/admin/dashboard");
+        navigate("/dashboard");
       }
     } catch (err) {
       await setActive({ session: null });
