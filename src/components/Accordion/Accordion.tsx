@@ -77,7 +77,7 @@ const Accordion = ({
             {children
               ?.slice(0, accordionOpen || showAll ? children.length : 5)
               .map((child, index) => (
-                <Fragment key={index}>
+                <Fragment key={`${title}_${headerText}_${index}`}>
                   {child}
                   {!hideActionButton ? (
                     <LineItemDivider />
