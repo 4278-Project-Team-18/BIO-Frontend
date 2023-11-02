@@ -6,10 +6,14 @@ import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useUserContext } from "../../context/User.context";
+import {
+  removeValueFromLocalStorage,
+  setValueToLocalStorage,
+} from "../../util/storage.util";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import { useSignIn } from "@clerk/clerk-react";
+import { useAuth, useSignIn } from "@clerk/clerk-react";
 import { useEffect } from "react";
 import type { SignInInput } from "./SignInModal.definitions";
 import type { Resolver } from "react-hook-form";
@@ -20,6 +24,7 @@ const SignInModal = () => {
   const { isLoaded, signIn, setActive } = useSignIn();
   const navigate = useNavigate();
   const { setCurrentUser } = useUserContext();
+  const { signOut } = useAuth();
 
   // form controller for the new user
   const {
@@ -46,8 +51,16 @@ const SignInModal = () => {
   );
 
   useEffect(() => {
+    removeValueFromLocalStorage("accountEmail");
+    removeValueFromLocalStorage("accountRole");
+    signOut();
+  }, []);
+
+  useEffect(() => {
     if (userData) {
       setCurrentUser(userData);
+      setValueToLocalStorage("accountEmail", userData.email);
+      setValueToLocalStorage("accountRole", userData.role);
       navigate("/");
     }
 

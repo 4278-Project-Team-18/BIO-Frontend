@@ -7,6 +7,7 @@ import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { type Invite } from "../../interfaces/Invites.interface";
 import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
 import { useUserContext } from "../../context/User.context";
+import { setValueToLocalStorage } from "../../util/storage.util";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth, useSignUp } from "@clerk/clerk-react";
@@ -93,6 +94,8 @@ const SignUpModal = () => {
     console.log(userData, errorUser, userLoading);
     if (userData && !errorUser && !userLoading) {
       setCurrentUser(userData);
+      setValueToLocalStorage("accountEmail", userData.email);
+      setValueToLocalStorage("accountRole", userData.role);
       navigate("/");
     }
 

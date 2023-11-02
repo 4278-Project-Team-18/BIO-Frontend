@@ -3,14 +3,19 @@ import SideBar from "../Sidebar/Sidebar";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useUserContext } from "../../context/User.context";
 import FullPageLoadingIndicator from "../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
+import {
+  getValueFromLocalStorage,
+  setValueToLocalStorage,
+} from "../../util/storage.util";
 import { useEffect } from "react";
-import { Navigate, Outlet } from "react-router";
+import { Navigate, Outlet, useNavigate } from "react-router";
 import { useUser } from "@clerk/clerk-react";
 import type { UserType } from "../../interfaces/User.interface";
 
 const App = () => {
   const { setCurrentUser } = useUserContext();
   const { user } = useUser();
+  const navigate = useNavigate();
 
   // request to create the user
   const {
@@ -19,26 +24,38 @@ const App = () => {
     loading: userLoading,
     makeRequest: makeUserRequest,
   } = useCustomFetch<UserType>(
-    `/accounts?accountEmail=${user?.primaryEmailAddress?.emailAddress}`,
-    RequestMethods.GET,
+    `/accounts?accountEmail=${
+      user?.primaryEmailAddress?.emailAddress ||
+      getValueFromLocalStorage("accountEmail")
+    }`,
+    RequestMethods.GET_WAIT,
   );
 
   useEffect(() => {
+    if (
+      !user?.primaryEmailAddress?.emailAddress &&
+      !getValueFromLocalStorage("accountEmail")
+    ) {
+      navigate("/sign-in");
+    }
+
     makeUserRequest();
   }, []);
 
   useEffect(() => {
     if (userData) {
       setCurrentUser(userData);
+      setValueToLocalStorage("accountEmail", userData.email);
+      setValueToLocalStorage("accountRole", userData.role);
     }
   }, [userData]);
 
-  if (errorUser) {
-    return <Navigate to="/sign-in" />;
-  }
-
   if (userLoading || !userData) {
     return <FullPageLoadingIndicator />;
+  }
+
+  if (errorUser) {
+    return <Navigate to="/sign-in" />;
   }
 
   return (

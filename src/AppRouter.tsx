@@ -15,12 +15,16 @@ import VolunteerDashboardTab from "./pages/volunteer/VolunteerDashboardTab/Volun
 import TeacherClassesTab from "./pages/teacher/TeacherClassesTab/TeacherClassesTab";
 import VolunteerMatchesTab from "./pages/volunteer/VolunteerMatchesTab/VolunteerMatchesTab";
 import { useUserContext } from "./context/User.context";
+import { getValueFromLocalStorage } from "./util/storage.util";
 import { createBrowserRouter } from "react-router-dom";
 import { Navigate, RouterProvider } from "react-router";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 const AppRouter = () => {
   const { currentUser } = useUserContext();
+
+  const role =
+    currentUser?.role || getValueFromLocalStorage("accountRole") || null;
 
   const router = createBrowserRouter([
     {
@@ -32,7 +36,7 @@ const AppRouter = () => {
           element: (
             <>
               <SignedIn>
-                {currentUser?.role !== undefined ? (
+                {role !== null ? (
                   <Navigate to="/dashboard" />
                 ) : (
                   <Navigate to="/sign-in/" />
@@ -46,27 +50,18 @@ const AppRouter = () => {
         },
         {
           path: "/*",
-          element: (
-            <>
-              <SignedIn>
-                <Navigate to="/" />
-              </SignedIn>
-              <SignedOut>
-                <Navigate to="/sign-in/" />
-              </SignedOut>
-            </>
-          ),
+          element: <Navigate to="/" />,
         },
         {
           path: "/dashboard",
           element: (
             <>
               <SignedIn>
-                {currentUser?.role === Role.ADMIN ? (
+                {role === Role.ADMIN ? (
                   <AdminDashboardTab />
-                ) : currentUser?.role === Role.TEACHER ? (
+                ) : role === Role.TEACHER ? (
                   <TeacherDashboardTab />
-                ) : currentUser?.role === Role.VOLUNTEER ? (
+                ) : role === Role.VOLUNTEER ? (
                   <VolunteerDashboardTab />
                 ) : (
                   <Navigate to="/" />
@@ -83,13 +78,13 @@ const AppRouter = () => {
           element: (
             <>
               <SignedIn>
-                {currentUser?.role === Role.ADMIN ? (
+                {role === Role.ADMIN ? (
                   <TeachersProvider>
                     <ClassesProvider>
                       <AdminClassesTab />
                     </ClassesProvider>
                   </TeachersProvider>
-                ) : currentUser?.role === Role.TEACHER ? (
+                ) : role === Role.TEACHER ? (
                   <ClassesProvider>
                     <TeacherClassesTab />
                   </ClassesProvider>
@@ -108,7 +103,7 @@ const AppRouter = () => {
           element: (
             <>
               <SignedIn>
-                {currentUser?.role === Role.ADMIN ? (
+                {role === Role.ADMIN ? (
                   <VolunteersProvider>
                     <AdminVolunteersTab />
                   </VolunteersProvider>
@@ -127,7 +122,7 @@ const AppRouter = () => {
           element: (
             <>
               <SignedIn>
-                {currentUser?.role === Role.ADMIN ? (
+                {role === Role.ADMIN ? (
                   <InvitesProvider>
                     <TeachersProvider>
                       <VolunteersProvider>
@@ -150,10 +145,10 @@ const AppRouter = () => {
           element: (
             <>
               <SignedIn>
-                {currentUser?.role === Role.VOLUNTEER ? (
+                {role === Role.VOLUNTEER ? (
                   <VolunteerMatchesTab />
                 ) : (
-                  <Navigate to="/sign-in/" />
+                  <Navigate to="/" />
                 )}
               </SignedIn>
               <SignedOut>
