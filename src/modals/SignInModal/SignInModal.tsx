@@ -4,17 +4,22 @@ import { signInSchema } from "../../resolvers/auth.resolver";
 import FormInput from "../../components/FormInput/FormInput";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
+import { RequestMethods, useCustomFetch } from "../../api/request.util";
+import { useUserContext } from "../../context/User.context";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useSignIn } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
+import { useSignIn } from "@clerk/clerk-react";
+import { useEffect } from "react";
 import type { SignInInput } from "./SignInModal.definitions";
 import type { Resolver } from "react-hook-form";
+import type { UserType } from "../../interfaces/User.interface";
 
 const SignInModal = () => {
   // hooks from context, clerk, and react-router-dom
   const { isLoaded, signIn, setActive } = useSignIn();
   const navigate = useNavigate();
+  const { setCurrentUser } = useUserContext();
 
   // form controller for the new user
   const {
@@ -29,6 +34,27 @@ const SignInModal = () => {
     resolver: yupResolver(signInSchema) as Resolver<SignInInput>,
     mode: "onSubmit",
   });
+
+  // request to create the user
+  const {
+    data: userData,
+    error: errorUser,
+    makeRequest: makeUserRequest,
+  } = useCustomFetch<UserType>(
+    `/accounts?accountEmail=`,
+    RequestMethods.GET_WAIT,
+  );
+
+  useEffect(() => {
+    if (userData) {
+      setCurrentUser(userData);
+      navigate("/");
+    }
+
+    if (errorUser) {
+      console.log(errorUser);
+    }
+  }, [userData]);
 
   /**
    * Handle the submission of the new user data and send the email code.
@@ -50,11 +76,11 @@ const SignInModal = () => {
       // If the sign in was successful, set the active session and make the user request
       if (completeSignIn.status === "complete") {
         await setActive({ session: completeSignIn.createdSessionId });
-        navigate("/dashboard");
+
+        await makeUserRequest(undefined, inputData.email);
       }
     } catch (err) {
       await setActive({ session: null });
-      navigate("/sign-in");
     }
   };
 
