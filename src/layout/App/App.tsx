@@ -48,6 +48,10 @@ const App = () => {
       setValueToLocalStorage("accountEmail", userData.email);
       setValueToLocalStorage("accountRole", userData.role);
     }
+
+    if (errorUser) {
+      navigate("/sign-in");
+    }
   }, [userData]);
 
   if (userLoading || !userData) {
