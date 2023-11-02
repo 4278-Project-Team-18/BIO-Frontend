@@ -5,24 +5,25 @@ import FormInput from "../../components/FormInput/FormInput";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { type Invite } from "../../interfaces/Invites.interface";
-import { useUserContext } from "../../context/User.context";
 import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
+import { useUserContext } from "../../context/User.context";
+import { setValueToLocalStorage } from "../../util/storage.util";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth, useSignUp } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
-import type { Admin, Role, UserType } from "../../interfaces/User.interface";
+import type { Admin, UserType } from "../../interfaces/User.interface";
 import type { SignUpCodeInput, SignUpInput } from "./SignUpModal.definitions";
 import type { Resolver } from "react-hook-form";
 
 const SignUpModal = () => {
-  // hooks from context, clerk, and react-router-dom
-  const { setCurrentUser } = useUserContext();
+  // hooks clerk and react-router-dom
   const { isLoaded, signUp, setActive } = useSignUp();
   const { signOut } = useAuth();
   const navigate = useNavigate();
+  const { setCurrentUser } = useUserContext();
 
   // get the invite id from the url
   const { inviteId } = useParams();
@@ -78,48 +79,31 @@ const SignUpModal = () => {
   const {
     data: userData,
     error: errorUser,
+    loading: userLoading,
     makeRequest: makeUserRequest,
   } = useCustomFetch<UserType>(`/accounts`, RequestMethods.POST);
-
-  useEffect(() => {
-    signOut();
-  }, []);
-
-  // When the user data is loaded, set the current user and navigate to the dashboard
-  useEffect(() => {
-    // check if the user in the backend was created successfully
-    if (userData && !errorUser) {
-      // set the current user in the context
-      setCurrentUser({
-        _id: userData._id,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        email: userData.email,
-        approvalStatus: userData.approvalStatus,
-        role: inviteData?.role as Role,
-      });
-
-      // navigate to the dashboard
-      // TODO: Change this to reflect the user's role
-      navigate("/admin/dashboard");
-    } else if (errorUser) {
-      // TODO: Handle the error
-      console.error(JSON.stringify(errorUser, null, 2));
-    }
-  }, [userData]);
 
   // when the invite data is load, send a patch to set it to opened
   useEffect(() => {
     if (inviteData) {
-      // send the request to set the invite to opened
-      const setInviteOpened = async () => {
-        await makeInviteOpenedRequest(undefined, inviteData._id || "");
-      };
-
-      // set the invite to opened
-      setInviteOpened();
+      makeInviteOpenedRequest(undefined, inviteData._id || "");
     }
   }, [inviteData]);
+
+  useEffect(() => {
+    console.log(userData, errorUser, userLoading);
+    if (userData && !errorUser && !userLoading) {
+      setCurrentUser(userData);
+      setValueToLocalStorage("accountEmail", userData.email);
+      setValueToLocalStorage("accountRole", userData.role);
+      navigate("/");
+    }
+
+    // if there is an error, sign out (might want to change this later)
+    if (errorUser) {
+      signOut();
+    }
+  }, [userData, errorUser, userLoading]);
 
   /**
    * Handle the submission of the new user data and send the email code.

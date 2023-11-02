@@ -47,7 +47,7 @@ const AddEditStudent = ({
     error: addStudentError,
     makeRequest: addStudent,
   } = useCustomFetch<Student>(
-    `class/${classId}/addStudent`,
+    `/class/${classId}/addStudent`,
     RequestMethods.POST,
   );
 

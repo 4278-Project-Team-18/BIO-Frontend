@@ -18,12 +18,12 @@ const clerkPubKey = process.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY;
 
 root.render(
   <React.StrictMode>
-    <ClerkProvider publishableKey={clerkPubKey}>
-      <NavigationProvider>
-        <UserProvider>
+    <UserProvider>
+      <ClerkProvider publishableKey={clerkPubKey}>
+        <NavigationProvider>
           <AppRouter />
-        </UserProvider>
-      </NavigationProvider>
-    </ClerkProvider>
+        </NavigationProvider>
+      </ClerkProvider>
+    </UserProvider>
   </React.StrictMode>,
 );
