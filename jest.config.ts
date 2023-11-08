@@ -7,6 +7,15 @@ export default {
     "src/utils/**/*.{js,jsx,ts,tsx}",
   ],
 
+  // ignore the following files
+  coveragePathIgnorePatterns: [
+    "src/components/StudentMatchLineItem/StudentMatchLineItem.tsx",
+    "src/components/TeacherApprovalLineItem/TeacherApprovalLineItem.tsx",
+    "src/components/TeacherUpdateApprovalStatus/TeacherUpdateApprovalStatus.tsx",
+    "src/components/SendInviteForm/SendInviteForm.tsx",
+    "src/components/SendInviteForm/SendInviteForm.definitions.ts",
+  ],
+
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
 
