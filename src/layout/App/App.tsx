@@ -50,6 +50,7 @@ const App = () => {
     }
 
     if (errorUser) {
+      // TODO: Add error handling so that the user can retry the request
       navigate("/sign-in");
     }
   }, [userData]);

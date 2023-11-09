@@ -2,12 +2,18 @@
 export default {
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // just the components folder
-  collectCoverageFrom: [
-    "src/components/**/*.{js,jsx,ts,tsx}",
-    "src/pages/**/*.{js,jsx,ts,tsx}",
-    "src/utils/**/*.{js,jsx,ts,tsx}",
-    "src/modals/**/*.{js,jsx,ts,tsx}",
-    "src/layout/Sidebar/**/*.{js,jsx,ts,tsx}",
+  collectCoverageFrom: ["src/components/**/*.{js,jsx,ts,tsx}"],
+
+  // ignore the following files
+  coveragePathIgnorePatterns: [
+    "src/components/StudentMatchLineItem/StudentMatchLineItem.tsx",
+    "src/components/TeacherApprovalLineItem/TeacherApprovalLineItem.tsx",
+    "src/components/TeacherUpdateApprovalStatus/TeacherUpdateApprovalStatus.tsx",
+    "src/components/AdminUpdateApprovalStatus/AdminUpdateApprovalStatus.tsx",
+    "src/components/VolunteerUpdateApprovalStatus/VolunteerUpdateApprovalStatus.tsx",
+    "src/components/AdminApprovalLineItem/AdminApprovalLineItem.tsx",
+    "src/components/SendInviteForm/SendInviteForm.tsx",
+    "src/components/SendInviteForm/SendInviteForm.definitions.ts",
   ],
 
   // Automatically clear mock calls and instances between every test

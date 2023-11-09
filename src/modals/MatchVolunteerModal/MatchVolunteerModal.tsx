@@ -26,7 +26,7 @@ const MatchVolunteerModal = ({
     loading: studentLoading,
     error: studentError,
     makeRequest: makeStudentRequest,
-  } = useCustomFetch<Student[]>(`/student/allStudents`);
+  } = useCustomFetch<Student[]>(`/student/`);
 
   // request to patch student to volunteer
   const {

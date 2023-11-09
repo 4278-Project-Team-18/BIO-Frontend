@@ -1,14 +1,100 @@
-.admin-applicants-title {
-  font-size: 2.7rem;
-  font-weight: 800;
-  color: #2c2c2c;
-  padding: 10px;
-  letter-spacing: -1px;
+@media (min-width: 1401px) {
+  .admin-applicants-title {
+    font-size: 2.7rem;
+    font-weight: 800;
+    color: #2c2c2c;
+    padding: 10px;
+    letter-spacing: -1px;
+  }
+
+  .admin-applicants-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+  }
+
+  .admin-applicants-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .admin-applicants-container-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+  }
+
+  .admin-applicants-container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    padding-left: 40px;
+    width: 100%;
+  }
+
+  .divider {
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
-.admin-applicants-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: center;
+@media (max-width: 1400px) {
+  .admin-applicants-title {
+    font-size: 2.7rem;
+    font-weight: 800;
+    color: #2c2c2c;
+    letter-spacing: -1px;
+  }
+
+  .admin-applicants-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+  }
+
+  .admin-applicants-form {
+    padding-top: 20px;
+  }
+
+  .admin-applicants-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    width: 97%;
+  }
+
+  .admin-applicants-container-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+  }
+
+  .admin-applicants-container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+  }
+
+  .divider {
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }

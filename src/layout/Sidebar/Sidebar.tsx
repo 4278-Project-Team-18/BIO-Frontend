@@ -2,6 +2,7 @@ import styles from "./Sidebar.module.css";
 import { useNavigationContext } from "../../context/Navigation.context";
 import { Role, type TabOptions } from "../../interfaces/User.interface";
 import { useUserContext } from "../../context/User.context";
+import { capitalize } from "../../util/string.util";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { UserButton, useUser } from "@clerk/clerk-react";
+import { Tooltip } from "react-tooltip";
 
 const SideBar = () => {
   const { currentTab, setCurrentTab } = useNavigationContext();
@@ -149,6 +151,7 @@ const SideBar = () => {
             onClick={() => {
               handleRouteChange(title.toLowerCase() as TabOptions);
             }}
+            id={title.toLowerCase()}
           >
             <Link to={"/" + title.toLowerCase()} key={index}>
               <FontAwesomeIcon
@@ -160,6 +163,9 @@ const SideBar = () => {
                 icon={sideBarIcons[index]}
               />
             </Link>
+            <Tooltip anchorSelect={`#${title.toLowerCase()}`} place="right">
+              {capitalize(title)}
+            </Tooltip>
           </div>
         ))}
         <div className={styles["user-button-container"]}>

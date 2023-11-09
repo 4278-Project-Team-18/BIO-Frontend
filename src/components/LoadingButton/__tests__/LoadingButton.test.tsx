@@ -16,7 +16,9 @@ describe("LoadingButton Tests", () => {
     // Check if the loading text is rendered
     expect(component.getByText(mockProps.isLoadingText)).toBeTruthy();
     component.getByText(mockProps.isLoadingText).click();
-    expect(mockProps.onClick).toHaveBeenCalled();
+
+    // Won't call onClick if loading
+    expect(mockProps.onClick).toHaveBeenCalledTimes(0);
 
     // Check if text is rendered
     mockProps.isLoading = false;
