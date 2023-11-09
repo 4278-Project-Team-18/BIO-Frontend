@@ -1,6 +1,6 @@
 import styles from "./StudentMatchLineItem.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlus, faHandshake } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faHandshake } from "@fortawesome/free-solid-svg-icons";
 import type { StudentMatchLineItemProps } from "./StudentMatchLineItem.definitions";
 
 const StudentMatchLineItem = ({
@@ -29,7 +29,7 @@ const StudentMatchLineItem = ({
         {`${student.firstName} ${student.lastInitial}`}
         {isSelected && (
           <FontAwesomeIcon
-            icon={faCirclePlus}
+            icon={faCheckCircle}
             className={styles["selected-student-icon"]}
           />
         )}

@@ -32,7 +32,7 @@ const LoadingButton = ({
   isResponsive = true,
 }: LoadingButtonProps) => (
   <button
-    onClick={disabled ? undefined : onClick}
+    onClick={disabled || isLoading ? undefined : onClick}
     className={styles["loading-button"]}
     style={{
       ...style,

@@ -2,6 +2,7 @@ import { ClassesProvider } from "./context/Classes.context";
 import { InvitesProvider } from "./context/Invites.context";
 import { TeachersProvider } from "./context/Teachers.context";
 import { VolunteersProvider } from "./context/Volunteers.context";
+import { AdminsProvider } from "./context/Admins.context";
 import App from "./layout/App/App";
 import AdminApplicantsTab from "./pages/admin/AdminApplicantsTab/AdminApplicantsTab";
 import AdminClassesTab from "./pages/admin/AdminClassesTab/AdminClassesTab";
@@ -123,13 +124,15 @@ const AppRouter = () => {
             <>
               <SignedIn>
                 {role === Role.ADMIN ? (
-                  <InvitesProvider>
-                    <TeachersProvider>
-                      <VolunteersProvider>
-                        <AdminApplicantsTab />
-                      </VolunteersProvider>
-                    </TeachersProvider>
-                  </InvitesProvider>
+                  <AdminsProvider>
+                    <InvitesProvider>
+                      <TeachersProvider>
+                        <VolunteersProvider>
+                          <AdminApplicantsTab />
+                        </VolunteersProvider>
+                      </TeachersProvider>
+                    </InvitesProvider>
+                  </AdminsProvider>
                 ) : (
                   <Navigate to="/" />
                 )}

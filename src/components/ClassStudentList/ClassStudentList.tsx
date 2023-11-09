@@ -7,8 +7,12 @@ import { useClassesContext } from "../../context/Classes.context";
 import { useEffect, useState } from "react";
 import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
+import type { Student } from "../../interfaces/User.interface";
 
-const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
+const ClassStudentList = ({
+  classObject,
+  openUploadLetterModal,
+}: ClassStudentListProps) => {
   const [isAddingStudent, setIsAddingStudent] = useState(false);
   const [currentEditStudentId, setCurrentEditStudentId] = useState<
     string | null
@@ -25,9 +29,12 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
     loading: deleteStudentFromClassLoading,
     makeRequest: deleteStudentFromClass,
   } = useCustomFetch<RemoveStudentResponse>(
-    `class/${classObject._id}/removeStudent`,
+    `/class/${classObject._id}/removeStudent`,
     RequestMethods.DELETE,
   );
+
+  const createUniqueStudentKey = (student: Student, index: number) =>
+    `${student._id}_${student.firstName}_${student.lastInitial}_${index}`;
 
   useEffect(() => {
     if (deleteStudentFromClassData && !deleteStudentFromClassError) {
@@ -78,19 +85,20 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
           }
           showActionLineItem={isAddingStudent}
         >
-          {classObject.students?.map((student) =>
+          {classObject.students?.map((student, index) =>
             currentEditStudentId === student._id ? (
               <AddEditStudent
-                key={student._id}
+                key={createUniqueStudentKey(student, index)}
                 classId={classObject._id}
                 closeModal={handleCloseEditStudentModal}
                 student={student}
               />
             ) : (
               <StudentLineItem
-                key={student._id}
+                key={createUniqueStudentKey(student, index)}
                 student={student}
                 openEditModal={handleOpenEditStudentModal}
+                openUploadLetterModal={() => openUploadLetterModal(student)}
                 removeStudentFromClass={handleRemoveStudentFromClass}
                 removeStudentLoading={
                   currentRemoveStudentId === student._id &&

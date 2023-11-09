@@ -17,6 +17,7 @@ describe("ClassStudentList Tests", () => {
     // Create mock props
     const mockProps = {
       classObject: testClass,
+      openUploadLetterModal: jest.fn(),
     };
     const component = render(<ClassStudentList {...mockProps} />);
 
@@ -62,6 +63,7 @@ describe("ClassStudentList Tests", () => {
     // Create mock props
     const mockProps = {
       classObject: testClass,
+      openUploadLetterModal: jest.fn(),
     };
     const component = render(<ClassStudentList {...mockProps} />);
 
@@ -144,6 +146,7 @@ describe("ClassStudentList Tests", () => {
     // Create mock props
     const mockProps = {
       classObject: testClass,
+      openUploadLetterModal: jest.fn(),
     };
     const component = render(<ClassStudentList {...mockProps} />);
 
@@ -167,6 +170,7 @@ describe("ClassStudentList Tests", () => {
     // Create mock props
     const mockProps = {
       classObject: testClass,
+      openUploadLetterModal: jest.fn(),
     };
     const component = render(<ClassStudentList {...mockProps} />);
 
