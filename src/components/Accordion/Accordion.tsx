@@ -27,8 +27,9 @@ const Accordion = ({
   actionLineItem,
   showActionLineItem,
   showAll = false,
+  minimumItems = 5,
 }: AccordionProps) => {
-  // show more button is visible if there are more than 5 children
+  // show more button is visible if there are more than minimumItems children
   const [showMoreButtonVisible, setShowMoreButtonVisible] = useState<boolean>();
 
   // accordion is open if the show more button has been clicked
@@ -41,7 +42,7 @@ const Accordion = ({
 
   // update the show more button visibility when the children change
   useEffect(() => {
-    if (children && children?.length > 5) {
+    if (children && children?.length > minimumItems) {
       setShowMoreButtonVisible(true);
     } else {
       setShowMoreButtonVisible(false);
@@ -75,9 +76,12 @@ const Accordion = ({
         ) : (
           <>
             {children
-              ?.slice(0, accordionOpen || showAll ? children.length : 5)
+              ?.slice(
+                0,
+                accordionOpen || showAll ? children.length : minimumItems,
+              )
               .map((child, index) => (
-                <Fragment key={index}>
+                <Fragment key={`${title}_${headerText}_${index}`}>
                   {child}
                   {!hideActionButton ? (
                     <LineItemDivider />

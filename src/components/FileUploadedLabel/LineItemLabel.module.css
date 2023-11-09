@@ -129,6 +129,16 @@
     white-space: nowrap;
   }
 
+  .label-orange {
+    padding: 8px;
+    color: #ef881a;
+    font-size: 14px;
+    font-weight: 400;
+    width: fit-content;
+    margin-right: 10px;
+    white-space: nowrap;
+  }
+
   .label {
     display: none !important;
   }

@@ -4,8 +4,10 @@ import { useTeachersContext } from "../../context/Teachers.context";
 import { ApprovalStatus, type Teacher } from "../../interfaces/User.interface";
 import LoadingButton from "../LoadingButton/LoadingButton";
 import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
+import { useInvitesContext } from "../../context/Invites.context";
+import { InviteStatus } from "../../interfaces/Invites.interface";
 import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { TeacherUpdateApprovalStatusProps } from "./TeacherUpdateApprovalStatus.definitions";
 
 const TeacherUpdateApprovalStatus = ({
@@ -22,14 +24,28 @@ const TeacherUpdateApprovalStatus = ({
     RequestMethods.PATCH,
   );
 
+  const [approveOrDenyLoading, setApproveOrDenyLoading] =
+    useState<ApprovalStatus | null>(null);
+
   // get the updateTeacherStatus function from the context
   const { updateTeacherApprovalStatus } = useTeachersContext();
+  const { updateInviteStatus } = useInvitesContext();
 
   // send the request to update the teacher's approval status
   const handleUpdateApprovalStatus = async (approvalStatus: ApprovalStatus) => {
+    setApproveOrDenyLoading(approvalStatus);
+
     await onUpdateTeacherApprovalStatus({
       newApprovalStatus: approvalStatus,
     });
+
+    if (approvalStatus === ApprovalStatus.APPROVED) {
+      updateInviteStatus(teacher.email, InviteStatus.APPROVED);
+    } else if (approvalStatus === ApprovalStatus.REJECTED) {
+      updateInviteStatus(teacher.email, InviteStatus.REJECTED);
+    }
+
+    setApproveOrDenyLoading(null);
   };
 
   // update the teacher's approval status if the request was successful
@@ -42,10 +58,6 @@ const TeacherUpdateApprovalStatus = ({
     }
   }, [updateApprovalStatusResponseData]);
 
-  if (updateApprovalStatusLoading) {
-    return <div>Loading...</div>;
-  }
-
   if (updateApprovalStatusError) {
     return <div>Something went wrong...</div>;
   }
@@ -57,7 +69,10 @@ const TeacherUpdateApprovalStatus = ({
           handleUpdateApprovalStatus(ApprovalStatus.APPROVED);
         }}
         text="Approve"
-        isLoading={updateApprovalStatusLoading}
+        isLoading={
+          updateApprovalStatusLoading &&
+          approveOrDenyLoading === ApprovalStatus.APPROVED
+        }
         icon={faCheck}
         isLoadingText="Approving..."
         styles={{ marginLeft: "1rem" }}
@@ -68,7 +83,10 @@ const TeacherUpdateApprovalStatus = ({
           handleUpdateApprovalStatus(ApprovalStatus.REJECTED);
         }}
         text="Deny"
-        isLoading={updateApprovalStatusLoading}
+        isLoading={
+          updateApprovalStatusLoading &&
+          approveOrDenyLoading === ApprovalStatus.REJECTED
+        }
         icon={faClose}
         isLoadingText="Denying..."
         styles={{ marginLeft: "1rem" }}
