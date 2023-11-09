@@ -1,59 +1,57 @@
-import styles from "./VolunteerUpdateApprovalStatus.module.css";
+import styles from "./AdminUpdateApprovalStatus.module.css";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
-import { useVolunteersContext } from "../../context/Volunteers.context";
-import {
-  ApprovalStatus,
-  type Volunteer,
-} from "../../interfaces/User.interface";
+import { ApprovalStatus } from "../../interfaces/User.interface";
 import LoadingButton from "../LoadingButton/LoadingButton";
 import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
+import { useAdminsContext } from "../../context/Admins.context";
 import { useInvitesContext } from "../../context/Invites.context";
 import { InviteStatus } from "../../interfaces/Invites.interface";
 import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-import type { VolunteerUpdateApprovalStatusProps } from "./VolunteerUpdateApprovalStatus.definitions";
+import type { Admin } from "../../interfaces/User.interface";
+import type { AdminUpdateApprovalStatusProps } from "./AdminUpdateApprovalStatus.definitions";
 
-const VolunteerUpdateApprovalStatus = ({
-  volunteer,
-}: VolunteerUpdateApprovalStatusProps) => {
-  // request to update the volunteer's approval status
+const AdminUpdateApprovalStatus = ({
+  admin,
+}: AdminUpdateApprovalStatusProps) => {
+  // request to update the admin's approval status
   const {
     data: updateApprovalStatusResponseData,
     loading: updateApprovalStatusLoading,
     error: updateApprovalStatusError,
-    makeRequest: onUpdateVolunteerApprovalStatus,
-  } = useCustomFetch<Volunteer>(
-    `/volunteer/${volunteer._id}/changeVolunteerApprovalStatus`,
+    makeRequest: onUpdateAdminApprovalStatus,
+  } = useCustomFetch<Admin>(
+    `/admin/${admin._id}/changeAdminApprovalStatus`,
     RequestMethods.PATCH,
   );
   const [approveOrDenyLoading, setApproveOrDenyLoading] =
     useState<ApprovalStatus | null>(null);
 
-  // get the updateVolunteerStatus function from the context
-  const { updateVolunteerApprovalStatus } = useVolunteersContext();
+  // get the updateAdminStatus function from the context
+  const { updateAdminApprovalStatus } = useAdminsContext();
   const { updateInviteStatus } = useInvitesContext();
 
-  // send the request to update the volunteer's approval status
+  // send the request to update the admin's approval status
   const handleUpdateApprovalStatus = async (approvalStatus: ApprovalStatus) => {
     setApproveOrDenyLoading(approvalStatus);
 
-    await onUpdateVolunteerApprovalStatus({
+    await onUpdateAdminApprovalStatus({
       newApprovalStatus: approvalStatus,
     });
 
     if (approvalStatus === ApprovalStatus.APPROVED) {
-      updateInviteStatus(volunteer.email, InviteStatus.APPROVED);
+      updateInviteStatus(admin.email, InviteStatus.APPROVED);
     } else if (approvalStatus === ApprovalStatus.REJECTED) {
-      updateInviteStatus(volunteer.email, InviteStatus.REJECTED);
+      updateInviteStatus(admin.email, InviteStatus.REJECTED);
     }
 
     setApproveOrDenyLoading(null);
   };
 
-  // update the volunteer's approval status if the request was successful
+  // update the admin's approval status if the request was successful
   useEffect(() => {
     if (updateApprovalStatusResponseData && !updateApprovalStatusError) {
-      updateVolunteerApprovalStatus(
+      updateAdminApprovalStatus(
         updateApprovalStatusResponseData._id,
         updateApprovalStatusResponseData.approvalStatus,
       );
@@ -98,4 +96,4 @@ const VolunteerUpdateApprovalStatus = ({
   );
 };
 
-export default VolunteerUpdateApprovalStatus;
+export default AdminUpdateApprovalStatus;

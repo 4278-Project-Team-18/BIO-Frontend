@@ -11,4 +11,5 @@ export interface AccordionProps {
   actionLineItem?: ReactNode;
   showActionLineItem?: boolean;
   showAll?: boolean;
+  minimumItems?: number;
 }
