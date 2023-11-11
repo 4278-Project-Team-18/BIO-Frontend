@@ -110,6 +110,7 @@ const AdminClassesTab = () => {
           {classModalOpen && <AddClassModal closeModal={handleCloseModal} />}
         </div>
       </div>
+      <div className={"divider"} />
       {currentClasses?.map((classItem) => (
         <ClassStudentList classObject={classItem} key={classItem._id} />
       ))}

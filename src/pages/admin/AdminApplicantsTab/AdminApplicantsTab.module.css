@@ -38,13 +38,6 @@
     padding-left: 40px;
     width: 100%;
   }
-
-  .divider {
-    border-bottom: 1px solid #e0e0e0;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
 }
 
 @media (max-width: 1400px) {
@@ -89,12 +82,5 @@
     justify-content: left;
     align-items: left;
     width: 100%;
-  }
-
-  .divider {
-    border-bottom: 1px solid #e0e0e0;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 }

@@ -63,6 +63,7 @@ const AdminVolunteersTab = () => {
         <div className={styles["admin-volunteers-header"]}>
           <div className={styles["admin-volunteers-title"]}>{`Volunteers`}</div>
         </div>
+        <div className={"divider"} />
         <Accordion title="Status">
           {volunteers?.map((volunteer, index) => (
             <VolunteerLineItem

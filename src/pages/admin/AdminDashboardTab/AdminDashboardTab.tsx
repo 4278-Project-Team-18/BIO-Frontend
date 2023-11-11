@@ -10,8 +10,15 @@ import ToDoLineItem from "../../../components/ToDoLineItem/ToDoLineItem";
 import { useClassesContext } from "../../../context/Classes.context";
 import { useInvitesContext } from "../../../context/Invites.context";
 import { useVolunteersContext } from "../../../context/Volunteers.context";
+import ActionTile from "../../../components/ActionTile/ActionTile";
+import { useUserContext } from "../../../context/User.context";
 import { useEffect } from "react";
 import { faSquare, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
+import {
+  faEnvelope,
+  faPeopleGroup,
+  faSchool,
+} from "@fortawesome/free-solid-svg-icons";
 import type { Invite } from "../../../interfaces/Invites.interface";
 import type {
   Class,
@@ -26,6 +33,7 @@ const AdminDashboardTab = () => {
   const { currentTeachers, setCurrentTeachers } = useTeachersContext();
   const { currentVolunteers, setCurrentVolunteers } = useVolunteersContext();
   const { currentClasses, setCurrentClasses } = useClassesContext();
+  const { currentUser } = useUserContext();
 
   // on page render
   useEffect(() => {
@@ -125,9 +133,6 @@ const AdminDashboardTab = () => {
     (teacher) => teacher.approvalStatus === ApprovalStatus.PENDING,
   );
 
-  console.log(currentTeachers);
-  console.log(teacherApplicants);
-
   const volunteerApplicants = currentVolunteers?.filter(
     (volunteer) => volunteer.approvalStatus === ApprovalStatus.PENDING,
   );
@@ -159,7 +164,28 @@ const AdminDashboardTab = () => {
   return (
     <div>
       <div className={styles["admin-dashboard-header"]}>
-        <div className={styles["admin-dashboard-title"]}>{`Dashboard`}</div>
+        <div className={styles["admin-dashboard-title-container"]}>
+          <div className={styles["admin-dashboard-title"]}>{`Welcome back${
+            currentUser?.firstName ? `, ${currentUser?.firstName}!` : "!"
+          }`}</div>
+        </div>
+        <div className={styles["admin-dashboard-tiles"]}>
+          <ActionTile
+            title="Manage Classes"
+            icon={faSchool}
+            onClick={() => {}}
+          />
+          <ActionTile
+            title="Match Students"
+            icon={faPeopleGroup}
+            onClick={() => {}}
+          />
+          <ActionTile
+            title="View Applications"
+            icon={faEnvelope}
+            onClick={() => {}}
+          />
+        </div>
       </div>
       <Accordion title="Items To-Do" noDataTitle="No Items To-Do!">
         <ToDoLineItem

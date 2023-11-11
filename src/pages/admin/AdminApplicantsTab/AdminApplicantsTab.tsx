@@ -139,10 +139,11 @@ const AdminApplicantsTab = () => {
       <div className={styles["admin-applicants-header"]}>
         <div className={styles["admin-applicants-title"]}>{`Applicants`}</div>
       </div>
+      <div className={"divider"} />
       <div className={styles["admin-applicants-form"]}>
         <SendInviteForm />
       </div>
-      <div className={styles["divider"]} />
+
       <div className={styles["admin-applicants-container"]}>
         <div className={styles["admin-applicants-container-left"]}>
           <Accordion
