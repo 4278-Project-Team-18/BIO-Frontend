@@ -17,12 +17,20 @@ const ActionLineItem = ({
     <div className={styles["buttons-container"]}>
       <div className={styles["buttons"]}>
         {!hideActionButton && (
-          <button className={styles["action-button"]} onClick={actionOnClick}>
+          <button
+            className={styles["action-button"]}
+            id={`action-button`}
+            onClick={actionOnClick}
+          >
             <div className={styles["action-button-label"]}>{actionTitle}</div>
           </button>
         )}
         {!hideShowMoreButton && (
-          <button className={styles["show-button"]} onClick={showMoreOnClick}>
+          <button
+            className={styles["show-button"]}
+            onClick={showMoreOnClick}
+            id={"show-button"}
+          >
             <div className={styles["show-button-label"]}>
               {isExpanded ? "Show Less -" : "Show More +"}
             </div>

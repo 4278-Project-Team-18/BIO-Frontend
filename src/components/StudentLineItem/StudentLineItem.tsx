@@ -81,6 +81,7 @@ const StudentLineItem = ({
           <button
             className={styles["line-item-remove-button"]}
             onClick={() => removeStudentFromClass(student._id)}
+            id={`line-item-remove-button-${student.firstName}-${student.lastInitial}`}
           >
             <FontAwesomeIcon icon={faTrash} />
           </button>

@@ -4,14 +4,15 @@
     "target": "ES6",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
+    "baseUrl": "./",
 
     /* Modules */
-    "module": "ESNext",
+    "module": "ES6",
     "rootDirs": ["./src"],
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowImportingTsExtensions": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
 
     /* jsx */
     "jsx": "react-jsx",
@@ -33,5 +34,6 @@
     "skipLibCheck": true
   },
   "include": ["src", "vite-env.d.ts"],
+  "exclude": ["./cypress/e2e", "./cypress.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

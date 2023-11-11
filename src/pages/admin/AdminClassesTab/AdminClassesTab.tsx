@@ -110,6 +110,7 @@ const AdminClassesTab = () => {
             currentClasses?.length || 0
           })`}</div>
           <button
+            id="add-class-button"
             className={styles["add-class-button"]}
             onClick={handleOpenClassModal}
           >
