@@ -2,21 +2,24 @@ import { type UploadStudentLetterModalProps } from "./UploadStudentLetterModal.d
 import styles from "./UploadStudentLetterModal.module.css";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
-import { useCustomFetch } from "../../api/request.util";
+import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import FullPageErrorDisplay from "../../components/FullPageErrorDisplay/FullPageErrorDisplay";
+import { useClassesContext } from "../../context/Classes.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faHandshake } from "@fortawesome/free-solid-svg-icons";
 import { MoonLoader } from "react-spinners";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import "filepond/dist/filepond.min.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Student } from "../../interfaces/User.interface";
 
 const UploadStudentLetterModal = ({
   closeModal,
   student,
 }: UploadStudentLetterModalProps) => {
+  const { updateStudentLetterLink } = useClassesContext();
+
   const [selectedLetter, setSelectedLetter] = useState<File | null>(null);
   registerPlugin(FilePondPluginFileValidateType);
 
@@ -27,11 +30,34 @@ const UploadStudentLetterModal = ({
     makeRequest: makeStudentRequest,
   } = useCustomFetch<Student[]>(`/student/`);
 
+  const {
+    data: letterData,
+    loading: letterLoading,
+    error: letterError,
+    makeRequest: makeLetterRequest,
+  } = useCustomFetch<Student>(
+    `/student/${student._id}/uploadStudentLetter`,
+    RequestMethods.POST,
+    {},
+    true,
+  );
+
+  useEffect(() => {
+    if (letterData && !letterError) {
+      updateStudentLetterLink(student._id, letterData.studentLetterLink || "");
+      setSelectedLetter(null);
+      closeModal();
+    }
+  }, [letterData]);
+
   const onSubmitUploadLetter = async () => {
-    await makeStudentRequest({
-      studentId: student._id,
-      studentLetterLink: student.studentLetterLink,
-    });
+    const formData = new FormData();
+    formData.append("file", selectedLetter as File);
+    await makeLetterRequest(formData);
+    // const response = await fetch(
+    //   `${process.env.VITE_SERVER_URL}/student/${student._id}/uploadStudentLetter`,
+    //   { method: "POST", body: formData },
+    // );
   };
 
   // if the requet is loading, show a message
@@ -90,7 +116,7 @@ const UploadStudentLetterModal = ({
           <LoadingButton
             text={selectedLetter ? "Sumbit Letter" : "Upload Letter"}
             icon={faHandshake}
-            isLoading={studentLoading}
+            isLoading={letterLoading}
             isLoadingText="Uploading Letter..."
             onClick={onSubmitUploadLetter}
             disabled={!selectedLetter}

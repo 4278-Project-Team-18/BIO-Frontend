@@ -16,7 +16,7 @@ import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullP
 import Accordion from "../../../components/Accordion/Accordion";
 import TeacherLineItem from "../../../components/TeacherLineItem/TeacherLineItem";
 import { useTeachersContext } from "../../../context/Teachers.context";
-import UploadStudentLetterModal from "../../../modals/UploadStudentLetter/UploadStudentLetterModal";
+import UploadStudentLetterModal from "../../../modals/UploadStudentLetterModal/UploadStudentLetterModal";
 import { useEffect, useState } from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

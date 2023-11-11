@@ -36,6 +36,7 @@ export const useCustomFetch = <T>(
   path: string,
   method: RequestMethods = RequestMethods.GET,
   requestOptions: RequestOptions = {},
+  isFile: boolean = false,
 ) => {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<any>(null);
@@ -56,20 +57,29 @@ export const useCustomFetch = <T>(
       const requestMethod =
         method === RequestMethods.GET_WAIT ? RequestMethods.GET : method;
 
-      // make the request
-      const res = await fetch(url, {
-        ...requestOptions,
-        method: requestMethod,
-        headers: {
-          ...requestOptions?.headers,
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body:
-          method !== RequestMethods.GET || RequestMethods.GET_WAIT
-            ? JSON.stringify(body)
-            : undefined,
-      });
+      let res = null;
+      if (isFile) {
+        res = await fetch(url, {
+          method: "POST",
+          body: body,
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      } else {
+        // make the request
+        res = await fetch(url, {
+          ...requestOptions,
+          method: requestMethod,
+          headers: {
+            ...requestOptions?.headers,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body:
+            method !== RequestMethods.GET || RequestMethods.GET_WAIT
+              ? JSON.stringify(body)
+              : undefined,
+        });
+      }
 
       // parse the response
       const json = await res.json();
