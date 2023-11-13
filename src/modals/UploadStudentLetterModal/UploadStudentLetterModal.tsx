@@ -57,7 +57,7 @@ const UploadStudentLetterModal = ({
   };
 
   // if the requet is loading, show a message
-  if (studentLoading) {
+  if (studentLoading || !studentData) {
     return (
       <div className={styles["upload-letter-backdrop"]}>
         <div className={styles["upload-letter-loading-container"]}>
@@ -68,7 +68,7 @@ const UploadStudentLetterModal = ({
   }
 
   // if the request failed, show an error message
-  if (studentError || !studentData) {
+  if (studentError) {
     return (
       <div className={styles["upload-letter-backdrop"]}>
         <div className={styles["upload-letter-loading-container"]}>
@@ -77,6 +77,8 @@ const UploadStudentLetterModal = ({
       </div>
     );
   }
+
+  console.log(student);
 
   return (
     <div className={styles["upload-letter-backdrop"]}>
@@ -116,6 +118,7 @@ const UploadStudentLetterModal = ({
             isLoadingText="Uploading Letter..."
             onClick={onSubmitUploadLetter}
             disabled={!selectedLetter}
+            isResponsive={false}
             variant={
               selectedLetter
                 ? LoadingButtonVariant.GREEN
