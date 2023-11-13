@@ -98,7 +98,7 @@ const ClassStudentList = ({
                 key={createUniqueStudentKey(student, index)}
                 student={student}
                 openEditModal={handleOpenEditStudentModal}
-                openUploadLetterModal={() => openUploadLetterModal(student)}
+                openUploadLetterModal={openUploadLetterModal}
                 removeStudentFromClass={handleRemoveStudentFromClass}
                 removeStudentLoading={
                   currentRemoveStudentId === student._id &&

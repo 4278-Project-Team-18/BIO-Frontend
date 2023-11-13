@@ -54,10 +54,6 @@ const UploadStudentLetterModal = ({
     const formData = new FormData();
     formData.append("file", selectedLetter as File);
     await makeLetterRequest(formData);
-    // const response = await fetch(
-    //   `${process.env.VITE_SERVER_URL}/student/${student._id}/uploadStudentLetter`,
-    //   { method: "POST", body: formData },
-    // );
   };
 
   // if the requet is loading, show a message
@@ -114,7 +110,7 @@ const UploadStudentLetterModal = ({
         </div>
         <div className={styles["upload-letter-submit-container"]}>
           <LoadingButton
-            text={selectedLetter ? "Sumbit Letter" : "Upload Letter"}
+            text={selectedLetter ? "Submit Letter" : "Upload Letter"}
             icon={faHandshake}
             isLoading={letterLoading}
             isLoadingText="Uploading Letter..."
