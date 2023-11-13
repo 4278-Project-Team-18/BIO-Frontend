@@ -187,6 +187,7 @@ const SignUpModal = () => {
         email: signUp.emailAddress,
         role: inviteData?.role || "",
         inviteId: inviteData?._id || "",
+        userId: completeSignUp.createdUserId,
       });
     }
   };
