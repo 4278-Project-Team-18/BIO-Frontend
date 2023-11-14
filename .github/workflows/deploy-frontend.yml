@@ -1,0 +1,37 @@
+name: Deploy frontend to Fly.io
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy app
+    if: github.event.pull_request.merged == true
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    # docker login
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+    # build docker image
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/flyio-frontend .
+    # push docker image
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/flyio-frontend
+
+    # deploy to fly.io
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          

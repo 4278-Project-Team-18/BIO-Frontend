@@ -13,5 +13,10 @@ export default ({ mode }) => {
       // https://github.com/vitejs/vite/issues/1973#issuecomment-815695512
       "process.env": process.env,
     },
+    server: {
+      host: true,
+      strictPort: true,
+      port: 5173,
+    },
   });
 };
