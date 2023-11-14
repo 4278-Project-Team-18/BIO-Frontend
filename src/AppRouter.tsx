@@ -59,7 +59,15 @@ const AppRouter = () => {
             <>
               <SignedIn>
                 {role === Role.ADMIN ? (
-                  <AdminDashboardTab />
+                  <InvitesProvider>
+                    <TeachersProvider>
+                      <ClassesProvider>
+                        <VolunteersProvider>
+                          <AdminDashboardTab />
+                        </VolunteersProvider>
+                      </ClassesProvider>
+                    </TeachersProvider>
+                  </InvitesProvider>
                 ) : role === Role.TEACHER ? (
                   <TeacherDashboardTab />
                 ) : role === Role.VOLUNTEER ? (

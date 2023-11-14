@@ -135,6 +135,7 @@ const AdminClassesTab = () => {
           )}
         </div>
       </div>
+      <div className={"divider"} />
       {currentClasses?.map((classItem) => (
         <ClassStudentList
           classObject={classItem}
