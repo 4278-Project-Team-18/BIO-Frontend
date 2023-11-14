@@ -11,8 +11,7 @@ on:
 jobs:
   deploy:
     name: Deploy app
-    if: github.event.pull_request.merged == true
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
     # docker login
