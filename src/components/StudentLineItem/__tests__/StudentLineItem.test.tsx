@@ -10,6 +10,7 @@ describe("StudentLineItem Tests", () => {
     const mockProps = {
       student: testStudent,
       openEditModal: jest.fn(),
+      openUploadLetterModal: jest.fn(),
       removeStudentFromClass: jest.fn(),
     };
 
@@ -41,6 +42,7 @@ describe("StudentLineItem Tests", () => {
     const mockProps = {
       student: testStudent,
       openEditModal: jest.fn(),
+      openUploadLetterModal: jest.fn(),
       removeStudentFromClass: jest.fn(),
     };
 

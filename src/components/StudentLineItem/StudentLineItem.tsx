@@ -18,6 +18,7 @@ import type { StudentLineItemProps } from "./StudentLineItem.definitions";
 const StudentLineItem = ({
   student,
   openEditModal,
+  openUploadLetterModal,
   removeStudentFromClass,
   removeStudentLoading = false,
 }: StudentLineItemProps) => (
@@ -53,7 +54,10 @@ const StudentLineItem = ({
           icon={faCircleCheck}
         />
       )}
-      <button className={styles["line-item-upload-button"]}>
+      <button
+        className={styles["line-item-upload-button"]}
+        onClick={() => openUploadLetterModal(student)}
+      >
         <div className={styles["line-item-upload-title"]}>
           {student.studentLetterLink ? "Reupload" : "Upload"}
         </div>
