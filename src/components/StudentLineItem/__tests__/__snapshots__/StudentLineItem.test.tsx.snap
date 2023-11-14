@@ -96,6 +96,7 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
             </button>
             <button
               class="line-item-remove-button"
+              id="line-item-remove-button-Hayley-R"
             >
               <svg
                 aria-hidden="true"
@@ -210,6 +211,7 @@ exports[`StudentLineItem Tests StudentLineItem snapshot should render correctly 
           </button>
           <button
             class="line-item-remove-button"
+            id="line-item-remove-button-Hayley-R"
           >
             <svg
               aria-hidden="true"
