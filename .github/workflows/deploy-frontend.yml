@@ -22,10 +22,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
     # build docker image
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/flyio-frontend .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/bio-frontend .
     # push docker image
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/flyio-frontend
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/bio-frontend
 
     # deploy to fly.io
       - uses: actions/checkout@v3
