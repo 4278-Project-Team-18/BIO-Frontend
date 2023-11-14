@@ -5,6 +5,7 @@ import {
   type Class,
   ApprovalStatus,
   type Teacher,
+  type Student,
 } from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { useCustomFetch } from "../../../api/request.util";
@@ -15,6 +16,7 @@ import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullP
 import Accordion from "../../../components/Accordion/Accordion";
 import TeacherLineItem from "../../../components/TeacherLineItem/TeacherLineItem";
 import { useTeachersContext } from "../../../context/Teachers.context";
+import UploadStudentLetterModal from "../../../modals/UploadStudentLetterModal/UploadStudentLetterModal";
 import { useEffect, useState } from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,6 +26,10 @@ const AdminClassesTab = () => {
   const { currentClasses, setCurrentClasses } = useClassesContext();
   const { currentTeachers, setCurrentTeachers } = useTeachersContext();
   const [classModalOpen, setClassModalOpen] = useState<boolean>(false);
+  const [uploadLetterModalOpen, setUploadLetterModalOpen] =
+    useState<boolean>(false);
+  const [currentStudentUploadLetter, setCurrentStudentLetterUpload] =
+    useState<Student | null>(null);
 
   const {
     data: classData,
@@ -39,12 +45,22 @@ const AdminClassesTab = () => {
     makeRequest: makeTeacherRequest,
   } = useCustomFetch<Teacher[]>(`/teacher/`);
 
-  const handleCloseModal = () => {
+  const handleCloseClassModal = () => {
     setClassModalOpen(false);
   };
 
-  const handleOpenModal = () => {
+  const handleOpenClassModal = () => {
     setClassModalOpen(true);
+  };
+
+  const handleOpenUploadLetterModal = (student: Student) => {
+    setUploadLetterModalOpen(true);
+    setCurrentStudentLetterUpload(student);
+  };
+
+  const handleCloseUploadLetterModal = () => {
+    setUploadLetterModalOpen(false);
+    setCurrentStudentLetterUpload(null);
   };
 
   // set the current tab on render
@@ -96,7 +112,7 @@ const AdminClassesTab = () => {
           <button
             id="add-class-button"
             className={styles["add-class-button"]}
-            onClick={handleOpenModal}
+            onClick={handleOpenClassModal}
           >
             <div className={styles["add-class-button-label"]}>
               {"Add Class"}
@@ -108,11 +124,23 @@ const AdminClassesTab = () => {
           </button>
         </div>
         <div>
-          {classModalOpen && <AddClassModal closeModal={handleCloseModal} />}
+          {uploadLetterModalOpen && currentStudentUploadLetter && (
+            <UploadStudentLetterModal
+              closeModal={handleCloseUploadLetterModal}
+              student={currentStudentUploadLetter}
+            />
+          )}
+          {classModalOpen && (
+            <AddClassModal closeModal={handleCloseClassModal} />
+          )}
         </div>
       </div>
       {currentClasses?.map((classItem) => (
-        <ClassStudentList classObject={classItem} key={classItem._id} />
+        <ClassStudentList
+          classObject={classItem}
+          key={classItem._id}
+          openUploadLetterModal={handleOpenUploadLetterModal}
+        />
       ))}
       <Accordion title="All Teachers" noDataTitle="No current teachers!">
         {teachers?.map((teacher, index) => (

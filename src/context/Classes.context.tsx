@@ -12,6 +12,10 @@ interface ClassesContextType {
   addStudentToClass: (student: Student, classId: string) => void;
   editStudentInClass: (student: Student, classId: string) => void;
   removeStudentFromClass: (studentId: string, classId: string) => void;
+  updateStudentLetterLink: (
+    studentId: string,
+    studentLetterLink: string,
+  ) => void;
 }
 
 // Create the context for the user
@@ -22,6 +26,7 @@ const ClassesContext = createContext<ClassesContextType>({
   addStudentToClass: (_: Student, __: string) => {},
   editStudentInClass: (_: Student, __: string) => {},
   removeStudentFromClass: (_: string, __: string) => {},
+  updateStudentLetterLink: (_: string, __: string) => {},
 });
 
 // Create the wrapper for the user context
@@ -84,6 +89,26 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     setCurrentClasses(newClasses);
   };
 
+  const updateStudentLetterLink = (
+    studentId: string,
+    studentLetterLink: string,
+  ) => {
+    const newClasses = currentClasses?.map((classItem: Class) => ({
+      ...classItem,
+      students: classItem.students?.map((studentItem: Student) => {
+        if (studentItem._id === studentId) {
+          return {
+            ...studentItem,
+            studentLetterLink,
+          };
+        } else {
+          return studentItem;
+        }
+      }),
+    }));
+    setCurrentClasses(newClasses);
+  };
+
   const value = {
     currentClasses,
     setCurrentClasses,
@@ -91,6 +116,7 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     addStudentToClass,
     editStudentInClass,
     removeStudentFromClass,
+    updateStudentLetterLink,
   };
 
   return (

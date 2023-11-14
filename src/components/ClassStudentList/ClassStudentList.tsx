@@ -9,7 +9,10 @@ import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
 import type { Student } from "../../interfaces/User.interface";
 
-const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
+const ClassStudentList = ({
+  classObject,
+  openUploadLetterModal,
+}: ClassStudentListProps) => {
   const [isAddingStudent, setIsAddingStudent] = useState(false);
   const [currentEditStudentId, setCurrentEditStudentId] = useState<
     string | null
@@ -95,6 +98,7 @@ const ClassStudentList = ({ classObject }: ClassStudentListProps) => {
                 key={createUniqueStudentKey(student, index)}
                 student={student}
                 openEditModal={handleOpenEditStudentModal}
+                openUploadLetterModal={openUploadLetterModal}
                 removeStudentFromClass={handleRemoveStudentFromClass}
                 removeStudentLoading={
                   currentRemoveStudentId === student._id &&
