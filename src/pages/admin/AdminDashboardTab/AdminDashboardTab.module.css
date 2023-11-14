@@ -23,7 +23,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, #81dbf2 0%, #209bb6 100%) !important;
+    background: linear-gradient(
+      90deg,
+      #81dbf2 0%,
+      #fbfd94 50%,
+      #96f9ab 100%
+    ) !important;
     border-radius: 20px;
   }
 

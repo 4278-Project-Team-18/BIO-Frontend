@@ -19,6 +19,7 @@ import {
   faPeopleGroup,
   faSchool,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router";
 import type { Invite } from "../../../interfaces/Invites.interface";
 import type {
   Class,
@@ -34,6 +35,7 @@ const AdminDashboardTab = () => {
   const { currentVolunteers, setCurrentVolunteers } = useVolunteersContext();
   const { currentClasses, setCurrentClasses } = useClassesContext();
   const { currentUser } = useUserContext();
+  const navigate = useNavigate();
 
   // on page render
   useEffect(() => {
@@ -173,17 +175,26 @@ const AdminDashboardTab = () => {
           <ActionTile
             title="Manage Classes"
             icon={faSchool}
-            onClick={() => {}}
+            onClick={() => {
+              setCurrentTab(AdminTabs.CLASSES);
+              navigate("/classes");
+            }}
           />
           <ActionTile
             title="Match Students"
             icon={faPeopleGroup}
-            onClick={() => {}}
+            onClick={() => {
+              setCurrentTab(AdminTabs.VOLUNTEERS);
+              navigate("/volunteers");
+            }}
           />
           <ActionTile
             title="View Applications"
             icon={faEnvelope}
-            onClick={() => {}}
+            onClick={() => {
+              setCurrentTab(AdminTabs.APPLICANTS);
+              navigate("/applicants");
+            }}
           />
         </div>
       </div>
