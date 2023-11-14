@@ -1,8 +1,8 @@
 describe("Test application", () => {
   it("successfully login in to dashboard", () => {
     cy.visit("/");
-    cy.get("input[name=email]").type("jacob.b.lurie@vanderbilt.edu");
-    cy.get("input[name=password]").type("@Jacob120629");
+    cy.get("input[name=email]").type("admn.cwrubio@gmail.com");
+    cy.get("input[name=password]").type("BIOClubAdmin!");
     // wait
     cy.wait(1000);
 
