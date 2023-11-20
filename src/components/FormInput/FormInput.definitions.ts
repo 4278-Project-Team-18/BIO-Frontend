@@ -27,9 +27,11 @@ export interface FormInputProps {
   sizeVariant?: FormInputSizeVariant;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   extraStyles?: Record<string, any>;
+  paragraph?: boolean;
 }
 
 export enum FormInputSizeVariant {
   compact = "compact",
   standard = "standard",
+  large = "large",
 }

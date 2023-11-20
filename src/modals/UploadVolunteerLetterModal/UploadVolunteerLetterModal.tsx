@@ -45,25 +45,14 @@ const UploadVolunteerLetterModal = ({
     ) as Resolver<VolunteerLetterInput>,
     mode: "onSubmit",
     defaultValues: {
-      [VolunteerLetterInputName.FIRST_NAME]: volunteer.firstName || "",
-      [VolunteerLetterInputName.GRADE_LEVEL]: "",
-      [VolunteerLetterInputName.BOOK_TITLE]: "",
-      [VolunteerLetterInputName.BOOK_AUTHOR]: "",
       [VolunteerLetterInputName.MESSAGE]: "",
     },
   });
 
   const handleGeneratePreview = async () => {
     setViewedPreview(true);
-    const { firstName, gradeLevel, bookTitle, bookAuthor } = getValues();
-    const letterContent = `Dear ${student.firstName},
-        \n\n
-        My name is ${firstName}, and I am a ${gradeLevel} student at Case Western Reserve University. 
-        I appreciated receiving your letter! For you, I picked out the book "${bookTitle}" by ${bookAuthor}.
-        I really enjoyed reading it and I hope you do too. 
-        I hope you continue to share your love of reading.
-        \n\n
-        Sincerely,\n${firstName} and the Book I Own Club`;
+    const { message } = getValues();
+    const letterContent = `Dear ${student.firstName}, \n\n ${message} \n\n Sincerely,\n${volunteer.firstName} from the Book I Own Club`;
 
     const doc = new jsPDF();
     doc.setFontSize(12);
@@ -154,54 +143,15 @@ const UploadVolunteerLetterModal = ({
           <div className={styles["upload-letter-left"]}>
             <div className={styles["upload-letter-form-container"]}>
               <FormInput
-                name={VolunteerLetterInputName.FIRST_NAME}
-                type="text"
-                control={control}
-                placeholder="First Name"
-                error={errors[VolunteerLetterInputName.FIRST_NAME]?.message}
-                defaultValue={""}
-                sizeVariant={FormInputSizeVariant.compact}
-                extraStyles={{ marginTop: "10px" }}
-              />
-              <FormInput
-                name={VolunteerLetterInputName.GRADE_LEVEL}
-                type="text"
-                control={control}
-                placeholder="Grade Level"
-                error={errors[VolunteerLetterInputName.GRADE_LEVEL]?.message}
-                defaultValue={""}
-                sizeVariant={FormInputSizeVariant.compact}
-                extraStyles={{ marginTop: "10px" }}
-              />
-              <FormInput
-                name={VolunteerLetterInputName.BOOK_TITLE}
-                type="text"
-                control={control}
-                placeholder="Book Title"
-                error={errors[VolunteerLetterInputName.BOOK_TITLE]?.message}
-                defaultValue={""}
-                sizeVariant={FormInputSizeVariant.compact}
-                extraStyles={{ marginTop: "10px" }}
-              />
-              <FormInput
-                name={VolunteerLetterInputName.BOOK_AUTHOR}
-                type="text"
-                control={control}
-                placeholder="Book Author"
-                error={errors[VolunteerLetterInputName.BOOK_AUTHOR]?.message}
-                defaultValue={""}
-                sizeVariant={FormInputSizeVariant.compact}
-                extraStyles={{ marginTop: "10px" }}
-              />
-              <FormInput
                 name={VolunteerLetterInputName.MESSAGE}
                 type="text"
                 control={control}
                 placeholder="Message"
                 error={errors[VolunteerLetterInputName.MESSAGE]?.message}
                 defaultValue={""}
-                sizeVariant={FormInputSizeVariant.compact}
+                sizeVariant={FormInputSizeVariant.large}
                 extraStyles={{ marginTop: "10px" }}
+                paragraph={true}
               />
             </div>
           </div>

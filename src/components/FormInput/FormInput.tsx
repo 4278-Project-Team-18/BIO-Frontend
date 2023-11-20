@@ -29,6 +29,7 @@ const FormInput = ({
   autocomplete,
   sizeVariant = FormInputSizeVariant.standard,
   extraStyles = {},
+  paragraph = false,
 }: FormInputProps) => (
   <Controller
     name={name}
@@ -57,18 +58,32 @@ const FormInput = ({
               )}
             </div>
           )}
-          <input
-            onChange={field.onChange}
-            onBlur={field.onBlur}
-            name={field.name}
-            ref={field.ref}
-            className={styles[`form-input-${sizeVariant}`]}
-            placeholder={placeholder}
-            type={type}
-            defaultValue={defaultValue}
-            autoComplete={autocomplete}
-            style={{ ...extraStyles }}
-          />
+          {!paragraph ? (
+            <input
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              ref={field.ref}
+              className={styles[`form-input-${sizeVariant}`]}
+              placeholder={placeholder}
+              type={type}
+              defaultValue={defaultValue}
+              autoComplete={autocomplete}
+              style={{ ...extraStyles }}
+            />
+          ) : (
+            <textarea
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              ref={field.ref}
+              className={styles[`form-input-${sizeVariant}`]}
+              placeholder={placeholder}
+              defaultValue={defaultValue}
+              autoComplete={autocomplete}
+              style={{ ...extraStyles }}
+            />
+          )}
         </div>
       </div>
     )}
