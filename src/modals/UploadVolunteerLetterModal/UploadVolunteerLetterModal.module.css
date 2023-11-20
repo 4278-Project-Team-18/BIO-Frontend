@@ -13,7 +13,7 @@
 
   .upload-letter-container {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 5% auto;
     width: fit-content;
     min-width: 70%;
     border-radius: 20px;
@@ -77,11 +77,31 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 20px;
   }
 
   .upload-letter-submit-container {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .upload-letter-left {
+    width: 50%;
+    height: 90%;
+    padding: 0px 20px;
+    border-right: 1px solid #a2a2a2;
+    height: 420px;
+  }
+
+  .upload-letter-right {
+    width: 50%;
+    padding: 10px;
+    height: 420px;
+  }
+
+  .upload-letter-pdf-preview-container {
+    width: 90%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -125,6 +145,28 @@
     padding-right: 6px;
     padding-bottom: 2px;
     color: #ffffff;
+  }
+
+  .upload-letter-generate-preview-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .upload-letter-generate-preview-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .upload-letter-generate-preview-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
   }
 }
 
@@ -207,15 +249,35 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 20px;
   }
 
   .upload-letter-submit-container {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     padding-top: 20px;
+  }
+
+  .upload-letter-left {
+    width: 50%;
+    height: 90%;
+    padding: 0px 20px;
+    border-right: 1px solid #a2a2a2;
+    height: 420px;
+  }
+
+  .upload-letter-right {
+    width: 50%;
+    padding: 10px;
+    height: 420px;
+  }
+
+  .upload-letter-pdf-preview-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
   }
 
   .upload-letter-submit-inner-container {
@@ -256,5 +318,27 @@
     padding-right: 6px;
     padding-bottom: 2px;
     color: #ffffff;
+  }
+
+  .upload-letter-generate-preview-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .upload-letter-generate-preview-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .upload-letter-generate-preview-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
   }
 }

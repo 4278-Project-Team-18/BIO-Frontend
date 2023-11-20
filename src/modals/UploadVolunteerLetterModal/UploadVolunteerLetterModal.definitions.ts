@@ -1,6 +1,6 @@
 /* eslint-disable autofix/no-unused-vars */
 
-import type { Student } from "../../interfaces/User.interface";
+import type { Student, Volunteer } from "../../interfaces/User.interface";
 
 export interface VolunteerLetterInput {
   firstName: string;
@@ -21,4 +21,5 @@ export enum VolunteerLetterInputName {
 export interface UploadVolunteerLetterModalProps {
   closeModal: () => void;
   student: Student;
+  volunteer: Volunteer;
 }

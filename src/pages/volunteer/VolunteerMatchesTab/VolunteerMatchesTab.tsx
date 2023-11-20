@@ -93,6 +93,7 @@ const VolunteerMatchesTab = () => {
           <UploadVolunteerLetterModal
             closeModal={handleCloseUploadLetterModal}
             student={currentStudentUploadLetter}
+            volunteer={currentUser as Volunteer}
           />
         )}
       </div>

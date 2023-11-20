@@ -10,31 +10,69 @@ import FullPageErrorDisplay from "../../components/FullPageErrorDisplay/FullPage
 import { useClassesContext } from "../../context/Classes.context";
 import { FormInputSizeVariant } from "../../components/FormInput/FormInput.definitions";
 import FormInput from "../../components/FormInput/FormInput";
+import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
+import { volunteerLetterSchema } from "../../resolvers/volunteerLetter.resolver";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
   faCloudArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { MoonLoader } from "react-spinners";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { jsPDF } from "jspdf";
+import { yupResolver } from "@hookform/resolvers/yup";
 import type { Student } from "../../interfaces/User.interface";
+import type { Resolver } from "react-hook-form";
 
 const UploadVolunteerLetterModal = ({
   closeModal,
   student,
+  volunteer,
 }: UploadVolunteerLetterModalProps) => {
   const { updateVolunteerLetterLink } = useClassesContext();
+  const [pdfFile, setPdfFile] = useState<File | null>(null);
+  const [viewedPreview, setViewedPreview] = useState<boolean>(false);
 
-  // form controller
   const {
     control,
     handleSubmit,
     formState: { errors },
-    // setError,
+    getValues,
   } = useForm<VolunteerLetterInput>({
+    resolver: yupResolver(
+      volunteerLetterSchema,
+    ) as Resolver<VolunteerLetterInput>,
     mode: "onSubmit",
+    defaultValues: {
+      [VolunteerLetterInputName.FIRST_NAME]: volunteer.firstName || "",
+      [VolunteerLetterInputName.GRADE_LEVEL]: "",
+      [VolunteerLetterInputName.BOOK_TITLE]: "",
+      [VolunteerLetterInputName.BOOK_AUTHOR]: "",
+      [VolunteerLetterInputName.MESSAGE]: "",
+    },
   });
+
+  const handleGeneratePreview = async () => {
+    setViewedPreview(true);
+    const { firstName, gradeLevel, bookTitle, bookAuthor } = getValues();
+    const letterContent = `Dear ${student.firstName},
+        \n\n
+        My name is ${firstName}, and I am a ${gradeLevel} student at Case Western Reserve University. 
+        I appreciated receiving your letter! For you, I picked out the book "${bookTitle}" by ${bookAuthor}.
+        I really enjoyed reading it and I hope you do too. 
+        I hope you continue to share your love of reading.
+        \n\n
+        Sincerely,\n${firstName} and the Book I Own Club`;
+
+    const doc = new jsPDF();
+    doc.setFontSize(12);
+    doc.text(letterContent, 10, 10);
+
+    setPdfFile(
+      new File([doc.output("blob")], "letter.pdf", { type: "application/pdf" }),
+    );
+  };
 
   const {
     data: studentData,
@@ -66,12 +104,15 @@ const UploadVolunteerLetterModal = ({
   }, [letterData]);
 
   const onSubmitUploadLetter = async () => {
+    if (!pdfFile) {
+      return;
+    }
     const formData = new FormData();
-    //   formData.append("file",  as File);
+    formData.append("file", pdfFile);
+    formData.append("volunteerId", volunteer._id);
     await makeLetterRequest(formData);
   };
 
-  // if the requet is loading, show a message
   if (studentLoading || !studentData) {
     return (
       <div className={styles["upload-letter-backdrop"]}>
@@ -94,10 +135,7 @@ const UploadVolunteerLetterModal = ({
 
   return (
     <div className={styles["upload-letter-backdrop"]}>
-      <form
-        className={styles["upload-letter-container"]}
-        onSubmit={handleSubmit(onSubmitUploadLetter)}
-      >
+      <div className={styles["upload-letter-container"]}>
         <div className={styles["upload-letter-header"]}>
           {`Upload a letter for ${student.firstName} ${student.lastInitial}`}
           <button
@@ -112,72 +150,95 @@ const UploadVolunteerLetterModal = ({
             />
           </button>
         </div>
-
-        <div className={styles["upload-letter-form-container"]}>
-          <FormInput
-            name={VolunteerLetterInputName.FIRST_NAME}
-            type="text"
-            control={control}
-            placeholder="First Name"
-            error={errors[VolunteerLetterInputName.FIRST_NAME]?.message}
-            defaultValue={""}
-            sizeVariant={FormInputSizeVariant.compact}
-            extraStyles={{ marginTop: "10px" }}
-          />
-          <FormInput
-            name={VolunteerLetterInputName.GRADE_LEVEL}
-            type="text"
-            control={control}
-            placeholder="Grade Level"
-            error={errors[VolunteerLetterInputName.GRADE_LEVEL]?.message}
-            defaultValue={""}
-            sizeVariant={FormInputSizeVariant.compact}
-            extraStyles={{ marginTop: "10px" }}
-          />
-          <FormInput
-            name={VolunteerLetterInputName.BOOK_TITLE}
-            type="text"
-            control={control}
-            placeholder="Book Title"
-            error={errors[VolunteerLetterInputName.BOOK_TITLE]?.message}
-            defaultValue={""}
-            sizeVariant={FormInputSizeVariant.compact}
-            extraStyles={{ marginTop: "10px" }}
-          />
-          <FormInput
-            name={VolunteerLetterInputName.BOOK_AUTHOR}
-            type="text"
-            control={control}
-            placeholder="Book Author"
-            error={errors[VolunteerLetterInputName.BOOK_AUTHOR]?.message}
-            defaultValue={""}
-            sizeVariant={FormInputSizeVariant.compact}
-            extraStyles={{ marginTop: "10px" }}
-          />
-          <FormInput
-            name={VolunteerLetterInputName.MESSAGE}
-            type="text"
-            control={control}
-            placeholder="Message"
-            error={errors[VolunteerLetterInputName.MESSAGE]?.message}
-            defaultValue={""}
-            sizeVariant={FormInputSizeVariant.compact}
-            extraStyles={{ marginTop: "10px" }}
-          />
+        <div className={styles["upload-letter-content"]}>
+          <div className={styles["upload-letter-left"]}>
+            <div className={styles["upload-letter-form-container"]}>
+              <FormInput
+                name={VolunteerLetterInputName.FIRST_NAME}
+                type="text"
+                control={control}
+                placeholder="First Name"
+                error={errors[VolunteerLetterInputName.FIRST_NAME]?.message}
+                defaultValue={""}
+                sizeVariant={FormInputSizeVariant.compact}
+                extraStyles={{ marginTop: "10px" }}
+              />
+              <FormInput
+                name={VolunteerLetterInputName.GRADE_LEVEL}
+                type="text"
+                control={control}
+                placeholder="Grade Level"
+                error={errors[VolunteerLetterInputName.GRADE_LEVEL]?.message}
+                defaultValue={""}
+                sizeVariant={FormInputSizeVariant.compact}
+                extraStyles={{ marginTop: "10px" }}
+              />
+              <FormInput
+                name={VolunteerLetterInputName.BOOK_TITLE}
+                type="text"
+                control={control}
+                placeholder="Book Title"
+                error={errors[VolunteerLetterInputName.BOOK_TITLE]?.message}
+                defaultValue={""}
+                sizeVariant={FormInputSizeVariant.compact}
+                extraStyles={{ marginTop: "10px" }}
+              />
+              <FormInput
+                name={VolunteerLetterInputName.BOOK_AUTHOR}
+                type="text"
+                control={control}
+                placeholder="Book Author"
+                error={errors[VolunteerLetterInputName.BOOK_AUTHOR]?.message}
+                defaultValue={""}
+                sizeVariant={FormInputSizeVariant.compact}
+                extraStyles={{ marginTop: "10px" }}
+              />
+              <FormInput
+                name={VolunteerLetterInputName.MESSAGE}
+                type="text"
+                control={control}
+                placeholder="Message"
+                error={errors[VolunteerLetterInputName.MESSAGE]?.message}
+                defaultValue={""}
+                sizeVariant={FormInputSizeVariant.compact}
+                extraStyles={{ marginTop: "10px" }}
+              />
+            </div>
+          </div>
+          <div className={styles["upload-letter-right"]}>
+            <div className={styles["upload-letter-pdf-preview-container"]}>
+              {"Cannot Load Document"}
+            </div>
+          </div>
         </div>
-
         <div className={styles["upload-letter-submit-container"]}>
+          <button
+            className={styles["upload-letter-generate-preview-button"]}
+            onClick={() => handleGeneratePreview()}
+            type="button"
+          >
+            <div className={styles["upload-letter-generate-preview-title"]}>
+              {"Generate Preview"}
+            </div>
+            <FontAwesomeIcon
+              icon={faCloudArrowUp}
+              className={styles["upload-letter-generate-preview-icon"]}
+            />
+          </button>
           <LoadingButton
             text={"Submit Letter"}
             icon={faCloudArrowUp}
-            type="submit"
             isLoading={letterLoading}
             isLoadingText="Uploading Letter..."
-            disabled={false}
+            onClick={handleSubmit(onSubmitUploadLetter)}
+            disabled={!viewedPreview}
             isResponsive={false}
+            variant={
+              pdfFile ? LoadingButtonVariant.GREEN : LoadingButtonVariant.GREY
+            }
           />
         </div>
-      </form>
+      </div>
     </div>
   );
 };
