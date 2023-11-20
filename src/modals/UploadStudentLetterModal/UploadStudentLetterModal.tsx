@@ -6,7 +6,10 @@ import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import FullPageErrorDisplay from "../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import { useClassesContext } from "../../context/Classes.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark, faHandshake } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleXmark,
+  faCloudArrowUp,
+} from "@fortawesome/free-solid-svg-icons";
 import { MoonLoader } from "react-spinners";
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
@@ -67,7 +70,6 @@ const UploadStudentLetterModal = ({
     );
   }
 
-  // if the request failed, show an error message
   if (studentError) {
     return (
       <div className={styles["upload-letter-backdrop"]}>
@@ -77,8 +79,6 @@ const UploadStudentLetterModal = ({
       </div>
     );
   }
-
-  console.log(student);
 
   return (
     <div className={styles["upload-letter-backdrop"]}>
@@ -112,8 +112,8 @@ const UploadStudentLetterModal = ({
         </div>
         <div className={styles["upload-letter-submit-container"]}>
           <LoadingButton
-            text={selectedLetter ? "Submit Letter" : "Upload Letter"}
-            icon={faHandshake}
+            text={"Upload Letter"}
+            icon={faCloudArrowUp}
             isLoading={letterLoading}
             isLoadingText="Uploading Letter..."
             onClick={onSubmitUploadLetter}

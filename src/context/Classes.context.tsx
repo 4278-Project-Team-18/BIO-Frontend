@@ -16,6 +16,10 @@ interface ClassesContextType {
     studentId: string,
     studentLetterLink: string,
   ) => void;
+  updateVolunteerLetterLink: (
+    studentId: string,
+    volunteerLetterLink: string,
+  ) => void;
 }
 
 // Create the context for the user
@@ -27,6 +31,7 @@ const ClassesContext = createContext<ClassesContextType>({
   editStudentInClass: (_: Student, __: string) => {},
   removeStudentFromClass: (_: string, __: string) => {},
   updateStudentLetterLink: (_: string, __: string) => {},
+  updateVolunteerLetterLink: (_: string, __: string) => {},
 });
 
 // Create the wrapper for the user context
@@ -109,6 +114,26 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     setCurrentClasses(newClasses);
   };
 
+  const updateVolunteerLetterLink = (
+    studentId: string,
+    volunteerLetterLink: string,
+  ) => {
+    const newClasses = currentClasses?.map((classItem: Class) => ({
+      ...classItem,
+      students: classItem.students?.map((studentItem: Student) => {
+        if (studentItem._id === studentId) {
+          return {
+            ...studentItem,
+            volunteerLetterLink,
+          };
+        } else {
+          return studentItem;
+        }
+      }),
+    }));
+    setCurrentClasses(newClasses);
+  };
+
   const value = {
     currentClasses,
     setCurrentClasses,
@@ -117,6 +142,7 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     editStudentInClass,
     removeStudentFromClass,
     updateStudentLetterLink,
+    updateVolunteerLetterLink,
   };
 
   return (

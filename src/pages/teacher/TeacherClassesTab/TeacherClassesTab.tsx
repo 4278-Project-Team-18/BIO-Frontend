@@ -1,13 +1,17 @@
 import styles from "./TeacherClassesTab.module.css";
 import ClassStudentList from "../../../components/ClassStudentList/ClassStudentList";
-import { type Class, TeacherTabs } from "../../../interfaces/User.interface";
+import {
+  type Class,
+  TeacherTabs,
+  type Student,
+} from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { useCustomFetch } from "../../../api/request.util";
 import { useClassesContext } from "../../../context/Classes.context";
 import AddClassModal from "../../../modals/AddClassModal/AddClassModal";
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
-
+import UploadStudentLetterModal from "../../../modals/UploadStudentLetterModal/UploadStudentLetterModal";
 import { useEffect, useState } from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,20 +20,34 @@ const TeacherClassesTab = () => {
   const { setCurrentTab } = useNavigationContext();
   const { currentClasses, setCurrentClasses } = useClassesContext();
   const [classModalOpen, setClassModalOpen] = useState<boolean>(false);
+  const [uploadLetterModalOpen, setUploadLetterModalOpen] =
+    useState<boolean>(false);
+  const [currentStudentUploadLetter, setCurrentStudentLetterUpload] =
+    useState<Student | null>(null);
 
   const {
     data: classData,
     loading: classLoading,
     error: classError,
     makeRequest: makeClassRequest,
-  } = useCustomFetch<Class[]>(`/class/`);
+  } = useCustomFetch<Class[]>(`/getClasses/`);
 
-  const handleCloseModal = () => {
+  const handleCloseClassModal = () => {
     setClassModalOpen(false);
   };
 
-  const handleOpenModal = () => {
+  const handleOpenClassModal = () => {
     setClassModalOpen(true);
+  };
+
+  const handleOpenUploadLetterModal = (student: Student) => {
+    setUploadLetterModalOpen(true);
+    setCurrentStudentLetterUpload(student);
+  };
+
+  const handleCloseUploadLetterModal = () => {
+    setUploadLetterModalOpen(false);
+    setCurrentStudentLetterUpload(null);
   };
 
   // set the current tab on render
@@ -64,7 +82,7 @@ const TeacherClassesTab = () => {
           <button
             id="add-class-button"
             className={styles["add-class-button"]}
-            onClick={handleOpenModal}
+            onClick={handleOpenClassModal}
           >
             <div className={styles["add-class-button-label"]}>
               {"Add Class"}
@@ -76,11 +94,23 @@ const TeacherClassesTab = () => {
           </button>
         </div>
         <div>
-          {classModalOpen && <AddClassModal closeModal={handleCloseModal} />}
+          {uploadLetterModalOpen && currentStudentUploadLetter && (
+            <UploadStudentLetterModal
+              closeModal={handleCloseUploadLetterModal}
+              student={currentStudentUploadLetter}
+            />
+          )}
+          {classModalOpen && (
+            <AddClassModal closeModal={handleCloseClassModal} />
+          )}
         </div>
       </div>
       {currentClasses?.map((classItem) => (
-        <ClassStudentList classObject={classItem} key={classItem._id} />
+        <ClassStudentList
+          classObject={classItem}
+          key={classItem._id}
+          openUploadLetterModal={handleOpenUploadLetterModal}
+        />
       ))}
     </div>
   );
