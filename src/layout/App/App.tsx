@@ -7,10 +7,11 @@ import {
   getValueFromLocalStorage,
   setValueToLocalStorage,
 } from "../../util/storage.util";
+import { ApprovalStatus, type UserType } from "../../interfaces/User.interface";
+import NotApprovedDisplay from "../../components/NotApprovedDisplay/NotApprovedDisplay";
 import { useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router";
 import { useUser } from "@clerk/clerk-react";
-import type { UserType } from "../../interfaces/User.interface";
 
 const App = () => {
   const { setCurrentUser } = useUserContext();
@@ -70,7 +71,11 @@ const App = () => {
       </div>
       <div className={styles["app-main-content"]}>
         <div className={styles["app-main-content-inner-container"]}>
-          <Outlet />
+          {userData.approvalStatus === ApprovalStatus.APPROVED ? (
+            <Outlet />
+          ) : (
+            <NotApprovedDisplay status={userData.approvalStatus} />
+          )}
         </div>
       </div>
     </div>

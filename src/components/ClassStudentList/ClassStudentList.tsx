@@ -4,7 +4,10 @@ import AddEditStudent from "../AddEditStudent/AddEditStudent";
 import Accordion from "../Accordion/Accordion";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useClassesContext } from "../../context/Classes.context";
+import ConfirmationModal from "../../modals/ConfirmationModal/ConfirmationModal";
+import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
 import { useEffect, useState } from "react";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
 import type { Student } from "../../interfaces/User.interface";
@@ -20,6 +23,8 @@ const ClassStudentList = ({
   const [currentRemoveStudentId, setCurrentRemoveStudentId] = useState<
     string | null
   >(null);
+  const [openDeleteClassModal, setOpenDeleteClassModal] =
+    useState<boolean>(false);
 
   const { removeStudentFromClass } = useClassesContext();
 
@@ -67,6 +72,16 @@ const ClassStudentList = ({
     await deleteStudentFromClass({ studentId });
   };
 
+  const handleOpenDeleteClassModal = () => {
+    setOpenDeleteClassModal(true);
+  };
+
+  const handleCloseDeleteClassModal = () => {
+    setOpenDeleteClassModal(false);
+  };
+
+  const handleDeleteClass = () => {};
+
   return (
     <>
       <div className={styles["class-list-container"]}>
@@ -84,6 +99,8 @@ const ClassStudentList = ({
             />
           }
           showActionLineItem={isAddingStudent}
+          headerActionOnClick={handleOpenDeleteClassModal}
+          headerActionTitle="Delete class"
         >
           {classObject.students?.map((student, index) =>
             currentEditStudentId === student._id ? (
@@ -108,6 +125,17 @@ const ClassStudentList = ({
             ),
           )}
         </Accordion>
+        {openDeleteClassModal && (
+          <ConfirmationModal
+            title="Are you sure?"
+            subtitle={`Deleting "${classObject.name}" will also delete all of it's students and their data.`}
+            confirmText="Delete class"
+            confirmIcon={faTrash}
+            confirmColor={LoadingButtonVariant.RED}
+            action={handleDeleteClass}
+            closeModal={handleCloseDeleteClassModal}
+          />
+        )}
       </div>
     </>
   );

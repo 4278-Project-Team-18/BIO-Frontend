@@ -1,0 +1,29 @@
+.not-approved-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  padding: 0px 20px;
+}
+
+.not-approved-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333333;
+}
+
+.not-approved-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.icon {
+  height: 70px;
+  width: 70px;
+  color: #333333;
+}

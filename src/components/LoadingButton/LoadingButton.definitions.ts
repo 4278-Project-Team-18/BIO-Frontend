@@ -13,6 +13,7 @@ export interface LoadingButtonProps {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   isResponsive?: boolean;
+  iconOnly?: boolean;
 }
 
 export enum LoadingButtonVariant {
