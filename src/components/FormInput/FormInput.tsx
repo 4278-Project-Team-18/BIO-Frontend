@@ -77,7 +77,9 @@ const FormInput = ({
               onBlur={field.onBlur}
               name={field.name}
               ref={field.ref}
-              className={styles[`form-input-${sizeVariant}`]}
+              className={`${styles[`form-input-${sizeVariant}`]} ${
+                styles["form-textarea"]
+              }`}
               placeholder={placeholder}
               defaultValue={defaultValue}
               autoComplete={autocomplete}

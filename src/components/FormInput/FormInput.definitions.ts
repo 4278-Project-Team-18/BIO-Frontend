@@ -33,5 +33,4 @@ export interface FormInputProps {
 export enum FormInputSizeVariant {
   compact = "compact",
   standard = "standard",
-  large = "large",
 }

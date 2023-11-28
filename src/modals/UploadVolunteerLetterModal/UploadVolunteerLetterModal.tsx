@@ -149,7 +149,7 @@ const UploadVolunteerLetterModal = ({
                 placeholder="Message"
                 error={errors[VolunteerLetterInputName.MESSAGE]?.message}
                 defaultValue={""}
-                sizeVariant={FormInputSizeVariant.large}
+                sizeVariant={FormInputSizeVariant.standard}
                 extraStyles={{ marginTop: "10px" }}
                 paragraph={true}
               />

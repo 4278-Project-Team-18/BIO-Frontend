@@ -44,23 +44,6 @@
   letter-spacing: 1px;
 }
 
-.form-input-large {
-  width: calc(100% - 24px);
-  padding: 4px 12px;
-  margin-bottom: 15px;
-  vertical-align: middle;
-  border-radius: 10px;
-  min-height: 36px;
-  background-color: #ffffff;
-  border: 1px solid rgba(36, 28, 21, 0.3);
-  transition: all 0.2s ease-in-out 0s;
-  font-size: 18px;
-  line-height: 20px;
-  font-weight: normal;
-  font-family: "Poppins", sans-serif !important;
-  letter-spacing: 1px;
-}
-
 .form-input-standard:focus {
   outline: none;
   border: 1px solid #37b4d0;
@@ -132,4 +115,22 @@
   font-weight: 300;
   letter-spacing: -1px;
   color: #c4c4c4;
+}
+
+.form-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid rgba(36, 28, 21, 0.3);
+  transition: all 0.2s ease-in-out 0s;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: normal;
+  font-family: "Poppins", sans-serif !important;
+  letter-spacing: 1px;
+  height: 400px;
 }
