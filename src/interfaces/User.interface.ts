@@ -91,6 +91,7 @@ export interface Class {
  * @param {string} firstName - The student's first name
  * @param {string} lastInitial - The student's last initial
  * @param {string} readingLevel - The student's reading level
+ * @param {string} assignedBookLink - The link to the book assigned to the student
  * @param {string} studentLetterLink - The link to the student's letter
  * @param {string} volunteerResponseLetterLink - The link to the volunteer's response letter
  * @param {string[]} matchedVolunteer - The mongo id of the volunteer matched to the student
@@ -100,6 +101,7 @@ export interface Student {
   firstName: string;
   lastInitial: string;
   readingLevel?: string;
+  assignedBookLink?: string;
   studentLetterLink?: string;
   volunteerResponseLetterLink?: string;
   matchedVolunteer?: string[];

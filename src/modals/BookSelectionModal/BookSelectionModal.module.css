@@ -1,0 +1,217 @@
+@media (min-width: 801px) {
+  .select-book-backdrop {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .select-book-container {
+    background-color: #fefefe;
+    margin: 5% auto;
+    width: fit-content;
+    min-width: 70%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: fit-content;
+    padding: 20px 20px 30px 20px;
+  }
+
+  .select-book-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #efefef;
+    border-radius: 20px;
+  }
+
+  .select-book-header {
+    font-size: 28px;
+    font-weight: 600;
+    color: #434343;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .select-book-cancel-button {
+    font-size: 20px;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    color: #787878;
+  }
+
+  .select-book-loading-container {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    width: fit-content;
+    min-width: 40%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 420px;
+  }
+
+  .select-book-form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .select-book-submit-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .select-book-link-preview-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .select-book-submit-inner-container {
+    width: 200%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .select-book-submit-button {
+    width: fit-content;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #54d469;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .select-book-submit-button-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    width: 80px;
+  }
+
+  .select-book-submit-button-icon {
+    font-size: 16px;
+    padding-right: 6px;
+    padding-bottom: 2px;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 800px) {
+  .select-book-backdrop {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .select-book-container {
+    background-color: #fefefe;
+    margin: 5% auto;
+    width: fit-content;
+    min-width: 70%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: fit-content;
+    padding: 20px 20px 30px 20px;
+  }
+
+  .select-book-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #efefef;
+    border-radius: 20px;
+  }
+
+  .select-book-header {
+    font-size: 28px;
+    font-weight: 600;
+    color: #434343;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .select-book-cancel-button {
+    font-size: 20px;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    color: #787878;
+  }
+
+  .select-book-loading-container {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    width: fit-content;
+    min-width: 40%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 420px;
+  }
+
+  .select-book-form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

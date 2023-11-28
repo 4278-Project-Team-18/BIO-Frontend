@@ -5,6 +5,7 @@ import StudentTile from "../../../components/StudentTile/StudentTile";
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import UploadVolunteerLetterModal from "../../../modals/UploadVolunteerLetterModal/UploadVolunteerLetterModal";
+import BookSelectionModal from "../../../modals/BookSelectionModal/BookSelectionModal";
 import { useState } from "react";
 import type { Volunteer, Student } from "../../../interfaces/User.interface";
 
@@ -13,7 +14,11 @@ const VolunteerMatchesTab = () => {
 
   const [uploadLetterModalOpen, setUploadLetterModalOpen] =
     useState<boolean>(false);
+  const [bookSelectionModalOpen, setBookSelectionModalOpen] =
+    useState<boolean>(false);
   const [currentStudentUploadLetter, setCurrentStudentLetterUpload] =
+    useState<Student | null>(null);
+  const [currentStudentBookSelection, setCurrentStudentBookSelection] =
     useState<Student | null>(null);
 
   const handleOpenUploadLetterModal = (student: Student) => {
@@ -24,6 +29,16 @@ const VolunteerMatchesTab = () => {
   const handleCloseUploadLetterModal = () => {
     setUploadLetterModalOpen(false);
     setCurrentStudentLetterUpload(null);
+  };
+
+  const handleOpenBookSelectionModal = (student: Student) => {
+    setBookSelectionModalOpen(true);
+    setCurrentStudentBookSelection(student);
+  };
+
+  const handleCloseBookSelectionModal = () => {
+    setBookSelectionModalOpen(false);
+    setCurrentStudentBookSelection(null);
   };
 
   const {
@@ -83,6 +98,7 @@ const VolunteerMatchesTab = () => {
           <StudentTile
             student={student}
             openVolunteerLetterModal={handleOpenUploadLetterModal}
+            openBookSelectionModal={handleOpenBookSelectionModal}
             key={index}
           />
         ))}
@@ -93,6 +109,12 @@ const VolunteerMatchesTab = () => {
             closeModal={handleCloseUploadLetterModal}
             student={currentStudentUploadLetter}
             volunteer={currentUser as Volunteer}
+          />
+        )}
+        {bookSelectionModalOpen && currentStudentBookSelection && (
+          <BookSelectionModal
+            closeModal={handleCloseBookSelectionModal}
+            student={currentStudentBookSelection}
           />
         )}
       </div>

@@ -10,6 +10,7 @@ import type { Class } from "../../interfaces/User.interface";
 const StudentTile = ({
   student,
   openVolunteerLetterModal,
+  openBookSelectionModal,
 }: StudentTileProps) => {
   const {
     data: classData,
@@ -49,20 +50,35 @@ const StudentTile = ({
           Reading level: {student.readingLevel}
         </div>
       </div>
-      <button
-        className={styles["student-tile-upload-button"]}
-        onClick={() => openVolunteerLetterModal(student)}
-      >
-        <div className={styles["student-tile-upload-title"]}>
-          {student.volunteerResponseLetterLink
-            ? "Reupload Letter"
-            : "Upload Letter"}
-        </div>
-        <FontAwesomeIcon
-          icon={faCloudArrowUp}
-          className={styles["student-tile-upload-icon"]}
-        />
-      </button>
+
+      <div className={styles["student-tile-buttons"]}>
+        <button
+          className={styles["student-tile-upload-button"]}
+          onClick={() => openVolunteerLetterModal(student)}
+        >
+          <div className={styles["student-tile-upload-title"]}>
+            {student.volunteerResponseLetterLink
+              ? "Reupload Letter"
+              : "Upload Letter"}
+          </div>
+          <FontAwesomeIcon
+            icon={faCloudArrowUp}
+            className={styles["student-tile-upload-icon"]}
+          />
+        </button>
+        <button
+          className={styles["student-tile-book-selection-button"]}
+          onClick={() => openBookSelectionModal(student)}
+        >
+          <div className={styles["student-tile-book-selection-title"]}>
+            {student.assignedBookLink ? "Change Book" : "Select Book"}
+          </div>
+          <FontAwesomeIcon
+            icon={faCloudArrowUp}
+            className={styles["student-tile-book-selection-icon"]}
+          />
+        </button>
+      </div>
     </div>
   );
 };
