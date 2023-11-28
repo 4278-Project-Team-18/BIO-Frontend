@@ -12,6 +12,7 @@ import { FormInputSizeVariant } from "../../components/FormInput/FormInput.defin
 import FormInput from "../../components/FormInput/FormInput";
 import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
 import { volunteerLetterSchema } from "../../resolvers/volunteerLetter.resolver";
+import Logo from "../../assets/BIOLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
@@ -22,14 +23,18 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { jsPDF } from "jspdf";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Document, Page, pdfjs } from "react-pdf";
 import type { Student } from "../../interfaces/User.interface";
 import type { Resolver } from "react-hook-form";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 const UploadVolunteerLetterModal = ({
   closeModal,
   student,
   volunteer,
 }: UploadVolunteerLetterModalProps) => {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const { updateVolunteerLetterLink } = useClassesContext();
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [viewedPreview, setViewedPreview] = useState<boolean>(false);
@@ -52,11 +57,26 @@ const UploadVolunteerLetterModal = ({
   const handleGeneratePreview = async () => {
     setViewedPreview(true);
     const { message } = getValues();
-    const letterContent = `Dear ${student.firstName}, \n\n ${message} \n\n Sincerely,\n${volunteer.firstName} from the Book I Own Club`;
 
     const doc = new jsPDF();
-    doc.setFontSize(12);
-    doc.text(letterContent, 10, 10);
+    doc.setFontSize(20);
+    const margin = 10;
+    const lineHeight = 10;
+    const maxWidth = doc.internal.pageSize.width - 2 * margin;
+
+    doc.text(`Dear ${student.firstName},`, margin, lineHeight);
+    const lines = doc.splitTextToSize(message, maxWidth);
+    lines.forEach((line: string | string[], index: number) => {
+      const yPos = 30 + index * lineHeight;
+      doc.text(line, margin, yPos);
+    });
+    doc.text(`Sincerely,`, margin, lines.length * lineHeight + 40);
+    doc.text(
+      `${volunteer.firstName} from the Book I Own Club`,
+      margin,
+      lines.length * lineHeight + 50,
+    );
+    doc.addImage(Logo, "PNG", margin, lines.length * lineHeight + 60, 50, 50);
 
     setPdfFile(
       new File([doc.output("blob")], "letter.pdf", { type: "application/pdf" }),
@@ -157,7 +177,23 @@ const UploadVolunteerLetterModal = ({
           </div>
           <div className={styles["upload-letter-right"]}>
             <div className={styles["upload-letter-pdf-preview-container"]}>
-              {"Cannot Load Document"}
+              {pdfFile ? (
+                <Document
+                  file={pdfFile}
+                  className={styles["upload-letter-pdf-preview"]}
+                >
+                  <Page
+                    pageNumber={1}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                    height={400}
+                  />
+                </Document>
+              ) : (
+                <div className={styles["upload-letter-pdf-preview"]}>
+                  {"No Preview Available"}
+                </div>
+              )}
             </div>
           </div>
         </div>
