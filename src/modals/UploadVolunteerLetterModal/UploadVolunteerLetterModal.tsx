@@ -162,6 +162,9 @@ const UploadVolunteerLetterModal = ({
         <div className={styles["upload-letter-content"]}>
           <div className={styles["upload-letter-left"]}>
             <div className={styles["upload-letter-form-container"]}>
+              <div className={styles["upload-letter-form-header"]}>
+                {`Dear ${student.firstName},`}
+              </div>
               <FormInput
                 name={VolunteerLetterInputName.MESSAGE}
                 type="text"
@@ -173,6 +176,12 @@ const UploadVolunteerLetterModal = ({
                 extraStyles={{ marginTop: "10px" }}
                 paragraph={true}
               />
+              <div className={styles["upload-letter-form-signature"]}>
+                {`Sincerely,`}
+              </div>
+              <div className={styles["upload-letter-form-signature"]}>
+                {`${volunteer.firstName} from the Book I Own Club`}
+              </div>
             </div>
           </div>
           <div className={styles["upload-letter-right"]}>

@@ -157,7 +157,9 @@ const AppRouter = () => {
             <>
               <SignedIn>
                 {role === Role.VOLUNTEER ? (
-                  <VolunteerMatchesTab />
+                  <ClassesProvider>
+                    <VolunteerMatchesTab />
+                  </ClassesProvider>
                 ) : (
                   <Navigate to="/" />
                 )}

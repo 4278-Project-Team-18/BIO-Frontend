@@ -65,7 +65,6 @@ const VolunteerMatchesTab = () => {
     );
   }
 
-  //filter the student data as an array of students to get only the students whose volunteerId matches the current volunteer's id
   const studentsMatchedToVolunteer = studentData?.filter(
     (student) => student.matchedVolunteer === volunteerData?._id,
   );
