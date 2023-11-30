@@ -1,5 +1,5 @@
 @media (min-width: 801px) {
-  .select-book-backdrop {
+  .view-student-letter-backdrop {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -11,7 +11,7 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
 
-  .select-book-container {
+  .view-student-letter-container {
     background-color: #fefefe;
     margin: 5% auto;
     width: fit-content;
@@ -25,7 +25,7 @@
     padding: 20px 20px 30px 20px;
   }
 
-  .select-book-content {
+  .view-student-letter-content {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,7 +37,7 @@
     border-radius: 20px;
   }
 
-  .select-book-header {
+  .view-student-letter-header {
     font-size: 28px;
     font-weight: 600;
     color: #434343;
@@ -49,7 +49,7 @@
     justify-content: space-between;
   }
 
-  .select-book-cancel-button {
+  .view-student-letter-cancel-button {
     font-size: 20px;
     padding-left: 8px;
     padding-right: 10px;
@@ -57,7 +57,7 @@
     color: #787878;
   }
 
-  .select-book-loading-container {
+  .view-student-letter-loading-container {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -71,71 +71,17 @@
     height: 420px;
   }
 
-  .select-book-form-container {
+  .view-student-letter-file-preview-container {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  .select-book-submit-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .select-book-link-preview-container {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .select-book-submit-inner-container {
-    width: 200%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .select-book-submit-button {
-    width: fit-content;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #54d469;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-
-  .select-book-submit-button-title {
-    font-weight: 600;
-    font-size: 14px;
-    color: #ffffff;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    width: 80px;
-  }
-
-  .select-book-submit-button-icon {
-    font-size: 16px;
-    padding-right: 6px;
-    padding-bottom: 2px;
-    color: #ffffff;
   }
 }
 
 @media (max-width: 800px) {
-  .select-book-backdrop {
+  .view-student-letter-backdrop {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -147,7 +93,7 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
 
-  .select-book-container {
+  .view-student-letter-container {
     background-color: #fefefe;
     margin: 5% auto;
     width: fit-content;
@@ -161,7 +107,7 @@
     padding: 20px 20px 30px 20px;
   }
 
-  .select-book-content {
+  .view-student-letter-content {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -173,7 +119,7 @@
     border-radius: 20px;
   }
 
-  .select-book-header {
+  .view-student-letter-header {
     font-size: 28px;
     font-weight: 600;
     color: #434343;
@@ -185,7 +131,7 @@
     justify-content: space-between;
   }
 
-  .select-book-cancel-button {
+  .view-student-letter-cancel-button {
     font-size: 20px;
     padding-left: 8px;
     padding-right: 10px;
@@ -193,7 +139,7 @@
     color: #787878;
   }
 
-  .select-book-loading-container {
+  .view-student-letter-loading-container {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -207,65 +153,11 @@
     height: 420px;
   }
 
-  .select-book-form-container {
+  .view-student-letter-file-preview-container {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  .select-book-submit-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .select-book-link-preview-container {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .select-book-submit-inner-container {
-    width: 200%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .select-book-submit-button {
-    width: fit-content;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #54d469;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-
-  .select-book-submit-button-title {
-    font-weight: 600;
-    font-size: 14px;
-    color: #ffffff;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    width: 80px;
-  }
-
-  .select-book-submit-button-icon {
-    font-size: 16px;
-    padding-right: 6px;
-    padding-bottom: 2px;
-    color: #ffffff;
   }
 }

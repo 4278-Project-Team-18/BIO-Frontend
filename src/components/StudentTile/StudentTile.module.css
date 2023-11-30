@@ -1,7 +1,7 @@
 @media (min-width: 1400px) {
   .student-tile-container {
     height: 200px;
-    width: 200px;
+    width: 300px;
     background: rgb(255, 255, 255);
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
@@ -27,21 +27,21 @@
   }
 
   .student-tile-name {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: #6e6e6e;
     text-align: center;
   }
 
   .student-tile-class {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     color: #6e6e6e;
     text-align: center;
   }
 
   .student-tile-reading-level {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     color: #6e6e6e;
     text-align: center;
@@ -53,6 +53,28 @@
     justify-content: space-around;
     align-items: flex-start;
     width: 100%;
+  }
+
+  .student-tile-view-student-letter-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .student-tile-view-student-letter-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .student-tile-view-student-letter-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
   }
 
   .student-tile-upload-button {
@@ -125,7 +147,7 @@
 @media (max-width: 1399px) {
   .student-tile-container {
     height: 200px;
-    width: 200px;
+    width: 300px;
     background: rgb(255, 255, 255);
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
@@ -151,21 +173,21 @@
   }
 
   .student-tile-name {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: #6e6e6e;
     text-align: center;
   }
 
   .student-tile-class {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     color: #6e6e6e;
     text-align: center;
   }
 
   .student-tile-reading-level {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     color: #6e6e6e;
     text-align: center;
@@ -177,6 +199,28 @@
     justify-content: space-around;
     align-items: flex-start;
     width: 100%;
+  }
+
+  .student-tile-view-student-letter-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .student-tile-view-student-letter-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .student-tile-view-student-letter-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
   }
 
   .student-tile-upload-button {

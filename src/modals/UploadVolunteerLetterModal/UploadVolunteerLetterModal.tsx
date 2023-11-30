@@ -102,16 +102,6 @@ const UploadVolunteerLetterModal = ({
     true,
   );
 
-  useEffect(() => {
-    if (letterData && !letterError) {
-      updateVolunteerLetterLink(
-        student._id,
-        letterData.volunteerResponseLetterLink || "",
-      );
-      closeModal();
-    }
-  }, [letterData]);
-
   const onSubmitUploadLetter = async () => {
     if (!pdfFile) {
       return;
@@ -121,6 +111,17 @@ const UploadVolunteerLetterModal = ({
     formData.append("volunteerId", volunteer._id);
     await makeLetterRequest(formData);
   };
+
+  useEffect(() => {
+    if (letterData && !letterError) {
+      updateVolunteerLetterLink(
+        student._id,
+        letterData.volunteerLetterLink || "",
+      );
+      setPdfFile(null);
+      closeModal();
+    }
+  }, [letterData]);
 
   if (studentLoading || !studentData) {
     return (

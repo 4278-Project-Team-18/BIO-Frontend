@@ -66,7 +66,7 @@ const BookSelectionModal = ({
   }, [bookData]);
 
   const onSubmitBookSelection = async (data: BookSelectionInput) => {
-    await makeBookRequest(data);
+    await makeBookRequest(data.bookLink);
     closeModal();
   };
 
@@ -121,17 +121,17 @@ const BookSelectionModal = ({
             sizeVariant={FormInputSizeVariant.standard}
             extraStyles={{ marginTop: "10px" }}
           />
+          <div className={styles["select-book-button-container"]}>
+            <LoadingButton
+              text={"Submit Book Selection"}
+              type="submit"
+              icon={faCloudArrowUp}
+              isLoading={bookLoading}
+              isLoadingText="Submitting Book Selection..."
+              isResponsive={false}
+            />
+          </div>
         </form>
-        <div className={styles["select-book-button-container"]}>
-          <LoadingButton
-            text={"Submit Book Selection"}
-            type="submit"
-            icon={faCloudArrowUp}
-            isLoading={bookLoading}
-            isLoadingText="Submitting Book Selection..."
-            isResponsive={false}
-          />
-        </div>
       </div>
     </div>
   );

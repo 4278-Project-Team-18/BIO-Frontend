@@ -21,6 +21,8 @@ interface ClassesContextType {
     volunteerLetterLink: string,
   ) => void;
   updateAssignedBookLink: (studentId: string, bookLink: string) => void;
+  currentStudents: Student[] | null;
+  setCurrentStudents: (students: Student[]) => void;
 }
 
 // Create the context for the user
@@ -34,6 +36,8 @@ const ClassesContext = createContext<ClassesContextType>({
   updateStudentLetterLink: (_: string, __: string) => {},
   updateVolunteerLetterLink: (_: string, __: string) => {},
   updateAssignedBookLink: (_: string, __: string) => {},
+  currentStudents: null,
+  setCurrentStudents: (_: Student[]) => {},
 });
 
 // Create the wrapper for the user context
@@ -153,6 +157,8 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     setCurrentClasses(newClasses);
   };
 
+  const [currentStudents, setCurrentStudents] = useState<Student[]>([]);
+
   const value = {
     currentClasses,
     setCurrentClasses,
@@ -163,6 +169,8 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     updateStudentLetterLink,
     updateVolunteerLetterLink,
     updateAssignedBookLink,
+    currentStudents,
+    setCurrentStudents,
   };
 
   return (

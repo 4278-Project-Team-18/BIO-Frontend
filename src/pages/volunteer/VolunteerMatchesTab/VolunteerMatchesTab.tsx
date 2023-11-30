@@ -6,20 +6,43 @@ import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicat
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import UploadVolunteerLetterModal from "../../../modals/UploadVolunteerLetterModal/UploadVolunteerLetterModal";
 import BookSelectionModal from "../../../modals/BookSelectionModal/BookSelectionModal";
-import { useState } from "react";
-import type { Volunteer, Student } from "../../../interfaces/User.interface";
+import {
+  type Volunteer,
+  type Student,
+  VolunteerTabs,
+} from "../../../interfaces/User.interface";
+import { useClassesContext } from "../../../context/Classes.context";
+import { useNavigationContext } from "../../../context/Navigation.context";
+import ViewStudentLetterModal from "../../../modals/ViewStudentLetterModal/ViewStudentLetterModal";
+import { useEffect, useState } from "react";
 
 const VolunteerMatchesTab = () => {
   const { currentUser } = useUserContext();
+  const { currentStudents, setCurrentStudents } = useClassesContext();
+  const { setCurrentTab } = useNavigationContext();
 
+  const [viewStudentLetterModalOpen, setViewStudentLetterModalOpen] =
+    useState<boolean>(false);
   const [uploadLetterModalOpen, setUploadLetterModalOpen] =
     useState<boolean>(false);
   const [bookSelectionModalOpen, setBookSelectionModalOpen] =
     useState<boolean>(false);
+  const [currentStudentViewLetter, setCurrentStudentViewLetter] =
+    useState<Student | null>(null);
   const [currentStudentUploadLetter, setCurrentStudentLetterUpload] =
     useState<Student | null>(null);
   const [currentStudentBookSelection, setCurrentStudentBookSelection] =
     useState<Student | null>(null);
+
+  const handleOpenViewStudentLetterModal = (student: Student) => {
+    setViewStudentLetterModalOpen(true);
+    setCurrentStudentViewLetter(student);
+  };
+
+  const handleCloseViewStudentLetterModal = () => {
+    setViewStudentLetterModalOpen(false);
+    setCurrentStudentViewLetter(null);
+  };
 
   const handleOpenUploadLetterModal = (student: Student) => {
     setUploadLetterModalOpen(true);
@@ -58,6 +81,16 @@ const VolunteerMatchesTab = () => {
     makeRequest: makeStudentRequest,
   } = useCustomFetch<Student[]>(`/student/`);
 
+  useEffect(() => {
+    setCurrentTab(VolunteerTabs.MATCHES);
+  }, []);
+
+  useEffect(() => {
+    if (studentData && !studentError) {
+      setCurrentStudents(studentData);
+    }
+  }, [studentData]);
+
   if (volunteerLoading || studentLoading) {
     return <FullPageLoadingIndicator />;
   }
@@ -80,7 +113,7 @@ const VolunteerMatchesTab = () => {
     );
   }
 
-  const studentsMatchedToVolunteer = studentData?.filter(
+  const studentsMatchedToVolunteer = currentStudents?.filter(
     (student) => student.matchedVolunteer === volunteerData?._id,
   );
 
@@ -97,6 +130,7 @@ const VolunteerMatchesTab = () => {
         {studentsMatchedToVolunteer?.map((student, index) => (
           <StudentTile
             student={student}
+            openViewStudentLetterModal={handleOpenViewStudentLetterModal}
             openVolunteerLetterModal={handleOpenUploadLetterModal}
             openBookSelectionModal={handleOpenBookSelectionModal}
             key={index}
@@ -104,6 +138,12 @@ const VolunteerMatchesTab = () => {
         ))}
       </div>
       <div>
+        {viewStudentLetterModalOpen && currentStudentViewLetter && (
+          <ViewStudentLetterModal
+            closeModal={handleCloseViewStudentLetterModal}
+            student={currentStudentViewLetter}
+          />
+        )}
         {uploadLetterModalOpen && currentStudentUploadLetter && (
           <UploadVolunteerLetterModal
             closeModal={handleCloseUploadLetterModal}

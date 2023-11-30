@@ -59,7 +59,6 @@ const UploadStudentLetterModal = ({
     await makeLetterRequest(formData);
   };
 
-  // if the requet is loading, show a message
   if (studentLoading || !studentData) {
     return (
       <div className={styles["upload-letter-backdrop"]}>

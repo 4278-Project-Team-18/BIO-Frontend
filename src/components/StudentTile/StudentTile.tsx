@@ -3,13 +3,18 @@ import FullPageLoadingIndicator from "../FullPageLoadingIndicator/FullPageLoadin
 import FullPageErrorDisplay from "../FullPageErrorDisplay/FullPageErrorDisplay";
 import { useCustomFetch } from "../../api/request.util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { faSquare, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
+import { faLink, faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faSquare,
+  faSquareCheck,
+} from "@fortawesome/free-regular-svg-icons";
 import type { StudentTileProps } from "./StudentTile.definitions";
 import type { Class } from "../../interfaces/User.interface";
 
 const StudentTile = ({
   student,
+  openViewStudentLetterModal,
   openVolunteerLetterModal,
   openBookSelectionModal,
 }: StudentTileProps) => {
@@ -55,7 +60,37 @@ const StudentTile = ({
       <div className={styles["student-tile-buttons"]}>
         <div className={styles["student-tile-action"]}>
           <div className={styles["student-tile-action-checkbox"]}>
-            {student.volunteerResponseLetterLink ? (
+            {student.studentLetterLink ? (
+              <FontAwesomeIcon
+                icon={faSquareCheck}
+                className={styles["student-tile-action-checkbox-checked"]}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faSquare}
+                className={styles["student-tile-action-checkbox-unchecked"]}
+              />
+            )}
+          </div>
+          <button
+            className={styles["student-tile-upload-button"]}
+            onClick={() => openViewStudentLetterModal(student)}
+            disabled={!student.studentLetterLink}
+          >
+            <div className={styles["student-tile-upload-title"]}>
+              {student.studentLetterLink
+                ? "View Student Letter"
+                : "Student Letter Unavailable"}
+            </div>
+            <FontAwesomeIcon
+              icon={faEye}
+              className={styles["student-tile-upload-icon"]}
+            />
+          </button>
+        </div>
+        <div className={styles["student-tile-action"]}>
+          <div className={styles["student-tile-action-checkbox"]}>
+            {student.volunteerLetterLink ? (
               <FontAwesomeIcon
                 icon={faSquareCheck}
                 className={styles["student-tile-action-checkbox-checked"]}
@@ -72,9 +107,9 @@ const StudentTile = ({
             onClick={() => openVolunteerLetterModal(student)}
           >
             <div className={styles["student-tile-upload-title"]}>
-              {student.volunteerResponseLetterLink
-                ? "Reupload Letter"
-                : "Upload Letter"}
+              {student.volunteerLetterLink
+                ? "Reupload Response Letter"
+                : "Upload Response Letter"}
             </div>
             <FontAwesomeIcon
               icon={faCloudArrowUp}
@@ -101,10 +136,12 @@ const StudentTile = ({
             onClick={() => openBookSelectionModal(student)}
           >
             <div className={styles["student-tile-upload-title"]}>
-              {student.assignedBookLink ? "Change Book" : "Select Book"}
+              {student.assignedBookLink
+                ? "Change Book Link"
+                : "Select Book Link"}
             </div>
             <FontAwesomeIcon
-              icon={faCloudArrowUp}
+              icon={faLink}
               className={styles["student-tile-upload-icon"]}
             />
           </button>
