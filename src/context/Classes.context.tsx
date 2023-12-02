@@ -21,8 +21,6 @@ interface ClassesContextType {
     volunteerLetterLink: string,
   ) => void;
   updateAssignedBookLink: (studentId: string, bookLink: string) => void;
-  currentStudents: Student[] | null;
-  setCurrentStudents: (students: Student[]) => void;
   removeClass: (classId: string) => void;
 }
 
@@ -37,8 +35,6 @@ const ClassesContext = createContext<ClassesContextType>({
   updateStudentLetterLink: (_: string, __: string) => {},
   updateVolunteerLetterLink: (_: string, __: string) => {},
   updateAssignedBookLink: (_: string, __: string) => {},
-  currentStudents: null,
-  setCurrentStudents: (_: Student[]) => {},
   removeClass: (_: string) => {},
 });
 
@@ -165,8 +161,6 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     setCurrentClasses(newClasses);
   };
 
-  const [currentStudents, setCurrentStudents] = useState<Student[]>([]);
-
   const value = {
     currentClasses,
     setCurrentClasses,
@@ -177,8 +171,6 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     updateStudentLetterLink,
     updateVolunteerLetterLink,
     updateAssignedBookLink,
-    currentStudents,
-    setCurrentStudents,
     removeClass,
   };
 

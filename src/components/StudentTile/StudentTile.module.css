@@ -33,13 +33,6 @@
     text-align: center;
   }
 
-  .student-tile-class {
-    font-size: 16px;
-    font-weight: 600;
-    color: #6e6e6e;
-    text-align: center;
-  }
-
   .student-tile-reading-level {
     font-size: 16px;
     font-weight: 600;
@@ -174,13 +167,6 @@
 
   .student-tile-name {
     font-size: 18px;
-    font-weight: 600;
-    color: #6e6e6e;
-    text-align: center;
-  }
-
-  .student-tile-class {
-    font-size: 16px;
     font-weight: 600;
     color: #6e6e6e;
     text-align: center;

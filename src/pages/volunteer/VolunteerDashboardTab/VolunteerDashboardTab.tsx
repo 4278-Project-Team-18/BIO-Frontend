@@ -1,9 +1,6 @@
 import styles from "./VolunteerMatchesTab.module.css";
 import { useUserContext } from "../../../context/User.context";
-import { RequestMethods, useCustomFetch } from "../../../api/request.util";
 import StudentTile from "../../../components/StudentTile/StudentTile";
-import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
-import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import UploadVolunteerLetterModal from "../../../modals/UploadVolunteerLetterModal/UploadVolunteerLetterModal";
 import BookSelectionModal from "../../../modals/BookSelectionModal/BookSelectionModal";
 import {
@@ -11,15 +8,15 @@ import {
   type Student,
   VolunteerTabs,
 } from "../../../interfaces/User.interface";
-import { useClassesContext } from "../../../context/Classes.context";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import ViewStudentLetterModal from "../../../modals/ViewStudentLetterModal/ViewStudentLetterModal";
 import { useEffect, useState } from "react";
 
 const VolunteerDashboardTab = () => {
   const { currentUser } = useUserContext();
-  const { currentStudents, setCurrentStudents } = useClassesContext();
   const { setCurrentTab } = useNavigationContext();
+
+  console.log(currentUser);
 
   const [viewStudentLetterModalOpen, setViewStudentLetterModalOpen] =
     useState<boolean>(false);
@@ -64,58 +61,9 @@ const VolunteerDashboardTab = () => {
     setCurrentStudentBookSelection(null);
   };
 
-  const {
-    data: volunteerData,
-    loading: volunteerLoading,
-    error: volunteerError,
-    makeRequest: makeVolunteerRequest,
-  } = useCustomFetch<Volunteer>(
-    `/volunteer/${currentUser?._id}`,
-    RequestMethods.GET,
-  );
-
-  const {
-    data: studentData,
-    loading: studentLoading,
-    error: studentError,
-    makeRequest: makeStudentRequest,
-  } = useCustomFetch<Student[]>(`/student/`);
-
   useEffect(() => {
     setCurrentTab(VolunteerTabs.DASHBOARD);
   }, []);
-
-  useEffect(() => {
-    if (studentData && !studentError) {
-      setCurrentStudents(studentData);
-    }
-  }, [studentData]);
-
-  if (volunteerLoading || studentLoading) {
-    return <FullPageLoadingIndicator />;
-  }
-
-  if (volunteerError) {
-    return (
-      <FullPageErrorDisplay
-        errorText="Uh oh! Something went wrong."
-        refetch={makeVolunteerRequest}
-      />
-    );
-  }
-
-  if (studentError) {
-    return (
-      <FullPageErrorDisplay
-        errorText="Uh oh! Something went wrong."
-        refetch={makeStudentRequest}
-      />
-    );
-  }
-
-  const studentsMatchedToVolunteer = currentStudents?.filter(
-    (student) => student.matchedVolunteer === volunteerData?._id,
-  );
 
   return (
     <div>
@@ -127,15 +75,17 @@ const VolunteerDashboardTab = () => {
         </div>
       </div>
       <div className={styles["volunteer-dashboard-tiles"]}>
-        {studentsMatchedToVolunteer?.map((student, index) => (
-          <StudentTile
-            student={student}
-            openViewStudentLetterModal={handleOpenViewStudentLetterModal}
-            openVolunteerLetterModal={handleOpenUploadLetterModal}
-            openBookSelectionModal={handleOpenBookSelectionModal}
-            key={index}
-          />
-        ))}
+        {((currentUser as Volunteer)?.matchedStudents as Student[])?.map(
+          (student: Student, index: number) => (
+            <StudentTile
+              student={student}
+              openViewStudentLetterModal={handleOpenViewStudentLetterModal}
+              openVolunteerLetterModal={handleOpenUploadLetterModal}
+              openBookSelectionModal={handleOpenBookSelectionModal}
+              key={index}
+            />
+          ),
+        )}
       </div>
       <div>
         {viewStudentLetterModalOpen && currentStudentViewLetter && (
