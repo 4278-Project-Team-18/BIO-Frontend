@@ -7,6 +7,7 @@ import { Role } from "../../interfaces/User.interface";
 import LoadingButton from "../LoadingButton/LoadingButton";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useInvitesContext } from "../../context/Invites.context";
+import { useUserContext } from "../../context/User.context";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +18,7 @@ import type { SendInviteInput } from "./SendInviteForm.definitions";
 
 const sendInviteForm = () => {
   const { addInvite } = useInvitesContext();
+  const { currentUser } = useUserContext();
 
   // form controller
   const {
@@ -60,7 +62,8 @@ const sendInviteForm = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmitSendInvite = async (inputData: SendInviteInput, e: any) => {
-    await makeInviteRequest(inputData);
+    console.log(currentUser);
+    await makeInviteRequest({ ...inputData, sender: currentUser?._id });
 
     // reset the form inputs
     e.target[0].value = "";

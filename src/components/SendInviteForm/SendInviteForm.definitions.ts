@@ -2,7 +2,7 @@
 export interface SendInviteInput {
   email: string;
   role: string;
-  senderId?: string;
+  sender?: string;
 }
 
 export enum SendInviteInputName {
