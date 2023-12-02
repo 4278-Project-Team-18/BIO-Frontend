@@ -3,11 +3,11 @@
 import type { Student } from "../../interfaces/User.interface";
 
 export interface BookSelectionInput {
-  bookLink: string;
+  newBookLink: string;
 }
 
 export enum BookSelectionInputName {
-  BOOK_LINK = "bookLink",
+  BOOK_LINK = "newBookLink",
 }
 
 export interface BookSelectionModalProps {

@@ -13,7 +13,6 @@ import { AuthPageVariant } from "./pages/auth/AuthPage.definitions";
 import { Role } from "./interfaces/User.interface";
 import TeacherDashboardTab from "./pages/teacher/TeacherDashboardTab/TeacherDashboardTab";
 import VolunteerDashboardTab from "./pages/volunteer/VolunteerDashboardTab/VolunteerDashboardTab";
-import VolunteerMatchesTab from "./pages/volunteer/VolunteerMatchesTab/VolunteerMatchesTab";
 import { useUserContext } from "./context/User.context";
 import { getValueFromLocalStorage } from "./util/storage.util";
 import TeacherClassesTab from "./pages/teacher/TeacherClassesTab/TeacherClassesTab";
@@ -71,7 +70,9 @@ const AppRouter = () => {
                 ) : role === Role.TEACHER ? (
                   <TeacherDashboardTab />
                 ) : role === Role.VOLUNTEER ? (
-                  <VolunteerDashboardTab />
+                  <ClassesProvider>
+                    <VolunteerDashboardTab />
+                  </ClassesProvider>
                 ) : (
                   <Navigate to="/" />
                 )}
@@ -141,25 +142,6 @@ const AppRouter = () => {
                       </TeachersProvider>
                     </InvitesProvider>
                   </AdminsProvider>
-                ) : (
-                  <Navigate to="/" />
-                )}
-              </SignedIn>
-              <SignedOut>
-                <Navigate to="/sign-in/" />
-              </SignedOut>
-            </>
-          ),
-        },
-        {
-          path: "/matches/",
-          element: (
-            <>
-              <SignedIn>
-                {role === Role.VOLUNTEER ? (
-                  <ClassesProvider>
-                    <VolunteerMatchesTab />
-                  </ClassesProvider>
                 ) : (
                   <Navigate to="/" />
                 )}

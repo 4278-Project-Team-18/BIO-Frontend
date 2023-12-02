@@ -58,17 +58,18 @@ const BookSelectionModal = ({
     RequestMethods.PATCH,
   );
 
+  const onSubmitBookSelection = async (data: BookSelectionInput) => {
+    await makeBookRequest(data);
+    closeModal();
+  };
+
   useEffect(() => {
     if (bookData && !bookError) {
+      console.log(bookData);
       updateAssignedBookLink(student._id, bookData);
       closeModal();
     }
   }, [bookData]);
-
-  const onSubmitBookSelection = async (data: BookSelectionInput) => {
-    await makeBookRequest(data.bookLink);
-    closeModal();
-  };
 
   if (studentLoading || !studentData) {
     return (
@@ -108,9 +109,14 @@ const BookSelectionModal = ({
           </button>
         </div>
         <form
-          className={styles["select-book-form"]}
+          className={styles["select-book-form-container"]}
           onSubmit={handleSubmit(onSubmitBookSelection)}
         >
+          {student.assignedBookLink && (
+            <div className={styles["select-book-current-link"]}>
+              {`Current Book Link: ${student.assignedBookLink}`}
+            </div>
+          )}
           <FormInput
             name={BookSelectionInputName.BOOK_LINK}
             type="text"
@@ -121,15 +127,17 @@ const BookSelectionModal = ({
             sizeVariant={FormInputSizeVariant.standard}
             extraStyles={{ marginTop: "10px" }}
           />
-          <div className={styles["select-book-button-container"]}>
-            <LoadingButton
-              text={"Submit Book Selection"}
-              type="submit"
-              icon={faCloudArrowUp}
-              isLoading={bookLoading}
-              isLoadingText="Submitting Book Selection..."
-              isResponsive={false}
-            />
+          <div className={styles["select-book-submit-container"]}>
+            <div className={styles["select-book-button-container"]}>
+              <LoadingButton
+                text={"Submit Book Selection"}
+                type="submit"
+                icon={faCloudArrowUp}
+                isLoading={bookLoading}
+                isLoadingText="Submitting Book Selection..."
+                isResponsive={false}
+              />
+            </div>
           </div>
         </form>
       </div>

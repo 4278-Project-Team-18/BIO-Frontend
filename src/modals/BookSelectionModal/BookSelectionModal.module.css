@@ -83,7 +83,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   .select-book-link-preview-container {
@@ -131,6 +131,18 @@
     padding-right: 6px;
     padding-bottom: 2px;
     color: #ffffff;
+  }
+
+  .select-book-current-link {
+    font-size: 14px;
+    font-weight: 300;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    width: 100%;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
   }
 }
 
@@ -219,7 +231,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   .select-book-link-preview-container {
@@ -267,5 +279,17 @@
     padding-right: 6px;
     padding-bottom: 2px;
     color: #ffffff;
+  }
+
+  .select-book-current-link {
+    font-size: 14px;
+    font-weight: 300;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    width: 100%;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
   }
 }

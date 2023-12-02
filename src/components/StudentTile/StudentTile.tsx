@@ -56,7 +56,6 @@ const StudentTile = ({
           Reading level: {student.readingLevel}
         </div>
       </div>
-
       <div className={styles["student-tile-buttons"]}>
         <div className={styles["student-tile-action"]}>
           <div className={styles["student-tile-action-checkbox"]}>

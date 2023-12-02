@@ -10,7 +10,6 @@ import {
   faSchool,
   faUsers,
   faUserPlus,
-  faHandshake,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { UserButton, useUser } from "@clerk/clerk-react";
@@ -31,7 +30,7 @@ const SideBar = () => {
       ? ["Dashboard", "Classes", "Volunteers", "Applicants"]
       : currentUser?.role === Role.TEACHER
       ? ["Dashboard", "Classes"]
-      : ["Dashboard", "Matches"];
+      : ["Dashboard"];
 
   // Icon components for the sidebar
   const sideBarIcons =
@@ -39,7 +38,7 @@ const SideBar = () => {
       ? [faHouse, faSchool, faUsers, faUserPlus]
       : currentUser?.role === Role.TEACHER
       ? [faHouse, faSchool]
-      : [faHouse, faHandshake];
+      : [faHouse];
 
   // Sets the active route when a route is clicked
   const handleRouteChange = (route: TabOptions) => {

@@ -138,7 +138,6 @@ export enum AdminTabs {
  */
 export enum VolunteerTabs {
   DASHBOARD = "dashboard",
-  MATCHES = "matches",
 }
 
 /**
