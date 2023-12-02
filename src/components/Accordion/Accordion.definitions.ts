@@ -12,4 +12,6 @@ export interface AccordionProps {
   showActionLineItem?: boolean;
   showAll?: boolean;
   minimumItems?: number;
+  headerActionOnClick?: () => void;
+  headerActionTitle?: string;
 }

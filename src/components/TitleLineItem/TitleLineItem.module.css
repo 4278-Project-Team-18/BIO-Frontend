@@ -19,8 +19,9 @@
   flex-direction: row;
   justify-content: left;
   align-items: center;
-  width: 100%;
+  width: 98%;
   padding-left: 20px;
+  justify-content: space-between;
 }
 
 .title-line-item-title-table-title {

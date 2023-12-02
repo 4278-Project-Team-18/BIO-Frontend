@@ -4,10 +4,13 @@ import AddEditStudent from "../AddEditStudent/AddEditStudent";
 import Accordion from "../Accordion/Accordion";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useClassesContext } from "../../context/Classes.context";
+import ConfirmationModal from "../../modals/ConfirmationModal/ConfirmationModal";
+import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
 import { useEffect, useState } from "react";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
-import type { Student } from "../../interfaces/User.interface";
+import type { Class, Student } from "../../interfaces/User.interface";
 
 const ClassStudentList = ({
   classObject,
@@ -20,8 +23,10 @@ const ClassStudentList = ({
   const [currentRemoveStudentId, setCurrentRemoveStudentId] = useState<
     string | null
   >(null);
+  const [openDeleteClassModal, setOpenDeleteClassModal] =
+    useState<boolean>(false);
 
-  const { removeStudentFromClass } = useClassesContext();
+  const { removeStudentFromClass, removeClass } = useClassesContext();
 
   const {
     data: deleteStudentFromClassData,
@@ -32,6 +37,13 @@ const ClassStudentList = ({
     `/class/${classObject._id}/removeStudent`,
     RequestMethods.DELETE,
   );
+
+  const {
+    data: deleteClassData,
+    loading: deleteClassLoading,
+    error: deleteClassError,
+    makeRequest: makeDeleteClassRequest,
+  } = useCustomFetch<Class>(`/class/`, RequestMethods.DELETE);
 
   const createUniqueStudentKey = (student: Student, index: number) =>
     `${student._id}_${student.firstName}_${student.lastInitial}_${index}`;
@@ -45,6 +57,17 @@ const ClassStudentList = ({
     }
     setCurrentRemoveStudentId(null);
   }, [deleteStudentFromClassData]);
+
+  useEffect(() => {
+    if (deleteClassData) {
+      removeClass(classObject._id);
+      setOpenDeleteClassModal(false);
+    }
+
+    if (deleteClassError) {
+      setOpenDeleteClassModal(false);
+    }
+  }, [deleteClassData]);
 
   const handleOpenAddStudentModal = () => {
     setIsAddingStudent(true);
@@ -67,6 +90,18 @@ const ClassStudentList = ({
     await deleteStudentFromClass({ studentId });
   };
 
+  const handleOpenDeleteClassModal = () => {
+    setOpenDeleteClassModal(true);
+  };
+
+  const handleCloseDeleteClassModal = () => {
+    setOpenDeleteClassModal(false);
+  };
+
+  const handleDeleteClass = () => {
+    makeDeleteClassRequest(undefined, classObject._id);
+  };
+
   return (
     <>
       <div className={styles["class-list-container"]}>
@@ -84,6 +119,8 @@ const ClassStudentList = ({
             />
           }
           showActionLineItem={isAddingStudent}
+          headerActionOnClick={handleOpenDeleteClassModal}
+          headerActionTitle="Delete class"
         >
           {classObject.students?.map((student, index) =>
             currentEditStudentId === student._id ? (
@@ -108,6 +145,18 @@ const ClassStudentList = ({
             ),
           )}
         </Accordion>
+        {openDeleteClassModal && (
+          <ConfirmationModal
+            title="Are you sure?"
+            subtitle={`Deleting "${classObject.name}" will also delete all of it's students and their data.`}
+            confirmText="Delete class"
+            confirmIcon={faTrash}
+            confirmColor={LoadingButtonVariant.RED}
+            action={handleDeleteClass}
+            closeModal={handleCloseDeleteClassModal}
+            isLoading={deleteClassLoading}
+          />
+        )}
       </div>
     </>
   );

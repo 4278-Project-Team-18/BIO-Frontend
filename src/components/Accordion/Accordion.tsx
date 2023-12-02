@@ -28,6 +28,8 @@ const Accordion = ({
   showActionLineItem,
   showAll = false,
   minimumItems = 5,
+  headerActionOnClick,
+  headerActionTitle,
 }: AccordionProps) => {
   // show more button is visible if there are more than minimumItems children
   const [showMoreButtonVisible, setShowMoreButtonVisible] = useState<boolean>();
@@ -55,6 +57,8 @@ const Accordion = ({
         <TitleLineItem
           title={title}
           variant={TitleLineItemVariant.TABLE_TITLE}
+          actionOnClick={headerActionOnClick}
+          actionTitle={headerActionTitle}
         />
       )}
       <div className={styles["accordion"]}>
