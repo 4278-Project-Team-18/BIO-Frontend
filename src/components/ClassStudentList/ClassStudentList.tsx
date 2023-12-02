@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
-import type { Student } from "../../interfaces/User.interface";
+import type { Class, Student } from "../../interfaces/User.interface";
 
 const ClassStudentList = ({
   classObject,
@@ -26,7 +26,7 @@ const ClassStudentList = ({
   const [openDeleteClassModal, setOpenDeleteClassModal] =
     useState<boolean>(false);
 
-  const { removeStudentFromClass } = useClassesContext();
+  const { removeStudentFromClass, removeClass } = useClassesContext();
 
   const {
     data: deleteStudentFromClassData,
@@ -37,6 +37,13 @@ const ClassStudentList = ({
     `/class/${classObject._id}/removeStudent`,
     RequestMethods.DELETE,
   );
+
+  const {
+    data: deleteClassData,
+    loading: deleteClassLoading,
+    error: deleteClassError,
+    makeRequest: makeDeleteClassRequest,
+  } = useCustomFetch<Class>(`/class/`, RequestMethods.DELETE);
 
   const createUniqueStudentKey = (student: Student, index: number) =>
     `${student._id}_${student.firstName}_${student.lastInitial}_${index}`;
@@ -50,6 +57,17 @@ const ClassStudentList = ({
     }
     setCurrentRemoveStudentId(null);
   }, [deleteStudentFromClassData]);
+
+  useEffect(() => {
+    if (deleteClassData) {
+      removeClass(classObject._id);
+      setOpenDeleteClassModal(false);
+    }
+
+    if (deleteClassError) {
+      setOpenDeleteClassModal(false);
+    }
+  }, [deleteClassData]);
 
   const handleOpenAddStudentModal = () => {
     setIsAddingStudent(true);
@@ -80,7 +98,9 @@ const ClassStudentList = ({
     setOpenDeleteClassModal(false);
   };
 
-  const handleDeleteClass = () => {};
+  const handleDeleteClass = () => {
+    makeDeleteClassRequest(undefined, classObject._id);
+  };
 
   return (
     <>
@@ -134,6 +154,7 @@ const ClassStudentList = ({
             confirmColor={LoadingButtonVariant.RED}
             action={handleDeleteClass}
             closeModal={handleCloseDeleteClassModal}
+            isLoading={deleteClassLoading}
           />
         )}
       </div>

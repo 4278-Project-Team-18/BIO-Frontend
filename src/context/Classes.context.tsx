@@ -16,6 +16,7 @@ interface ClassesContextType {
     studentId: string,
     studentLetterLink: string,
   ) => void;
+  removeClass: (classId: string) => void;
 }
 
 // Create the context for the user
@@ -27,6 +28,7 @@ const ClassesContext = createContext<ClassesContextType>({
   editStudentInClass: (_: Student, __: string) => {},
   removeStudentFromClass: (_: string, __: string) => {},
   updateStudentLetterLink: (_: string, __: string) => {},
+  removeClass: (_: string) => {},
 });
 
 // Create the wrapper for the user context
@@ -35,6 +37,12 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
 
   const addClass = (classItem: Class) => {
     setCurrentClasses([...currentClasses, classItem]);
+  };
+
+  const removeClass = (classId: string) => {
+    setCurrentClasses(
+      currentClasses.filter((classItem: Class) => classItem._id !== classId),
+    );
   };
 
   // function to add a student to a class
@@ -117,6 +125,7 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     editStudentInClass,
     removeStudentFromClass,
     updateStudentLetterLink,
+    removeClass,
   };
 
   return (

@@ -44,6 +44,8 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    console.log("user data", userData);
+
     if (userData) {
       setCurrentUser(userData);
       setValueToLocalStorage("accountEmail", userData.email);

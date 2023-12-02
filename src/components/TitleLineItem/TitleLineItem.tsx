@@ -24,7 +24,7 @@ const TitleLineItem = ({
           isLoading={false}
           variant={LoadingButtonVariant.DARKGREY}
           icon={faTrash}
-          styles={{ height: "30px", "box-shadow": "none" }}
+          styles={{ height: "30px", boxShadow: "none" }}
           iconOnly={true}
         />
       )}
