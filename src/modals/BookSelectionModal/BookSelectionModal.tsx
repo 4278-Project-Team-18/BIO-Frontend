@@ -1,13 +1,11 @@
 import { BookSelectionInputName } from "./BookSelectionModal.definitions";
 import styles from "./BookSelectionModal.module.css";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
-import FullPageErrorDisplay from "../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import FormInput from "../../components/FormInput/FormInput";
 import { FormInputSizeVariant } from "../../components/FormInput/FormInput.definitions";
 import { bookSelectionSchema } from "../../resolvers/bookSelection.resolver";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { useClassesContext } from "../../context/Classes.context";
-import { MoonLoader } from "react-spinners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
@@ -16,7 +14,6 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
-import type { Student } from "../../interfaces/User.interface";
 import type {
   BookSelectionInput,
   BookSelectionModalProps,
@@ -42,13 +39,6 @@ const BookSelectionModal = ({
   });
 
   const {
-    data: studentData,
-    error: studentError,
-    loading: studentLoading,
-    makeRequest: makeStudentRequest,
-  } = useCustomFetch<Student>(`/student/`);
-
-  const {
     data: bookData,
     error: bookError,
     loading: bookLoading,
@@ -70,26 +60,6 @@ const BookSelectionModal = ({
       closeModal();
     }
   }, [bookData]);
-
-  if (studentLoading || !studentData) {
-    return (
-      <div className={styles["select-book-backdrop"]}>
-        <div className={styles["select-book-loading-container"]}>
-          <MoonLoader color="#209bb6" />
-        </div>
-      </div>
-    );
-  }
-
-  if (studentError) {
-    return (
-      <div className={styles["select-book-backdrop"]}>
-        <div className={styles["select-book-loading-container"]}>
-          <FullPageErrorDisplay refetch={makeStudentRequest} />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className={styles["select-book-backdrop"]}>

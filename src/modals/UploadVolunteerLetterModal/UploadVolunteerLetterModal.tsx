@@ -6,7 +6,6 @@ import {
 } from "./UploadVolunteerLetterModal.definitions";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { RequestMethods, useCustomFetch } from "../../api/request.util";
-import FullPageErrorDisplay from "../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import { useClassesContext } from "../../context/Classes.context";
 import { FormInputSizeVariant } from "../../components/FormInput/FormInput.definitions";
 import FormInput from "../../components/FormInput/FormInput";
@@ -18,7 +17,6 @@ import {
   faCircleXmark,
   faCloudArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
-import { MoonLoader } from "react-spinners";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { jsPDF } from "jspdf";
@@ -84,13 +82,6 @@ const UploadVolunteerLetterModal = ({
   };
 
   const {
-    data: studentData,
-    loading: studentLoading,
-    error: studentError,
-    makeRequest: makeStudentRequest,
-  } = useCustomFetch<Student[]>(`/student/`);
-
-  const {
     data: letterData,
     loading: letterLoading,
     error: letterError,
@@ -122,26 +113,6 @@ const UploadVolunteerLetterModal = ({
       closeModal();
     }
   }, [letterData]);
-
-  if (studentLoading || !studentData) {
-    return (
-      <div className={styles["upload-letter-backdrop"]}>
-        <div className={styles["upload-letter-loading-container"]}>
-          <MoonLoader color="#209bb6" />
-        </div>
-      </div>
-    );
-  }
-
-  if (studentError) {
-    return (
-      <div className={styles["upload-letter-backdrop"]}>
-        <div className={styles["upload-letter-loading-container"]}>
-          <FullPageErrorDisplay refetch={makeStudentRequest} />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className={styles["upload-letter-backdrop"]}>

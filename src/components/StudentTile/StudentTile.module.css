@@ -137,10 +137,149 @@
   }
 }
 
-@media (max-width: 1399px) {
+@media (min-width: 880px) and (max-width: 1399px) {
   .student-tile-container {
     height: 200px;
     width: 300px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    transition: 200ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+  }
+
+  .student-tile-container:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+
+  .student-tile-student-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  .student-tile-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #6e6e6e;
+    text-align: center;
+  }
+
+  .student-tile-reading-level {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6e6e6e;
+    text-align: center;
+  }
+
+  .student-tile-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .student-tile-view-student-letter-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .student-tile-view-student-letter-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .student-tile-view-student-letter-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
+  }
+
+  .student-tile-upload-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .student-tile-upload-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .student-tile-upload-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
+  }
+
+  .student-tile-book-selection-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .student-tile-book-selection-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: #434343;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+
+  .student-tile-book-selection-icon {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    color: #434343;
+  }
+
+  .student-tile-action {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .student-tile-action-checkbox {
+    font-size: 24px;
+    padding-left: 20px;
+    padding-right: 10px;
+    height: fit-content;
+  }
+
+  .student-tile-action-checkbox-checked {
+    color: #75d887;
+  }
+
+  .student-tile-action-checkbox-unchecked {
+    color: #646464;
+  }
+}
+
+@media (max-width: 879px) {
+  .student-tile-container {
+    height: 200px;
+    width: 500px;
     background: rgb(255, 255, 255);
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
