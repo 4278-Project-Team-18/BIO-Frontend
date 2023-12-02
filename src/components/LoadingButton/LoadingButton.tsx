@@ -30,6 +30,7 @@ const LoadingButton = ({
   type = "button",
   disabled = false,
   isResponsive = true,
+  iconOnly = false,
 }: LoadingButtonProps) => (
   <button
     onClick={disabled || isLoading ? undefined : onClick}
@@ -40,15 +41,17 @@ const LoadingButton = ({
     }}
     type={type}
   >
-    <span
-      className={
-        isResponsive
-          ? styles["loading-button-label-responsive"]
-          : styles["loading-button-label"]
-      }
-    >
-      {isLoading ? isLoadingText : text}
-    </span>
+    {!iconOnly && (
+      <span
+        className={
+          isResponsive
+            ? styles["loading-button-label-responsive"]
+            : styles["loading-button-label"]
+        }
+      >
+        {isLoading ? isLoadingText : text}
+      </span>
+    )}
     {icon && !isLoading ? (
       <FontAwesomeIcon
         icon={icon}

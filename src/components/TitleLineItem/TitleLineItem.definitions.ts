@@ -2,6 +2,8 @@
 export interface TitleLineItemProps {
   title: string;
   variant?: TitleLineItemVariant;
+  actionOnClick?: () => void;
+  actionTitle?: string;
 }
 
 export enum TitleLineItemVariant {
