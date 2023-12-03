@@ -11,14 +11,17 @@ import { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faHandshake } from "@fortawesome/free-solid-svg-icons";
+import { Document, Page, pdfjs } from "react-pdf";
 import type { Student, Volunteer } from "../../interfaces/User.interface";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 const MatchVolunteerModal = ({
   closeModal,
   volunteer,
 }: MatchVolunteerModalProps) => {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
-
   const { matchVolunteer, currentVolunteers } = useVolunteersContext();
 
   const {
@@ -153,10 +156,24 @@ const MatchVolunteerModal = ({
           </div>
           <div className={styles["match-volunteer-right"]}>
             {selectedStudent ? (
-              <div className={styles["match-volunteer-student-info"]}>
-                <div>{`${selectedStudent.firstName} ${selectedStudent.lastInitial}`}</div>
-                <div>{`Reading Level: ${selectedStudent.readingLevel}`}</div>
-                <div>Cannot preview document</div>
+              <div className={styles["match-volunteer-pdf-preview-container"]}>
+                {selectedStudent.studentLetterLink ? (
+                  <Document
+                    file={selectedStudent.studentLetterLink}
+                    className={styles["match-volunteer-pdf-preview"]}
+                  >
+                    <Page
+                      pageNumber={1}
+                      renderAnnotationLayer={false}
+                      renderTextLayer={false}
+                      height={400}
+                    />
+                  </Document>
+                ) : (
+                  <div className={styles["match-volunteer-student-info"]}>
+                    <div>{`No student letter for ${selectedStudent.firstName} ${selectedStudent.lastInitial}`}</div>
+                  </div>
+                )}
               </div>
             ) : (
               <div className={styles["match-volunteer-student-no-selection"]}>
