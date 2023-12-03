@@ -38,7 +38,7 @@ const ViewStudentLetterModal = ({
                 pageNumber={1}
                 renderAnnotationLayer={false}
                 renderTextLayer={false}
-                height={400}
+                height={800}
               />
             </Document>
           </div>
