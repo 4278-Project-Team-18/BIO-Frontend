@@ -17,9 +17,10 @@ import Accordion from "../../../components/Accordion/Accordion";
 import TeacherLineItem from "../../../components/TeacherLineItem/TeacherLineItem";
 import { useTeachersContext } from "../../../context/Teachers.context";
 import UploadStudentLetterModal from "../../../modals/UploadStudentLetterModal/UploadStudentLetterModal";
+import LoadingButton from "../../../components/LoadingButton/LoadingButton";
+import { LoadingButtonVariant } from "../../../components/LoadingButton/LoadingButton.definitions";
 import { useEffect, useState } from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AdminClassesTab = () => {
   const { setCurrentTab } = useNavigationContext();
@@ -109,7 +110,7 @@ const AdminClassesTab = () => {
           <div className={styles["admin-classes-title"]}>{`All Classes (${
             currentClasses?.length || 0
           })`}</div>
-          <button
+          {/* <button
             id="add-class-button"
             className={styles["add-class-button"]}
             onClick={handleOpenClassModal}
@@ -121,7 +122,14 @@ const AdminClassesTab = () => {
               icon={faPlusCircle}
               className={styles["add-class-submit-button-icon"]}
             />
-          </button>
+          </button> */}
+          <LoadingButton
+            onClick={handleOpenClassModal}
+            isLoading={false}
+            text={"Add Class"}
+            icon={faPlusCircle}
+            variant={LoadingButtonVariant.GREEN}
+          />
         </div>
         <div>
           {uploadLetterModalOpen && currentStudentUploadLetter && (

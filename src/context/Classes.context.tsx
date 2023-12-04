@@ -16,6 +16,11 @@ interface ClassesContextType {
     studentId: string,
     studentLetterLink: string,
   ) => void;
+  updateVolunteerLetterLink: (
+    studentId: string,
+    volunteerLetterLink: string,
+  ) => void;
+  updateAssignedBookLink: (studentId: string, bookLink: string) => void;
   removeClass: (classId: string) => void;
 }
 
@@ -28,6 +33,8 @@ const ClassesContext = createContext<ClassesContextType>({
   editStudentInClass: (_: Student, __: string) => {},
   removeStudentFromClass: (_: string, __: string) => {},
   updateStudentLetterLink: (_: string, __: string) => {},
+  updateVolunteerLetterLink: (_: string, __: string) => {},
+  updateAssignedBookLink: (_: string, __: string) => {},
   removeClass: (_: string) => {},
 });
 
@@ -101,6 +108,7 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     studentId: string,
     studentLetterLink: string,
   ) => {
+    // replace the student's letter link with the new one
     const newClasses = currentClasses?.map((classItem: Class) => ({
       ...classItem,
       students: classItem.students?.map((studentItem: Student) => {
@@ -108,6 +116,43 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
           return {
             ...studentItem,
             studentLetterLink,
+          };
+        } else {
+          return studentItem;
+        }
+      }),
+    }));
+    setCurrentClasses(newClasses);
+  };
+
+  const updateVolunteerLetterLink = (
+    studentId: string,
+    volunteerLetterLink: string,
+  ) => {
+    const newClasses = currentClasses?.map((classItem: Class) => ({
+      ...classItem,
+      students: classItem.students?.map((studentItem: Student) => {
+        if (studentItem._id === studentId) {
+          return {
+            ...studentItem,
+            volunteerLetterLink,
+          };
+        } else {
+          return studentItem;
+        }
+      }),
+    }));
+    setCurrentClasses(newClasses);
+  };
+
+  const updateAssignedBookLink = (studentId: string, bookLink: string) => {
+    const newClasses = currentClasses?.map((classItem: Class) => ({
+      ...classItem,
+      students: classItem.students?.map((studentItem: Student) => {
+        if (studentItem._id === studentId) {
+          return {
+            ...studentItem,
+            assignedBookLink: bookLink,
           };
         } else {
           return studentItem;
@@ -125,6 +170,8 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     editStudentInClass,
     removeStudentFromClass,
     updateStudentLetterLink,
+    updateVolunteerLetterLink,
+    updateAssignedBookLink,
     removeClass,
   };
 

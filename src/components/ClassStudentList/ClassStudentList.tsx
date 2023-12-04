@@ -6,6 +6,7 @@ import { RequestMethods, useCustomFetch } from "../../api/request.util";
 import { useClassesContext } from "../../context/Classes.context";
 import ConfirmationModal from "../../modals/ConfirmationModal/ConfirmationModal";
 import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
+import ViewStudentLetterModal from "../../modals/ViewStudentLetterModal/ViewStudentLetterModal";
 import { useEffect, useState } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
@@ -25,6 +26,12 @@ const ClassStudentList = ({
   >(null);
   const [openDeleteClassModal, setOpenDeleteClassModal] =
     useState<boolean>(false);
+  const [openViewLetterModal, setOpenViewLetterModal] =
+    useState<boolean>(false);
+  const [
+    currentSelectedViewLetterStudent,
+    setCurrentSelectedViewLetterStudent,
+  ] = useState<Student | null>(null);
 
   const { removeStudentFromClass, removeClass } = useClassesContext();
 
@@ -102,6 +109,15 @@ const ClassStudentList = ({
     makeDeleteClassRequest(undefined, classObject._id);
   };
 
+  const handleOpenViewLetterModal = (student: Student) => {
+    setOpenViewLetterModal(true);
+    setCurrentSelectedViewLetterStudent(student);
+  };
+
+  const handleCloseViewLetterModal = () => {
+    setOpenViewLetterModal(false);
+  };
+
   return (
     <>
       <div className={styles["class-list-container"]}>
@@ -141,6 +157,7 @@ const ClassStudentList = ({
                   currentRemoveStudentId === student._id &&
                   deleteStudentFromClassLoading
                 }
+                openViewLetterModal={handleOpenViewLetterModal}
               />
             ),
           )}
@@ -155,6 +172,12 @@ const ClassStudentList = ({
             action={handleDeleteClass}
             closeModal={handleCloseDeleteClassModal}
             isLoading={deleteClassLoading}
+          />
+        )}
+        {openViewLetterModal && currentSelectedViewLetterStudent && (
+          <ViewStudentLetterModal
+            student={currentSelectedViewLetterStudent}
+            closeModal={handleCloseViewLetterModal}
           />
         )}
       </div>

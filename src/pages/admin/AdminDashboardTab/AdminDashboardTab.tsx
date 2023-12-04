@@ -157,7 +157,7 @@ const AdminDashboardTab = () => {
     (acc, classItem) =>
       acc.concat(
         classItem?.students?.filter(
-          (student) => !student?.volunteerResponseLetterLink,
+          (student) => !student?.volunteerLetterLink,
         ) || [],
       ),
     [] as Student[],

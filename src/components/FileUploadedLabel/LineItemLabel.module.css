@@ -1,4 +1,4 @@
-@media (min-width: 600px) {
+@media (min-width: 700px) {
   .label-green {
     padding: 8px;
     border: 1px solid #2bd447;
@@ -11,6 +11,13 @@
     width: fit-content;
     white-space: nowrap;
   }
+
+  .label-green:hover {
+    cursor: pointer;
+    background-color: #2bd447;
+    color: #ffffff;
+  }
+
   .label-red {
     padding: 8px;
     border: 1px solid #c23124;
@@ -22,6 +29,12 @@
     margin-right: 10px;
     width: fit-content;
     white-space: nowrap;
+  }
+
+  .label-red:hover {
+    cursor: pointer;
+    background-color: #c23124;
+    color: #ffffff;
   }
 
   .label-yellow {
@@ -37,6 +50,12 @@
     white-space: nowrap;
   }
 
+  .label-yellow:hover {
+    cursor: pointer;
+    background-color: #d4cb2b;
+    color: #ffffff;
+  }
+
   .label-blue {
     padding: 8px;
     border: 1px solid #1b7ed4;
@@ -48,6 +67,12 @@
     margin-right: 10px;
     width: fit-content;
     white-space: nowrap;
+  }
+
+  .label-blue:hover {
+    cursor: pointer;
+    background-color: #1b7ed4;
+    color: #ffffff;
   }
 
   .label-purple {
@@ -63,6 +88,31 @@
     white-space: nowrap;
   }
 
+  .label-purple:hover {
+    cursor: pointer;
+    background-color: #7a1bd4;
+    color: #ffffff;
+  }
+
+  .label-grey {
+    padding: 8px;
+    border: 1px solid #c4c4c4;
+    color: #585858;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-grey:hover {
+    cursor: pointer;
+    background-color: #585858;
+    color: #ffffff;
+  }
+
   .label-orange {
     padding: 8px;
     border: 1px solid #ef881a;
@@ -75,12 +125,18 @@
     width: fit-content;
     white-space: nowrap;
   }
-}
 
-@media (max-width: 599px) {
-  .label-green {
+  .label-orange:hover {
+    cursor: pointer;
+    background-color: #ef881a;
+    color: #ffffff;
+  }
+
+  .label-green-no-on-click {
     padding: 8px;
+    border: 1px solid #2bd447;
     color: #2bd447;
+    background-color: #f8f8f8;
     border-radius: 10px;
     font-size: 14px;
     font-weight: 400;
@@ -88,50 +144,205 @@
     width: fit-content;
     white-space: nowrap;
   }
-  .label-red {
+
+  .label-red-no-on-click {
     padding: 8px;
+    border: 1px solid #c23124;
     color: #c23124;
+    background-color: #f8f8f8;
     border-radius: 10px;
     font-size: 14px;
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
     white-space: nowrap;
+  }
+
+  .label-yellow-no-on-click {
+    padding: 8px;
+    border: 1px solid #d4cb2b;
+    color: #d4cb2b;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-blue-no-on-click {
+    padding: 8px;
+    border: 1px solid #1b7ed4;
+    color: #1b7ed4;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-purple-no-on-click {
+    padding: 8px;
+    border: 1px solid #7a1bd4;
+    color: #7a1bd4;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-orange-no-on-click {
+    padding: 8px;
+    border: 1px solid #ef881a;
+    color: #ef881a;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-grey-no-on-click {
+    padding: 8px;
+    border: 1px solid #c4c4c4;
+    color: #585858;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 699px) {
+  .label-green {
+    padding: 8px;
+    border: 1px solid #2bd447;
+    color: #2bd447;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-green:hover {
+    cursor: pointer;
+    background-color: #2bd447;
+    color: #ffffff;
+  }
+
+  .label-red {
+    padding: 8px;
+    border: 1px solid #c23124;
+    color: #c23124;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-red:hover {
+    cursor: pointer;
+    background-color: #c23124;
+    color: #ffffff;
+  }
+
+  .label-grey {
+    padding: 8px;
+    border: 1px solid #c4c4c4;
+    color: #585858;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-grey:hover {
+    cursor: pointer;
+    background-color: #585858;
+    color: #ffffff;
   }
 
   .label-yellow {
     padding: 8px;
+    border: 1px solid #d4cb2b;
     color: #d4cb2b;
+    background-color: #f8f8f8;
     font-size: 14px;
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
     white-space: nowrap;
+  }
+
+  .label-yellow:hover {
+    cursor: pointer;
+    background-color: #d4cb2b;
+    color: #ffffff;
   }
 
   .label-blue {
     padding: 8px;
+    border: 1px solid #1b7ed4;
     color: #1b7ed4;
+    background-color: #f8f8f8;
     font-size: 14px;
     font-weight: 400;
     margin-right: 10px;
     width: fit-content;
     white-space: nowrap;
+  }
+
+  .label-blue:hover {
+    cursor: pointer;
+    background-color: #1b7ed4;
+    color: #ffffff;
   }
 
   .label-purple {
     padding: 8px;
+    border: 1px solid #7a1bd4;
     color: #7a1bd4;
+    background-color: #f8f8f8;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 400;
     width: fit-content;
     margin-right: 10px;
     white-space: nowrap;
+  }
+
+  .label-purple:hover {
+    cursor: pointer;
+    background-color: #7a1bd4;
+    color: #ffffff;
   }
 
   .label-orange {
     padding: 8px;
+    border: 1px solid #ef881a;
     color: #ef881a;
+    background-color: #f8f8f8;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 400;
     width: fit-content;
@@ -139,7 +350,104 @@
     white-space: nowrap;
   }
 
+  .label-orange:hover {
+    cursor: pointer;
+    background-color: #ef881a;
+    color: #ffffff;
+  }
+
   .label {
     display: none !important;
+  }
+
+  .label-green-no-on-click {
+    padding: 8px;
+    border: 1px solid #2bd447;
+    color: #2bd447;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-red-no-on-click {
+    padding: 8px;
+    border: 1px solid #c23124;
+    color: #c23124;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-yellow-no-on-click {
+    padding: 8px;
+    border: 1px solid #d4cb2b;
+    color: #d4cb2b;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-blue-no-on-click {
+    padding: 8px;
+    border: 1px solid #1b7ed4;
+    color: #1b7ed4;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-purple-no-on-click {
+    padding: 8px;
+    border: 1px solid #7a1bd4;
+    color: #7a1bd4;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-orange-no-on-click {
+    padding: 8px;
+    border: 1px solid #ef881a;
+    color: #ef881a;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .label-grey-no-on-click {
+    padding: 8px;
+    border: 1px solid #c4c4c4;
+    color: #585858;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-right: 10px;
+    width: fit-content;
+    white-space: nowrap;
   }
 }

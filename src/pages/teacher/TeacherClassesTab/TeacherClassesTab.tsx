@@ -30,7 +30,7 @@ const TeacherClassesTab = () => {
     loading: classLoading,
     error: classError,
     makeRequest: makeClassRequest,
-  } = useCustomFetch<Class[]>(`/class/`);
+  } = useCustomFetch<Class[]>(`/getClasses/`);
 
   const handleCloseClassModal = () => {
     setClassModalOpen(false);
@@ -107,8 +107,8 @@ const TeacherClassesTab = () => {
       </div>
       {currentClasses?.map((classItem) => (
         <ClassStudentList
-          key={classItem._id}
           classObject={classItem}
+          key={classItem._id}
           openUploadLetterModal={handleOpenUploadLetterModal}
         />
       ))}

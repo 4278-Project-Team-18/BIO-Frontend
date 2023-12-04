@@ -5,6 +5,7 @@ export interface LineItemLabelProps {
   variant: LineItemLabelVariant;
   label: string;
   icon?: IconDefinition;
+  onClick?: () => void;
 }
 
 export enum LineItemLabelVariant {
@@ -14,4 +15,5 @@ export enum LineItemLabelVariant {
   BLUE = "blue",
   PURPLE = "purple",
   ORANGE = "orange",
+  GREY = "grey",
 }
