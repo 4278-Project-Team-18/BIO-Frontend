@@ -1,4 +1,5 @@
 import styles from "./StudentMatchLineItem.module.css";
+import { shortenString } from "../../util/string.util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faHandshake } from "@fortawesome/free-solid-svg-icons";
 import type { StudentMatchLineItemProps } from "./StudentMatchLineItem.definitions";
@@ -46,7 +47,7 @@ const StudentMatchLineItem = ({
     </div>
     <div className={styles["match-line-item-container-right"]}>
       <span className={styles["match-line-item-reading-label"]}>
-        {`Reading Level: ${student.readingLevel}`}
+        {`Reading Level: ${shortenString(student.readingLevel || "", 8)}`}
       </span>
     </div>
   </div>

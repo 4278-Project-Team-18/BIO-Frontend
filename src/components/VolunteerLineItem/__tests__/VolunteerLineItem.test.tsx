@@ -8,7 +8,8 @@ describe("VolunteerLineItem", () => {
       volunteer: {
         ...createTestVolunteer(),
       },
-      openModal: jest.fn(),
+      openMatchModal: jest.fn(),
+      openViewModal: jest.fn(),
       closeModal: jest.fn(),
     };
 
@@ -25,7 +26,7 @@ describe("VolunteerLineItem", () => {
 
     // Click the match button
     fireEvent.click(component.getByText("Match"));
-    expect(mockProps.openModal).toHaveBeenCalled();
+    expect(mockProps.openMatchModal).toHaveBeenCalled();
   });
 
   test("VolunteerLineItem component renders correctly with matched students", () => {
@@ -38,7 +39,8 @@ describe("VolunteerLineItem", () => {
           createTestStudent(),
         ],
       },
-      openModal: jest.fn(),
+      openMatchModal: jest.fn(),
+      openViewModal: jest.fn(),
       closeModal: jest.fn(),
     };
 
@@ -51,10 +53,10 @@ describe("VolunteerLineItem", () => {
         mockProps.volunteer.firstName + " " + mockProps.volunteer.lastName,
       ),
     ).toBeTruthy();
-    expect(component.getByText("Add more")).toBeTruthy();
+    expect(component.getByText("Match more")).toBeTruthy();
 
     // Click the match button
-    fireEvent.click(component.getByText("Add more"));
-    expect(mockProps.openModal).toHaveBeenCalled();
+    fireEvent.click(component.getByText("Match more"));
+    expect(mockProps.openMatchModal).toHaveBeenCalled();
   });
 });

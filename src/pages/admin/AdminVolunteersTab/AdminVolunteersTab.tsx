@@ -8,6 +8,7 @@ import { useVolunteersContext } from "../../../context/Volunteers.context";
 import FullPageLoadingIndicator from "../../../components/FullPageLoadingIndicator/FullPageLoadingIndicator";
 import FullPageErrorDisplay from "../../../components/FullPageErrorDisplay/FullPageErrorDisplay";
 import MatchVolunteerModal from "../../../modals/MatchVolunteerModal/MatchVolunteerModal";
+import ViewVolunteerResponsesModal from "../../../modals/ViewVolunteerResponsesModal/ViewVolunteerResponsesModal";
 import { useEffect, useState } from "react";
 import type { Volunteer } from "../../../interfaces/User.interface";
 
@@ -19,16 +20,26 @@ const AdminVolunteersTab = () => {
     useCustomFetch<Volunteer[]>(`/volunteer`);
 
   const [matchModalOpen, setMatchModalOpen] = useState<boolean>(false);
+  const [viewModalOpen, setViewModalOpen] = useState<boolean>(false);
   const [currentMatchingVolunteer, setCurrentMatchingVolunteer] =
     useState<Volunteer | null>(null);
 
-  const handleCloseModal = () => {
+  const handleCloseUploadModal = () => {
     setMatchModalOpen(false);
   };
 
-  const handleOpenModal = (volunteer: Volunteer) => {
+  const handleOpenUploadModal = (volunteer: Volunteer) => {
     setCurrentMatchingVolunteer(volunteer);
     setMatchModalOpen(true);
+  };
+
+  const handleOpenViewModal = (volunteer: Volunteer) => {
+    setCurrentMatchingVolunteer(volunteer);
+    setViewModalOpen(true);
+  };
+
+  const handleCloseViewModal = () => {
+    setViewModalOpen(false);
   };
 
   // set the current tab on render
@@ -69,8 +80,8 @@ const AdminVolunteersTab = () => {
             <VolunteerLineItem
               key={index}
               volunteer={volunteer}
-              openModal={handleOpenModal}
-              closeModal={handleCloseModal}
+              openMatchModal={handleOpenUploadModal}
+              openViewModal={handleOpenViewModal}
             />
           ))}
         </Accordion>
@@ -78,8 +89,14 @@ const AdminVolunteersTab = () => {
       <div>
         {matchModalOpen && currentMatchingVolunteer && (
           <MatchVolunteerModal
-            closeModal={handleCloseModal}
+            closeModal={handleCloseUploadModal}
             volunteer={currentMatchingVolunteer}
+          />
+        )}
+        {viewModalOpen && currentMatchingVolunteer && (
+          <ViewVolunteerResponsesModal
+            volunteer={currentMatchingVolunteer}
+            closeModal={handleCloseViewModal}
           />
         )}
       </div>

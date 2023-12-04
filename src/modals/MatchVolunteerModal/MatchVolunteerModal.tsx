@@ -10,7 +10,11 @@ import { useVolunteersContext } from "../../context/Volunteers.context";
 import { useEffect, useState } from "react";
 import { MoonLoader } from "react-spinners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark, faHandshake } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleXmark,
+  faFileCircleXmark,
+  faHandshake,
+} from "@fortawesome/free-solid-svg-icons";
 import { Document, Page, pdfjs } from "react-pdf";
 import type { Student, Volunteer } from "../../interfaces/User.interface";
 import "react-pdf/dist/esm/Page/TextLayer.css";
@@ -166,11 +170,16 @@ const MatchVolunteerModal = ({
                       pageNumber={1}
                       renderAnnotationLayer={false}
                       renderTextLayer={false}
-                      height={400}
+                      height={350}
                     />
                   </Document>
                 ) : (
                   <div className={styles["match-volunteer-student-info"]}>
+                    <FontAwesomeIcon
+                      icon={faFileCircleXmark}
+                      color="#DDDDDD"
+                      className={styles["match-volunteer-student-info-icon"]}
+                    />
                     <div>{`No student letter for ${selectedStudent.firstName} ${selectedStudent.lastInitial}`}</div>
                   </div>
                 )}

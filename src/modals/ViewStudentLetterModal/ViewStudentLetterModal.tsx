@@ -2,6 +2,7 @@ import styles from "./ViewStudentLetterModal.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { Document, Page, pdfjs } from "react-pdf";
+import { useEffect, useState } from "react";
 import type { ViewStudentLetterModalProps } from "./ViewStudentLetterModal.definitions";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -11,6 +12,24 @@ const ViewStudentLetterModal = ({
   student,
 }: ViewStudentLetterModalProps) => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  const [height, setHeight] = useState<number>(800);
+  const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCurrentWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    if (currentWidth < 800 && height !== 300) {
+      setHeight(500);
+    }
+
+    if (currentWidth > 800 && height !== 800) {
+      setHeight(800);
+    }
+    return () => window.removeEventListener("resize", handleResize);
+  }, [currentWidth, window.innerWidth]);
+
   return (
     <div className={styles["view-student-letter-backdrop"]}>
       <div className={styles["view-student-letter-container"]}>
@@ -38,7 +57,7 @@ const ViewStudentLetterModal = ({
                 pageNumber={1}
                 renderAnnotationLayer={false}
                 renderTextLayer={false}
-                height={800}
+                height={height}
               />
             </Document>
           </div>

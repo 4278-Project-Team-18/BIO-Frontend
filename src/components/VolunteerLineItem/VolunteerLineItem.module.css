@@ -1,4 +1,4 @@
-@media (min-width: 600px) {
+@media (min-width: 1000px) {
   .line-item-container {
     display: flex;
     justify-content: space-between;
@@ -103,9 +103,17 @@
     padding-bottom: 2px;
     color: #434343;
   }
+
+  .line-item-action-buttons {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-right: 10px;
+  }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 999px) {
   .line-item-container {
     display: flex;
     justify-content: space-between;
@@ -199,5 +207,13 @@
     padding-left: 10px;
     padding-bottom: 2px;
     color: #434343;
+  }
+
+  .line-item-action-buttons {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 2px;
+    margin-right: 10px;
   }
 }
