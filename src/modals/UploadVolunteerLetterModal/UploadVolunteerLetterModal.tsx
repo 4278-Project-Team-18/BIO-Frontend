@@ -12,6 +12,7 @@ import FormInput from "../../components/FormInput/FormInput";
 import { LoadingButtonVariant } from "../../components/LoadingButton/LoadingButton.definitions";
 import { volunteerLetterSchema } from "../../resolvers/volunteerLetter.resolver";
 import Logo from "../../assets/BIOLogo.png";
+import { useUserContext } from "../../context/User.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
@@ -34,6 +35,8 @@ const UploadVolunteerLetterModal = ({
 }: UploadVolunteerLetterModalProps) => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const { updateVolunteerLetterLink } = useClassesContext();
+  const { updateVolunteerResponseLink } = useUserContext();
+
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [viewedPreview, setViewedPreview] = useState<boolean>(false);
 
@@ -106,6 +109,10 @@ const UploadVolunteerLetterModal = ({
   useEffect(() => {
     if (letterData && !letterError) {
       updateVolunteerLetterLink(
+        student._id,
+        letterData.volunteerLetterLink || "",
+      );
+      updateVolunteerResponseLink(
         student._id,
         letterData.volunteerLetterLink || "",
       );

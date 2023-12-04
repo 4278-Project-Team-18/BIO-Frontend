@@ -12,6 +12,7 @@ interface UserContextType {
   currentUser: UserType | null;
   setCurrentUser: (_: UserType | null) => void;
   updateStudentBookLink: (_: string, __: string) => void;
+  updateVolunteerResponseLink: (_: string, __: string) => void;
 }
 
 // Create the context for the user
@@ -19,6 +20,7 @@ const UserContext = createContext<UserContextType>({
   currentUser: null,
   setCurrentUser: (_: UserType | null) => {},
   updateStudentBookLink: (_: string, __: string) => {},
+  updateVolunteerResponseLink: (_: string, __: string) => {},
 });
 
 // Create the wrapper for the user context
@@ -29,9 +31,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
     studentId: string,
     assignedBookLink: string,
   ) => {
-    console.log("STUDENT ID", studentId);
-    console.log("STUDENT LETTER LINK", assignedBookLink);
-
     const newStudents = (
       (currentUser as Volunteer)?.matchedStudents as Student[]
     )?.map((student: Student) => {
@@ -51,10 +50,34 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
     });
   };
 
+  const updateVolunteerResponseLink = (
+    studentId: string,
+    volunteerLetterLink: string,
+  ) => {
+    const newStudents = (
+      (currentUser as Volunteer)?.matchedStudents as Student[]
+    )?.map((student: Student) => {
+      if (student._id === studentId) {
+        return {
+          ...student,
+          volunteerLetterLink,
+        };
+      }
+
+      return student;
+    });
+
+    setCurrentUser({
+      ...(currentUser as UserType),
+      matchedStudents: newStudents,
+    });
+  };
+
   const value = {
     currentUser,
     setCurrentUser,
     updateStudentBookLink,
+    updateVolunteerResponseLink,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
