@@ -21,6 +21,7 @@ interface ClassesContextType {
     volunteerLetterLink: string,
   ) => void;
   updateAssignedBookLink: (studentId: string, bookLink: string) => void;
+  updateBookDeliveryDate: (studentId: string, bookDeliveryDate: string) => void;
   removeClass: (classId: string) => void;
 }
 
@@ -35,6 +36,7 @@ const ClassesContext = createContext<ClassesContextType>({
   updateStudentLetterLink: (_: string, __: string) => {},
   updateVolunteerLetterLink: (_: string, __: string) => {},
   updateAssignedBookLink: (_: string, __: string) => {},
+  updateBookDeliveryDate: (_: string, __: string) => {},
   removeClass: (_: string) => {},
 });
 
@@ -162,6 +164,26 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     setCurrentClasses(newClasses);
   };
 
+  const updateBookDeliveryDate = (
+    studentId: string,
+    bookDeliveryDate: string,
+  ) => {
+    const newClasses = currentClasses?.map((classItem: Class) => ({
+      ...classItem,
+      students: classItem.students?.map((studentItem: Student) => {
+        if (studentItem._id === studentId) {
+          return {
+            ...studentItem,
+            bookDeliveryDate,
+          };
+        } else {
+          return studentItem;
+        }
+      }),
+    }));
+    setCurrentClasses(newClasses);
+  };
+
   const value = {
     currentClasses,
     setCurrentClasses,
@@ -172,6 +194,7 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     updateStudentLetterLink,
     updateVolunteerLetterLink,
     updateAssignedBookLink,
+    updateBookDeliveryDate,
     removeClass,
   };
 
