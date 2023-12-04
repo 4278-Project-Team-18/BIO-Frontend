@@ -39,12 +39,16 @@ const UploadVolunteerLetterModal = ({
 
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [viewedPreview, setViewedPreview] = useState<boolean>(false);
+  const [loadingPreview, setLoadingPreview] = useState<boolean>(false);
+  const [hasChanged, setHasChanged] = useState<boolean>(false);
+  const [previewMessage, setPreviewMessage] = useState<string>("");
 
   const {
     control,
     handleSubmit,
     formState: { errors },
     getValues,
+    watch,
   } = useForm<VolunteerLetterInput>({
     resolver: yupResolver(
       volunteerLetterSchema,
@@ -55,8 +59,20 @@ const UploadVolunteerLetterModal = ({
     },
   });
 
+  const watchMessage = watch(VolunteerLetterInputName.MESSAGE);
+
+  useEffect(() => {
+    if (watchMessage !== previewMessage) {
+      console.log(watchMessage);
+      console.log(getValues(VolunteerLetterInputName.MESSAGE));
+      setHasChanged(true);
+    }
+  }, [watchMessage]);
+
   const handleGeneratePreview = async () => {
+    setLoadingPreview(true);
     setViewedPreview(true);
+    setPreviewMessage(getValues(VolunteerLetterInputName.MESSAGE));
     const { message } = getValues();
 
     const doc = new jsPDF();
@@ -82,6 +98,9 @@ const UploadVolunteerLetterModal = ({
     setPdfFile(
       new File([doc.output("blob")], "letter.pdf", { type: "application/pdf" }),
     );
+
+    setLoadingPreview(false);
+    setHasChanged(false);
   };
 
   const {
@@ -152,7 +171,6 @@ const UploadVolunteerLetterModal = ({
                 error={errors[VolunteerLetterInputName.MESSAGE]?.message}
                 defaultValue={""}
                 sizeVariant={FormInputSizeVariant.standard}
-                extraStyles={{ marginTop: "10px" }}
                 paragraph={true}
               />
               <div className={styles["upload-letter-form-signature"]}>
@@ -186,29 +204,31 @@ const UploadVolunteerLetterModal = ({
           </div>
         </div>
         <div className={styles["upload-letter-submit-container"]}>
-          <button
-            className={styles["upload-letter-generate-preview-button"]}
+          <LoadingButton
+            text={"Generate Preview"}
+            icon={faCloudArrowUp}
             onClick={() => handleGeneratePreview()}
-            type="button"
-          >
-            <div className={styles["upload-letter-generate-preview-title"]}>
-              {"Generate Preview"}
-            </div>
-            <FontAwesomeIcon
-              icon={faCloudArrowUp}
-              className={styles["upload-letter-generate-preview-icon"]}
-            />
-          </button>
+            isResponsive={false}
+            variant={
+              pdfFile && !hasChanged
+                ? LoadingButtonVariant.GREY
+                : LoadingButtonVariant.GREEN
+            }
+            isLoading={loadingPreview}
+          />
+          &nbsp;&nbsp;
           <LoadingButton
             text={"Submit Letter"}
             icon={faCloudArrowUp}
             isLoading={letterLoading}
             isLoadingText="Uploading Letter..."
             onClick={handleSubmit(onSubmitUploadLetter)}
-            disabled={!viewedPreview}
+            disabled={!viewedPreview || hasChanged || !pdfFile}
             isResponsive={false}
             variant={
-              pdfFile ? LoadingButtonVariant.GREEN : LoadingButtonVariant.GREY
+              pdfFile && !hasChanged
+                ? LoadingButtonVariant.GREEN
+                : LoadingButtonVariant.GREY
             }
           />
         </div>

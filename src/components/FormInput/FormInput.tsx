@@ -37,7 +37,7 @@ const FormInput = ({
     render={({ field }) => (
       <div className={styles[`form-input-container`]}>
         <div className={styles["form-input-inner-container"]}>
-          {label && (
+          {(label || error) && (
             <div
               className={
                 error

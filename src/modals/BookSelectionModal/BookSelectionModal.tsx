@@ -95,11 +95,6 @@ const BookSelectionModal = ({
           className={styles["select-book-form-container"]}
           onSubmit={handleSubmit(onSubmitBookSelection)}
         >
-          {student.assignedBookLink && (
-            <div className={styles["select-book-current-link"]}>
-              {`Current Book Link: ${student.assignedBookLink}`}
-            </div>
-          )}
           <FormInput
             name={BookSelectionInputName.BOOK_LINK}
             type="text"
@@ -108,7 +103,7 @@ const BookSelectionModal = ({
             error={errors[BookSelectionInputName.BOOK_LINK]?.message}
             defaultValue={""}
             sizeVariant={FormInputSizeVariant.standard}
-            extraStyles={{ marginTop: "10px" }}
+            label={`Current Book Link: ${student.assignedBookLink}`}
           />
           <div className={styles["select-book-submit-container"]}>
             <div className={styles["select-book-button-container"]}>
