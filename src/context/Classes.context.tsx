@@ -21,7 +21,7 @@ interface ClassesContextType {
     volunteerLetterLink: string,
   ) => void;
   updateAssignedBookLink: (studentId: string, bookLink: string) => void;
-  updateBookDeliveryDate: (studentId: string, bookDeliveryDate: string) => void;
+  updateBookDeliveryDate: (classId: string, bookDeliveryDate: string) => void;
   removeClass: (classId: string) => void;
 }
 
@@ -165,22 +165,21 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
   };
 
   const updateBookDeliveryDate = (
-    studentId: string,
+    classId: string,
     bookDeliveryDate: string,
   ) => {
-    const newClasses = currentClasses?.map((classItem: Class) => ({
-      ...classItem,
-      students: classItem.students?.map((studentItem: Student) => {
-        if (studentItem._id === studentId) {
-          return {
-            ...studentItem,
-            bookDeliveryDate,
-          };
-        } else {
-          return studentItem;
-        }
-      }),
-    }));
+    // update the delivery date for the class
+    const newClasses = currentClasses?.map((classItem: Class) => {
+      if (classItem._id === classId) {
+        return {
+          ...classItem,
+          estimatedDelivery: bookDeliveryDate,
+        };
+      } else {
+        return classItem;
+      }
+    });
+
     setCurrentClasses(newClasses);
   };
 
