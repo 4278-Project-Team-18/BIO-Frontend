@@ -134,7 +134,6 @@ export enum AdminTabs {
 
 /**
  * @option {string} DASHBOARD - The dashboard tab
- * @option {string} STUDENTS - The students tab
  */
 export enum VolunteerTabs {
   DASHBOARD = "dashboard",
@@ -142,11 +141,9 @@ export enum VolunteerTabs {
 
 /**
  * @option {string} DASHBOARD - The dashboard tab
- * @option {string} CLASSES - The classes tab
  */
 export enum TeacherTabs {
   DASHBOARD = "dashboard",
-  CLASSES = "classes",
 }
 
 export enum Role {

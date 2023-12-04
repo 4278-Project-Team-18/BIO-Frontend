@@ -1,7 +1,9 @@
 /* eslint-disable autofix/no-unused-vars */
+import type { Teacher } from "../../interfaces/User.interface";
 
 export interface AddClassModalProps {
   closeModal: () => void;
+  teacher?: Teacher;
 }
 
 /**

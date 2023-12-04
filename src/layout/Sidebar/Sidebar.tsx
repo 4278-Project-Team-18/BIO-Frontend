@@ -29,7 +29,7 @@ const SideBar = () => {
     currentUser?.role === Role.ADMIN
       ? ["Dashboard", "Classes", "Volunteers", "Applicants"]
       : currentUser?.role === Role.TEACHER
-      ? ["Dashboard", "Classes"]
+      ? ["Dashboard"]
       : ["Dashboard"];
 
   // Icon components for the sidebar
@@ -37,7 +37,7 @@ const SideBar = () => {
     currentUser?.role === Role.ADMIN
       ? [faHouse, faSchool, faUsers, faUserPlus]
       : currentUser?.role === Role.TEACHER
-      ? [faHouse, faSchool]
+      ? [faHouse]
       : [faHouse];
 
   // Sets the active route when a route is clicked
