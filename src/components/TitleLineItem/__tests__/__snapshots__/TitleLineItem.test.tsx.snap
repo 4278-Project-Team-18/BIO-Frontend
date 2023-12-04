@@ -13,6 +13,9 @@ exports[`TitleLineItem Tests TitleLineItem snapshot should render correctly 1`] 
         >
           Test Title
         </div>
+        <div
+          class="title-line-item-action-buttons"
+        />
       </div>
     </div>
   </body>,
@@ -25,6 +28,9 @@ exports[`TitleLineItem Tests TitleLineItem snapshot should render correctly 1`] 
       >
         Test Title
       </div>
+      <div
+        class="title-line-item-action-buttons"
+      />
     </div>
   </div>,
   "debug": [Function],

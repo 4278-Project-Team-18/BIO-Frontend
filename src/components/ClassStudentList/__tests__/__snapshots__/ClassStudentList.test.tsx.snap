@@ -19,48 +19,52 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             >
               murky bat Class
             </div>
-            <button
-              class="loading-button"
-              style="height: 30px; box-shadow: none; background-color: rgb(170, 170, 170);"
-              type="button"
+            <div
+              class="title-line-item-action-buttons"
             >
-              <svg
-                aria-hidden="true"
-                class="svg-inline--fa fa-calendar loading-button-spinner"
-                data-icon="calendar"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
+              <button
+                class="loading-button"
+                style="height: 30px; box-shadow: none; margin-right: 10px; background-color: rgb(139, 92, 246);"
+                type="button"
               >
-                <path
-                  d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
-            <button
-              class="loading-button"
-              style="height: 30px; box-shadow: none; background-color: rgb(170, 170, 170);"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="svg-inline--fa fa-trash loading-button-spinner"
-                data-icon="trash"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-calendar loading-button-spinner"
+                  data-icon="calendar"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <button
+                class="loading-button"
+                style="height: 30px; box-shadow: none; background-color: rgb(239, 68, 68);"
+                type="button"
               >
-                <path
-                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-trash loading-button-spinner"
+                  data-icon="trash"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           <div
             class="accordion"
@@ -71,8 +75,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               <div
                 class="title-line-item-title-table-header"
               >
-                Students
+                No Delivery Date Set
               </div>
+              <div
+                class="title-line-item-action-buttons"
+              />
             </div>
             <div
               class="line-item-container"
@@ -344,48 +351,52 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           >
             murky bat Class
           </div>
-          <button
-            class="loading-button"
-            style="height: 30px; box-shadow: none; background-color: rgb(170, 170, 170);"
-            type="button"
+          <div
+            class="title-line-item-action-buttons"
           >
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-calendar loading-button-spinner"
-              data-icon="calendar"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              class="loading-button"
+              style="height: 30px; box-shadow: none; margin-right: 10px; background-color: rgb(139, 92, 246);"
+              type="button"
             >
-              <path
-                d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
-          <button
-            class="loading-button"
-            style="height: 30px; box-shadow: none; background-color: rgb(170, 170, 170);"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-trash loading-button-spinner"
-              data-icon="trash"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-calendar loading-button-spinner"
+                data-icon="calendar"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <button
+              class="loading-button"
+              style="height: 30px; box-shadow: none; background-color: rgb(239, 68, 68);"
+              type="button"
             >
-              <path
-                d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-trash loading-button-spinner"
+                data-icon="trash"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
         <div
           class="accordion"
@@ -396,8 +407,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             <div
               class="title-line-item-title-table-header"
             >
-              Students
+              No Delivery Date Set
             </div>
+            <div
+              class="title-line-item-action-buttons"
+            />
           </div>
           <div
             class="line-item-container"
@@ -726,48 +740,52 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             >
               murky bat Class
             </div>
-            <button
-              class="loading-button"
-              style="height: 30px; box-shadow: none; background-color: rgb(170, 170, 170);"
-              type="button"
+            <div
+              class="title-line-item-action-buttons"
             >
-              <svg
-                aria-hidden="true"
-                class="svg-inline--fa fa-calendar loading-button-spinner"
-                data-icon="calendar"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
+              <button
+                class="loading-button"
+                style="height: 30px; box-shadow: none; margin-right: 10px; background-color: rgb(139, 92, 246);"
+                type="button"
               >
-                <path
-                  d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
-            <button
-              class="loading-button"
-              style="height: 30px; box-shadow: none; background-color: rgb(170, 170, 170);"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="svg-inline--fa fa-trash loading-button-spinner"
-                data-icon="trash"
-                data-prefix="fas"
-                focusable="false"
-                role="img"
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-calendar loading-button-spinner"
+                  data-icon="calendar"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <button
+                class="loading-button"
+                style="height: 30px; box-shadow: none; background-color: rgb(239, 68, 68);"
+                type="button"
               >
-                <path
-                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-trash loading-button-spinner"
+                  data-icon="trash"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           <div
             class="accordion"
@@ -778,8 +796,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
               <div
                 class="title-line-item-title-table-header"
               >
-                Students
+                No Delivery Date Set
               </div>
+              <div
+                class="title-line-item-action-buttons"
+              />
             </div>
             <div
               class="line-item-container"
@@ -1409,48 +1430,52 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
           >
             murky bat Class
           </div>
-          <button
-            class="loading-button"
-            style="height: 30px; box-shadow: none; background-color: rgb(170, 170, 170);"
-            type="button"
+          <div
+            class="title-line-item-action-buttons"
           >
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-calendar loading-button-spinner"
-              data-icon="calendar"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              class="loading-button"
+              style="height: 30px; box-shadow: none; margin-right: 10px; background-color: rgb(139, 92, 246);"
+              type="button"
             >
-              <path
-                d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
-          <button
-            class="loading-button"
-            style="height: 30px; box-shadow: none; background-color: rgb(170, 170, 170);"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="svg-inline--fa fa-trash loading-button-spinner"
-              data-icon="trash"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-calendar loading-button-spinner"
+                data-icon="calendar"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <button
+              class="loading-button"
+              style="height: 30px; box-shadow: none; background-color: rgb(239, 68, 68);"
+              type="button"
             >
-              <path
-                d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-trash loading-button-spinner"
+                data-icon="trash"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
         <div
           class="accordion"
@@ -1461,8 +1486,11 @@ exports[`ClassStudentList Tests ClassStudentList snapshot should render correctl
             <div
               class="title-line-item-title-table-header"
             >
-              Students
+              No Delivery Date Set
             </div>
+            <div
+              class="title-line-item-action-buttons"
+            />
           </div>
           <div
             class="line-item-container"
