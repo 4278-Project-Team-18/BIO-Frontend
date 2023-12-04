@@ -22,21 +22,28 @@ import type {
 } from "./AddClassModal.definitions";
 import type { Resolver } from "react-hook-form";
 
-const AddClassModal = ({ closeModal }: AddClassModalProps) => {
-  // request to get all teachers
+const AddClassModal = ({ closeModal, teacher }: AddClassModalProps) => {
+  // make request to get the teacher data, unless a teacher is provided then do not make request
   const {
     data: teacherData,
     loading: teacherLoading,
     error: teacherError,
     makeRequest: makeTeacherRequest,
-  } = useCustomFetch<Teacher[]>(`/teacher/`);
+  } = !teacher
+    ? useCustomFetch<Teacher[]>(`/teacher/`)
+    : {
+        data: [teacher!],
+        loading: false,
+        error: null,
+        makeRequest: () => {},
+      };
 
   const {
     data: classData,
     loading: classLoading,
     error: classError,
     makeRequest: makeClassRequest,
-  } = useCustomFetch<Class>(`/class`, RequestMethods.POST);
+  } = useCustomFetch<Class>(`/class/`, RequestMethods.POST);
 
   const { addClass } = useClassesContext();
 
@@ -50,7 +57,7 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   } = useForm<NewClassInput>({
     defaultValues: {
       [NewClassInputName.CLASS_NAME]: "",
-      [NewClassInputName.TEACHER_ID]: "",
+      [NewClassInputName.TEACHER_ID]: teacher?._id || "",
     },
     resolver: yupResolver(newClassSchema) as Resolver<NewClassInput>,
     mode: "onSubmit",
@@ -60,6 +67,13 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   const onSubmitNewClass = async (inputData: NewClassInput) => {
     await makeClassRequest(inputData);
   };
+
+  // if there is no teacher param, then don't make the request
+  useEffect(() => {
+    if (!teacher && !teacherData) {
+      makeTeacherRequest();
+    }
+  }, [teacher]);
 
   // set the default value of the teacher select to the first teacher
   useEffect(() => {
@@ -98,13 +112,20 @@ const AddClassModal = ({ closeModal }: AddClassModalProps) => {
   }
 
   // map the teacher data to the form options
-  const formOptions = teacherData.map(
-    (teacher: Teacher) =>
-      ({
-        value: teacher._id,
-        label: `${teacher.firstName} ${teacher.lastName}`,
-      }) as FormSelectOption,
-  );
+  const formOptions = teacher
+    ? [
+        {
+          value: teacher._id,
+          label: `${teacher.firstName} ${teacher.lastName}`,
+        } as FormSelectOption,
+      ]
+    : teacherData.map(
+        (teacher: Teacher) =>
+          ({
+            value: teacher._id,
+            label: `${teacher.firstName} ${teacher.lastName}`,
+          }) as FormSelectOption,
+      );
 
   return (
     <div className={styles["add-class-backdrop"]}>

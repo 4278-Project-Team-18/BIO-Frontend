@@ -15,7 +15,6 @@ import TeacherDashboardTab from "./pages/teacher/TeacherDashboardTab/TeacherDash
 import VolunteerDashboardTab from "./pages/volunteer/VolunteerDashboardTab/VolunteerDashboardTab";
 import { useUserContext } from "./context/User.context";
 import { getValueFromLocalStorage } from "./util/storage.util";
-import TeacherClassesTab from "./pages/teacher/TeacherClassesTab/TeacherClassesTab";
 import { createBrowserRouter } from "react-router-dom";
 import { Navigate, RouterProvider } from "react-router";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
@@ -68,7 +67,9 @@ const AppRouter = () => {
                     </TeachersProvider>
                   </InvitesProvider>
                 ) : role === Role.TEACHER ? (
-                  <TeacherDashboardTab />
+                  <ClassesProvider>
+                    <TeacherDashboardTab />
+                  </ClassesProvider>
                 ) : role === Role.VOLUNTEER ? (
                   <ClassesProvider>
                     <VolunteerDashboardTab />
@@ -94,10 +95,6 @@ const AppRouter = () => {
                       <AdminClassesTab />
                     </ClassesProvider>
                   </TeachersProvider>
-                ) : role === Role.TEACHER ? (
-                  <ClassesProvider>
-                    <TeacherClassesTab />
-                  </ClassesProvider>
                 ) : (
                   <Navigate to="/" />
                 )}
