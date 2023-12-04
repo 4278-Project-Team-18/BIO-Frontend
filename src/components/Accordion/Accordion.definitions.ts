@@ -14,9 +14,9 @@ export interface AccordionProps {
   showAll?: boolean;
   minimumItems?: number;
   headerActionOneOnClick?: () => void;
-  headerActionOneIcon: IconDefinition;
+  headerActionOneIcon?: IconDefinition;
   headerActionOneTitle?: string;
-  headerActionTwoIcon: IconDefinition;
+  headerActionTwoIcon?: IconDefinition;
   headerActionTwoOnClick?: () => void;
   headerActionTwoTitle?: string;
 }
