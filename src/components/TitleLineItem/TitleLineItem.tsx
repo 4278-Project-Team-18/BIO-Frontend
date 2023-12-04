@@ -18,32 +18,34 @@ const TitleLineItem = ({
 }: TitleLineItemProps) => (
   <div className={styles[`title-line-item-${variant}`]}>
     <div className={styles[`title-line-item-title-${variant}`]}>{title}</div>
-    {actionTwoOnClick &&
-      actionTwoTitle &&
-      variant === TitleLineItemVariant.TABLE_TITLE && (
-        <LoadingButton
-          onClick={actionTwoOnClick}
-          text={actionTwoTitle || ""}
-          isLoading={false}
-          variant={LoadingButtonVariant.DARKGREY}
-          icon={actionTwoIcon}
-          styles={{ height: "30px", boxShadow: "none" }}
-          iconOnly={true}
-        />
-      )}
-    {actionOneOnClick &&
-      actionOneTitle &&
-      variant === TitleLineItemVariant.TABLE_TITLE && (
-        <LoadingButton
-          onClick={actionOneOnClick}
-          text={actionOneTitle || ""}
-          isLoading={false}
-          variant={LoadingButtonVariant.DARKGREY}
-          icon={actionOneIcon}
-          styles={{ height: "30px", boxShadow: "none" }}
-          iconOnly={true}
-        />
-      )}
+    <div className={styles["title-line-item-action-buttons"]}>
+      {actionTwoOnClick &&
+        actionTwoTitle &&
+        variant === TitleLineItemVariant.TABLE_TITLE && (
+          <LoadingButton
+            onClick={actionTwoOnClick}
+            text={actionTwoTitle || ""}
+            isLoading={false}
+            variant={LoadingButtonVariant.PURPLE}
+            icon={actionTwoIcon}
+            styles={{ height: "30px", boxShadow: "none", marginRight: "10px" }}
+            iconOnly={true}
+          />
+        )}
+      {actionOneOnClick &&
+        actionOneTitle &&
+        variant === TitleLineItemVariant.TABLE_TITLE && (
+          <LoadingButton
+            onClick={actionOneOnClick}
+            text={actionOneTitle || ""}
+            isLoading={false}
+            variant={LoadingButtonVariant.RED}
+            icon={actionOneIcon}
+            styles={{ height: "30px", boxShadow: "none" }}
+            iconOnly={true}
+          />
+        )}
+    </div>
   </div>
 );
 
