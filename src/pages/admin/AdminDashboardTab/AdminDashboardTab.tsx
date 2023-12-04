@@ -139,9 +139,13 @@ const AdminDashboardTab = () => {
     (volunteer) => volunteer.approvalStatus === ApprovalStatus.PENDING,
   );
 
-  const unmatchedStudents = currentClasses?.map(
-    (classItem) =>
-      classItem?.students?.filter((student) => !student.matchedVolunteer),
+  const unmatchedStudents = currentClasses?.reduce(
+    (acc, classItem) =>
+      acc.concat(
+        classItem?.students?.filter((student) => !student?.matchedVolunteer) ||
+          [],
+      ),
+    [] as Student[],
   );
 
   const unuploadedStudentLetters = currentClasses?.reduce(
