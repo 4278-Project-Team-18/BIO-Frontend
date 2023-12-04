@@ -51,9 +51,23 @@ const SignInModal = () => {
   );
 
   useEffect(() => {
-    removeValueFromLocalStorage("accountEmail");
-    removeValueFromLocalStorage("accountRole");
-    signOut();
+    const signOutUser = async () => {
+      removeValueFromLocalStorage("accountEmail");
+      removeValueFromLocalStorage("accountRole");
+      // clear out cookies
+      document.cookie.split(";").forEach((c) => {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      });
+
+      // clear out local storage
+      localStorage.clear();
+
+      await signOut();
+    };
+
+    signOutUser();
   }, []);
 
   useEffect(() => {
