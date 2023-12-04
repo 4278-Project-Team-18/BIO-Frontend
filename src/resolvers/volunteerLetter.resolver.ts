@@ -28,7 +28,7 @@ export const volunteerLetterSchema = yup.object().shape({
 
         const totalHeight = lines.length * lineHeight + 40 + 50 + 60;
 
-        const maxHeight = 200;
+        const maxHeight = 310;
 
         return totalHeight <= maxHeight;
       },
