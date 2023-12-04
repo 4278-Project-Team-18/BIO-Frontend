@@ -94,7 +94,7 @@ const BookDeliveryDateModal = ({
             name={BookDeliveryDateInputName.BOOK_DELIVERY_DATE}
             type="text"
             control={control}
-            placeholder="Enter book delivery date here"
+            placeholder="Enter book delivery date here (MM/DD/YY)"
             error={
               errors[BookDeliveryDateInputName.BOOK_DELIVERY_DATE]?.message
             }
