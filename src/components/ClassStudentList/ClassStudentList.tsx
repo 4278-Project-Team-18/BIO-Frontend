@@ -7,8 +7,9 @@ import { useClassesContext } from "../../context/Classes.context";
 import ConfirmationModal from "../../modals/ConfirmationModal/ConfirmationModal";
 import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
 import ViewStudentLetterModal from "../../modals/ViewStudentLetterModal/ViewStudentLetterModal";
+import BookDeliveryDateModal from "../../modals/BookDeliveryDateModal/BookDeliveryDateModal";
 import { useEffect, useState } from "react";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
 import type { Class, Student } from "../../interfaces/User.interface";
@@ -32,6 +33,8 @@ const ClassStudentList = ({
     currentSelectedViewLetterStudent,
     setCurrentSelectedViewLetterStudent,
   ] = useState<Student | null>(null);
+  const [openBookDeliveryModal, setOpenBookDeliveryModal] =
+    useState<boolean>(false);
 
   const { removeStudentFromClass, removeClass } = useClassesContext();
 
@@ -118,6 +121,14 @@ const ClassStudentList = ({
     setOpenViewLetterModal(false);
   };
 
+  const handleOpenBookDeliveryModal = () => {
+    setOpenBookDeliveryModal(true);
+  };
+
+  const handleCloseBookDeliveryModal = () => {
+    setOpenBookDeliveryModal(false);
+  };
+
   return (
     <>
       <div className={styles["class-list-container"]}>
@@ -135,8 +146,12 @@ const ClassStudentList = ({
             />
           }
           showActionLineItem={isAddingStudent}
-          headerActionOnClick={handleOpenDeleteClassModal}
-          headerActionTitle="Delete class"
+          headerActionOneOnClick={handleOpenDeleteClassModal}
+          headerActionOneTitle="Delete class"
+          headerActionOneIcon={faTrash}
+          headerActionTwoOnClick={handleOpenBookDeliveryModal}
+          headerActionTwoTitle="Book delivery date"
+          headerActionTwoIcon={faCalendar}
         >
           {classObject.students?.map((student, index) =>
             currentEditStudentId === student._id ? (
@@ -178,6 +193,12 @@ const ClassStudentList = ({
           <ViewStudentLetterModal
             student={currentSelectedViewLetterStudent}
             closeModal={handleCloseViewLetterModal}
+          />
+        )}
+        {openBookDeliveryModal && (
+          <BookDeliveryDateModal
+            class={classObject}
+            closeModal={handleCloseBookDeliveryModal}
           />
         )}
       </div>

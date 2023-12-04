@@ -5,25 +5,41 @@ import {
 } from "./TitleLineItem.definitions";
 import LoadingButton from "../LoadingButton/LoadingButton";
 import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TitleLineItem = ({
   title,
   variant = TitleLineItemVariant.TABLE_HEADER,
-  actionOnClick,
-  actionTitle,
+  actionOneIcon,
+  actionOneOnClick,
+  actionOneTitle,
+  actionTwoIcon,
+  actionTwoOnClick,
+  actionTwoTitle,
 }: TitleLineItemProps) => (
   <div className={styles[`title-line-item-${variant}`]}>
     <div className={styles[`title-line-item-title-${variant}`]}>{title}</div>
-    {actionOnClick &&
-      actionTitle &&
+    {actionTwoOnClick &&
+      actionTwoTitle &&
       variant === TitleLineItemVariant.TABLE_TITLE && (
         <LoadingButton
-          onClick={actionOnClick}
-          text={actionTitle || ""}
+          onClick={actionTwoOnClick}
+          text={actionTwoTitle || ""}
           isLoading={false}
           variant={LoadingButtonVariant.DARKGREY}
-          icon={faTrash}
+          icon={actionTwoIcon}
+          styles={{ height: "30px", boxShadow: "none" }}
+          iconOnly={true}
+        />
+      )}
+    {actionOneOnClick &&
+      actionOneTitle &&
+      variant === TitleLineItemVariant.TABLE_TITLE && (
+        <LoadingButton
+          onClick={actionOneOnClick}
+          text={actionOneTitle || ""}
+          isLoading={false}
+          variant={LoadingButtonVariant.DARKGREY}
+          icon={actionOneIcon}
           styles={{ height: "30px", boxShadow: "none" }}
           iconOnly={true}
         />

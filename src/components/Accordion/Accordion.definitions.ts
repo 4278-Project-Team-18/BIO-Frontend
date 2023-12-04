@@ -1,3 +1,4 @@
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { ReactNode } from "react";
 
 export interface AccordionProps {
@@ -12,6 +13,10 @@ export interface AccordionProps {
   showActionLineItem?: boolean;
   showAll?: boolean;
   minimumItems?: number;
-  headerActionOnClick?: () => void;
-  headerActionTitle?: string;
+  headerActionOneOnClick?: () => void;
+  headerActionOneIcon: IconDefinition;
+  headerActionOneTitle?: string;
+  headerActionTwoIcon: IconDefinition;
+  headerActionTwoOnClick?: () => void;
+  headerActionTwoTitle?: string;
 }
