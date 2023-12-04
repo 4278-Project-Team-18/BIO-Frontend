@@ -134,7 +134,11 @@ const ClassStudentList = ({
       <div className={styles["class-list-container"]}>
         <Accordion
           title={classObject.name}
-          headerText="Students"
+          headerText={
+            classObject.estimatedDelivery
+              ? `Estimated Delivery Date: ${classObject.estimatedDelivery}`
+              : `No Delivery Date Set`
+          }
           actionButtonText={"Add student"}
           actionButtonCallback={handleOpenAddStudentModal}
           hideActionButton={isAddingStudent}
