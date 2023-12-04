@@ -110,19 +110,6 @@ const AdminClassesTab = () => {
           <div className={styles["admin-classes-title"]}>{`All Classes (${
             currentClasses?.length || 0
           })`}</div>
-          {/* <button
-            id="add-class-button"
-            className={styles["add-class-button"]}
-            onClick={handleOpenClassModal}
-          >
-            <div className={styles["add-class-button-label"]}>
-              {"Add Class"}
-            </div>
-            <FontAwesomeIcon
-              icon={faPlusCircle}
-              className={styles["add-class-submit-button-icon"]}
-            />
-          </button> */}
           <LoadingButton
             onClick={handleOpenClassModal}
             isLoading={false}

@@ -1,9 +1,15 @@
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
 /* eslint-disable autofix/no-unused-vars */
 export interface TitleLineItemProps {
   title: string;
   variant?: TitleLineItemVariant;
-  actionOnClick?: () => void;
-  actionTitle?: string;
+  actionOneOnClick?: () => void;
+  actionOneTitle?: string;
+  actionOneIcon?: IconDefinition;
+  actionTwoOnClick?: () => void;
+  actionTwoTitle?: string;
+  actionTwoIcon?: IconDefinition;
 }
 
 export enum TitleLineItemVariant {

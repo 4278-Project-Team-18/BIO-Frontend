@@ -5,29 +5,47 @@ import {
 } from "./TitleLineItem.definitions";
 import LoadingButton from "../LoadingButton/LoadingButton";
 import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TitleLineItem = ({
   title,
   variant = TitleLineItemVariant.TABLE_HEADER,
-  actionOnClick,
-  actionTitle,
+  actionOneIcon,
+  actionOneOnClick,
+  actionOneTitle,
+  actionTwoIcon,
+  actionTwoOnClick,
+  actionTwoTitle,
 }: TitleLineItemProps) => (
   <div className={styles[`title-line-item-${variant}`]}>
     <div className={styles[`title-line-item-title-${variant}`]}>{title}</div>
-    {actionOnClick &&
-      actionTitle &&
-      variant === TitleLineItemVariant.TABLE_TITLE && (
-        <LoadingButton
-          onClick={actionOnClick}
-          text={actionTitle || ""}
-          isLoading={false}
-          variant={LoadingButtonVariant.DARKGREY}
-          icon={faTrash}
-          styles={{ height: "30px", boxShadow: "none" }}
-          iconOnly={true}
-        />
-      )}
+    <div className={styles["title-line-item-action-buttons"]}>
+      {actionTwoOnClick &&
+        actionTwoTitle &&
+        variant === TitleLineItemVariant.TABLE_TITLE && (
+          <LoadingButton
+            onClick={actionTwoOnClick}
+            text={actionTwoTitle || ""}
+            isLoading={false}
+            variant={LoadingButtonVariant.PURPLE}
+            icon={actionTwoIcon}
+            styles={{ height: "30px", boxShadow: "none", marginRight: "10px" }}
+            iconOnly={true}
+          />
+        )}
+      {actionOneOnClick &&
+        actionOneTitle &&
+        variant === TitleLineItemVariant.TABLE_TITLE && (
+          <LoadingButton
+            onClick={actionOneOnClick}
+            text={actionOneTitle || ""}
+            isLoading={false}
+            variant={LoadingButtonVariant.RED}
+            icon={actionOneIcon}
+            styles={{ height: "30px", boxShadow: "none" }}
+            iconOnly={true}
+          />
+        )}
+    </div>
   </div>
 );
 
