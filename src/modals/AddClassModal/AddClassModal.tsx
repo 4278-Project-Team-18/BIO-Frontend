@@ -32,7 +32,7 @@ const AddClassModal = ({ closeModal, teacher }: AddClassModalProps) => {
   } = !teacher
     ? useCustomFetch<Teacher[]>(`/teacher/`)
     : {
-        data: [teacher!],
+        data: [teacher],
         loading: false,
         error: null,
         makeRequest: () => {},
