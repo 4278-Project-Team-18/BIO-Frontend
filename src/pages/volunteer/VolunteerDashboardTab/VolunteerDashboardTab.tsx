@@ -15,9 +15,6 @@ import { useEffect, useState } from "react";
 const VolunteerDashboardTab = () => {
   const { currentUser } = useUserContext();
   const { setCurrentTab } = useNavigationContext();
-
-  console.log(currentUser);
-
   const [viewStudentLetterModalOpen, setViewStudentLetterModalOpen] =
     useState<boolean>(false);
   const [uploadLetterModalOpen, setUploadLetterModalOpen] =

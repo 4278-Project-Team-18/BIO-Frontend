@@ -6,6 +6,7 @@ import { FormInputSizeVariant } from "../../components/FormInput/FormInput.defin
 import { bookSelectionSchema } from "../../resolvers/bookSelection.resolver";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { useClassesContext } from "../../context/Classes.context";
+import { useUserContext } from "../../context/User.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
@@ -19,12 +20,14 @@ import type {
   BookSelectionModalProps,
 } from "./BookSelectionModal.definitions";
 import type { Resolver } from "react-hook-form";
+import type { Student } from "../../interfaces/User.interface";
 
 const BookSelectionModal = ({
   closeModal,
   student,
 }: BookSelectionModalProps) => {
   const { updateAssignedBookLink } = useClassesContext();
+  const { updateStudentBookLink } = useUserContext();
 
   const {
     control,
@@ -39,27 +42,37 @@ const BookSelectionModal = ({
   });
 
   const {
-    data: bookData,
-    error: bookError,
-    loading: bookLoading,
+    data: bookLinkResponseData,
+    error: bookLinkResponseError,
+    loading: bookLinkLoading,
     makeRequest: makeBookRequest,
-  } = useCustomFetch<string>(
+  } = useCustomFetch<Student>(
     `/student/${student._id}/addBookLink`,
     RequestMethods.PATCH,
   );
 
-  const onSubmitBookSelection = async (data: BookSelectionInput) => {
-    await makeBookRequest(data);
-    closeModal();
-  };
-
   useEffect(() => {
-    if (bookData && !bookError) {
-      console.log(bookData);
-      updateAssignedBookLink(student._id, bookData);
+    if (bookLinkResponseData) {
+      updateAssignedBookLink(
+        student._id,
+        bookLinkResponseData.assignedBookLink || "",
+      );
+      updateStudentBookLink(
+        student._id,
+        bookLinkResponseData.assignedBookLink || "",
+      );
+
       closeModal();
     }
-  }, [bookData]);
+
+    if (bookLinkResponseError) {
+      closeModal();
+    }
+  }, [bookLinkResponseData]);
+
+  const onSubmitBookSelection = async (data: BookSelectionInput) => {
+    await makeBookRequest(data);
+  };
 
   return (
     <div className={styles["select-book-backdrop"]}>
@@ -103,7 +116,7 @@ const BookSelectionModal = ({
                 text={"Submit Book Selection"}
                 type="submit"
                 icon={faCloudArrowUp}
-                isLoading={bookLoading}
+                isLoading={bookLinkLoading}
                 isLoadingText="Submitting Book Selection..."
                 isResponsive={false}
               />

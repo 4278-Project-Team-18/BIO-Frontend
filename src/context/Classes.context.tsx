@@ -108,6 +108,7 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     studentId: string,
     studentLetterLink: string,
   ) => {
+    // replace the student's letter link with the new one
     const newClasses = currentClasses?.map((classItem: Class) => ({
       ...classItem,
       students: classItem.students?.map((studentItem: Student) => {
