@@ -9,6 +9,10 @@
 
   .invite-line-item-label {
     padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
   }
 
   .invite-line-item-text {
@@ -33,6 +37,19 @@
     font-family: "Poppins", sans-serif;
     padding-left: 20px;
   }
+
+  .invite-delete-icon {
+    display: none;
+  }
+
+  .invite-delete-icon:hover {
+    cursor: pointer;
+  }
+
+  .invite-line-item-container:hover .invite-delete-icon {
+    display: block;
+    padding-right: 5px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -46,6 +63,10 @@
 
   .invite-line-item-label {
     padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
   }
 
   .invite-line-item-text {
@@ -73,5 +94,18 @@
     color: #8e8e8e;
     font-family: "Poppins", sans-serif;
     padding-left: 10px;
+  }
+
+  .invite-delete-icon {
+    display: none;
+  }
+
+  .invite-line-item-container:hover .invite-delete-icon {
+    display: block;
+    padding-right: 5px;
+  }
+
+  .invite-delete-icon:hover {
+    cursor: pointer;
   }
 }
