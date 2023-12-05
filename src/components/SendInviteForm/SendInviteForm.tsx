@@ -28,7 +28,7 @@ const sendInviteForm = () => {
   } = useForm<SendInviteInput>({
     defaultValues: {
       [SendInviteInputName.EMAIL]: "",
-      [SendInviteInputName.ROLE]: Role.ADMIN,
+      [SendInviteInputName.INVITEEROLE]: Role.ADMIN,
     },
     resolver: yupResolver(sendInviteSchema) as Resolver<SendInviteInput>,
     mode: "onSubmit",
@@ -52,7 +52,7 @@ const sendInviteForm = () => {
     reset(
       {
         [SendInviteInputName.EMAIL]: "",
-        [SendInviteInputName.ROLE]: Role.ADMIN,
+        [SendInviteInputName.INVITEEROLE]: Role.ADMIN,
       },
       { keepErrors: true },
     );
@@ -88,9 +88,9 @@ const sendInviteForm = () => {
       />
       <FormSelect
         control={control}
-        name={SendInviteInputName.ROLE}
+        name={SendInviteInputName.INVITEEROLE}
         label="Teacher"
-        error={errors[SendInviteInputName.ROLE]?.message}
+        error={errors[SendInviteInputName.INVITEEROLE]?.message}
         options={formOptions}
         defaultValue={formOptions[0].value}
         setValue={setValue}

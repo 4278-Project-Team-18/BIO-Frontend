@@ -1,11 +1,11 @@
 /* eslint-disable autofix/no-unused-vars */
 export interface SendInviteInput {
   email: string;
-  role: string;
+  inviteeRole: string;
   senderId?: string;
 }
 
 export enum SendInviteInputName {
   EMAIL = "email",
-  ROLE = "role",
+  INVITEEROLE = "inviteeRole",
 }
