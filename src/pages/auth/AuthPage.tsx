@@ -7,7 +7,7 @@ import type { AuthPageProps } from "./AuthPage.definitions";
 
 const AuthPage = ({ variant }: AuthPageProps) => (
   <div className={styles["auth-page-container"]}>
-    <div className={styles["auth-page-left"]}>Test Text</div>
+    <div className={styles["auth-page-left"]}>{"You get no bitches"}</div>
     <div className={styles["auth-page-right"]}>
       <div className={styles["auth-logo-container"]}>
         <img src={Logo} alt="BIO Logo" className={styles["auth-logo"]} />
