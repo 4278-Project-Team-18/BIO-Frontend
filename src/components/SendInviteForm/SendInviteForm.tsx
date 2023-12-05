@@ -29,6 +29,7 @@ const sendInviteForm = () => {
     defaultValues: {
       [SendInviteInputName.EMAIL]: "",
       [SendInviteInputName.INVITEEROLE]: Role.ADMIN,
+      [SendInviteInputName.SENDERID]: "",
     },
     resolver: yupResolver(sendInviteSchema) as Resolver<SendInviteInput>,
     mode: "onSubmit",
