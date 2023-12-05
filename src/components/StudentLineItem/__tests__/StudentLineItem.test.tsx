@@ -13,6 +13,7 @@ describe("StudentLineItem Tests", () => {
       openUploadLetterModal: jest.fn(),
       removeStudentFromClass: jest.fn(),
       openViewLetterModal: jest.fn(),
+      openResponseLetterModal: jest.fn(),
     };
 
     const component = render(<StudentLineItem {...mockProps} />);
@@ -46,6 +47,7 @@ describe("StudentLineItem Tests", () => {
       openUploadLetterModal: jest.fn(),
       removeStudentFromClass: jest.fn(),
       openViewLetterModal: jest.fn(),
+      openResponseLetterModal: jest.fn(),
     };
 
     const component = render(<StudentLineItem {...mockProps} />);

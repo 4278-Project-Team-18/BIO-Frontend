@@ -10,6 +10,7 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 const ViewStudentLetterModal = ({
   closeModal,
   student,
+  showResponseLetter = false,
 }: ViewStudentLetterModalProps) => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [height, setHeight] = useState<number>(800);
@@ -34,7 +35,9 @@ const ViewStudentLetterModal = ({
     <div className={styles["view-student-letter-backdrop"]}>
       <div className={styles["view-student-letter-container"]}>
         <div className={styles["view-student-letter-header"]}>
-          {`View ${student.firstName} ${student.lastInitial}'s letter`}
+          {showResponseLetter
+            ? `View volunteer's response to ${student.firstName} ${student.lastInitial}`
+            : `View ${student.firstName} ${student.lastInitial}'s letter`}
           <button
             className={styles["view-student-letter-cancel-button"]}
             onClick={closeModal}
@@ -50,7 +53,11 @@ const ViewStudentLetterModal = ({
         <div className={styles["view-student-letter-content"]}>
           <div className={styles["view-student-letter-file-preview-container"]}>
             <Document
-              file={student.studentLetterLink}
+              file={
+                showResponseLetter
+                  ? student.volunteerLetterLink
+                  : student.studentLetterLink
+              }
               className={styles["upload-letter-pdf-preview"]}
             >
               <Page

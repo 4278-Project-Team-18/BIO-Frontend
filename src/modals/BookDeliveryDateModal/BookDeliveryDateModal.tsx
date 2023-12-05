@@ -11,10 +11,7 @@ import { bookDeliveryDateSchema } from "../../resolvers/bookDeliveryDate.resolve
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 import { useClassesContext } from "../../context/Classes.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleXmark,
-  faCloudArrowUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBookOpen, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
@@ -107,7 +104,7 @@ const BookDeliveryDateModal = ({
               <LoadingButton
                 text={"Submit Book Delivery Date"}
                 type="submit"
-                icon={faCloudArrowUp}
+                icon={faBookOpen}
                 isLoading={bookDeliveryDateLoading}
                 isLoadingText="Submitting Book Delivery Date..."
                 isResponsive={false}
