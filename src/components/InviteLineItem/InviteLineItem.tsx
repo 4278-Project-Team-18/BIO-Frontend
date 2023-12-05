@@ -42,7 +42,6 @@ const InviteLineItem = ({ invite }: InviteLineItemProps) => {
   };
 
   const handleDeleteInvite: (_: Invite) => void = (invite: Invite) => {
-    handleCloseDeleteInviteModal();
     makeDeleteInviteRequest(undefined, invite._id);
   };
 

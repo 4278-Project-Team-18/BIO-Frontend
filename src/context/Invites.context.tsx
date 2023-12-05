@@ -36,7 +36,9 @@ export const InvitesProvider = ({ children }: PropsWithChildren) => {
   const removeInvite = (invite: Invite) => {
     if (currentInvites) {
       setCurrentInvites(
-        currentInvites.filter((currentInvite) => currentInvite !== invite),
+        currentInvites.filter(
+          (currentInvite) => currentInvite._id !== invite._id,
+        ),
       );
     }
   };
