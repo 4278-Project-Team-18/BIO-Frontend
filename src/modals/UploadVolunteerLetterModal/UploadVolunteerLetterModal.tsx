@@ -183,7 +183,19 @@ const UploadVolunteerLetterModal = ({
           </div>
           <div className={styles["upload-letter-right"]}>
             <div className={styles["upload-letter-pdf-preview-container"]}>
-              {pdfFile ? (
+              {student.volunteerLetterLink && !viewedPreview ? (
+                <Document
+                  file={student.volunteerLetterLink}
+                  className={styles["upload-letter-pdf-preview"]}
+                >
+                  <Page
+                    pageNumber={1}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                    height={400}
+                  />
+                </Document>
+              ) : pdfFile ? (
                 <Document
                   file={pdfFile}
                   className={styles["upload-letter-pdf-preview"]}
