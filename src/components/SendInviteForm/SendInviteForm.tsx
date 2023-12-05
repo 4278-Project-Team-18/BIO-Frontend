@@ -62,7 +62,7 @@ const sendInviteForm = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmitSendInvite = async (inputData: SendInviteInput, e: any) => {
-    await makeInviteRequest({ ...inputData, sender: currentUser?._id });
+    await makeInviteRequest({ ...inputData, senderId: currentUser?._id });
 
     // reset the form inputs
     e.target[0].value = "";
