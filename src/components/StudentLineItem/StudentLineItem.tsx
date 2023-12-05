@@ -1,9 +1,11 @@
 import styles from "./StudentLineItem.module.css";
 import LineItemLabel from "../FileUploadedLabel/LineItemLabel";
 import { LineItemLabelVariant } from "../FileUploadedLabel/LineItemLabel.definitions";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCloudArrowUp,
+  faLink,
   faPencil,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +15,7 @@ import {
   faCircleCheck,
 } from "@fortawesome/free-regular-svg-icons";
 import { MoonLoader } from "react-spinners";
+import { toast } from "react-toastify";
 import type { StudentLineItemProps } from "./StudentLineItem.definitions";
 
 const StudentLineItem = ({
@@ -49,6 +52,26 @@ const StudentLineItem = ({
       </div>
     </div>
     <div className={styles["line-item-container-right"]}>
+      {student?.assignedBookLink && (
+        <LineItemLabel
+          variant={LineItemLabelVariant.GREY}
+          label={""}
+          icon={faLink}
+          onClick={() => {
+            navigator.clipboard.writeText(student.assignedBookLink || "");
+            toast.success("Copied link to clipboard!", {
+              position: "bottom-center",
+              autoClose: 4000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          }}
+        />
+      )}
       {student.studentLetterLink && (
         <LineItemLabel
           variant={LineItemLabelVariant.GREEN}

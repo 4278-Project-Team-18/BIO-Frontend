@@ -5,6 +5,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.globals.css";
 import { ClerkProvider } from "@clerk/clerk-react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -21,6 +23,18 @@ root.render(
     <UserProvider>
       <ClerkProvider publishableKey={clerkPubKey}>
         <NavigationProvider>
+          <ToastContainer
+            position="bottom-center"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
           <AppRouter />
         </NavigationProvider>
       </ClerkProvider>
