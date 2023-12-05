@@ -29,6 +29,8 @@ const ClassStudentList = ({
     useState<boolean>(false);
   const [openViewLetterModal, setOpenViewLetterModal] =
     useState<boolean>(false);
+  const [openViewResponseLetterModal, setOpenViewResponseLetterModal] =
+    useState<boolean>(false);
   const [
     currentSelectedViewLetterStudent,
     setCurrentSelectedViewLetterStudent,
@@ -129,6 +131,15 @@ const ClassStudentList = ({
     setOpenBookDeliveryModal(false);
   };
 
+  const handleOpenViewResponseLetterModal = (student: Student) => {
+    setOpenViewResponseLetterModal(true);
+    setCurrentSelectedViewLetterStudent(student);
+  };
+
+  const handleCloseViewResponseLetterModal = () => {
+    setOpenViewResponseLetterModal(false);
+  };
+
   return (
     <>
       <div className={styles["class-list-container"]}>
@@ -177,6 +188,7 @@ const ClassStudentList = ({
                   deleteStudentFromClassLoading
                 }
                 openViewLetterModal={handleOpenViewLetterModal}
+                openResponseLetterModal={handleOpenViewResponseLetterModal}
               />
             ),
           )}
@@ -197,6 +209,13 @@ const ClassStudentList = ({
           <ViewStudentLetterModal
             student={currentSelectedViewLetterStudent}
             closeModal={handleCloseViewLetterModal}
+          />
+        )}
+        {openViewResponseLetterModal && currentSelectedViewLetterStudent && (
+          <ViewStudentLetterModal
+            student={currentSelectedViewLetterStudent}
+            closeModal={handleCloseViewResponseLetterModal}
+            showResponseLetter={true}
           />
         )}
         {openBookDeliveryModal && (

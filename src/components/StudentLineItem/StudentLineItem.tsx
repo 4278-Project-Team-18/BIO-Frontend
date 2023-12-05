@@ -22,6 +22,7 @@ const StudentLineItem = ({
   removeStudentFromClass,
   removeStudentLoading = false,
   openViewLetterModal,
+  openResponseLetterModal,
 }: StudentLineItemProps) => (
   <div className={styles["line-item-container"]}>
     <div className={styles["line-item-container-left"]}>
@@ -54,6 +55,14 @@ const StudentLineItem = ({
           label={" Student Letter"}
           icon={faCircleCheck}
           onClick={() => openViewLetterModal(student)}
+        />
+      )}
+      {student.volunteerLetterLink && (
+        <LineItemLabel
+          variant={LineItemLabelVariant.PURPLE}
+          label={" Volunteer Letter"}
+          icon={faCircleCheck}
+          onClick={() => openResponseLetterModal(student)}
         />
       )}
       <button
