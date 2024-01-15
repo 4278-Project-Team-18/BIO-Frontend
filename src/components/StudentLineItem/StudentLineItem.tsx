@@ -4,6 +4,7 @@ import { LineItemLabelVariant } from "../FileUploadedLabel/LineItemLabel.definit
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faBookMedical,
   faCloudArrowUp,
   faLink,
   faPencil,
@@ -26,6 +27,7 @@ const StudentLineItem = ({
   removeStudentLoading = false,
   openViewLetterModal,
   openResponseLetterModal,
+  openBookSelectionModal,
 }: StudentLineItemProps) => (
   <div className={styles["line-item-container"]}>
     <div className={styles["line-item-container-left"]}>
@@ -70,6 +72,14 @@ const StudentLineItem = ({
               theme: "light",
             });
           }}
+        />
+      )}
+      {student?.assignedBookLink && (
+        <LineItemLabel
+          variant={LineItemLabelVariant.BLUE}
+          label={"Change Book Link"}
+          icon={faBookMedical}
+          onClick={() => openBookSelectionModal(student)}
         />
       )}
       {student.studentLetterLink && (

@@ -8,6 +8,7 @@ import ConfirmationModal from "../../modals/ConfirmationModal/ConfirmationModal"
 import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions";
 import ViewStudentLetterModal from "../../modals/ViewStudentLetterModal/ViewStudentLetterModal";
 import BookDeliveryDateModal from "../../modals/BookDeliveryDateModal/BookDeliveryDateModal";
+import BookSelectionModal from "../../modals/BookSelectionModal/BookSelectionModal";
 import { useEffect, useState } from "react";
 import { faCalendar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
@@ -30,6 +31,8 @@ const ClassStudentList = ({
   const [openViewLetterModal, setOpenViewLetterModal] =
     useState<boolean>(false);
   const [openViewResponseLetterModal, setOpenViewResponseLetterModal] =
+    useState<boolean>(false);
+  const [openBookSelectionModal, setOpenBookSelectionModal] =
     useState<boolean>(false);
   const [
     currentSelectedViewLetterStudent,
@@ -140,6 +143,15 @@ const ClassStudentList = ({
     setOpenViewResponseLetterModal(false);
   };
 
+  const handleOpenBookSelectionModal = (student: Student) => {
+    setOpenBookSelectionModal(true);
+    setCurrentSelectedViewLetterStudent(student);
+  };
+
+  const handleCloseBookSelectionModal = () => {
+    setOpenBookSelectionModal(false);
+  };
+
   return (
     <>
       <div className={styles["class-list-container"]}>
@@ -189,6 +201,7 @@ const ClassStudentList = ({
                 }
                 openViewLetterModal={handleOpenViewLetterModal}
                 openResponseLetterModal={handleOpenViewResponseLetterModal}
+                openBookSelectionModal={handleOpenBookSelectionModal}
               />
             ),
           )}
@@ -203,6 +216,12 @@ const ClassStudentList = ({
             action={handleDeleteClass}
             closeModal={handleCloseDeleteClassModal}
             isLoading={deleteClassLoading}
+          />
+        )}
+        {openBookSelectionModal && currentSelectedViewLetterStudent && (
+          <BookSelectionModal
+            student={currentSelectedViewLetterStudent}
+            closeModal={handleCloseBookSelectionModal}
           />
         )}
         {openViewLetterModal && currentSelectedViewLetterStudent && (

@@ -8,4 +8,5 @@ export interface StudentLineItemProps {
   removeStudentLoading?: boolean;
   openViewLetterModal: (_: Student) => void;
   openResponseLetterModal: (_: Student) => void;
+  openBookSelectionModal: (_: Student) => void;
 }
