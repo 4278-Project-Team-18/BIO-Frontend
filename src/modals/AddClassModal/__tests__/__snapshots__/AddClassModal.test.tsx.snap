@@ -51,7 +51,11 @@ exports[`AddClassModal Tests AddClassModal snapshot should render correctly 1`] 
                 <div
                   class="form-input-label-opt-standard"
                 >
-                  Class Name
+                  <div
+                    class="label"
+                  >
+                    Class Name
+                  </div>
                 </div>
                 <input
                   class="form-input-standard"
@@ -173,7 +177,11 @@ exports[`AddClassModal Tests AddClassModal snapshot should render correctly 1`] 
               <div
                 class="form-input-label-opt-standard"
               >
-                Class Name
+                <div
+                  class="label"
+                >
+                  Class Name
+                </div>
               </div>
               <input
                 class="form-input-standard"
