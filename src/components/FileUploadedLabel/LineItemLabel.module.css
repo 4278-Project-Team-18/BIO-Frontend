@@ -1,4 +1,4 @@
-@media (min-width: 700px) {
+@media (min-width: 1100px) {
   .label-green {
     padding: 8px;
     border: 1px solid #2bd447;
@@ -224,7 +224,7 @@
   }
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1099px) {
   .label-green {
     padding: 8px;
     border: 1px solid #2bd447;
@@ -303,6 +303,7 @@
   .label-blue {
     padding: 8px;
     border: 1px solid #1b7ed4;
+    border-radius: 10px;
     color: #1b7ed4;
     background-color: #f8f8f8;
     font-size: 14px;
