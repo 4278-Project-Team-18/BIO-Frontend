@@ -39,8 +39,8 @@
     display: flex;
     flex-direction: column-reverse;
     width: 100vw;
-    height: 90vh;
-    padding-top: 10vh;
+    height: 97vh;
+    padding-top: 3vh;
     overflow-x: hidden;
   }
 

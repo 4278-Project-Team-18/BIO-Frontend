@@ -45,7 +45,7 @@ const FormInput = ({
                   : styles[`form-input-label-opt-${sizeVariant}`]
               }
             >
-              {label}
+              <div className={styles["label"]}>{label}</div>
               {!error && optText && (
                 <span className={styles["form-input-opt-text"]}>
                   {" (" + optText + ")"}
