@@ -14,7 +14,7 @@ import { Navigate, Outlet, useNavigate } from "react-router";
 import { useUser } from "@clerk/clerk-react";
 
 const App = () => {
-  const { setCurrentUser } = useUserContext();
+  const { currentUser, setCurrentUser } = useUserContext();
   const { user } = useUser();
   const navigate = useNavigate();
 
@@ -56,7 +56,7 @@ const App = () => {
     }
   }, [userData]);
 
-  if (userLoading || !userData) {
+  if (userLoading || !currentUser) {
     return <FullPageLoadingIndicator />;
   }
 
@@ -71,10 +71,10 @@ const App = () => {
       </div>
       <div className={styles["app-main-content"]}>
         <div className={styles["app-main-content-inner-container"]}>
-          {userData.approvalStatus === ApprovalStatus.APPROVED ? (
+          {currentUser.approvalStatus === ApprovalStatus.APPROVED ? (
             <Outlet />
           ) : (
-            <NotApprovedDisplay status={userData.approvalStatus} />
+            <NotApprovedDisplay status={currentUser.approvalStatus} />
           )}
         </div>
       </div>
