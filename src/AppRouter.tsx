@@ -1,8 +1,3 @@
-import { ClassesProvider } from "./context/Classes.context";
-import { InvitesProvider } from "./context/Invites.context";
-import { TeachersProvider } from "./context/Teachers.context";
-import { VolunteersProvider } from "./context/Volunteers.context";
-import { AdminsProvider } from "./context/Admins.context";
 import App from "./layout/App/App";
 import AdminApplicantsTab from "./pages/admin/AdminApplicantsTab/AdminApplicantsTab";
 import AdminClassesTab from "./pages/admin/AdminClassesTab/AdminClassesTab";
@@ -17,139 +12,21 @@ import { useUserContext } from "./context/User.context";
 import { getValueFromLocalStorage } from "./util/storage.util";
 import { createBrowserRouter } from "react-router-dom";
 import { Navigate, RouterProvider } from "react-router";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
 
 const AppRouter = () => {
   const { currentUser } = useUserContext();
+  const { user } = useUser();
 
   const role =
     currentUser?.role || getValueFromLocalStorage("accountRole") || null;
 
-  const router = createBrowserRouter([
+  console.log(user);
+
+  const unprotectedRouter = createBrowserRouter([
     {
-      path: "/",
-      element: <App />,
-      children: [
-        {
-          path: "/",
-          element: (
-            <>
-              <SignedIn>
-                {role !== null ? (
-                  <Navigate to="/dashboard" />
-                ) : (
-                  <Navigate to="/sign-in/" />
-                )}
-              </SignedIn>
-              <SignedOut>
-                <Navigate to="/sign-in/" />
-              </SignedOut>
-            </>
-          ),
-        },
-        {
-          path: "/*",
-          element: <Navigate to="/" />,
-        },
-        {
-          path: "/dashboard",
-          element: (
-            <>
-              <SignedIn>
-                {role === Role.ADMIN ? (
-                  <InvitesProvider>
-                    <TeachersProvider>
-                      <ClassesProvider>
-                        <VolunteersProvider>
-                          <AdminDashboardTab />
-                        </VolunteersProvider>
-                      </ClassesProvider>
-                    </TeachersProvider>
-                  </InvitesProvider>
-                ) : role === Role.TEACHER ? (
-                  <ClassesProvider>
-                    <TeacherDashboardTab />
-                  </ClassesProvider>
-                ) : role === Role.VOLUNTEER ? (
-                  <ClassesProvider>
-                    <VolunteerDashboardTab />
-                  </ClassesProvider>
-                ) : (
-                  <Navigate to="/" />
-                )}
-              </SignedIn>
-              <SignedOut>
-                <Navigate to="/sign-in/" />
-              </SignedOut>
-            </>
-          ),
-        },
-        {
-          path: "/classes",
-          element: (
-            <>
-              <SignedIn>
-                {role === Role.ADMIN ? (
-                  <TeachersProvider>
-                    <ClassesProvider>
-                      <AdminClassesTab />
-                    </ClassesProvider>
-                  </TeachersProvider>
-                ) : (
-                  <Navigate to="/" />
-                )}
-              </SignedIn>
-              <SignedOut>
-                <Navigate to="/sign-in/" />
-              </SignedOut>
-            </>
-          ),
-        },
-        {
-          path: "/volunteers",
-          element: (
-            <>
-              <SignedIn>
-                {role === Role.ADMIN ? (
-                  <VolunteersProvider>
-                    <AdminVolunteersTab />
-                  </VolunteersProvider>
-                ) : (
-                  <Navigate to="/" />
-                )}
-              </SignedIn>
-              <SignedOut>
-                <Navigate to="/sign-in/" />
-              </SignedOut>
-            </>
-          ),
-        },
-        {
-          path: "/applicants",
-          element: (
-            <>
-              <SignedIn>
-                {role === Role.ADMIN ? (
-                  <AdminsProvider>
-                    <InvitesProvider>
-                      <TeachersProvider>
-                        <VolunteersProvider>
-                          <AdminApplicantsTab />
-                        </VolunteersProvider>
-                      </TeachersProvider>
-                    </InvitesProvider>
-                  </AdminsProvider>
-                ) : (
-                  <Navigate to="/" />
-                )}
-              </SignedIn>
-              <SignedOut>
-                <Navigate to="/sign-in/" />
-              </SignedOut>
-            </>
-          ),
-        },
-      ],
+      path: "/*",
+      element: <Navigate to="/sign-in/" />,
     },
     {
       path: "/sign-in/",
@@ -161,7 +38,61 @@ const AppRouter = () => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  const protectedRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          path: "/",
+          element: <Navigate to="/dashboard" />,
+        },
+        {
+          path: "/*",
+          element: <Navigate to="/dashboard" />,
+        },
+        {
+          path: "/dashboard",
+          element:
+            role === Role.ADMIN ? (
+              <AdminDashboardTab />
+            ) : role === Role.TEACHER ? (
+              <TeacherDashboardTab />
+            ) : role === Role.VOLUNTEER ? (
+              <VolunteerDashboardTab />
+            ) : (
+              <Navigate to="/" />
+            ),
+        },
+        {
+          path: "/classes",
+          element:
+            role === Role.ADMIN ? <AdminClassesTab /> : <Navigate to="/" />,
+        },
+        {
+          path: "/volunteers",
+          element:
+            role === Role.ADMIN ? <AdminVolunteersTab /> : <Navigate to="/" />,
+        },
+        {
+          path: "/applicants",
+          element:
+            role === Role.ADMIN ? <AdminApplicantsTab /> : <Navigate to="/" />,
+        },
+      ],
+    },
+  ]);
+
+  return (
+    <>
+      <SignedIn>
+        <RouterProvider router={protectedRouter} />
+      </SignedIn>
+      <SignedOut>
+        <RouterProvider router={unprotectedRouter} />
+      </SignedOut>
+    </>
+  );
 };
 
 export default AppRouter;

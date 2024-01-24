@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth, useSignUp } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
 import type { Admin, UserType } from "../../interfaces/User.interface";
 import type { SignUpCodeInput, SignUpInput } from "./SignUpModal.definitions";
@@ -22,7 +22,6 @@ const SignUpModal = () => {
   // hooks clerk and react-router-dom
   const { isLoaded, signUp, setActive } = useSignUp();
   const { signOut } = useAuth();
-  const navigate = useNavigate();
   const { setCurrentUser } = useUserContext();
 
   // get the invite id from the url
@@ -91,12 +90,8 @@ const SignUpModal = () => {
   }, [inviteData]);
 
   useEffect(() => {
-    console.log(userData, errorUser, userLoading);
-    if (userData && !errorUser && !userLoading) {
+    if (userData && !errorUser && !userLoading && isLoaded) {
       setCurrentUser(userData);
-      setValueToLocalStorage("accountEmail", userData.email);
-      setValueToLocalStorage("accountRole", userData.role);
-      navigate("/");
     }
 
     // if there is an error, sign out (might want to change this later)
@@ -179,6 +174,9 @@ const SignUpModal = () => {
     if (completeSignUp.status === "complete") {
       // set the user as active in clerk
       await setActive({ session: completeSignUp.createdSessionId });
+
+      setValueToLocalStorage("accountEmail", signUp.emailAddress);
+      setValueToLocalStorage("accountRole", inviteData?.role);
 
       // call the backend to create the user
       await makeUserRequest({

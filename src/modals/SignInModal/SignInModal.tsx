@@ -13,7 +13,7 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useSignIn } from "@clerk/clerk-react";
+import { useAuth, useSignIn, useUser } from "@clerk/clerk-react";
 import { useEffect } from "react";
 import type { SignInInput } from "./SignInModal.definitions";
 import type { Resolver } from "react-hook-form";
@@ -25,6 +25,7 @@ const SignInModal = () => {
   const navigate = useNavigate();
   const { setCurrentUser } = useUserContext();
   const { signOut } = useAuth();
+  const { user } = useUser();
 
   // form controller for the new user
   const {
@@ -54,19 +55,10 @@ const SignInModal = () => {
     const signOutUser = async () => {
       removeValueFromLocalStorage("accountEmail");
       removeValueFromLocalStorage("accountRole");
-      // clear out cookies
-      document.cookie.split(";").forEach((c) => {
-        document.cookie = c
-          .replace(/^ +/, "")
-          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-      });
-
-      // clear out local storage
-      localStorage.clear();
-
       await signOut();
     };
 
+    // sign out the user if they are already signed in when you go to the sign in page
     signOutUser();
   }, []);
 
@@ -104,7 +96,10 @@ const SignInModal = () => {
       if (completeSignIn.status === "complete") {
         await setActive({ session: completeSignIn.createdSessionId });
 
-        await makeUserRequest(undefined, inputData.email);
+        await makeUserRequest(
+          undefined,
+          `${inputData.email}&role=${user?.publicMetadata.role}`,
+        );
       }
     } catch (err) {
       await setActive({ session: null });
