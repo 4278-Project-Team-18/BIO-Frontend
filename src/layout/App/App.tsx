@@ -14,9 +14,10 @@ import { Navigate, Outlet, useNavigate } from "react-router";
 import { useUser } from "@clerk/clerk-react";
 
 const App = () => {
-  const { setCurrentUser } = useUserContext();
-  const { user } = useUser();
+  const { currentUser, setCurrentUser } = useUserContext();
+  const { user, isLoaded } = useUser();
   const navigate = useNavigate();
+  // const location = useLocation();
 
   // request to create the user
   const {
@@ -24,13 +25,7 @@ const App = () => {
     error: errorUser,
     loading: userLoading,
     makeRequest: makeUserRequest,
-  } = useCustomFetch<UserType>(
-    `/accounts?accountEmail=${
-      user?.primaryEmailAddress?.emailAddress ||
-      getValueFromLocalStorage("accountEmail")
-    }`,
-    RequestMethods.GET_WAIT,
-  );
+  } = useCustomFetch<UserType>(`/accounts`, RequestMethods.GET_WAIT);
 
   useEffect(() => {
     if (
@@ -40,8 +35,20 @@ const App = () => {
       navigate("/sign-in");
     }
 
-    makeUserRequest();
-  }, []);
+    if (isLoaded && !currentUser) {
+      const email =
+        user?.primaryEmailAddress?.emailAddress ||
+        getValueFromLocalStorage("accountEmail") ||
+        "";
+
+      const role =
+        user?.publicMetadata.role ||
+        getValueFromLocalStorage("accountRole") ||
+        "";
+
+      makeUserRequest(undefined, `?accountEmail=${email}&role=${role}`);
+    }
+  }, [isLoaded]);
 
   useEffect(() => {
     if (userData) {
@@ -56,7 +63,7 @@ const App = () => {
     }
   }, [userData]);
 
-  if (userLoading || !userData) {
+  if (userLoading || !currentUser) {
     return <FullPageLoadingIndicator />;
   }
 
@@ -71,10 +78,10 @@ const App = () => {
       </div>
       <div className={styles["app-main-content"]}>
         <div className={styles["app-main-content-inner-container"]}>
-          {userData.approvalStatus === ApprovalStatus.APPROVED ? (
+          {currentUser.approvalStatus === ApprovalStatus.APPROVED ? (
             <Outlet />
           ) : (
-            <NotApprovedDisplay status={userData.approvalStatus} />
+            <NotApprovedDisplay status={currentUser.approvalStatus} />
           )}
         </div>
       </div>
