@@ -23,6 +23,10 @@ interface ClassesContextType {
   updateAssignedBookLink: (studentId: string, bookLink: string) => void;
   updateBookDeliveryDate: (classId: string, bookDeliveryDate: string) => void;
   removeClass: (classId: string) => void;
+  updateVolunteerResponseString: (
+    studentId: string,
+    letterString: string,
+  ) => void;
 }
 
 // Create the context for the user
@@ -38,6 +42,7 @@ const ClassesContext = createContext<ClassesContextType>({
   updateAssignedBookLink: (_: string, __: string) => {},
   updateBookDeliveryDate: (_: string, __: string) => {},
   removeClass: (_: string) => {},
+  updateVolunteerResponseString: (_: string, __: string) => {},
 });
 
 // Create the wrapper for the user context
@@ -183,6 +188,26 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     setCurrentClasses(newClasses);
   };
 
+  const updateVolunteerResponseString = (
+    studentId: string,
+    letterString: string,
+  ) => {
+    const newClasses = currentClasses?.map((classItem: Class) => ({
+      ...classItem,
+      students: classItem.students?.map((studentItem: Student) => {
+        if (studentItem._id === studentId) {
+          return {
+            ...studentItem,
+            volunteerLetterString: letterString,
+          };
+        } else {
+          return studentItem;
+        }
+      }),
+    }));
+    setCurrentClasses(newClasses);
+  };
+
   const value = {
     currentClasses,
     setCurrentClasses,
@@ -195,6 +220,7 @@ export const ClassesProvider = ({ children }: PropsWithChildren) => {
     updateAssignedBookLink,
     updateBookDeliveryDate,
     removeClass,
+    updateVolunteerResponseString,
   };
 
   return (

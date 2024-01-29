@@ -12,16 +12,13 @@ import { useUserContext } from "./context/User.context";
 import { getValueFromLocalStorage } from "./util/storage.util";
 import { createBrowserRouter } from "react-router-dom";
 import { Navigate, RouterProvider } from "react-router";
-import { SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 const AppRouter = () => {
   const { currentUser } = useUserContext();
-  const { user } = useUser();
 
   const role =
     currentUser?.role || getValueFromLocalStorage("accountRole") || null;
-
-  console.log(user);
 
   const unprotectedRouter = createBrowserRouter([
     {

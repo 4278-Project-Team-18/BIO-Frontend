@@ -34,7 +34,8 @@ const UploadVolunteerLetterModal = ({
   volunteer,
 }: UploadVolunteerLetterModalProps) => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  const { updateVolunteerLetterLink } = useClassesContext();
+  const { updateVolunteerLetterLink, updateVolunteerResponseString } =
+    useClassesContext();
   const { updateVolunteerResponseLink } = useUserContext();
 
   const [pdfFile, setPdfFile] = useState<File | null>(null);
@@ -42,6 +43,7 @@ const UploadVolunteerLetterModal = ({
   const [loadingPreview, setLoadingPreview] = useState<boolean>(false);
   const [hasChanged, setHasChanged] = useState<boolean>(false);
   const [previewMessage, setPreviewMessage] = useState<string>("");
+  const [pdfLink, setPdfLink] = useState<string>("");
 
   const {
     control,
@@ -63,11 +65,13 @@ const UploadVolunteerLetterModal = ({
 
   useEffect(() => {
     if (watchMessage !== previewMessage) {
-      console.log(watchMessage);
-      console.log(getValues(VolunteerLetterInputName.MESSAGE));
       setHasChanged(true);
     }
   }, [watchMessage]);
+
+  useEffect(() => {
+    setPdfLink(student.volunteerLetterLink + "?val=" + new Date().getTime());
+  }, []);
 
   const handleGeneratePreview = async () => {
     setLoadingPreview(true);
@@ -122,6 +126,7 @@ const UploadVolunteerLetterModal = ({
     const formData = new FormData();
     formData.append("file", pdfFile);
     formData.append("volunteerId", volunteer._id);
+    formData.append("volunteerLetterStringFormat", getValues().message);
     await makeLetterRequest(formData);
   };
 
@@ -135,6 +140,7 @@ const UploadVolunteerLetterModal = ({
         student._id,
         letterData.volunteerLetterLink || "",
       );
+      updateVolunteerResponseString(student._id, getValues().message);
       setPdfFile(null);
       closeModal();
     }
@@ -169,7 +175,7 @@ const UploadVolunteerLetterModal = ({
                 control={control}
                 placeholder="Message"
                 error={errors[VolunteerLetterInputName.MESSAGE]?.message}
-                defaultValue={""}
+                defaultValue={student.volunteerLetterString || ""}
                 sizeVariant={FormInputSizeVariant.standard}
                 paragraph={true}
               />
@@ -185,7 +191,7 @@ const UploadVolunteerLetterModal = ({
             <div className={styles["upload-letter-pdf-preview-container"]}>
               {student.volunteerLetterLink && !viewedPreview ? (
                 <Document
-                  file={student.volunteerLetterLink}
+                  file={pdfLink}
                   className={styles["upload-letter-pdf-preview"]}
                 >
                   <Page
