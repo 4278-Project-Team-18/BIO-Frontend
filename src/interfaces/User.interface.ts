@@ -104,7 +104,8 @@ export interface Student {
   assignedBookLink?: string;
   studentLetterLink?: string;
   volunteerLetterLink?: string;
-  matchedVolunteer?: string[];
+  volunteerLetterString?: string;
+  matchedVolunteer?: string;
 }
 
 /**

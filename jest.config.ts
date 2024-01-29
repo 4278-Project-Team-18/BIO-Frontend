@@ -26,6 +26,8 @@ export default {
   // A list of paths to directories that Jest should use to search for files in
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(png|jpg|webp|ttf|woff|woff2|svg|mp4)$":
+      "<rootDir>/src/util/mockImage.ts",
   },
 
   // A preset that is used as a base for Jest's configuration

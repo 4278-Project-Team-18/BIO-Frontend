@@ -9,11 +9,17 @@ import { LoadingButtonVariant } from "../LoadingButton/LoadingButton.definitions
 import ViewStudentLetterModal from "../../modals/ViewStudentLetterModal/ViewStudentLetterModal";
 import BookDeliveryDateModal from "../../modals/BookDeliveryDateModal/BookDeliveryDateModal";
 import BookSelectionModal from "../../modals/BookSelectionModal/BookSelectionModal";
+import UploadVolunteerLetterModal from "../../modals/UploadVolunteerLetterModal/UploadVolunteerLetterModal";
+import { useVolunteersContext } from "../../context/Volunteers.context";
 import { useEffect, useState } from "react";
 import { faCalendar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import type { RemoveStudentResponse } from "../../interfaces/Api.interface";
 import type { ClassStudentListProps } from "./ClassStudentList.definitions";
-import type { Class, Student } from "../../interfaces/User.interface";
+import type {
+  Class,
+  Student,
+  Volunteer,
+} from "../../interfaces/User.interface";
 
 const ClassStudentList = ({
   classObject,
@@ -40,8 +46,12 @@ const ClassStudentList = ({
   ] = useState<Student | null>(null);
   const [openBookDeliveryModal, setOpenBookDeliveryModal] =
     useState<boolean>(false);
+  const [currentVolunteer, setCurrentVolunteer] = useState<
+    Volunteer | undefined
+  >(undefined);
 
   const { removeStudentFromClass, removeClass } = useClassesContext();
+  const { currentVolunteers } = useVolunteersContext();
 
   const {
     data: deleteStudentFromClassData,
@@ -118,8 +128,8 @@ const ClassStudentList = ({
   };
 
   const handleOpenViewLetterModal = (student: Student) => {
-    setOpenViewLetterModal(true);
     setCurrentSelectedViewLetterStudent(student);
+    setOpenViewLetterModal(true);
   };
 
   const handleCloseViewLetterModal = () => {
@@ -135,8 +145,8 @@ const ClassStudentList = ({
   };
 
   const handleOpenViewResponseLetterModal = (student: Student) => {
-    setOpenViewResponseLetterModal(true);
     setCurrentSelectedViewLetterStudent(student);
+    setOpenViewResponseLetterModal(true);
   };
 
   const handleCloseViewResponseLetterModal = () => {
@@ -151,6 +161,15 @@ const ClassStudentList = ({
   const handleCloseBookSelectionModal = () => {
     setOpenBookSelectionModal(false);
   };
+
+  useEffect(() => {
+    const currentVolunteer = currentVolunteers?.find(
+      (volunteer) =>
+        volunteer._id === currentSelectedViewLetterStudent?.matchedVolunteer,
+    );
+
+    setCurrentVolunteer(currentVolunteer);
+  }, [currentSelectedViewLetterStudent]);
 
   return (
     <>
@@ -230,13 +249,15 @@ const ClassStudentList = ({
             closeModal={handleCloseViewLetterModal}
           />
         )}
-        {openViewResponseLetterModal && currentSelectedViewLetterStudent && (
-          <ViewStudentLetterModal
-            student={currentSelectedViewLetterStudent}
-            closeModal={handleCloseViewResponseLetterModal}
-            showResponseLetter={true}
-          />
-        )}
+        {openViewResponseLetterModal &&
+          currentSelectedViewLetterStudent &&
+          currentVolunteer && (
+            <UploadVolunteerLetterModal
+              closeModal={handleCloseViewResponseLetterModal}
+              student={currentSelectedViewLetterStudent}
+              volunteer={currentVolunteer}
+            />
+          )}
         {openBookDeliveryModal && (
           <BookDeliveryDateModal
             class={classObject}

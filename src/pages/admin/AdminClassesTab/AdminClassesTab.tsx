@@ -6,6 +6,7 @@ import {
   ApprovalStatus,
   type Teacher,
   type Student,
+  type Volunteer,
 } from "../../../interfaces/User.interface";
 import { useNavigationContext } from "../../../context/Navigation.context";
 import { useCustomFetch } from "../../../api/request.util";
@@ -19,12 +20,14 @@ import { useTeachersContext } from "../../../context/Teachers.context";
 import UploadStudentLetterModal from "../../../modals/UploadStudentLetterModal/UploadStudentLetterModal";
 import LoadingButton from "../../../components/LoadingButton/LoadingButton";
 import { LoadingButtonVariant } from "../../../components/LoadingButton/LoadingButton.definitions";
+import { useVolunteersContext } from "../../../context/Volunteers.context";
 import { useEffect, useState } from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 const AdminClassesTab = () => {
   const { setCurrentTab } = useNavigationContext();
   const { currentClasses, setCurrentClasses } = useClassesContext();
+  const { setCurrentVolunteers } = useVolunteersContext();
   const { currentTeachers, setCurrentTeachers } = useTeachersContext();
   const [classModalOpen, setClassModalOpen] = useState<boolean>(false);
   const [uploadLetterModalOpen, setUploadLetterModalOpen] =
@@ -38,6 +41,13 @@ const AdminClassesTab = () => {
     error: classError,
     makeRequest: makeClassRequest,
   } = useCustomFetch<Class[]>(`/class/`);
+
+  const {
+    data: volunteerData,
+    loading: volunteerLoading,
+    error: volunteerError,
+    makeRequest: makeVolunteerRequest,
+  } = useCustomFetch<Volunteer[]>(`/volunteer`);
 
   const {
     data: teacherData,
@@ -77,7 +87,11 @@ const AdminClassesTab = () => {
     setCurrentClasses(classData || []);
   }, [classData]);
 
-  if (classLoading || teacherLoading) {
+  useEffect(() => {
+    setCurrentVolunteers(volunteerData || []);
+  }, [volunteerData]);
+
+  if (classLoading || teacherLoading || volunteerLoading) {
     return <FullPageLoadingIndicator />;
   }
 
@@ -95,6 +109,15 @@ const AdminClassesTab = () => {
       <FullPageErrorDisplay
         errorText="Uh oh! Something went wrong."
         refetch={makeTeacherRequest}
+      />
+    );
+  }
+
+  if (volunteerError) {
+    return (
+      <FullPageErrorDisplay
+        errorText="Uh oh! Something went wrong."
+        refetch={makeVolunteerRequest}
       />
     );
   }
